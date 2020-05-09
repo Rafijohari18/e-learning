@@ -13,7 +13,7 @@
             <ul>
                 <li class="menu-title">Menu</li>
                 <li>
-                    <a href="" class="waves-effect"><i class="dripicons-device-desktop"></i><span> Dashboard </span></a>
+                    <a href="" class="waves-effect"><i class="dripicons-device-desktop"></i><span> Dashboard hhh </span></a>
                 </li>
 
                 <li>
