@@ -13,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+// Auth admin
 Auth::routes();
 
+// Auth Peserta
+Route::get('peserta/login', function () {
+    return view('auth.peserta');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Admin
+Route::get('/', function () {
+    return view('layouts.master');
+});
