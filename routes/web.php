@@ -45,7 +45,7 @@ Route::get('logout', [
 ]);
 
 // Admin
-Route::group(['middleware' => ['auth' => 'checkRole:Admin']], function ()
+Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 {
 	Route::get('admin/dashboard', [
 		'uses' => 'DashboardController@admin',
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth' => 'checkRole:Admin']], function ()
 });
 
 // Peserta
-Route::group(['middleware' => ['auth' => 'checkRole:Admin,Peserta']], function ()
+Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 {
 	Route::get('peserta/dashboard', [
 		'uses' => 'DashboardController@peserta',

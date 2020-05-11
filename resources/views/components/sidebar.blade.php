@@ -29,6 +29,10 @@
                     <a href="" class="waves-effect"><i class="ti-book"></i><span> Materi </span></a>
                 </li>
 
+                <li>
+                    <a href="" class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis </span></a>
+                </li>
+
                 <!-- <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="ti-book"></i><span> Materi <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
