@@ -30,17 +30,16 @@
             <li class="list-inline-item dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
-                    <img src="" alt="user" class="rounded-circle">
+                    <img src="{{ asset('assets/images/users/default.png') }}" alt="user" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <span class="text-info dropdown-item">
-                        Your name
+                        {{ auth()->user()->nama_lengkap }}
                     </span>
-                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a>
                     <a class="dropdown-item" href=""><i class="mdi mdi-lock-outline text-muted"></i> Ganti Kata Sandi</a>
-                    <a class="dropdown-item" href=""><i class="mdi mdi-reproduction text-muted"></i> Kunci Layar</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href=""><i class="dripicons-exit text-muted"></i> Keluar</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"><i class="dripicons-exit text-muted"></i> Keluar</a>
                 </div>
             </li>
         </ul>

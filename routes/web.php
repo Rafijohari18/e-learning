@@ -4,13 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Ganti Auth
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
+| Percobaan menggunakan auth seperti ini, jika tidak cocok nanti kembalikan
+| lagi ke auth bawaan laravel.
 */
 
 // Route::get('/', function () {
@@ -18,16 +15,49 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Auth admin
-Auth::routes();
+// Auth::routes();
 
 // Auth Peserta
-Route::get('peserta/login', function () {
-    return view('auth.peserta');
+// Route::get('peserta/login', function () {
+//     return view('auth.peserta');
+// });
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Login
+Route::get('/', function () {
+    return redirect('login');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('login', [
+	'uses' => 'AuthController@login',
+	'as' => 'login'
+]);
+
+Route::post('login', [
+	'uses' => 'AuthController@postLogin',
+	'as' => 'post.login'
+]);
+
+Route::get('logout', [
+	'uses' => 'AuthController@logout',
+	'as' => 'logout'
+]);
 
 // Admin
-Route::get('/', function () {
-    return view('layouts.master');
+Route::group(['middleware' => ['auth' => 'checkRole:Admin']], function ()
+{
+	Route::get('admin/dashboard', [
+		'uses' => 'DashboardController@admin',
+		'as' => 'admin.dashboard'
+	]);
+});
+
+// Peserta
+Route::group(['middleware' => ['auth' => 'checkRole:Admin,Peserta']], function ()
+{
+	Route::get('peserta/dashboard', [
+		'uses' => 'DashboardController@peserta',
+		'as' => 'peserta.dashboard'
+	]);
 });
