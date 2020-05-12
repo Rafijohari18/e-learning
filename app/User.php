@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relasi
+    public function konten()
+    {
+        return $this->hasMany(Konten::class);
+    }
 }

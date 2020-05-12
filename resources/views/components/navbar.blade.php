@@ -30,7 +30,11 @@
             <li class="list-inline-item dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="false" aria-expanded="false">
+                   @if(auth()->user()->path != 'default.png')
+                    <img src="{{ asset('storage/'.auth()->user()->path) }}" alt="user" class="rounded-circle">
+                   @else
                     <img src="{{ asset('assets/images/users/default.png') }}" alt="user" class="rounded-circle">
+                   @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <span class="text-info dropdown-item">

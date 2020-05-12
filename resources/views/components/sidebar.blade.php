@@ -3,8 +3,9 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="">
-            <!--<a href="index.html" class="logo text-center">Fonik</a>-->
-            <a href="/" class="logo"><img src="{{asset('assets/images/logo.png')}}" height="20" alt="logo"></a>
+            <br>
+            <a href="" class="waves-effect text-white">Logo Your Company</a>
+            <!-- <a href="/" class="logo"><img src="asset('assets/images/logo.png')" height="20" alt="logo"></a> -->
         </div>
     </div>
 
@@ -18,7 +19,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="waves-effect"><i class="ti-layers"></i><span> Konten </span></a>
+                    <a href="{{ route('konten.index') }}" class="waves-effect"><i class="ti-layers"></i><span> Konten </span></a>
                 </li>
 
                 <li>
@@ -62,7 +63,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Data Pengguna </span></a>
+                    <a href="{{ route('pengguna.index') }}" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Data Pengguna </span></a>
                 </li>
                 @elseif(auth()->user()->role == 'Peserta')
                 <li>
@@ -70,7 +71,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="waves-effect"><i class="ti-announcement"></i><span> Informasi </span></a>
+                    <a href="{{ route('informasi.index') }}" class="waves-effect"><i class="ti-announcement"></i><span> Informasi </span></a>
                 </li>
 
                 <li>

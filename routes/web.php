@@ -47,10 +47,85 @@ Route::get('logout', [
 // Admin
 Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 {
+	// Dashboard
 	Route::get('admin/dashboard', [
 		'uses' => 'DashboardController@admin',
 		'as' => 'admin.dashboard'
 	]);
+
+	// Konten
+	Route::get('admin/konten', [
+		'uses' => 'KontenController@index',
+		'as' => 'konten.index'
+	]);
+
+	Route::get('admin/konten/create', [
+		'uses' => 'KontenController@create',
+		'as' => 'konten.create'
+	]);
+
+	Route::post('admin/konten/store', [
+		'uses' => 'KontenController@store',
+		'as' => 'konten.store'
+	]);
+
+	Route::get('admin/konten/{konten}/edit', [
+		'uses' => 'KontenController@edit',
+		'as' => 'konten.edit'
+	]);
+
+	Route::post('admin/konten/{konten}/update', [
+		'uses' => 'KontenController@update',
+		'as' => 'konten.update'
+	]);
+
+	Route::get('admin/konten/{konten}/destroy', [
+		'uses' => 'KontenController@destroy',
+		'as' => 'konten.destroy'
+	]);
+
+	// Kategori Materi
+
+
+	// Materi 
+
+
+	// Quis 
+
+
+	// Program 
+
+
+	// Umum
+
+	   
+	// Prakerja 
+
+
+	// Data Transaksi 
+
+
+	// Pengguna
+	Route::get('admin/pengguna', [
+		'uses' => 'PenggunaController@index',
+		'as' => 'pengguna.index'
+	]);
+
+	Route::post('admin/pengguna/store', [
+		'uses' => 'PenggunaController@store',
+		'as' => 'pengguna.store'
+	]);
+
+	Route::get('admin/pengguna/{user}/update', [
+		'uses' => 'PenggunaController@update',
+		'as' => 'pengguna.update'
+	]);
+
+	Route::get('admin/pengguna/{user}/destroy', [
+		'uses' => 'PenggunaController@destroy',
+		'as' => 'pengguna.destroy'
+	]);	
+
 });
 
 // Peserta
@@ -60,4 +135,29 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 		'uses' => 'DashboardController@peserta',
 		'as' => 'peserta.dashboard'
 	]);
+
+	// Informasi
+	Route::get('peserta/Informasi', [
+		'uses' => 'InformasiController@index',
+		'as' => 'informasi.index'
+	]);
+
+	// Materi
+	
+	
+	// Quis
+	
+	// Sertifikat
+	
+	
+	// Riwayat Transaksi
+
+
 });
+
+
+// Download File (Belum Selesai)
+Route::get('download/{filename}/file', [
+	'uses' => 'KontenController@download',
+	'as' => 'konten.download'
+]);
