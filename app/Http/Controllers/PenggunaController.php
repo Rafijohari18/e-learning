@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\User;
+use Auth;
+use Hash;
 
 class PenggunaController extends Controller
 {
@@ -98,5 +100,41 @@ class PenggunaController extends Controller
         $user->delete();
 
         return redirect()->back()->with('destroy','');
+    }
+
+    // Semua Pengguna
+    public function gantiPw()
+    {
+        return view('login.gantiPw');
+    }
+
+    public function updatePw(Request $request)
+    {
+        // Validasi
+        $this->validate($request, [
+            'sandiLama' => 'required',
+            'sandiBaru' => 'required|min:8'
+        ]);
+
+        $sandiLama = $request->sandiLama;
+        $sandiBaru = $request->sandiBaru;
+
+            if (!Hash::check($sandiLama, Auth::user()->password)) {
+                return redirect()->back()->with('errorPw','');
+            }else{
+                $neko = [
+                    'password' => bcrypt($request->sandiBaru)
+                ];
+
+                $jquin = User::findOrFail(auth()->user()->id);
+                $jquin->update($neko);
+
+                if (auth()->user()->role == 'Admin') {
+                    return redirect()->route('admin.dashboard')->with('suksesPw','');
+                } else {
+                    return redirect()->route('peserta.dashboard')->with('suksesPw','');
+                }
+
+            }
     }
 }

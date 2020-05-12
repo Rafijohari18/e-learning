@@ -14,7 +14,7 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <h4 class="card-title font-20 mt-0">{{ $jquin->judul }}</h4>
-                <p class="card-text">{!! Str::limit($jquin->artikel, 100, '.. <a href="/artikel/{$jquin->slug}/baca" target="_blank">Selengkapnya</a>') !!}</p>
+                <p class="card-text">{!! Str::limit($jquin->artikel, 100, '..') !!} <a href="{{ route('informasi.slug', $jquin->slug) }}" target="_blank">Selengkapnya</a></p>
                 <hr>
                 <p class="card-text">
                     <i class="ti-user"></i> <small class="text-muted">{{ $jquin->user->nama_lengkap }}</small>

@@ -84,4 +84,12 @@ class InformasiController extends Controller
     {
         //
     }
+
+    // Slug
+    public function slug($slug)
+    {
+        $neko = Konten::where('slug','=',$slug)->get();
+
+        return $neko;
+    }
 }

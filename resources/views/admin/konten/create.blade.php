@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="judul">Judul</label>
-                        <input type="text" maxlength="191" class="form-control" name="judul" id="judul" required="" placeholder="Masukkan Judul">
+                        <input type="text" class="form-control" name="judul" id="judul" required="" placeholder="Masukkan Judul" minlength="5" maxlength="191">
                     </div>
 
                     <div class="form-group">

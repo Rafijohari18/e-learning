@@ -152,12 +152,29 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 	
 	// Riwayat Transaksi
 
+	// Ganti Kata Sandi
+	Route::get('pengguna/ganti/kata-sandi', [
+		'uses' => 'PenggunaController@gantiPw',
+		'as' => 'ganti.pw'
+	]);
 
+	Route::post('pengguna/ganti/kata-sandi', [
+		'uses' => 'PenggunaController@updatePw',
+		'as' => 'update.pw'
+	]);
 });
+
+
 
 
 // Download File (Belum Selesai)
 Route::get('download/{filename}/file', [
 	'uses' => 'KontenController@download',
 	'as' => 'konten.download'
+]);
+
+// Slug Read Artikel
+Route::get('/{slug}/artikel', [
+	'uses' => 'InformasiController@slug',
+	'as' => 'informasi.slug'
 ]);
