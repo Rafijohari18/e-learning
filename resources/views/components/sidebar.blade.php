@@ -43,7 +43,7 @@
                 </li> -->
 
                 <li>
-                    <a href="" class="waves-effect"><i class="ti-clipboard"></i><span> Program </span></a>
+                    <a href="{{ route('program.index') }}" class="waves-effect"><i class="ti-clipboard"></i><span> Program </span></a>
                 </li>
 
                 <!-- <li>

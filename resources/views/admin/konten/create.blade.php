@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Tambah Data')
+@section('title','Konten Tambah Data')
 
 @section('css')
 <link href="{{asset('assets/plugins/summernote/summernote.css')}}" rel="stylesheet" />
@@ -12,6 +12,7 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Tambah Data</h4>
+                <hr>
                 <form action="{{ route('konten.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">

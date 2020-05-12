@@ -94,7 +94,35 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 
 
 	// Program 
+	Route::get('admin/program', [
+		'uses' => 'ProgramController@index',
+		'as' => 'program.index'
+	]);
 
+	Route::get('admin/program/create', [
+		'uses' => 'ProgramController@create',
+		'as' => 'program.create'
+	]);
+
+	Route::post('admin/program/store', [
+		'uses' => 'ProgramController@store',
+		'as' => 'program.store'
+	]);
+
+	Route::get('admin/program/{program}/edit', [
+		'uses' => 'ProgramController@edit',
+		'as' => 'program.edit'
+	]);
+
+	Route::post('admin/program/{program}/update', [
+		'uses' => 'ProgramController@update',
+		'as' => 'program.update'
+	]);
+
+	Route::get('admin/program/{program}/destroy', [
+		'uses' => 'ProgramController@destroy',
+		'as' => 'program.destroy'
+	]);
 
 	// Umum
 
