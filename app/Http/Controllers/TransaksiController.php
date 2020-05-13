@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Konten;
 
-class InformasiController extends Controller
+class TransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        $neko = Konten::latest()->get();
-
-        return view('peserta.informasi.index', compact('neko'));
+        return view('admin.transaksi.index');
     }
 
     /**
@@ -46,7 +43,7 @@ class InformasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
         //
     }
@@ -83,13 +80,5 @@ class InformasiController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    // Slug
-    public function slug($slug)
-    {
-        $neko = Konten::where('slug','=',$slug)->get();
-
-        return $neko;
     }
 }

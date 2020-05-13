@@ -44,6 +44,11 @@ Route::get('logout', [
 	'as' => 'logout'
 ]);
 
+// Register
+Route::get('registrasi', function () {
+    return view('login.registrasi');
+});
+
 // Admin
 Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 {
@@ -84,10 +89,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		'as' => 'konten.destroy'
 	]);
 
-	// Kategori Materi
-
-
-	// Materi 
+	// Kategori Modul
 
 
 	// Quis 
@@ -99,30 +101,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		'as' => 'program.index'
 	]);
 
-	Route::get('admin/program/create', [
-		'uses' => 'ProgramController@create',
-		'as' => 'program.create'
-	]);
-
-	Route::post('admin/program/store', [
-		'uses' => 'ProgramController@store',
-		'as' => 'program.store'
-	]);
-
-	Route::get('admin/program/{program}/edit', [
-		'uses' => 'ProgramController@edit',
-		'as' => 'program.edit'
-	]);
-
-	Route::post('admin/program/{program}/update', [
-		'uses' => 'ProgramController@update',
-		'as' => 'program.update'
-	]);
-
-	Route::get('admin/program/{program}/destroy', [
-		'uses' => 'ProgramController@destroy',
-		'as' => 'program.destroy'
-	]);
 
 	// Umum
 
@@ -131,6 +109,10 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 
 
 	// Data Transaksi 
+	Route::get('admin/transaksi', [
+		'uses' => 'TransaksiController@index',
+		'as' => 'transaksi.index'
+	]);
 
 
 	// Pengguna
@@ -164,21 +146,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 		'as' => 'peserta.dashboard'
 	]);
 
-	// Informasi
-	Route::get('peserta/Informasi', [
-		'uses' => 'InformasiController@index',
-		'as' => 'informasi.index'
-	]);
-
-	// Materi
-	
-	
-	// Quis
-	
-	// Sertifikat
-	
-	
-	// Riwayat Transaksi
 
 	// Ganti Kata Sandi
 	Route::get('pengguna/ganti/kata-sandi', [
@@ -191,8 +158,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 		'as' => 'update.pw'
 	]);
 });
-
-
 
 
 // Download File (Belum Selesai)

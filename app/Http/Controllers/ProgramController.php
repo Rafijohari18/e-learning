@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use App\Program;
 
 class ProgramController extends Controller
 {
@@ -15,9 +13,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $neko = Program::latest()->get();
-
-        return view('admin.program.index', compact('neko'));
+        return view('admin.program.index');
     }
 
     /**
@@ -27,7 +23,7 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        return view('admin.program.create');
+        // 
     }
 
     /**
@@ -38,18 +34,7 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $fileMove = Storage::disk('public')->putFile('program',$request->path);
-     
-        $neko = Program::create([
-            'nama_program' => $request->nama_program,
-            'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga,
-            'diskon' => $request->diskon,
-            'total_waktu' => $request->total_waktu,
-            'path' => $fileMove,
-        ]);
-
-        return redirect()->route('program.index')->with('store','');
+       // 
     }
 
     /**
@@ -69,9 +54,9 @@ class ProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Program $program)
+    public function edit($id)
     {
-        return view('admin.program.edit', compact('program'));
+        // 
     }
 
     /**
@@ -81,30 +66,9 @@ class ProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Program $program)
+    public function update(Request $request, $id)
     {
-        $fileOri = $request->file('path');
-       
-        if (empty($request->path)) {
-            $fileMove = $request->fileOri;
-        } else {
-            Storage::delete('public/'.$request->fileOri);
-            $fileMove = Storage::disk('public')->putFile('program', $fileOri);
-        }
-
-        $neko = [
-            'nama_program' => $request->nama_program,
-            'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga,
-            'diskon' => $request->diskon,
-            'total_waktu' => $request->total_waktu,
-            'path' => $fileMove,
-        ];
-
-        $jquin = Program::findOrFail($program->id);
-        $jquin->update($neko);
-
-        return redirect()->route('program.index')->with('update','');
+        // 
     }
 
     /**
@@ -113,11 +77,8 @@ class ProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Program $program)
+    public function destroy($id)
     {
-        Storage::delete('public/'.$program->path);
-        $program->delete();
-
-        return redirect()->back()->with('destroy','');
+        // 
     }
 }

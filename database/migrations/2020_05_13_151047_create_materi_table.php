@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKontenTable extends Migration
+class CreateMateriTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateKontenTable extends Migration
      */
     public function up()
     {
-        Schema::create('konten', function (Blueprint $table) {
+        Schema::create('materi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('modul_id');
             $table->string('judul', 191);
-            $table->longtext('artikel');
-            $table->string('path', 191)->nullable();
-            $table->text('slug');
+            $table->longtext('deskripsi');
+            $table->text('url'); // Link Embed Youtube
             $table->timestamps();
 
             // Relasi
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('modul_id')->references('id')->on('modul')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -34,6 +35,6 @@ class CreateKontenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('konten');
+        Schema::dropIfExists('materi');
     }
 }

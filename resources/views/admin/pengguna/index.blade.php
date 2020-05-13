@@ -28,7 +28,7 @@
                             <th>Nama Lengkap</th>
                             <th>Nama Pengguna</th>
                             <th>Role</th>
-                            <th>Opsi</th>
+                            <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody class="table-striped">

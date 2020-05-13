@@ -16,17 +16,20 @@ class CreatePesertaTable extends Migration
         Schema::create('peserta', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->string('nik', 17);
             $table->string('nama_lengkap', 60);
-            $table->string('nik', 20);
-            $table->string('no_hp', 15);
-            $table->enum('jk', ['L','P']);
+            $table->date('tgl_lahir');
             $table->integer('umur');
-            $table->string('pekerjaan', 60);
+            $table->enum('gender', ['L','P']);
+            $table->string('whatsapp', 20);
+            $table->string('email', 191)->nullable();
+            $table->string('profesi', 191);
+            $table->text('alamat');
             $table->text('motivasi');
             $table->timestamps();
 
             // Relasi
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

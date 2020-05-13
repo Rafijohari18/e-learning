@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>E-learning Login</title>
-    <meta content="Masuk Monitoring" name="Login" />
+    <title>E-learning Registrasi</title>
+    <meta content="Masuk Monitoring" name="Registrasi" />
     <meta content="Roni Surya" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
@@ -62,7 +62,7 @@
 
                         <div class="form-group m-t-10 mb-0 row">
                             <div class="col-12 m-t-20">
-                                <a href="" class="text-muted"> Belum Punya Akun?</a>
+                                <a href="" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Kata Sandi?</a>
                             </div>
                         </div>
                     </form>

@@ -16,11 +16,6 @@ class CreateProgramTable extends Migration
         Schema::create('program', function (Blueprint $table) {
             $table->id();
             $table->string('nama_program', 191);
-            $table->longtext('deskripsi');
-            $table->string('path', 191);
-            $table->integer('harga');
-            $table->integer('diskon')->nullable();
-            $table->string('total_waktu')->nullable();
             $table->timestamps();
         });
     }
