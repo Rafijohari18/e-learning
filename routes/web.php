@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 // Login
 Route::get('/', function () {
-    return redirect('login');
+	return redirect('login');
 });
 
 Route::get('login', [
@@ -46,7 +46,7 @@ Route::get('logout', [
 
 // Register
 Route::get('registrasi', function () {
-    return view('login.registrasi');
+	return view('login.registrasi');
 });
 
 // Admin
@@ -90,7 +90,25 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 	]);
 
 	// Kategori Modul
+	Route::get('admin/kategori', [
+		'uses' => 'KategoriController@index',
+		'as' => 'kategori.index'
+	]);
 
+	Route::post('admin/kategori/store', [
+		'uses' => 'KategoriController@store',
+		'as' => 'kategori.store'
+	]);
+
+	Route::post('admin/kategori/{id}/update', [
+		'uses' => 'KategoriController@update',
+		'as' => 'kategori.update'
+	]);
+
+	Route::get('admin/kategori/{id}/destroy', [
+		'uses' => 'KategoriController@destroy',
+		'as' => 'kategori.destroy'
+	]);
 
 	// Quis 
 
@@ -101,10 +119,92 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		'as' => 'program.index'
 	]);
 
+	Route::post('admin/program/store', [
+		'uses' => 'ProgramController@store',
+		'as' => 'program.store'
+	]);
+
+	Route::post('admin/program/{id}/update', [
+		'uses' => 'ProgramController@update',
+		'as' => 'program.update'
+	]);
+
+	Route::get('admin/program/{id}/destroy', [
+		'uses' => 'ProgramController@destroy',
+		'as' => 'program.destroy'
+	]);
+
+
+		// Module 
+	Route::get('admin/module/{id}', [
+		'uses' => 'ModuleController@index',
+		'as' => 'module.index'
+	]);
+
+	Route::get('admin/module/create/{id}', [
+		'uses' => 'ModuleController@create',
+		'as' => 'module.create'
+	]);
+
+
+	Route::post('admin/module/store', [
+		'uses' => 'ModuleController@store',
+		'as' => 'module.store'
+	]);
+
+	Route::get('admin/module/edit/{id}', [
+		'uses' => 'ModuleController@edit',
+		'as' => 'module.edit'
+	]);
+
+	Route::post('admin/module/{id}/update', [
+		'uses' => 'ModuleController@update',
+		'as' => 'module.update'
+	]);
+
+	Route::get('admin/module/{id}/destroy', [
+		'uses' => 'ModuleController@destroy',
+		'as' => 'module.destroy'
+	]);
+
+	//materi
+
+	Route::get('admin/materi/{id}', [
+		'uses' => 'MateriController@index',
+		'as' => 'materi.index'
+	]);
+
+	Route::get('admin/materi/create/{id}', [
+		'uses' => 'MateriController@create',
+		'as' => 'materi.create'
+	]);
+
+
+	Route::post('admin/materi/store', [
+		'uses' => 'MateriController@store',
+		'as' => 'materi.store'
+	]);
+
+
+	Route::get('admin/materi/edit/{id}', [
+		'uses' => 'MateriController@edit',
+		'as' => 'materi.edit'
+	]);
+
+	Route::post('admin/materi/{id}/update', [
+		'uses' => 'MateriController@update',
+		'as' => 'materi.update'
+	]);
+
+	Route::get('admin/materi/{id}/destroy', [
+		'uses' => 'MateriController@destroy',
+		'as' => 'materi.destroy'
+	]);
+
 
 	// Umum
 
-	   
+
 	// Prakerja 
 
 

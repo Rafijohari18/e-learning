@@ -42,4 +42,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Konten::class);
     }
+    public function module(){
+        return $this->hasMany('App\Module');
+    }
 }

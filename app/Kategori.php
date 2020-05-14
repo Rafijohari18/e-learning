@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Program extends Model
+class Kategori extends Model
 {
-    protected $table = 'program';
+    protected $table = 'kategori';
     protected $guarded = [];
 
-     public function module(){
+    public function Module(){
     	return $this->hasMany('App\Module');
     }
 }

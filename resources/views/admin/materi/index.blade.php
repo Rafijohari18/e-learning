@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Program')
+@section('title','Materi')
 
 @section('css')
 <!-- DataTables -->
@@ -16,16 +16,16 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="float-right">
-                    <button type="button" class="btn btn-sm btn-primary waves-effect waves-light add" data-toggle="modal" data-target="#myModal">Tambah Data</button>
+                    <a class="btn btn-sm btn-primary waves-effect waves-light add" href="{{ route('materi.create',['id'=> Request::segment('3')]) }}">Tambah Data</a>
                 </div>
-                <h4 class="mt-0 header-title">Program</h4>
+                <h4 class="mt-0 header-title">{{ $title }}</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Program</th>
+                                <th>Judul</th>
                                 <th>Created At</th>
                                 <th>Aksi</th>
                             </tr>
@@ -35,17 +35,15 @@
                             @foreach ($data as $item)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $item->nama_program }}</td>
+                                <td>{{ $item->judul }}</td>
                                 <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
                                 <td>
                                     <!-- Bisi rek pake ikon <i class="ti-pencil">jang edit</i> -->
-                                    <a href="{{ route('module.index',['id'=>$item->id]) }}" class="btn btn-sm btn-primary">Tambah Modul</a>
-                                    <a href="javascript:;" data-toggle="modal" data-target="#modaledit" 
-                                    onclick="editdata({{ $item->id }})" data-nama_program="{{ $item->nama_program }}" class="btn btn-sm btn-warning editbtn">Edit</a>
-                                    <a href="#" onclick="destroy({{ $item->id }},'{{ $item->nama_program }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
+                                   
+                                    <a href="{{ route('materi.edit',['id'=> $item->id ]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="#" onclick="destroy({{ $item->id }},'{{ $item->judul }}')" class="btn btn-danger btn-sm">Hapus</a>
                                       
-                                      
-                                  Hapus</a>
+                             
                               </td>
                           </tr>
                           @endforeach
@@ -147,7 +145,7 @@
     function editdata(id)
     {
         var id = id;
-        var url = '{{ route("program.update", ":id") }}';
+        var url = '{{ route("materi.update", ":id") }}';
         url = url.replace(':id', id);
         $("#editform").attr('action', url);
     }

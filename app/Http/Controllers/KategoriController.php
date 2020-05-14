@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Program;
+use App\Kategori;
 use App\Repositories\Repository;
 use Illuminate\Support\Str;
 
-class ProgramController extends Controller
+class KategoriController extends Controller
 {
 
     protected $model;
 
-    public function __construct(Program $Program){
-        $this->model = new Repository($Program);
+    public function __construct(Kategori $Kategori){
+        $this->model = new Repository($Kategori);
     }
     /**
      * Display a listing of the resource.
@@ -22,9 +22,9 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $title = 'Program';
+        $title = 'Kategori ';
         $data = $this->model->all();
-        return view('admin.program.index',compact('title','data'));
+        return view('admin.kategori.index',compact('title','data'));
     }
 
     /**
@@ -35,14 +35,14 @@ class ProgramController extends Controller
    public function store(Request $request)
     {
         $this->model->create($request->only($this->model->getModel()->fillable));
-        return back()->with('succes','Album Succes Created !');
+        return back()->with('store','Kategori Succes Created !');
     }
 
    
     public function update(Request $request, $id)
     {
         $this->model->update($request->only($this->model->getmodel()->fillable),$id);
-        return back()->with('success','Program Succes Updated !');
+        return back()->with('update','Kategori Succes Updated !');
     }
 
     /**
@@ -54,6 +54,6 @@ class ProgramController extends Controller
     public function destroy($id)
     {
         $this->model->delete($id);
-        return back()->with('success','Program Succes Delete !');
+        return back()->with('destroy','Kategori Succes Delete !');
     }
 }

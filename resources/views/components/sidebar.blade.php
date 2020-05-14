@@ -22,7 +22,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="waves-effect"><i class="mdi mdi-book"></i><span> Kategori Modul </span></a>
+                    <a href="{{ route('kategori.index') }}" class="waves-effect"><i class="mdi mdi-book"></i><span> Kategori Modul </span></a>
                 </li>
 
                 <li>

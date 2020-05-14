@@ -18,14 +18,14 @@
                 <div class="float-right">
                     <button type="button" class="btn btn-sm btn-primary waves-effect waves-light add" data-toggle="modal" data-target="#myModal">Tambah Data</button>
                 </div>
-                <h4 class="mt-0 header-title">Program</h4>
+                <h4 class="mt-0 header-title">{{ $title }}</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Program</th>
+                                <th>Nama Kategori</th>
                                 <th>Created At</th>
                                 <th>Aksi</th>
                             </tr>
@@ -35,17 +35,16 @@
                             @foreach ($data as $item)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $item->nama_program }}</td>
+                                <td>{{ $item->nama_kategori }}</td>
                                 <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
                                 <td>
                                     <!-- Bisi rek pake ikon <i class="ti-pencil">jang edit</i> -->
-                                    <a href="{{ route('module.index',['id'=>$item->id]) }}" class="btn btn-sm btn-primary">Tambah Modul</a>
+
                                     <a href="javascript:;" data-toggle="modal" data-target="#modaledit" 
-                                    onclick="editdata({{ $item->id }})" data-nama_program="{{ $item->nama_program }}" class="btn btn-sm btn-warning editbtn">Edit</a>
-                                    <a href="#" onclick="destroy({{ $item->id }},'{{ $item->nama_program }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
+                                    onclick="editdata({{ $item->id }})" data-nama_kategori="{{ $item->nama_kategori }}" class="btn btn-sm btn-warning editbtn"><i class="ti-pencil"></i></a>
+                                    <a href="#" onclick="destroy({{ $item->id }},'{{ $item->nama_kategori }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
                                       
-                                      
-                                  Hapus</a>
+                              
                               </td>
                           </tr>
                           @endforeach
@@ -63,16 +62,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0" id="myModalLabel">Program Tambah</h5>
+                <h5 class="modal-title mt-0" id="myModalLabel">Kategori Tambah</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <form action="{{ Route('program.store') }}" method="POST">
+            <form action="{{ Route('kategori.store') }}" method="POST">
               {{ csrf_field() }}
               <div class="modal-body">
                   <div class="container-fluid">
                       <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="nama_program" id="nama_program" class="form-control" required>
+                        <label for="name">Nama Kategori</label>
+                        <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" required>
 
                     </div>
 
@@ -92,7 +91,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0" id="myModalLabel">Program Edit</h5>
+                <h5 class="modal-title mt-0" id="myModalLabel">Kategori Edit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form action="" method="POST" id="editform">
@@ -101,8 +100,8 @@
                 <div class="modal-body">
                   <div class="container-fluid">
                       <div class="form-group">
-                        <label for="name">Nama program</label>
-                        <input type="text" name="nama_program" id="nama_program" class="form-control" required>
+                        <label for="name">Nama Kategori</label>
+                        <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" required>
 
                     </div>
 
@@ -133,9 +132,9 @@
 <!-- Destroy -->
 <script>
     function destroy(id,nama) {
-        alertify.confirm("Hapus Program "+nama+"?", function (ev) {
+        alertify.confirm("Hapus Kategori "+nama+"?", function (ev) {
             ev.preventDefault();
-            window.location = "program/"+ id +"/destroy";
+            window.location = "kategori/"+ id +"/destroy";
 
         }, function(ev) {
             ev.preventDefault();
@@ -147,7 +146,7 @@
     function editdata(id)
     {
         var id = id;
-        var url = '{{ route("program.update", ":id") }}';
+        var url = '{{ route("kategori.update", ":id") }}';
         url = url.replace(':id', id);
         $("#editform").attr('action', url);
     }
@@ -159,17 +158,17 @@
 
 
     $('.editbtn').click(function(){
-        var nama_program = $(this).data('nama_program');
+        var nama_kategori = $(this).data('nama_kategori');
 
 
-        $('.modal-body #nama_program').val(nama_program);
+        $('.modal-body #nama_kategori').val(nama_kategori);
 
 
     });
 
     $('.add').click(function(){
 
-        $('.modal-body #nama_program').val('');
+        $('.modal-body #nama_kategori').val('');
 
 
     });
