@@ -55,7 +55,7 @@
 
                   <div class="form-group">
                     <label for="judul">Durasi</label>
-                    <input type="text" class="form-control" name="durasi" id="durasi" placeholder="Masukkan Durasi" value="{{ $data['module']->durasi_program    }}">
+                    <input type="text" class="form-control" name="durasi" id="durasi" placeholder="Masukkan Durasi" value="{{ $data['module']->durasi_program }}">
                    
                 </div>
 
@@ -67,9 +67,9 @@
 
                  @if($data['module']->path != NULL)
                     <div class="form-group">
-                        <label for="">File Sebelumnya</label>
+                        <label for="">Banner Sebelumnya</label>
                         <br>
-                        <span class="text-muted"><i class="ti-file"></i> <a href="{{ route('konten.download', $data['module']->path) }}">Download</a></span>
+                        <img src="{{ asset('storage/'.$data['module']->path) }}" alt="banner" class="img-thumbnail" style="width: 20%; height: 20%;">
 
                         <input type="hidden" name="fileOri" value="{{ $data['module']->path }}">
                     </div>

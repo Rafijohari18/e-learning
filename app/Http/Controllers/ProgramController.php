@@ -24,6 +24,7 @@ class ProgramController extends Controller
     {
         $title = 'Program';
         $data = $this->model->all();
+
         return view('admin.program.index',compact('title','data'));
     }
 
@@ -35,6 +36,7 @@ class ProgramController extends Controller
    public function store(Request $request)
     {
         $this->model->create($request->only($this->model->getModel()->fillable));
+
         return back()->with('succes','Album Succes Created !');
     }
 
@@ -42,6 +44,7 @@ class ProgramController extends Controller
     public function update(Request $request, $id)
     {
         $this->model->update($request->only($this->model->getmodel()->fillable),$id);
+
         return back()->with('success','Program Succes Updated !');
     }
 
@@ -54,6 +57,7 @@ class ProgramController extends Controller
     public function destroy($id)
     {
         $this->model->delete($id);
+        
         return back()->with('success','Program Succes Delete !');
     }
 }

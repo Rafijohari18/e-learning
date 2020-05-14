@@ -56,7 +56,7 @@ class ModuleController extends Controller
        if (empty($request->path)) {
             $fileMove = 'default.png';
         } else {
-            $fileMove =  $request->file('path')->store('data_file');
+            $fileMove = Storage::disk('public')->putFile('module',$request->file('path'));
         }
         $neko = array(
             'user_id' => Auth::user()->id,
@@ -94,7 +94,7 @@ class ModuleController extends Controller
             $fileMove = $request->fileOri;
         } else {
             Storage::delete('public/'.$request->fileOri);
-            $fileMove = Storage::disk('public')->putFile('konten', $fileOri);
+            $fileMove = Storage::disk('public')->putFile('module', $fileOri);
         }
 
         $neko = [
@@ -112,7 +112,7 @@ class ModuleController extends Controller
         $jquin = Module::findOrFail($id);
         $jquin->update($neko);
 
-        return redirect()->back()->with('update','');
+        return redirect()->route('module.index', $request->program)->with('update','');
     }
 
     /**
@@ -126,5 +126,13 @@ class ModuleController extends Controller
         $this->model->delete($id);
 
         return back()->with('destroy','Module Succes Delete !');
+    }
+
+    // Peserta
+    public function indexPeserta()
+    {
+        $neko = Module::latest()->get();
+
+        return view('peserta.module.index', compact('neko'));
     }
 }
