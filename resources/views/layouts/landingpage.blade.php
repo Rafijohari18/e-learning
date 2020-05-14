@@ -211,7 +211,7 @@
     		<div class="col-lg-4 col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
     			<div class="blog_post blog_style1 box_shadow1">
     				<div class="blog_img"> 
-                    	<a href="#"> <img src="{{asset('landingpage/images/blog_small_img1.jpg" alt="blog_small_img1')}}"> </a> 
+                    	<a href="#"> <img src="{{asset('landingpage/images/blog_small_img1.jpg')}}" alt="blog_small_img1"> </a> 
                         <div class="post_date radius_all_5">
                         	<h5><span>May, 02</span> 2020</h5> 
                         </div>	

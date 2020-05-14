@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Module')
+@section('title','Modul')
 
 @section('css')
 <!-- DataTables -->
@@ -45,7 +45,7 @@
                             </td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
                             <td>{{ $item->nama_modul }}</td>
-                            <td>{{ number_format(($item->harga), 0, ',', '.')  }}</td>
+                            <td>Rp{{ number_format(($item->harga), 0, ',', '.')  }}</td>
                             <td>@if(empty($item->diskon)) 0% @else {{$item->diskon}}% @endif</td>
                             <td>{{ $item->user->nama_lengkap }}</td>
                             <td>

@@ -39,7 +39,7 @@ class ModuleController extends Controller
 
     public function create($id)
     {
-        $title = 'Tambah Module';
+        $title = 'Tambah Modul';
         $data['kategori'] = Kategori::all();
         $data['program'] = Program::all();
 
@@ -128,11 +128,16 @@ class ModuleController extends Controller
         return back()->with('destroy','Module Succes Delete !');
     }
 
-    // Peserta
+    // Modul Halaman Peserta
     public function indexPeserta()
     {
         $neko = Module::latest()->get();
 
         return view('peserta.module.index', compact('neko'));
+    }
+
+    public function showModul(Module $module)
+    {
+        return view('peserta.module.show', compact('module'));
     }
 }

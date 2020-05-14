@@ -250,9 +250,15 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'peserta.dashboard'
 		]);
 
+		// Modul
 		Route::get('modul', [
 			'uses' => 'ModuleController@indexPeserta',
 			'as' => 'peserta.module'
+		]);
+
+		Route::get('detail/{module}/modul', [
+			'uses' => 'ModuleController@showModul',
+			'as' => 'module.detail'
 		]);
 	});
 
