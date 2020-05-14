@@ -14,22 +14,17 @@
                 <h4 class="mt-0 header-title">{{ $title }}</h4>
                 <hr>
                 <form action="{{ route('materi.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    
+                @csrf
                 <input type="hidden" name="module_id" value="{{ Request::segment('4') }}">
                 <div class="form-group">
                     <label for="judul">Judul</label>
                     <input type="text" class="form-control" name="judul" id="judul" required="" placeholder="Masukkan Judul"  maxlength="191">
-
                 </div>
-
 
                 <div class="form-group">
-                    <label for="artikel">Content</label>
+                    <label for="artikel">Konten</label>
                     <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required=""></textarea>
                 </div>
-
-          
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
             </form>

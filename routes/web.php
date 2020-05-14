@@ -24,11 +24,13 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-// Login
+
+// Landing Page
 Route::get('/', function () {
-	return redirect('login');
+	return view('layouts.landingpage');
 });
 
+// Login
 Route::get('login', [
 	'uses' => 'AuthController@login',
 	'as' => 'login'
@@ -135,7 +137,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 	]);
 
 
-		// Module 
+	// Module 
 	Route::get('admin/module/{id}', [
 		'uses' => 'ModuleController@index',
 		'as' => 'module.index'
@@ -245,7 +247,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 		'uses' => 'DashboardController@peserta',
 		'as' => 'peserta.dashboard'
 	]);
-
 
 	// Ganti Kata Sandi
 	Route::get('pengguna/ganti/kata-sandi', [

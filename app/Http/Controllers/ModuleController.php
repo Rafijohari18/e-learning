@@ -24,17 +24,25 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
+        // Nama Program
+        $program = Program::findOrFail($id);
+        $nmProgram = $program->nama_program;
+
+        // Tampil data per program
         $title = 'Module';
-        $data = Module::with('kategori','program','user')->get();
-        return view('admin.module.index',compact('title','data'));
+        $data = Module::with('kategori','user')->where('program_id', $id)->get();
+
+        return view('admin.module.index',compact('title','data','nmProgram'));
     }
+
     public function create($id)
     {
         $title = 'Tambah Module';
         $data['kategori'] = Kategori::all();
         $data['program'] = Program::all();
+
         return view('admin.module.create',compact('title','data'));
     }
 
@@ -43,7 +51,7 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function store(Request $request,$id)
+   public function store(Request $request)
     {
        if (empty($request->path)) {
             $fileMove = 'default.png';
@@ -64,7 +72,7 @@ class ModuleController extends Controller
 
         Module::create($neko);
 
-        return redirect()->back()->with('store','');
+        return redirect()->route('module.index', $request->program)->with('store','');
     }
 
     public function edit($id)
@@ -73,6 +81,7 @@ class ModuleController extends Controller
         $data['kategori'] = Kategori::all();
         $data['program'] = Program::all();
         $data['module'] = Module::find($id);
+
         return view('admin.module.edit',compact('title','data'));
     }
 
@@ -87,7 +96,6 @@ class ModuleController extends Controller
             Storage::delete('public/'.$request->fileOri);
             $fileMove = Storage::disk('public')->putFile('konten', $fileOri);
         }
-
 
         $neko = [
             'user_id' => Auth::user()->id,
@@ -116,6 +124,7 @@ class ModuleController extends Controller
     public function destroy($id)
     {
         $this->model->delete($id);
+
         return back()->with('destroy','Module Succes Delete !');
     }
 }

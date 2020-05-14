@@ -13,6 +13,7 @@
         <div id="sidebar-menu">
             <ul>
                 <li class="menu-title">Menu</li>
+                @if(auth()->user()->role == 'Admin')
                 <li>
                     <a href="{{ route('admin.dashboard') }}" class="waves-effect"><i class="dripicons-device-desktop"></i><span> Dashboard </span></a>
                 </li>
@@ -29,21 +30,9 @@
                     <a href="" class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis </span></a>
                 </li>
 
-                <!-- <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="ti-book"></i><span> Materi <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="ui-buttons.html">Modul</a></li>
-                        <li><a href="ui-cards.html">Video</a></li>
-                    </ul>
-                </li> -->
-
                 <li>
                     <a href="{{ route('program.index') }}" class="waves-effect"><i class="ti-clipboard"></i><span> Program </span></a>
                 </li>
-
-                <!-- <li>
-                    <a href="" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Data Peserta </span></a>
-                </li> -->
 
                  <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Data Peserta <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
@@ -60,6 +49,28 @@
                 <li>
                     <a href="{{ route('pengguna.index') }}" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Data Pengguna </span></a>
                 </li>
+
+                @elseif(auth()->user()->role == 'Peserta')
+                <li>
+                    <a href="{{ route('peserta.dashboard') }}" class="waves-effect"><i class="dripicons-device-desktop"></i><span> Dashboard </span></a>
+                </li>
+
+                <li>
+                    <a href="" class="waves-effect"><i class="mdi mdi-book"></i><span> Modul </span></a>
+                </li>
+
+                <li>
+                    <a href="" class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis </span></a>
+                </li>
+
+                <li>
+                    <a href="" class="waves-effect"><i class="ti-medall"></i><span> Sertifikat </span></a>
+                </li>
+
+                <li>
+                    <a href="" class="waves-effect"><i class="ti-wallet"></i><span> Riwayat Transaksi </span></a>
+                </li>
+                @endif
             </ul>
         </div>
         <div class="clearfix"></div>

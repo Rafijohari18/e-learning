@@ -31,21 +31,16 @@
                             </tr>
                         </thead>
                         <tbody class="table-striped">
-                            @php $no = 1 @endphp
                             @foreach ($data as $item)
                             <tr>
-                                <td>{{ $no++ }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->nama_program }}</td>
                                 <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
                                 <td>
-                                    <!-- Bisi rek pake ikon <i class="ti-pencil">jang edit</i> -->
-                                    <a href="{{ route('module.index',['id'=>$item->id]) }}" class="btn btn-sm btn-primary">Tambah Modul</a>
+                                    <a href="{{ route('module.index',['id'=>$item->id]) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tambah Modul"><i class="ti-plus"></i></a>
                                     <a href="javascript:;" data-toggle="modal" data-target="#modaledit" 
-                                    onclick="editdata({{ $item->id }})" data-nama_program="{{ $item->nama_program }}" class="btn btn-sm btn-warning editbtn">Edit</a>
+                                    onclick="editdata({{ $item->id }})" data-nama_program="{{ $item->nama_program }}" class="btn btn-sm btn-warning editbtn"><i class="ti-pencil"></i></a>
                                     <a href="#" onclick="destroy({{ $item->id }},'{{ $item->nama_program }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
-                                      
-                                      
-                                  Hapus</a>
                               </td>
                           </tr>
                           @endforeach

@@ -19,7 +19,7 @@ class CreateMateriTable extends Migration
             $table->foreignId('modul_id');
             $table->string('judul', 191);
             $table->longtext('deskripsi');
-            $table->text('url'); // Link Embed Youtube
+            // $table->text('url'); // Link Embed Youtube
             $table->timestamps();
 
             // Relasi

@@ -67,7 +67,7 @@
 
                 <div class="form-group">
                     <label for="path">Banner</label>
-                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary">   
+                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary" required="">   
 
                 </div>
 

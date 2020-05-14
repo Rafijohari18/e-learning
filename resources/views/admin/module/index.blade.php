@@ -18,7 +18,9 @@
                 <div class="float-right">
                     <a href="{{ route('module.create',['id' => Request::segment(3)  ]) }}" class="btn btn-sm btn-primary waves-effect waves-light add" >Tambah Data</a>
                 </div>
-                <h4 class="mt-0 header-title"></h4>
+                <h4 class="mt-0 header-title">
+                  Modul Program - {{ $nmProgram }}
+                </h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
@@ -26,7 +28,6 @@
                             <tr>
                                 <th>No</th>
                                 <th>Path</th>
-                                <th>Nama Program</th>
                                 <th>Kategori</th>
                                 <th>Nama Modul</th>
                                 <th>Harga</th>
@@ -36,18 +37,16 @@
                             </tr>
                         </thead>
                         <tbody class="table-striped">
-                           @php $no = 1 @endphp
                            @foreach ($data as $item)
                            <tr>
-                            <td>{{ $no++ }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>
                                 <img src="{{ asset('storage/'.$item->path) }}" width="30" height="30">
                             </td>
-                            <td>{{ $item->program->nama_program }}</td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
                             <td>{{ $item->nama_modul }}</td>
                             <td>{{ number_format(($item->harga), 0, ',', '.')  }}</td>
-                            <td>{{ $item->diskon }} %</td>
+                            <td>@if(empty($item->diskon)) 0% @else {{$item->diskon}}% @endif</td>
                             <td>{{ $item->user->nama_lengkap }}</td>
                             <td>
                               <a href="{{ route('materi.index',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Tambah Materi" class="btn btn-sm btn-primary"><i class="ti-plus"></i></a>
@@ -56,7 +55,6 @@
                           </td>
                       </tr>
                       @endforeach
-
                   </tbody>
               </table>
           </div>
@@ -64,10 +62,7 @@
   </div>
 </div> <!-- end col -->
 </div> <!-- end row -->
-
 </div><!-- /.modal -->
-
-
 @stop
 
 @section('footer')
@@ -91,8 +86,5 @@
             alertify.error("Batal!");
         });
     }
-
-
-   
 </script>
 @stop

@@ -9,7 +9,7 @@ class Program extends Model
     protected $table = 'program';
     protected $guarded = [];
 
-     public function module(){
+ 	public function module(){
     	return $this->hasMany('App\Module');
     }
 }
