@@ -24,20 +24,14 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        // Nama Program
-        $program = Program::findOrFail($id);
-        $nmProgram = $program->nama_program;
+        $neko = Module::orderBy('nama_modul','ASC')->get();
 
-        // Tampil data per program
-        $title = 'Module';
-        $data = Module::with('kategori','user')->where('program_id', $id)->get();
-
-        return view('admin.module.index',compact('title','data','nmProgram'));
+        return view('admin.module.index',compact('neko'));
     }
 
-    public function create($id)
+    public function create()
     {
         $title = 'Tambah Modul';
         $data['kategori'] = Kategori::all();
@@ -72,12 +66,12 @@ class ModuleController extends Controller
 
         Module::create($neko);
 
-        return redirect()->route('module.index', $request->program)->with('store','');
+        return redirect()->route('module.index')->with('store','');
     }
 
     public function edit($id)
     {
-        $title = 'Edit Module';
+        $title = 'Edit Modul';
         $data['kategori'] = Kategori::all();
         $data['program'] = Program::all();
         $data['module'] = Module::find($id);
@@ -112,7 +106,7 @@ class ModuleController extends Controller
         $jquin = Module::findOrFail($id);
         $jquin->update($neko);
 
-        return redirect()->route('module.index', $request->program)->with('update','');
+        return redirect()->route('module.index')->with('update','');
     }
 
     /**
@@ -121,9 +115,10 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Module $module)
     {
-        $this->model->delete($id);
+        Storage::delete('public/'.$module->path);
+        $this->model->delete($module->id);
 
         return back()->with('destroy','Module Succes Delete !');
     }

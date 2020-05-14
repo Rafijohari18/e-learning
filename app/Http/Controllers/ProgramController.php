@@ -15,6 +15,7 @@ class ProgramController extends Controller
     public function __construct(Program $Program){
         $this->model = new Repository($Program);
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -37,15 +38,14 @@ class ProgramController extends Controller
     {
         $this->model->create($request->only($this->model->getModel()->fillable));
 
-        return back()->with('succes','Album Succes Created !');
+        return back()->with('store','');
     }
 
-   
     public function update(Request $request, $id)
     {
         $this->model->update($request->only($this->model->getmodel()->fillable),$id);
 
-        return back()->with('success','Program Succes Updated !');
+        return back()->with('update','');
     }
 
     /**
@@ -56,8 +56,8 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        $this->model->delete($id);
-        
-        return back()->with('success','Program Succes Delete !');
+        $ea = $this->model->delete($id);
+
+        return back()->with('destroy','');
     }
 }

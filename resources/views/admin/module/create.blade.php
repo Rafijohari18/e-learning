@@ -43,7 +43,7 @@
 
                 <div class="form-group">
                     <label for="judul">Harga</label>
-                    <input type="text" class="form-control" name="harga" id="harga" required="" placeholder="Masukkan Harga"  maxlength="191">
+                    <input type="number" class="form-control" name="harga" id="harga" required="" placeholder="Masukkan Harga"  maxlength="191">
 
                 </div>
 

@@ -15,7 +15,7 @@
                 <hr>
                 <form action="{{ route('materi.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="module_id" value="{{ Request::segment('4') }}">
+                <input type="hidden" name="module_id" value="{{ $modulId }}">
                 <div class="form-group">
                     <label for="judul">Judul</label>
                     <input type="text" class="form-control" name="judul" id="judul" required="" placeholder="Masukkan Judul"  maxlength="191">

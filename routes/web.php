@@ -132,30 +132,29 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'program.update'
 		]);
 
-		Route::get('admin/program/{id}/destroy', [
+		Route::get('program/{id}/destroy', [
 			'uses' => 'ProgramController@destroy',
 			'as' => 'program.destroy'
 		]);
 
 
 		// Module 
-		Route::get('module/{id}', [
+		Route::get('module', [
 			'uses' => 'ModuleController@index',
 			'as' => 'module.index'
 		]);
 
-		Route::get('module/create/{id}', [
+		Route::get('module/create', [
 			'uses' => 'ModuleController@create',
 			'as' => 'module.create'
 		]);
-
 
 		Route::post('module/store', [
 			'uses' => 'ModuleController@store',
 			'as' => 'module.store'
 		]);
 
-		Route::get('module/edit/{id}', [
+		Route::get('module/{id}/edit', [
 			'uses' => 'ModuleController@edit',
 			'as' => 'module.edit'
 		]);
@@ -165,19 +164,18 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'module.update'
 		]);
 
-		Route::get('module/{id}/destroy', [
+		Route::get('module/{module}/destroy', [
 			'uses' => 'ModuleController@destroy',
 			'as' => 'module.destroy'
 		]);
 
-		//materi
-
-		Route::get('materi/{id}', [
+		//Materi
+		Route::get('{id}/materi', [
 			'uses' => 'MateriController@index',
 			'as' => 'materi.index'
 		]);
 
-		Route::get('materi/create/{id}', [
+		Route::get('materi/{id}/create', [
 			'uses' => 'MateriController@create',
 			'as' => 'materi.create'
 		]);
@@ -189,7 +187,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		]);
 
 
-		Route::get('materi/edit/{id}', [
+		Route::get('materi/{id}/edit', [
 			'uses' => 'MateriController@edit',
 			'as' => 'materi.edit'
 		]);

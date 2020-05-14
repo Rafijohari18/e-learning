@@ -19,15 +19,12 @@
                 <div class="form-group">
                     <label for="judul">Judul</label>
                     <input type="text" class="form-control" name="judul" id="judul" required="" placeholder="Masukkan Judul"  maxlength="191" value="{{ $data['materi']->judul }}">
-
                 </div>
-
 
                 <div class="form-group">
-                    <label for="artikel">Content</label>
-                    <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{{  $data['materi']->judul }}</textarea>
+                    <label for="artikel">Konten</label>
+                    <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{!! $data['materi']->deskripsi !!}</textarea>
                 </div>
-
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
             </form>

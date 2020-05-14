@@ -15,9 +15,6 @@ class Repository implements RepositoryInterface
         $this->model = $model;
     }
 
-
-
-
     // METHOD ALL / PUBLIC
 
     public function all()

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Program')
+@section('title','Kategori Modul')
 
 @section('css')
 <!-- DataTables -->
@@ -38,13 +38,9 @@
                                 <td>{{ $item->nama_kategori }}</td>
                                 <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
                                 <td>
-                                    <!-- Bisi rek pake ikon <i class="ti-pencil">jang edit</i> -->
-
                                     <a href="javascript:;" data-toggle="modal" data-target="#modaledit" 
                                     onclick="editdata({{ $item->id }})" data-nama_kategori="{{ $item->nama_kategori }}" class="btn btn-sm btn-warning editbtn"><i class="ti-pencil"></i></a>
                                     <a href="#" onclick="destroy({{ $item->id }},'{{ $item->nama_kategori }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
-                                      
-                              
                               </td>
                           </tr>
                           @endforeach
@@ -62,7 +58,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0" id="myModalLabel">Kategori Tambah</h5>
+                <h5 class="modal-title mt-0" id="myModalLabel">Tambah Kategori</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form action="{{ Route('kategori.store') }}" method="POST">
@@ -71,16 +67,14 @@
                   <div class="container-fluid">
                       <div class="form-group">
                         <label for="name">Nama Kategori</label>
-                        <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" required>
-
+                        <input type="text" placeholder="Masukkan Nama Kategori" name="nama_kategori" id="nama_kategori" class="form-control" required>
                     </div>
-
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
+                <button type="button" class="btn btn-sm btn-secondary waves-effect" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light">Simpan</button>
             </div>
         </form>
     </div><!-- /.modal-content -->
@@ -91,7 +85,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0" id="myModalLabel">Kategori Edit</h5>
+                <h5 class="modal-title mt-0" id="myModalLabel">Edit Kategori</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form action="" method="POST" id="editform">
@@ -101,16 +95,14 @@
                   <div class="container-fluid">
                       <div class="form-group">
                         <label for="name">Nama Kategori</label>
-                        <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" required>
-
+                        <input type="text" placeholder="Masukkan Nama Kategori" name="nama_kategori" id="nama_kategori" class="form-control" required>
                     </div>
-
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
+                <button type="button" class="btn btn-sm btn-secondary waves-effect" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light">Simpan</button>
             </div>
         </form>
     </div><!-- /.modal-content -->

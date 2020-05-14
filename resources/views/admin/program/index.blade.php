@@ -37,7 +37,6 @@
                                 <td>{{ $item->nama_program }}</td>
                                 <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
                                 <td>
-                                    <a href="{{ route('module.index',['id'=>$item->id]) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tambah Modul"><i class="ti-plus"></i></a>
                                     <a href="javascript:;" data-toggle="modal" data-target="#modaledit" 
                                     onclick="editdata({{ $item->id }})" data-nama_program="{{ $item->nama_program }}" class="btn btn-sm btn-warning editbtn"><i class="ti-pencil"></i></a>
                                     <a href="#" onclick="destroy({{ $item->id }},'{{ $item->nama_program }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
@@ -58,7 +57,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0" id="myModalLabel">Program Tambah</h5>
+                <h5 class="modal-title mt-0" id="myModalLabel">Tambah Program</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form action="{{ Route('program.store') }}" method="POST">
@@ -66,17 +65,15 @@
               <div class="modal-body">
                   <div class="container-fluid">
                       <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="nama_program" id="nama_program" class="form-control" required>
-
+                        <label for="name">Nama Program</label>
+                        <input type="text" placeholder="Masukkan Nama Program" name="nama_program" id="nama_program" class="form-control" required>
                     </div>
-
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
+                <button type="button" class="btn btn-sm btn-secondary waves-effect" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light">Simpan</button>
             </div>
         </form>
     </div><!-- /.modal-content -->
@@ -87,7 +84,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mt-0" id="myModalLabel">Program Edit</h5>
+                <h5 class="modal-title mt-0" id="myModalLabel">Edit Program</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form action="" method="POST" id="editform">
@@ -97,23 +94,19 @@
                   <div class="container-fluid">
                       <div class="form-group">
                         <label for="name">Nama program</label>
-                        <input type="text" name="nama_program" id="nama_program" class="form-control" required>
-
+                        <input type="text" placeholder="Masukkan Nama Program" name="nama_program" id="nama_program" class="form-control" required>
                     </div>
-
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
+                <button type="button" class="btn btn-sm btn-secondary waves-effect" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light">Simpan</button>
             </div>
         </form>
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-
 @stop
 
 @section('footer')
@@ -138,7 +131,6 @@
         });
     }
 
-
     function editdata(id)
     {
         var id = id;
@@ -152,21 +144,13 @@
         $("#editform").submit();
     }
 
-
     $('.editbtn').click(function(){
         var nama_program = $(this).data('nama_program');
-
-
         $('.modal-body #nama_program').val(nama_program);
-
-
     });
 
     $('.add').click(function(){
-
         $('.modal-body #nama_program').val('');
-
-
     });
 
 </script>
