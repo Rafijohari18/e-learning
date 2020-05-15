@@ -16,7 +16,7 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="float-right">
-                    <a class="btn btn-sm btn-primary waves-effect waves-light add" href="{{ route('materi.create',['id'=> Request::segment('3')]) }}">Tambah Data</a>
+                    <a class="btn btn-sm btn-primary waves-effect waves-light add" href="{{ route('materi.create', $id) }}">Tambah Data</a>
                 </div>
                 <h4 class="mt-0 header-title">{{ $title }}</h4>
                 <br>
@@ -38,12 +38,8 @@
                                 <td>{{ $item->judul }}</td>
                                 <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
                                 <td>
-                                    <!-- Bisi rek pake ikon <i class="ti-pencil">jang edit</i> -->
-                                   
-                                    <a href="{{ route('materi.edit',['id'=> $item->id ]) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="#" onclick="destroy({{ $item->id }},'{{ $item->judul }}')" class="btn btn-danger btn-sm">Hapus</a>
-                                      
-                             
+                                    <a href="{{ route('materi.edit',['id'=> $item->id ]) }}" class="btn btn-warning btn-sm"><i class="ti-pencil"></i></a>
+                                    <a href="#" onclick="destroy({{ $item->id }},'{{ $item->judul }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
                               </td>
                           </tr>
                           @endforeach

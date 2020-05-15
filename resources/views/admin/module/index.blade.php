@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Module')
+@section('title','Modul')
 
 @section('css')
 <!-- DataTables -->
@@ -16,10 +16,10 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="float-right">
-                    <a href="{{ route('module.create',['id' => Request::segment(3)  ]) }}" class="btn btn-sm btn-primary waves-effect waves-light add" >Tambah Data</a>
+                    <a href="{{ route('module.create') }}" class="btn btn-sm btn-primary waves-effect waves-light add" >Tambah Data</a>
                 </div>
                 <h4 class="mt-0 header-title">
-                  Modul Program - {{ $nmProgram }}
+                  Modul
                 </h4>
                 <br>
                 <div class="table-responsive">
@@ -27,9 +27,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Path</th>
-                                <th>Kategori</th>
                                 <th>Nama Modul</th>
+                                <th>Program</th>
+                                <th>Kategori</th>
                                 <th>Harga</th>
                                 <th>Diskon</th>
                                 <th>Created By</th>
@@ -37,15 +37,13 @@
                             </tr>
                         </thead>
                         <tbody class="table-striped">
-                           @foreach ($data as $item)
+                           @foreach ($neko as $item)
                            <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <img src="{{ asset('storage/'.$item->path) }}" width="30" height="30">
-                            </td>
-                            <td>{{ $item->kategori->nama_kategori }}</td>
                             <td>{{ $item->nama_modul }}</td>
-                            <td>{{ number_format(($item->harga), 0, ',', '.')  }}</td>
+                            <td>{{ $item->program->nama_program }}</td>
+                            <td>{{ $item->kategori->nama_kategori }}</td>
+                            <td>Rp{{ number_format(($item->harga), 0, ',', '.')  }}</td>
                             <td>@if(empty($item->diskon)) 0% @else {{$item->diskon}}% @endif</td>
                             <td>{{ $item->user->nama_lengkap }}</td>
                             <td>

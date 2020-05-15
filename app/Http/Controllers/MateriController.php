@@ -23,14 +23,22 @@ class MateriController extends Controller
     public function index($id)
     {
         $title = 'Materi';
+<<<<<<< HEAD
         $data = Materi::where('modul_id',$id)->get();
         return view('admin.materi.index',compact('title','data'));
+=======
+        $data = Materi::where('modul_id', $id)->latest()->get();
+
+        return view('admin.materi.index',compact('title','data','id'));
+>>>>>>> 2b3404b581b77692afd49ed037cad60e7d49a6eb
     }
 
     public function create($id)
     {
         $title = 'Tambah Materi';
-        return view('admin.materi.create',compact('title'));
+        $modulId = $id;
+
+        return view('admin.materi.create',compact('title','modulId'));
     }
 
     /**
@@ -38,14 +46,13 @@ class MateriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function store(Request $request)
+    public function store(Request $request)
     {
          $neko = [
             'user_id' => auth()->user()->id,
             'modul_id' => $request->module_id,
             'judul' => $request->judul,
             'deskripsi' =>$request->deskripsi,
-
         ];
 
         Materi::create($neko);
@@ -59,7 +66,6 @@ class MateriController extends Controller
         $data['materi'] = Materi::find($id);
         return view('admin.materi.edit',compact('title','data'));
     }
-
 
    
     public function update(Request $request, $id)

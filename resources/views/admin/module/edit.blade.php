@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Konten Edit Data')
+@section('title','Modul Edit Data')
 
 @section('css')
 <link href="{{asset('assets/plugins/summernote/summernote.css')}}" rel="stylesheet" />
@@ -19,17 +19,16 @@
                         <label for="judul">Nama Program</label>
                         <select name="program" class="form-control">
                             @foreach($data['program'] as $value)
-                            <option value="{{ $value->id }}">{{ $value->nama_program }}</option>
+                            <option value="{{ $value->id }}" @if($data['module']->program_id == $value->id) selected @endif>{{ $value->nama_program }}</option>
                             @endforeach
                         </select>
-
                     </div>
 
                     <div class="form-group">
                         <label for="judul">Nama Kategori</label>
                         <select name="kategori" class="form-control">
                            @foreach($data['kategori'] as $value)
-                           <option value="{{ $value->id }}">{{ $value->nama_kategori }}</option>
+                           <option value="{{ $value->id }}" @if($data['module']->kategori_id == $value->id) selected @endif>{{ $value->nama_kategori }}</option>
                            @endforeach
                        </select>
                        
@@ -38,13 +37,11 @@
                    <div class="form-group">
                     <label for="judul">Nama Modul</label>
                     <input type="text" class="form-control" name="modul" id="modul" required="" placeholder="Masukkan Nama Modul" minlength="5" maxlength="191" value="{{ $data['module']->nama_modul }}">
-
                 </div>
 
                 <div class="form-group">
                     <label for="judul">Harga</label>
-                    <input type="text" class="form-control" name="harga" id="harga" required="" placeholder="Masukkan Harga"  maxlength="191" value="{{ $data['module']->harga }}">
-
+                    <input type="number" class="form-control" name="harga" id="harga" required="" placeholder="Masukkan Harga" maxlength="191" value="{{ $data['module']->harga }}">
                 </div>
 
                 <div class="form-group">
@@ -56,9 +53,7 @@
                   <div class="form-group">
                     <label for="judul">Durasi</label>
                     <input type="text" class="form-control" name="durasi" id="durasi" placeholder="Masukkan Durasi" value="{{ $data['module']->durasi_program }}">
-                   
                 </div>
-
 
                 <div class="form-group">
                     <label for="artikel">Deskripsi</label>
@@ -80,7 +75,7 @@
                 <div class="form-group">
                     <label for="path">Banner</label>
                     <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary">   
-
+                     <code class="highlighter-rouge">*Boleh kosong</code>
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
