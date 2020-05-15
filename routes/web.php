@@ -114,7 +114,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		]);
 
 		// Quis 
-			Route::get('quiz/{id}', [
+		Route::get('quiz/{id}', [
 			'uses' => 'QuizController@index',
 			'as' => 'quiz.index'
 		]);

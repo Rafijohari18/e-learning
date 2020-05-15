@@ -23,14 +23,9 @@ class MateriController extends Controller
     public function index($id)
     {
         $title = 'Materi';
-<<<<<<< HEAD
+
         $data = Materi::where('modul_id',$id)->get();
         return view('admin.materi.index',compact('title','data'));
-=======
-        $data = Materi::where('modul_id', $id)->latest()->get();
-
-        return view('admin.materi.index',compact('title','data','id'));
->>>>>>> 2b3404b581b77692afd49ed037cad60e7d49a6eb
     }
 
     public function create($id)
