@@ -18,7 +18,7 @@
                         </ul>
                         <ul class="header_list border_list">
                             <li><a href="{{ route('login') }}" class="nav_btn">Login</a></li>
-                            <li><a href="#" class="nav_btn btn-default">Daftar</a></li>
+                            <li><a href="{{ route('registrasi') }}" class="nav_btn btn-default">Daftar</a></li>
                         </ul>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
 					<li class="">
-                       <a class="nav-link" href="index.html">Beranda</a>
+                       <a class="nav-link" href="/">Beranda</a>
                     </li>
 
                     <li class="">

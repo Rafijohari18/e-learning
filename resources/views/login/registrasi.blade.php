@@ -1,113 +1,215 @@
 <!DOCTYPE html>
-<html>
-    
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>E-learning Registrasi</title>
-    <meta content="Masuk Monitoring" name="Registrasi" />
-    <meta content="Roni Surya" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="" name="author">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
 
-    <!-- App Icons -->
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
-
-    <!-- App css -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
-
-    <!-- Alertify -->
-    <link href="{{asset('assets/plugins/alertify/css/alertify.css')}}" rel="stylesheet" type="text/css">
+<!-- SITE TITLE -->
+<title>E-learning Daftar</title>
+<!-- Favicon Icon -->
+<link rel="shortcut icon" type="image/x-icon" href="{{asset('landingpage/images/favicon.png')}}">
+<!-- Animation CSS -->
+<link rel="stylesheet" href="{{asset('landingpage/css/animate.css')}}">
+<!-- Latest Bootstrap min CSS -->
+<link rel="stylesheet" href="{{asset('landingpage/bootstrap/css/bootstrap.min.css')}}">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet"> 
+<!-- Icon Font CSS -->
+<link rel="stylesheet" href="{{asset('landingpage/css/all.min.css')}}">
+<link rel="stylesheet" href="{{asset('landingpage/css/ionicons.min.css')}}">
+<link rel="stylesheet" href="{{asset('landingpage/css/themify-icons.css')}}">
+<link rel="stylesheet" href="{{asset('landingpage/css/linearicons.css')}}">
+<link rel="stylesheet" href="{{asset('landingpage/css/flaticon.css')}}">
+<!--- owl carousel CSS-->
+<link rel="stylesheet" href="{{asset('landingpage/owlcarousel/css/owl.carousel.min.css')}}">
+<link rel="stylesheet" href="{{asset('landingpage/owlcarousel/css/owl.theme.css')}}">
+<link rel="stylesheet" href="{{asset('landingpage/owlcarousel/css/owl.theme.default.min.css')}}">
+<!-- Magnific Popup CSS -->
+<link rel="stylesheet" href="{{asset('landingpage/css/magnific-popup.css')}}">
+<!-- Style CSS -->
+<link rel="stylesheet" href="{{asset('landingpage/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('landingpage/css/responsive.css')}}">
+<link rel="stylesheet" id="layoutstyle" href="{{asset('landingpage/color/theme-yellow.css')}}">
 </head>
+
 <body>
-    <!-- Begin page -->
-    <div class="accountbg"></div>
-    <div class="wrapper-page">
+<!-- START HEADER -->
+<x-lpheader></x-lpheader>
+<!-- END HEADER -->
 
-        <div class="card">
-            <div class="card-body">
-
-                <h3 class="text-center m-0">
-                    <a href="index.html" class="logo logo-admin"><img src="{{asset('assets/images/logo_dark.png')}}" height="30" alt="logo"></a>
-                </h3>
-
-                <div class="p-3">
-                    <h4 class="text-muted font-18 m-b-5 text-center">Selamat Datang !</h4>
-                    <p class="text-muted text-center">Masukkan Nama Pengguna Dan Kata Sandi Untuk Melanjutkan.</p>
-                     <form class="form-horizontal m-t-30" action="{{ route('post.login') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label for="username">Nama Pengguna</label>
-                            <input type="text" class="form-control" name="username" id="username" required="" placeholder="Masukkan Nama Pengguna">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Kata Sandi</label>
-                            <input type="password" name="password" required="" class="form-control" id="password" placeholder="Masukkan Kata Sandi">
-                        </div>
-
-                        <div class="form-group row m-t-20">
-                            <div class="col-sm-6">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customControlInline">
-                                    <label class="custom-control-label" for="customControlInline">Ingat Saya!</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
-                            </div>
-                        </div>
-
-                        <div class="form-group m-t-10 mb-0 row">
-                            <div class="col-12 m-t-20">
-                                <a href="" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Kata Sandi?</a>
-                            </div>
-                        </div>
-                    </form>
+<!-- START SECTION BREADCRUMB -->
+<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{asset('landingpage/images/login_bg.jpg')}}">
+    <div class="container"><!-- STRART CONTAINER -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title">
+                    <h1>Daftar Akun</h1>
                 </div>
             </div>
         </div>
+    </div><!-- END CONTAINER-->
+</div>
+<!-- END SECTION BREADCRUMB -->
 
-        <div class="m-t-40 text-center">
-            <p>© {{ date('Y') }} E-learning Your Company.</p>
+<!-- STAT SECTION LOGIN --> 
+<div class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="padding_eight_all login_wrap">  
+                    <div class="heading_s1">
+                        <h4>Buat Akun Baru</h4>
+                    </div>
+                    <form method="post" action="">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" required="" class="form-control" name="nik" placeholder="NIK" maxlength="60">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" required="" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" maxlength="50">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" required="" class="form-control" name="username" placeholder="Nama Pengguna" maxlength="90">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" required="" class="form-control" name="password" placeholder="Kata Sandi" maxlength="60">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="date" required="" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" required="" class="form-control" name="umur" placeholder="Umur" maxlength="11">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select name="gender" id="" class="form-control">
+                                        <option value="L">Laki-Laki</option>
+                                        <option value="P">Perempuan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" required="" class="form-control" name="whatsapp" placeholder="No Whatsapp" maxlength="60">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" required="" class="form-control" name="email" placeholder="Email" maxlength="191">
+                                </div>  
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" required="" class="form-control" name="profesi" placeholder="Pekerjaan Saat Ini" maxlength="60">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                   <textarea name="alamat" id="" cols="30" rows="4" class="form-control" placeholder="Alamat" required=""></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea name="motivasi" id="" cols="30" rows="4" class="form-control" placeholder="Motivasi Mengikuti Pelatihan" required=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default btn-block" name="register">Daftar</button>
+                        </div>
+                    </form>
+                    <!-- <div class="different_login">
+                        <span> Atau</span>
+                    </div>
+                    <ul class="btn-login list_none text-center">
+                        <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
+                        <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
+                    </ul> -->
+                    <div class="form-note text-center">Sudah Punya Akun? <a href="{{ route('login') }}">Login!</a></div>
+                </div>
+            </div>
         </div>
-
     </div>
+</div>
+<!-- END SECTION LOGIN -->
 
+<!-- START FOOTER -->
+<x-lpfooter></x-lpfooter>
+<!-- END FOOTER --> 
 
-    <!-- jQuery  -->
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/modernizr.min.js')}}"></script>
-    <script src="{{asset('assets/js/waves.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.slimscroll.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.nicescroll.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.scrollTo.min.js')}}"></script>
-    <!-- Alertify js -->
-    <script src="{{asset('assets/plugins/alertify/js/alertify.js')}}"></script>
-    <script src="{{asset('assets/pages/alertify-init.js')}}"></script>
+<a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
 
-    <!-- Parsley js -->
-    <script type="text/javascript" src="{{asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('form').parsley();
-        });
-    </script>
-
-    <!-- App js -->
-    <script src="{{asset('assets/js/app.js')}}"></script>
-
-    <!-- Alert -->
-    <script>
-    @if(Session::has('error'))
-        alertify.error("Nama Pengguna Atau Kata Sandi Salah!");
-    @endif
-    </script>
+<!-- Latest jQuery --> 
+<script src="{{asset('landingpage/js/jquery-1.12.4.min.js')}}"></script> 
+<!-- Latest compiled and minified Bootstrap --> 
+<script src="{{asset('landingpage/bootstrap/js/bootstrap.min.js')}}"></script> 
+<!-- owl-carousel min js  --> 
+<script src="{{asset('landingpage/owlcarousel/js/owl.carousel.min.js')}}"></script> 
+<!-- magnific-popup min js  --> 
+<script src="{{asset('landingpage/js/magnific-popup.min.js')}}"></script> 
+<!-- waypoints min js  --> 
+<script src="{{asset('landingpage/js/waypoints.min.js')}}"></script> 
+<!-- parallax js  --> 
+<script src="{{asset('landingpage/js/parallax.js')}}"></script> 
+<!-- countdown js  --> 
+<script src="{{asset('landingpage/js/jquery.countdown.min.js')}}"></script> 
+<!-- jquery.countTo js  --> 
+<script src="{{asset('landingpage/js/jquery.countTo.js')}}"></script> 
+<!-- imagesloaded js --> 
+<script src="{{asset('landingpage/js/imagesloaded.pkgd.min.js')}}"></script> 
+<!-- isotope min js --> 
+<script src="{{asset('landingpage/js/isotope.min.js')}}"></script> 
+<!-- jquery.appear js  --> 
+<script src="{{asset('landingpage/js/jquery.appear.js')}}"></script> 
+<!-- jquery.dd.min js --> 
+<script src="{{asset('landingpage/js/jquery.dd.min.js')}}"></script>
+<!-- slick js -->
+<script src="{{asset('landingpage/js/slick.min.js')}}"></script> 
+<!-- scripts js --> 
+<script src="{{asset('landingpage/js/scripts.js')}}"></script>
 
 </body>
+
 </html>

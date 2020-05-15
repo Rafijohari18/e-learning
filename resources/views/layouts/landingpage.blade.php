@@ -234,78 +234,7 @@
 <!-- END SECTION BLOG -->
 
 <!-- START FOOTER -->
-<footer class="footer_dark">
-	<div class="footer_top">
-        <div class="container">
-        	<div class="row">
-            	<div class="col-12">
-                	<div class="large_divider clearfix"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-4 col-sm-6">
-                	<div class="widget">
-                        <div class="footer_logo">
-                            <a href="#"><img src="{{asset('landingpage/images/logo_light.png')}}" alt="logo"/></a>
-                        </div>
-                        <p>If you are going to use a passage of Lorem Ipsum you need to be sure there isn't anything embarrassing hidden in the middle of text</p>
-                        <ul class="social_icons rounded_social social_white social_style1">
-                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                            <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-sm-6 col-6">
-                	<div class="widget">
-                        <h6 class="widget_title">Useful Links</h6>
-                        <ul class="widget_links">
-                            <li><a href="#">-</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-sm-6">
-                	<div class="widget">
-                        <h6 class="widget_title">Support</h6>
-                        <ul class="widget_links">
-                            <li><a href="#">-</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                	<div class="widget">
-                    	<h6 class="widget_title">Kontak</h6>
-                        <ul class="contact_info contact_info_light">
-                            <li>
-                                <i class="ti-location-pin"></i>
-                                <p>123 Street, Old Trafford, New South London , UK</p>
-                            </li>
-                            <li>
-                                <i class="ti-email"></i>
-                                <a href="mailto:info@sitename.com">info@sitename.com</a>
-                            </li>
-                            <li>
-                                <i class="ti-mobile"></i>
-                                <p>+ 457 789 789 65</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bottom_footer bg_dark2">
-    	<div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="mb-md-0 text-center text-md-left">{{ date('Y') }} E-learning <span class="text_default">Your Company.</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<x-lpfooter></x-lpfooter>
 <!-- END FOOTER -->
 
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 

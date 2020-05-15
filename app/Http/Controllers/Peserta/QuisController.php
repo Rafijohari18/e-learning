@@ -16,7 +16,6 @@ class QuisController extends Controller
 	   $data['pilihan'] = $data['shuffled']->shuffle();
 
        return view('peserta.quiz.index',compact('data'));
-    
     }
 
 }

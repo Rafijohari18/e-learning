@@ -49,7 +49,7 @@ Route::get('logout', [
 // Register
 Route::get('registrasi', function () {
 	return view('login.registrasi');
-});
+})->name('registrasi');
 
 // Admin
 Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
