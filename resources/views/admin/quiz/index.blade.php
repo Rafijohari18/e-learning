@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Modul')
+@section('title','Module')
 
 @section('css')
 <!-- DataTables -->
@@ -16,10 +16,10 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="float-right">
-                    <a href="{{ route('module.create') }}" class="btn btn-sm btn-primary waves-effect waves-light add" >Tambah Data</a>
+                   
                 </div>
                 <h4 class="mt-0 header-title">
-                  Modul
+                  Modul Quiz - {{ $nmProgram }}
                 </h4>
                 <br>
                 <div class="table-responsive">
@@ -27,9 +27,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Modul</th>
-                                <th>Program</th>
+                                <th>Path</th>
                                 <th>Kategori</th>
+                                <th>Nama Modul</th>
                                 <th>Harga</th>
                                 <th>Diskon</th>
                                 <th>Created By</th>
@@ -37,19 +37,21 @@
                             </tr>
                         </thead>
                         <tbody class="table-striped">
-                           @foreach ($neko as $item)
+                           @foreach ($data as $item)
                            <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama_modul }}</td>
-                            <td>{{ $item->program->nama_program }}</td>
+                            <td>
+                                <img src="{{ asset('storage/'.$item->path) }}" width="30" height="30">
+                            </td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
-                            <td>Rp{{ number_format(($item->harga), 0, ',', '.')  }}</td>
+                            <td>{{ $item->nama_modul }}</td>
+                            <td>{{ number_format(($item->harga), 0, ',', '.')  }}</td>
                             <td>@if(empty($item->diskon)) 0% @else {{$item->diskon}}% @endif</td>
                             <td>{{ $item->user->nama_lengkap }}</td>
                             <td>
-                              <a href="{{ route('materi.index',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Tambah Materi" class="btn btn-sm btn-primary"><i class="ti-plus"></i></a>
-                              <a href="{{ route('module.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="ti-pencil"></i></a>
-                              <a href="#" onclick="destroy({{ $item->id }},'{{ $item->nama_modul }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
+                              <a href="{{ route('quiz.soal',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Tambah Soal" class="btn btn-sm btn-success"><i class="ti-plus"></i></a>
+                               <a href="{{ route('materi.index',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Rekap Nilai" class="btn btn-sm btn-warning"><i class="ti-pin-alt"></i></a>
+                             
                           </td>
                       </tr>
                       @endforeach
@@ -75,7 +77,7 @@
 <!-- Destroy -->
 <script>
     function destroy(id,nama) {
-        alertify.confirm("Hapus Module "+nama+"?", function (ev) {
+        alertify.confirm("Hapus Quiz "+nama+"?", function (ev) {
             ev.preventDefault();
             window.location = "module/"+ id +"/destroy";
 
