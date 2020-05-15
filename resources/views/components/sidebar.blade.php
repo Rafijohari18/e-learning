@@ -69,7 +69,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis </span></a>
+                    <a href="{{ route('peserta.quis') }}" class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis </span></a>
                 </li>
 
                 <li>

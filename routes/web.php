@@ -294,6 +294,15 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'uses' => 'ModuleController@showModul',
 			'as' => 'module.detail'
 		]);
+
+		//quiz
+		Route::get('quis', [
+			'uses' => 'Peserta\QuisController@index',
+			'as' => 'peserta.quis'
+		]);
+
+
+
 	});
 
 	// Ganti Kata Sandi
