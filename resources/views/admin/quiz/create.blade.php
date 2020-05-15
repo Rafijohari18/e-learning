@@ -15,40 +15,48 @@
                 <hr>
                 <form action="{{ route('quiz.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    
                     <input type="hidden" name="modul_id" value="{{ Request::segment('4') }}">
                     <div class="form-group">
                         <label for="artikel">Pertanyaan</label>
                         <textarea name="soal" id="soal" class="summernote form-control" required=""></textarea>
                     </div>
 
-                     <div class="form-group">
-                        <label for="judul">Pilihan 1</label>
-                        <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" required="" placeholder="Masukkan Pilihan 1" >
+                    <div class="row">
+                        <div class="col-md-6">
+                             <div class="form-group">
+                                <label for="judul">Pilihan 1</label>
+                                <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" required="" placeholder="Masukkan Pilihan 1" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="judul">Pilihan 2</label>
+                                <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" required="" placeholder="Masukkan Pilihan 2" >
+                            </div>
+                        </div>
                     </div>
 
-                       <div class="form-group">
-                        <label for="judul">Pilihan 2</label>
-                        <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" required="" placeholder="Masukkan Pilihan 2" >
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                                <label for="judul">Pilihan 3</label>
+                                <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" required="" placeholder="Masukkan Pilihan 3" >
+                            </div>
+                        </div>
 
-                       <div class="form-group">
-                        <label for="judul">Pilihan 3</label>
-                        <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" required="" placeholder="Masukkan Pilihan 3" >
-                    </div>
-
-                       <div class="form-group">
-                        <label for="judul">Pilihan 4</label>
-                        <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" required="" placeholder="Masukkan Pilihan 4" >
+                        <div class="col-md-6">
+                             <div class="form-group">
+                                <label for="judul">Pilihan 4</label>
+                                <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" required="" placeholder="Masukkan Pilihan 4" >
+                            </div>  
+                        </div>
                     </div>
 
                        <div class="form-group">
                         <label for="judul">Jawaban</label>
                         <input type="text" class="form-control" name="jawaban" id="jawaban" required="" placeholder="Masukkan Jawaban" >
                     </div>
-
-
-            
 
                     <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                 </form>

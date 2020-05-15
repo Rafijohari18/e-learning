@@ -40,8 +40,6 @@
                             <td>{{ $item->jawaban }}</td>
                           
                             <td>
-                              <a href="{{ route('quiz.soal',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Tambah Soal" class="btn btn-sm btn-primary"><i class="ti-plus"></i></a>
-                          
                                <a href="{{ route('quiz.edit',['id'=>$item->id,'modul'=>Request::segment(4)]) }}"  data-toggle="tooltip" data-placement="top" title="Edit Soal" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
                                 <a href="{{ route('quiz.destroy',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Hapus Soal" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
                                <a href="{{ route('materi.index',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Rekap Nilai" class="btn btn-sm btn-success"><i class="ti-pin-alt"></i></a>

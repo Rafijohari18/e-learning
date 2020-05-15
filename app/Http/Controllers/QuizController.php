@@ -55,7 +55,6 @@ class QuizController extends Controller
 
     public function store(Request $request)
     {
-
       $soal = Soal::create([
           'soal'          => $request->soal,
           'modul_id'      =>  $request->modul_id,
@@ -68,7 +67,6 @@ class QuizController extends Controller
       foreach ($pilihan as $key => $item) 
       {
           $insert_data[] = array(
-
               'pilihan' => $item,
               'soal_id' => $soal->id,
               'opsi'    => $no++ 
@@ -83,7 +81,7 @@ class QuizController extends Controller
   {
     $data['soal'] = Soal::where('id',$id)->first();
     $data['pilihan'] = Pilihan::where('soal_id',$id)->get();
-  
+
     return view('admin.quiz.edit',compact('data'));
   }
 

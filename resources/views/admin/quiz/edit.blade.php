@@ -15,7 +15,6 @@
                 <hr>
                 <form action="{{ route('quiz.update',['id'=>$data['soal']->id] ) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    
                     <input type="hidden" name="modul_id" value="{{ Request::segment('5') }}">
                     <div class="form-group">
                         <label for="artikel">Pertanyaan</label>
@@ -23,20 +22,16 @@
                     </div>
 
                     @foreach($data['pilihan'] as $item)
-
                         <div class="form-group">
                             <label for="judul">Pilihan {{ $loop->iteration }}</label>
                             <input type="text" class="form-control" name="pilihan[]" id="pilihan[]" value="{{ $item->pilihan }}" required="" placeholder="Masukkan Pilihan {{ $loop->iteration }}" >
                         </div>
                     @endforeach
 
-                        <div class="form-group">
-                            <label for="judul">Jawaban</label>
-                            <input type="text" class="form-control" value="{{ $data['soal']->jawaban }}" name="jawaban" id="jawaban" required="" placeholder="Masukkan Jawaban" >
-                        </div>
-
-
-
+                    <div class="form-group">
+                        <label for="judul">Jawaban</label>
+                        <input type="text" class="form-control" value="{{ $data['soal']->jawaban }}" name="jawaban" id="jawaban" required="" placeholder="Masukkan Jawaban" >
+                    </div>
 
                         <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                     </form>

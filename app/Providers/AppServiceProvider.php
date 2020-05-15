@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
          View()->composer('components.sidebar',function($view){
             // Config LINK  
 
-            $data['program']   = Program::get();
+            $data['program']   = Program::orderBy('nama_program')->get();
         
 
             $view

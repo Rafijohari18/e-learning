@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="judul">Nama Kategori</label>
+                        <label for="kategori">Kategori</label>
                         <select name="kategori" class="form-control">
                            @foreach($data['kategori'] as $value)
                            <option value="{{ $value->id }}" @if($data['module']->kategori_id == $value->id) selected @endif>{{ $value->nama_kategori }}</option>
