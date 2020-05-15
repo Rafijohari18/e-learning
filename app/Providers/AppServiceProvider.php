@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Program;
+use Illuminate\Support\Facades\View;
+use Carbon\Carbon;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +27,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Carbon::setLocale($this->app->getLocale());
+         View()->composer('components.sidebar',function($view){
+            // Config LINK  
+
+            $data['program']   = Program::get();
+        
+
+            $view
+            ->with('program' , $data['program']);
+            
+        });
+
+
     }
 }

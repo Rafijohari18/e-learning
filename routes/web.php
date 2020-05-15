@@ -114,6 +114,40 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		]);
 
 		// Quis 
+			Route::get('quiz/{id}', [
+			'uses' => 'QuizController@index',
+			'as' => 'quiz.index'
+		]);
+
+		Route::get('quiz/soal/{id}', [
+			'uses' => 'QuizController@soal',
+			'as' => 'quiz.soal'
+		]);
+		Route::get('quiz/create/{id}', [
+			'uses' => 'QuizController@create',
+			'as' => 'quiz.create'
+		]);
+
+		Route::post('quiz/store', [
+			'uses' => 'QuizController@store',
+			'as' => 'quiz.store'
+		]);
+
+
+		Route::get('quiz/edit/{id}/{modul}', [
+			'uses' => 'QuizController@edit',
+			'as' => 'quiz.edit'
+		]);
+
+		Route::post('quiz/{id}/update', [
+			'uses' => 'QuizController@update',
+			'as' => 'quiz.update'
+		]);
+
+		Route::get('quiz/{id}/destroy', [
+			'uses' => 'QuizController@destroy',
+			'as' => 'quiz.destroy'
+		]);
 
 
 		// Program 
@@ -132,7 +166,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'program.update'
 		]);
 
-		Route::get('admin/program/{id}/destroy', [
+		Route::get('program/{id}/destroy', [
 			'uses' => 'ProgramController@destroy',
 			'as' => 'program.destroy'
 		]);
@@ -203,6 +237,8 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'uses' => 'MateriController@destroy',
 			'as' => 'materi.destroy'
 		]);
+
+
 
 
 		// Umum
@@ -279,3 +315,15 @@ Route::get('/{slug}/artikel', [
 	'uses' => 'InformasiController@slug',
 	'as' => 'informasi.slug'
 ]);
+
+
+//CONFIG
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('view:clear');
+    return 'DONE'; //Return anything
+});
+
+

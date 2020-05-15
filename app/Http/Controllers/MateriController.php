@@ -23,7 +23,7 @@ class MateriController extends Controller
     public function index($id)
     {
         $title = 'Materi';
-        $data = $this->model->all();
+        $data = Materi::where('modul_id',$id)->get();
         return view('admin.materi.index',compact('title','data'));
     }
 

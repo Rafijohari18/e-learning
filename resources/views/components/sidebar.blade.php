@@ -26,8 +26,13 @@
                     <a href="{{ route('kategori.index') }}" class="waves-effect"><i class="mdi mdi-book"></i><span> Kategori Modul </span></a>
                 </li>
 
-                <li>
-                    <a href="" class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis </span></a>
+                <li class="has_sub">
+                    <a href="javascript:void(0);"  class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></span></a>
+                     <ul class="list-unstyled">
+                        @foreach($program as $row)
+                        <li><a href="{{ route('quiz.index',['id'=>$row->id]) }}">{{ $row->nama_program }}</a></li>
+                        @endforeach
+                    </ul>
                 </li>
 
                 <li>

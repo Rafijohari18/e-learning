@@ -37,7 +37,7 @@ class ProgramController extends Controller
     {
         $this->model->create($request->only($this->model->getModel()->fillable));
 
-        return back()->with('succes','Album Succes Created !');
+        return back()->with('store','Program Created !');
     }
 
    
@@ -45,7 +45,7 @@ class ProgramController extends Controller
     {
         $this->model->update($request->only($this->model->getmodel()->fillable),$id);
 
-        return back()->with('success','Program Succes Updated !');
+        return back()->with('update','Program Succes Updated !');
     }
 
     /**
@@ -54,10 +54,9 @@ class ProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+     public function destroy($id)
     {
         $this->model->delete($id);
-        
-        return back()->with('success','Program Succes Delete !');
+        return back()->with('destroy','Program Succes Delete !');
     }
 }
