@@ -29,35 +29,26 @@ class ProgramController extends Controller
         return view('admin.program.index',compact('title','data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
    public function store(Request $request)
     {
         $this->model->create($request->only($this->model->getModel()->fillable));
+        return back()->with('store','Program Created !');
 
-        return back()->with('store','');
     }
 
     public function update(Request $request, $id)
     {
         $this->model->update($request->only($this->model->getmodel()->fillable),$id);
-
-        return back()->with('update','');
+        return back()->with('update','Program Succes Updated !');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
      public function destroy($id)
     {
-        $ea = $this->model->delete($id);
 
-        return back()->with('destroy','');
+        $this->model->delete($id);
+        return back()->with('destroy','Program Succes Delete !');
+
     }
 }
