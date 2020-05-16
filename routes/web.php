@@ -296,6 +296,16 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'module.detail'
 		]);
 
+
+		//modulpeserta
+		Route::get('invoice', [
+			'uses' => 'invoiceController@index',
+			'as' => 'invoice.modul'
+		]);
+
+
+
+
 		//quiz
 		Route::get('quis', [
 			'uses' => 'Peserta\QuisController@index',

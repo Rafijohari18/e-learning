@@ -120,13 +120,13 @@
     	<div class="row justify-content-center">
         	<div class="col-lg-6 col-md-8 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
             	<div class="heading_s1 text-center">
-                	<h2>Modul Terbaru</h2>
+                	<h2>Program Terbaru</h2>
                     <br>
                 </div>
             </div>
         </div>
         <div class="row">
-            @foreach($module as $mdl)
+            @foreach($program as $mdl)
             <div class="col-lg-4 col-md-6">
                 <div class="courses_box radius_all_10 box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                     <div class="courses_img"> 
@@ -140,9 +140,14 @@
                             <i class="ion-android-star"></i> 
                             <i class="ion-android-star-outline"></i> 
                             <span>4.0</span> 
-                            <span class="badge badge-info">{{ $mdl->kategori->nama_kategori }}</span>
+                            <span class="badge badge-info"></span>
                         </div>
-                    	<h5 class="courses_title"><a href="#">{{ $mdl->nama_modul }}</a></h5>
+                    	<h5 class="courses_title">
+                            @if(Auth::user() == null)
+                            <a href="{{ route('registrasi') }}">{{ $mdl->nama_modul }}</a></h5>
+                            @else
+                            <a href="{{ route('invoice.modul') }}">{{ $mdl->nama_modul }}</a></h5>
+                            @endif
                         <p>
                             {!! Str::limit($mdl->deskripsi, 50, '...') !!}
                         </p>
