@@ -36,6 +36,11 @@ Route::post('login', [
 	'as' => 'post.login'
 ]);
 
+Route::post('register', [
+	'uses' => 'AuthController@register',
+	'as' => 'post.register'
+]);
+
 Route::get('logout', [
 	'uses' => 'AuthController@logout',
 	'as' => 'logout'
@@ -293,7 +298,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 {
 	Route::prefix('peserta')->group(function () {
-	    Route::get('dashboard', [
+		Route::get('dashboard', [
 			'uses' => 'DashboardController@peserta',
 			'as' => 'peserta.dashboard'
 		]);
@@ -308,6 +313,10 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'uses' => 'ModuleController@showModul',
 			'as' => 'module.detail'
 		]);
+
+
+
+
 
 		//quiz
 		Route::get('quis', [
@@ -344,12 +353,19 @@ Route::get('/{slug}/artikel', [
 ]);
 
 
+		//invoice
+Route::post('invoice', [
+	'uses' => 'Peserta\invoiceController@index',
+	'as' => 'invoice.modul'
+]);
+
+
 //CONFIG
 Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('config:clear');
-    $exitCode = Artisan::call('cache:clear');
-    $exitCode = Artisan::call('config:cache');
-    $exitCode = Artisan::call('view:clear');
+	$exitCode = Artisan::call('config:clear');
+	$exitCode = Artisan::call('cache:clear');
+	$exitCode = Artisan::call('config:cache');
+	$exitCode = Artisan::call('view:clear');
     return 'DONE'; //Return anything
 });
 
