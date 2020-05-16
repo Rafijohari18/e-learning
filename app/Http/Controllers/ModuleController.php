@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Module;
-use App\Program;
 use App\Kategori;
 use App\Repositories\Repository;
 use Illuminate\Support\Str;
@@ -26,9 +25,9 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $neko = Module::orderBy('nama_modul','ASC')->get();
+        $neko = Module::get();
 
-        return view('admin.module.index',compact('neko'));
+        return view('admin.module.index', compact('neko'));
     }
 
     public function create()

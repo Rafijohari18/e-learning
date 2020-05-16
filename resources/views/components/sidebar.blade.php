@@ -23,14 +23,14 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('kategori.index') }}" class="waves-effect"><i class="ti-tag"></i><span> Kategori Program </span></a>
+                </li>
+                
+                <li>
                     <a href="{{ route('program.index') }}" class="waves-effect"><i class="ti-clipboard"></i><span> Program </span></a>
                 </li>
 
-                <li>
-                    <a href="{{ route('kategori.index') }}" class="waves-effect"><i class="ti-tag"></i><span> Kategori Modul </span></a>
-                </li>
-
-                <li>
+               <li>
                     <a href="{{ route('module.index') }}" class="waves-effect"><i class="mdi mdi-book"></i><span> Modul </span></a>
                 </li>
 

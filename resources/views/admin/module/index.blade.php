@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Modul')
+@section('title','Materi')
 
 @section('css')
 <!-- DataTables -->
@@ -16,51 +16,93 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="float-right">
-                    <a href="{{ route('module.create') }}" class="btn btn-sm btn-primary waves-effect waves-light add" >Tambah Data</a>
+                    <a class="btn btn-sm btn-primary waves-effect waves-light add" href="">Tambah Data</a>
                 </div>
-                <h4 class="mt-0 header-title">
-                  Modul
-                </h4>
+                <h4 class="mt-0 header-title">Modul</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Modul</th>
+                                <th>Judul</th>
                                 <th>Program</th>
-                                <th>Kategori</th>
-                                <th>Harga</th>
-                                <th>Diskon</th>
-                                <th>Created By</th>
+                                <th>Created At</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-striped">
-                           @foreach ($neko as $item)
-                           <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama_modul }}</td>
-                            <td>{{ $item->program->nama_program }}</td>
-                            <td>{{ $item->kategori->nama_kategori }}</td>
-                            <td>Rp{{ number_format(($item->harga), 0, ',', '.')  }}</td>
-                            <td>@if(empty($item->diskon)) 0% @else {{$item->diskon}}% @endif</td>
-                            <td>{{ $item->user->nama_lengkap }}</td>
-                            <td>
-                              <a href="{{ route('materi.index',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Tambah Materi" class="btn btn-sm btn-primary"><i class="ti-plus"></i></a>
-                              <a href="{{ route('module.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="ti-pencil"></i></a>
-                              <a href="#" onclick="destroy({{ $item->id }},'{{ $item->nama_modul }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
-                          </td>
-                      </tr>
-                      @endforeach
-                  </tbody>
-              </table>
+                            
+                      </tbody>
+                  </table>
+              </div>
           </div>
       </div>
-  </div>
-</div> <!-- end col -->
+  </div> <!-- end col -->
 </div> <!-- end row -->
+
+<!-- modal -->
+<!-- sample modal content -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="myModalLabel">Program Tambah</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="{{ Route('program.store') }}" method="POST">
+              {{ csrf_field() }}
+              <div class="modal-body">
+                  <div class="container-fluid">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="nama_program" id="nama_program" class="form-control" required>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
+            </div>
+        </form>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<div id="modaledit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="myModalLabel">Program Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="" method="POST" id="editform">
+                @csrf
+                @method('POST')
+                <div class="modal-body">
+                  <div class="container-fluid">
+                      <div class="form-group">
+                        <label for="name">Nama program</label>
+                        <input type="text" name="nama_program" id="nama_program" class="form-control" required>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
+            </div>
+        </form>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 @stop
 
 @section('footer')
@@ -75,14 +117,46 @@
 <!-- Destroy -->
 <script>
     function destroy(id,nama) {
-        alertify.confirm("Hapus Module "+nama+"?", function (ev) {
+        alertify.confirm("Hapus Program "+nama+"?", function (ev) {
             ev.preventDefault();
-            window.location = "module/"+ id +"/destroy";
+            window.location = "program/"+ id +"/destroy";
 
         }, function(ev) {
             ev.preventDefault();
             alertify.error("Batal!");
         });
     }
+
+
+    function editdata(id)
+    {
+        var id = id;
+        var url = '{{ route("materi.update", ":id") }}';
+        url = url.replace(':id', id);
+        $("#editform").attr('action', url);
+    }
+
+    function editSubmit()
+    {
+        $("#editform").submit();
+    }
+
+
+    $('.editbtn').click(function(){
+        var nama_program = $(this).data('nama_program');
+
+
+        $('.modal-body #nama_program').val(nama_program);
+
+
+    });
+
+    $('.add').click(function(){
+
+        $('.modal-body #nama_program').val('');
+
+
+    });
+
 </script>
 @stop
