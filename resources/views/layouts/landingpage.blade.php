@@ -79,11 +79,11 @@
         	<div class="col-lg-4 col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
             	<div class="icon_box icon_box_style1 box_shadow1 text-center">
                 	<div class="icon ibc_orange">
-                    	<i class="fas fa-user-graduate"></i>
+                    	<i class="ti-book"></i>
                     </div>
                     <div class="icon_box_content">
-                    	<h5>Admission Center</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+                    	<h5>Materi Berbentuk Video</h5>
+                        <p>Materi disajikan dalam bentuk video supaya lebih mudah dipahami</p>
                     </div>
                 </div>
             </div>
@@ -93,19 +93,19 @@
                     	<i class="fas fa-globe"></i>
                     </div>
                     <div class="icon_box_content">
-                    	<h5>Online Training</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+                    	<h5>Belajar Daring Online</h5>
+                        <p>Belajar secara online kapanpun dan dimanapun</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
             	<div class="icon_box icon_box_style1 box_shadow1 text-center">
                 	<div class="icon ibc_pink">
-                    	<i class="fas fa-graduation-cap"></i>
+                    	<i class="ti-medall"></i>
                     </div>
                     <div class="icon_box_content">
-                    	<h5>Certification</h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+                    	<h5>Sertifikat</h5>
+                        <p>Peserta akan diberikan sertifikat sebagai bukti kelulusan</p>
                     </div>
                 </div>
             </div>
@@ -173,30 +173,30 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                 <div class="box_counter counter_white text-center">
-                    <i class="ti-clipboard text_default"></i>
-                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="280" data-speed="1500" data-refresh-interval="5"></span>+</h3>
+                    <i class="ti-clipboard text_default"></i><br>
+                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="{{ $program }}" data-speed="1500" data-refresh-interval="5"></span>+</h3>
                     <p>Program</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                 <div class="box_counter counter_white text-center">
-                    <i class="ti-book text_default"></i>
-                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="1350" data-speed="1500" data-refresh-interval="5"></span>+</h3>
+                    <i class="ti-book text_default"></i><br>
+                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="{{ $module->count() }}" data-speed="1500" data-refresh-interval="5"></span>+</h3>
                     <p>Modul</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                 <div class="box_counter counter_white text-center">
-                    <i class="ti-user text_default"></i>
-                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="200" data-speed="1500" data-refresh-interval="5"></span>+</h3>
+                    <i class="ti-user text_default"></i><br>
+                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="{{ $peserta }}" data-speed="1500" data-refresh-interval="5"></span>+</h3>
                     <p>Peserta</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.5s">
                 <div class="box_counter counter_white text-center">
-                    <i class="flaticon-trophy text_default"></i>
+                    <i class="ti-announcement text_default"></i><br>
                     <h3 class="counter_text"><span class="counter" data-from="0" data-to="150" data-speed="1500" data-refresh-interval="5"></span>+</h3>
-                    <p>Awards win</p>
+                    <p>Informasi</p>
                 </div>
             </div>
         </div>

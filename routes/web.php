@@ -157,21 +157,30 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'program.index'
 		]);
 
+		Route::get('program/create', [
+			'uses' => 'ProgramController@create',
+			'as' => 'program.create'
+		]);
+
 		Route::post('program/store', [
 			'uses' => 'ProgramController@store',
 			'as' => 'program.store'
 		]);
 
-		Route::post('program/{id}/update', [
+		Route::get('program/{program}/edit', [
+			'uses' => 'ProgramController@edit',
+			'as' => 'program.edit'
+		]);
+
+		Route::post('program/{program}/update', [
 			'uses' => 'ProgramController@update',
 			'as' => 'program.update'
 		]);
 
-		Route::get('program/{id}/destroy', [
+		Route::get('program/{program}/destroy', [
 			'uses' => 'ProgramController@destroy',
 			'as' => 'program.destroy'
 		]);
-
 
 		// Module 
 		Route::get('module', [

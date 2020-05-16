@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMateriTable extends Migration
+class CreateModulTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateMateriTable extends Migration
      */
     public function up()
     {
-        Schema::create('materi', function (Blueprint $table) {
+        Schema::create('modul', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('modul_id');
+            $table->foreignId('program_id');
             $table->string('judul', 191);
             $table->longtext('deskripsi');
             // $table->text('url'); // Link Embed Youtube
@@ -24,7 +24,7 @@ class CreateMateriTable extends Migration
 
             // Relasi
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('modul_id')->references('id')->on('modul')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('program_id')->references('id')->on('program')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

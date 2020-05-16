@@ -10,12 +10,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-end">
-                        <ul class="social_icons social_white">
-                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                        </ul>
                         <ul class="header_list border_list">
                             <li><a href="{{ route('login') }}" class="nav_btn">Login</a></li>
                             <li><a href="{{ route('registrasi') }}" class="nav_btn btn-default">Daftar</a></li>

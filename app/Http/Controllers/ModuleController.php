@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Module;
 use App\Program;
-use App\Kategori;
 use App\Repositories\Repository;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -26,15 +25,14 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $neko = Module::orderBy('nama_modul','ASC')->get();
+        $neko = Module::latest()->get();
 
-        return view('admin.module.index',compact('neko'));
+        return view('admin.module.index', compact('neko'));
     }
 
     public function create()
     {
         $title = 'Tambah Modul';
-        $data['kategori'] = Kategori::all();
         $data['program'] = Program::all();
 
         return view('admin.module.create',compact('title','data'));

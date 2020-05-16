@@ -12,4 +12,8 @@ class Kategori extends Model
     public function Module(){
     	return $this->hasMany('App\Module');
     }
+
+    public function Program(){
+    	return $this->hasMany('App\Program');
+    }
 }
