@@ -168,23 +168,23 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                 <div class="box_counter counter_white text-center">
-                    <i class="flaticon-book text_default"></i>
+                    <i class="ti-clipboard text_default"></i>
                     <h3 class="counter_text"><span class="counter" data-from="0" data-to="280" data-speed="1500" data-refresh-interval="5"></span>+</h3>
-                    <p>Courses</p>
+                    <p>Program</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                 <div class="box_counter counter_white text-center">
-                    <i class="flaticon-student text_default"></i>
+                    <i class="ti-book text_default"></i>
                     <h3 class="counter_text"><span class="counter" data-from="0" data-to="1350" data-speed="1500" data-refresh-interval="5"></span>+</h3>
-                    <p>Students</p>
+                    <p>Modul</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
                 <div class="box_counter counter_white text-center">
-                    <i class="flaticon-teacher text_default"></i>
+                    <i class="ti-user text_default"></i>
                     <h3 class="counter_text"><span class="counter" data-from="0" data-to="200" data-speed="1500" data-refresh-interval="5"></span>+</h3>
-                    <p>Qualified Staff</p>
+                    <p>Peserta</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.5s">
