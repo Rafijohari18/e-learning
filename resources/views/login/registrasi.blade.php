@@ -67,7 +67,7 @@
                     <div class="heading_s1">
                         <h4>Buat Akun Baru</h4>
                     </div>
-                    <form method="post" action="">
+                    <form method="post" action="{{ route('post.register') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">

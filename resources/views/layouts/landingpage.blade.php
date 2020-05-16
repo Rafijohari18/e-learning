@@ -142,12 +142,19 @@
                             <span>4.0</span> 
                             <span class="badge badge-info"></span>
                         </div>
-                    	<h5 class="courses_title">
+                    
+                            <form action="{{ route('invoice.modul') }}" method="POST">
+                                @csrf
+                            <input type="hidden" name="program_id" value="{{ $mdl->id}}">
+                            <input type="hidden" name="harga" value="{{ $mdl->harga }}">
                             @if(Auth::user() == null)
-                            <a href="{{ route('registrasi') }}">{{ $mdl->nama_modul }}</a></h5>
                             @else
-                            <a href="{{ route('invoice.modul') }}">{{ $mdl->nama_modul }}</a></h5>
+                            <input type="text" name="user_id" value="{{ Auth::user()['id'] }}">
                             @endif
+                            
+                            <button type="submit" class="btn btn-primary btn-sm">{{ $mdl->nama_program }}</button>
+                        
+                            </form>
                         <p>
                             {!! Str::limit($mdl->deskripsi, 50, '...') !!}
                         </p>
@@ -181,7 +188,7 @@
             <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
                 <div class="box_counter counter_white text-center">
                     <i class="ti-book text_default"></i><br>
-                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="{{ $module->count() }}" data-speed="1500" data-refresh-interval="5"></span>+</h3>
+                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="" data-speed="1500" data-refresh-interval="5"></span>+</h3>
                     <p>Modul</p>
                 </div>
             </div>
