@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Module;
-use App\Konten;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +25,6 @@ use App\Konten;
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
-// Landing Page
-Route::get('/', function () {
-	$konten = Konten::latest()->limit(8)->get();
-	$module = Module::latest()->limit(3)->get();
-
-	return view('layouts.landingpage', compact('konten','module'));
-});
-
 // Login
 Route::get('login', [
 	'uses' => 'AuthController@login',
@@ -55,6 +45,12 @@ Route::get('logout', [
 Route::get('registrasi', function () {
 	return view('login.registrasi');
 })->name('registrasi');
+
+// Landing Page
+Route::get('/', [
+	'uses' => 'SiteController@beranda',
+	'as' => 'beranda'
+]);
 
 // Admin
 Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
