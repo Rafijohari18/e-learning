@@ -11,64 +11,19 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">{{ $title }}</h4>
+                <h4 class="mt-0 header-title">Tambah Modul</h4>
                 <hr>
-                <form action="{{ route('module.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="judul">Nama Program</label>
-                        <select name="program" class="form-control">
-                            @foreach($data['program'] as $value)
-                            <option value="{{ $value->id }}">{{ $value->nama_program }}</option>
-                            @endforeach
-                        </select>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="judul">Kategori</label>
-                        <select name="kategori" class="form-control">
-                           @foreach($data['kategori'] as $value)
-                           <option value="{{ $value->id }}">{{ $value->nama_kategori }}</option>
-                           @endforeach
-                       </select>
-                       
-                   </div>
-
-                   <div class="form-group">
-                    <label for="judul">Nama Modul</label>
-                    <input type="text" class="form-control" name="modul" id="modul" required="" placeholder="Masukkan Nama Modul" minlength="5" maxlength="191">
-
+                <form action="{{ route('materi.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="module_id" value="">
+                <div class="form-group">
+                    <label for="judul">Judul</label>
+                    <input type="text" class="form-control" name="judul" id="judul" required="" placeholder="Masukkan Judul"  maxlength="191">
                 </div>
 
                 <div class="form-group">
-                    <label for="judul">Harga</label>
-                    <input type="number" class="form-control" name="harga" id="harga" required="" placeholder="Masukkan Harga"  maxlength="191">
-
-                </div>
-
-                <div class="form-group">
-                    <label for="judul">Diskon</label>
-                    <input type="number" class="form-control" name="diskon" id="diskon" placeholder="Masukkan Diskon">
-                     <code class="highlighter-rouge">*Cukup masukan angka</code>
-                </div>
-
-                  <div class="form-group">
-                    <label for="judul">Durasi</label>
-                    <input type="text" class="form-control" name="durasi" id="durasi" placeholder="Masukkan Durasi">
-                   
-                </div>
-
-
-                <div class="form-group">
-                    <label for="artikel">Deskripsi</label>
+                    <label for="artikel">Konten</label>
                     <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required=""></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="path">Banner</label>
-                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary" required="">   
-
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

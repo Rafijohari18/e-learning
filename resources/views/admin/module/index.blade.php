@@ -16,7 +16,7 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="float-right">
-                    <a class="btn btn-sm btn-primary waves-effect waves-light add" href="">Tambah Data</a>
+                    <a class="btn btn-sm btn-primary waves-effect waves-light add" href="{{ route('module.create') }}">Tambah Data</a>
                 </div>
                 <h4 class="mt-0 header-title">Modul</h4>
                 <br>
@@ -27,12 +27,26 @@
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Program</th>
-                                <th>Created At</th>
+                                <th>Created By</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-striped">
-                            
+                            @forelse($neko as $jquin)
+                            <tr>
+                              <td>{{ $loop->iteration }}</td>
+                              <td>{{ $jquin->judul }}</td>
+                              <td>{{ $jquin->program->nama_program }}</td>
+                              <td>{{ $jquin->user->nama_lengkap }}</td>
+                              <td>
+                                <a href="" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
+                              </td>
+                            </tr>
+                            @empty
+                            <tr>
+                              <td colspan="5"><b><i>Tidak Ada Modul Untuk Ditampilkan</i></b></td>
+                            </tr>
+                            @endforelse
                       </tbody>
                   </table>
               </div>
