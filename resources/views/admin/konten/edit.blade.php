@@ -26,9 +26,9 @@
 
                     @if($konten->path != NULL)
                     <div class="form-group">
-                        <label for="">File Sebelumnya</label>
+                        <label for="">Thumbnail Sebelumnya</label>
                         <br>
-                        <span class="text-muted"><i class="ti-file"></i> <a href="{{ route('konten.download', $konten->path) }}">Download</a></span>
+                        <img src="{{ asset('storage/'.$konten->path) }}" alt="banner" class="img-thumbnail" style="width: 20%; height: 20%;">
 
                         <input type="hidden" name="fileOri" value="{{ $konten->path }}">
                     </div>
@@ -37,7 +37,7 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="path">File</label>
+                        <label for="path">Thumbnail</label>
                         <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary">
                         <code class="highlighter-rouge">*Boleh Kosong</code>
                     </div>

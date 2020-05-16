@@ -34,7 +34,7 @@
                        
                    </div>
 
-                   <div class="form-group">
+                <div class="form-group">
                     <label for="judul">Nama Modul</label>
                     <input type="text" class="form-control" name="modul" id="modul" required="" placeholder="Masukkan Nama Modul" minlength="5" maxlength="191" value="{{ $data['module']->nama_modul }}">
                 </div>

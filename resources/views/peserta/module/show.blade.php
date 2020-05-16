@@ -25,12 +25,41 @@
             </div>
             <div class="card-footer bg-white">
                  <p class="card-text">
-                    <a href="" class="btn btn-sm btn-primary">Ikuti Pelatihan</a>
+                    <a href="#" data-toggle="modal" data-target="#ikuti" class="btn btn-sm btn-primary">Ikuti Pelatihan</a>
                 </p>
             </div>
         </div>
     </div>
 </div> <!-- end row -->
+
+<!-- modal -->
+<!-- sample modal content -->
+<div id="ikuti" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="myModalLabel">Ikuti Pelatihan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="" method="POST">
+                @csrf
+              <div class="modal-body">
+                  <div class="container-fluid">
+                      <div class="form-group">
+                        <label for="name">Nama Program</label>
+                        <input type="text" placeholder="Masukkan Nama Program" name="nama_program" id="nama_program" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary waves-effect" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light">Simpan</button>
+            </div>
+        </form>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @stop
 
 @section('footer')

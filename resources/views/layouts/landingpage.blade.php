@@ -120,16 +120,17 @@
     	<div class="row justify-content-center">
         	<div class="col-lg-6 col-md-8 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
             	<div class="heading_s1 text-center">
-                	<h2>Program Terbaru</h2>
+                	<h2>Modul Terbaru</h2>
+                    <br>
                 </div>
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
             </div>
         </div>
         <div class="row">
+            @foreach($module as $mdl)
             <div class="col-lg-4 col-md-6">
                 <div class="courses_box radius_all_10 box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                     <div class="courses_img"> 
-                    	<a href="#"><img src="{{asset('landingpage/images/course_img1.jpg')}}" alt="course_img1"/></a>
+                    	<a href="#"><img src="{{asset('storage/'.$mdl->path)}}" alt="course_img1"/></a>
                     </div>
                   	<div class="courses_info">
                         <div class="rating_stars"> 
@@ -139,21 +140,23 @@
                             <i class="ion-android-star"></i> 
                             <i class="ion-android-star-outline"></i> 
                             <span>4.0</span> 
+                            <span class="badge badge-info">{{ $mdl->kategori->nama_kategori }}</span>
                         </div>
-                    	<h5 class="courses_title"><a href="#">Learn Adobe CS5 with Master Collection Course</a></h5>
-                        <div class="courses_teacher"> 
-                            <a href="#"><img src="{{asset('landingpage/images/user1.jpg')}}" alt="user1"><span>Anna Brooks</span></a> 
-                        </div>
+                    	<h5 class="courses_title"><a href="#">{{ $mdl->nama_modul }}</a></h5>
+                        <p>
+                            {!! Str::limit($mdl->deskripsi, 50, '...') !!}
+                        </p>
                         <div class="courses_footer">
                             <ul class="courses_meta">
                                 <li><a href="#" ><i class="ti-user"></i><span>31</span></a></li>
-                                <li><a href="#"><i class="ti-time"></i><span>1 hr 30 min</span></a></li>
+                                <li><a href="#"><i class="ti-time"></i><span>{{ $mdl->durasi_program }}</span></a></li>
                             </ul>
-                            <div class="courses_price"> Price <span>$22</span> </div>
+                            <div class="courses_price"> <span>Rp{{ number_format($mdl->harga, 0, ',', '.') }}</span> </div>
                         </div>
                   	</div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </div> 
@@ -203,31 +206,33 @@
         	<div class="col-lg-6 col-md-8 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
             	<div class="heading_s1 text-center">
                 	<h2>Informasi Terbaru</h2>
+                    <br>
                 </div>
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
             </div>
         </div>
         <div class="row justify-content-center">
+            @foreach($konten as $jquin)
     		<div class="col-lg-4 col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
     			<div class="blog_post blog_style1 box_shadow1">
     				<div class="blog_img"> 
-                    	<a href="#"> <img src="{{asset('landingpage/images/blog_small_img1.jpg')}}" alt="blog_small_img1"> </a> 
+                    	<a href="#"> <img src="@if(empty($jquin->path)) {{ asset('landingpage/images/no-image.png') }} @else {{ asset('storage/'.$jquin->path) }}  @endif" alt="{{ $jquin->judul }}"> </a> 
                         <div class="post_date radius_all_5">
-                        	<h5><span>May, 02</span> 2020</h5> 
+                        	<h5><span>{{ $jquin->created_at->format('F, m') }}</span> {{ $jquin->created_at->format('Y') }}</h5> 
                         </div>	
                     </div>
     				<div class="blog_content">
     					<div class="blog_text">
                             <ul class="list_none blog_meta">
-                                <li><a href="#"><i class="ti-user"></i> <span>By Admin</span></a></li>
-                                <li><a href="#"><i class="ti-comments"></i> <span>2 Comment</span></a></li>
+                                <li><a href="#"><i class="ti-user"></i> <span>{{ $jquin->user->nama_lengkap }}</span></a></li>
+                                <!-- <li><a href="#"><i class="ti-comments"></i> <span>2 Comment</span></a></li> -->
                             </ul>
-                            <h5 class="blog_title"><a href="#">The Master Of Human Happiness</a></h5>
-                            <p>Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this generator on the Internet.</p>
+                            <h5 class="blog_title"><a href="#">{{ $jquin->judul }}</a></h5>
+                            <p>{!! Str::limit($jquin->artikel, 50, '...') !!}</p>
                     	</div>
     				</div>
     			</div>
     		</div>
+            @endforeach
     	</div>
     </div>
 </div>

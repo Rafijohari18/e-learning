@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="path">File</label>
+                        <label for="path">Thumbnail</label>
                         <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary">   
                         <code class="highlighter-rouge">*Boleh Kosong</code>
                     </div>
