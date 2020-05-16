@@ -4,6 +4,8 @@
 
 @section('css')
 <link href="{{asset('assets/plugins/summernote/summernote.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 @stop
 
 @section('content')
@@ -11,71 +13,37 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">{{ $title }}</h4>
+                <h4 class="mt-0 header-title">Edit Modul</h4>
                 <hr>
-                <form action="{{ route('module.update', $data['module']->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="judul">Nama Program</label>
-                        <select name="program" class="form-control">
-                            @foreach($data['program'] as $value)
-                            <option value="{{ $value->id }}" @if($data['module']->program_id == $value->id) selected @endif>{{ $value->nama_program }}</option>
+                <form action="{{ route('module.update', $module->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="module_id" value="">
+                <div class="form-group">
+                    <label for="judul">Judul</label>
+                    <input type="text" class="form-control" name="judul" id="judul" required="" placeholder="Masukkan Judul"  maxlength="191" value="{{ $module->judul }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="program_id">Nama Program</label>
+                    <select class="form-control select2" name="program_id">
+                        <option>Pilih Program</option>
+                        <optgroup label="Nama Program">
+                            @foreach($data['program'] as $jquin)
+                            <option value="{{ $jquin->id }}" @if($module->program_id == $jquin->id) selected @endif>{{ $jquin->nama_program }}</option>
                             @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="kategori">Kategori</label>
-                        <select name="kategori" class="form-control">
-                           @foreach($data['kategori'] as $value)
-                           <option value="{{ $value->id }}" @if($data['module']->kategori_id == $value->id) selected @endif>{{ $value->nama_kategori }}</option>
-                           @endforeach
-                       </select>
-                       
-                   </div>
-
-                <div class="form-group">
-                    <label for="judul">Nama Modul</label>
-                    <input type="text" class="form-control" name="modul" id="modul" required="" placeholder="Masukkan Nama Modul" minlength="5" maxlength="191" value="{{ $data['module']->nama_modul }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="judul">Harga</label>
-                    <input type="number" class="form-control" name="harga" id="harga" required="" placeholder="Masukkan Harga" maxlength="191" value="{{ $data['module']->harga }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="judul">Diskon</label>
-                    <input type="number" class="form-control" name="diskon" id="diskon" placeholder="Masukkan Diskon" value="{{ $data['module']->diskon }}">
-                     <code class="highlighter-rouge">*Cukup masukan angka</code>
-                </div>
-
-                  <div class="form-group">
-                    <label for="judul">Durasi</label>
-                    <input type="text" class="form-control" name="durasi" id="durasi" placeholder="Masukkan Durasi" value="{{ $data['module']->durasi_program }}">
+                        </optgroup>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="artikel">Deskripsi</label>
-                    <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{{ $data['module']->deskripsi }}</textarea>
+                    <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{!! $jquin->deskripsi !!}</textarea>
                 </div>
 
-                 @if($data['module']->path != NULL)
-                    <div class="form-group">
-                        <label for="">Banner Sebelumnya</label>
-                        <br>
-                        <img src="{{ asset('storage/'.$data['module']->path) }}" alt="banner" class="img-thumbnail" style="width: 20%; height: 20%;">
-
-                        <input type="hidden" name="fileOri" value="{{ $data['module']->path }}">
-                    </div>
-                    @else
-                        <input type="hidden" name="fileOri" value="{{ $data['module']->path }}">
-                    @endif
-
                 <div class="form-group">
-                    <label for="path">Banner</label>
-                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary">   
-                     <code class="highlighter-rouge">*Boleh kosong</code>
+                    <label for="link">URL</label>
+                    <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan Judul"  maxlength="191" value="{{ $jquin->link }}">
+                    <code class="highlighter-rouge">*Url Embed Video YouTube</code>
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
@@ -88,6 +56,8 @@
 
 @section('footer')
 <script src="{{asset('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js')}}" type="text/javascript"></script>
 <!-- Parsley js -->
 <script type="text/javascript" src="{{asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
 <!--Summernote js-->

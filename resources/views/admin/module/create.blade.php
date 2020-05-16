@@ -4,6 +4,8 @@
 
 @section('css')
 <link href="{{asset('assets/plugins/summernote/summernote.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 @stop
 
 @section('content')
@@ -13,7 +15,7 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title">Tambah Modul</h4>
                 <hr>
-                <form action="{{ route('materi.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('module.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="module_id" value="">
                 <div class="form-group">
@@ -22,8 +24,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="artikel">Konten</label>
+                    <label for="program_id">Nama Program</label>
+                    <select class="form-control select2" name="program_id">
+                        <option>Pilih Program</option>
+                        <optgroup label="Nama Program">
+                            @foreach($data['program'] as $jquin)
+                            <option value="{{ $jquin->id }}">{{ $jquin->nama_program }}</option>
+                            @endforeach
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="artikel">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required=""></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="link">URL</label>
+                    <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan Judul"  maxlength="191">
+                    <code class="highlighter-rouge">*Url Embed Video YouTube</code>
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
@@ -36,6 +56,8 @@
 
 @section('footer')
 <script src="{{asset('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js')}}" type="text/javascript"></script>
 <!-- Parsley js -->
 <script type="text/javascript" src="{{asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
 <!--Summernote js-->

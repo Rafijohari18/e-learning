@@ -198,12 +198,17 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'module.store'
 		]);
 
-		Route::get('module/{id}/edit', [
+		Route::get('module/{module}/show', [
+			'uses' => 'ModuleController@show',
+			'as' => 'module.show'
+		]);
+
+		Route::get('module/{module}/edit', [
 			'uses' => 'ModuleController@edit',
 			'as' => 'module.edit'
 		]);
 
-		Route::post('module/{id}/update', [
+		Route::post('module/{module}/update', [
 			'uses' => 'ModuleController@update',
 			'as' => 'module.update'
 		]);
@@ -223,7 +228,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'uses' => 'MateriController@create',
 			'as' => 'materi.create'
 		]);
-
 
 		Route::post('materi/store', [
 			'uses' => 'MateriController@store',

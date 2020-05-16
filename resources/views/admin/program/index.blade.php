@@ -42,7 +42,7 @@
                              <td>{{ $jquin->nama_program }}</td>
                              <td>{{ $jquin->kategori->nama_kategori }}</td>
                              <td>{{ $jquin->harga }}</td>
-                             <td>{{ $jquin->diskon }}</td>
+                             <td>@if(empty($jquin->diskon)) 0% @else {{ $jquin->diskon }}% @endif</td>
                              <td>{{ $jquin->created_at->format('d F Y') }}</td>
                              <td>
                                  <a href="{{ route('program.edit', $jquin->id) }}" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>

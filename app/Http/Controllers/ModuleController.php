@@ -32,10 +32,9 @@ class ModuleController extends Controller
 
     public function create()
     {
-        $title = 'Tambah Modul';
         $data['program'] = Program::all();
 
-        return view('admin.module.create',compact('title','data'));
+        return view('admin.module.create',compact('data'));
     }
 
     /**
@@ -43,23 +42,14 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function store(Request $request)
+    public function store(Request $request)
     {
-       if (empty($request->path)) {
-            $fileMove = 'default.png';
-        } else {
-            $fileMove = Storage::disk('public')->putFile('module',$request->file('path'));
-        }
         $neko = array(
             'user_id' => Auth::user()->id,
-            'program_id' => $request->program,
-            'kategori_id' => $request->kategori,
-            'nama_modul' => $request->modul,
+            'program_id' => $request->program_id,
+            'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga,
-            'durasi_program' => $request->durasi,
-            'diskon' => $request->diskon,
-            'path' => $fileMove,
+            'link' => $request->link
         );
 
         Module::create($neko);
@@ -67,41 +57,29 @@ class ModuleController extends Controller
         return redirect()->route('module.index')->with('store','');
     }
 
-    public function edit($id)
+    public function show(Module $module)
     {
-        $title = 'Edit Modul';
-        $data['kategori'] = Kategori::all();
-        $data['program'] = Program::all();
-        $data['module'] = Module::find($id);
-
-        return view('admin.module.edit',compact('title','data'));
+        return view('admin.module.show', compact('module'));
     }
 
-   
-    public function update(Request $request, $id)
+    public function edit(Module $module)
     {
-       $fileOri = $request->file('path');
-       
-        if (empty($request->path)) {
-            $fileMove = $request->fileOri;
-        } else {
-            Storage::delete('public/'.$request->fileOri);
-            $fileMove = Storage::disk('public')->putFile('module', $fileOri);
-        }
+        $data['program'] = Program::all();
 
-        $neko = [
+        return view('admin.module.edit',compact('module','data'));
+    }
+   
+    public function update(Request $request, Module $module)
+    {
+        $neko = array(
             'user_id' => Auth::user()->id,
-            'program_id' => $request->program,
-            'kategori_id' => $request->kategori,
-            'nama_modul' => $request->modul,
+            'program_id' => $request->program_id,
+            'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'harga' => $request->harga,
-            'durasi_program' => $request->durasi,
-            'diskon' => $request->diskon,
-            'path' => $fileMove,
-        ];
+            'link' => $request->link,
+        );
 
-        $jquin = Module::findOrFail($id);
+        $jquin = Module::findOrFail($module->id);
         $jquin->update($neko);
 
         return redirect()->route('module.index')->with('update','');
@@ -115,7 +93,6 @@ class ModuleController extends Controller
      */
     public function destroy(Module $module)
     {
-        Storage::delete('public/'.$module->path);
         $this->model->delete($module->id);
 
         return back()->with('destroy','Module Succes Delete !');

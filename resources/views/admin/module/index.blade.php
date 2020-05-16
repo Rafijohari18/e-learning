@@ -39,7 +39,9 @@
                               <td>{{ $jquin->program->nama_program }}</td>
                               <td>{{ $jquin->user->nama_lengkap }}</td>
                               <td>
-                                <a href="" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
+                                <a href="{{ route('module.show', $jquin->id) }}" data-toggle="tooltip" data-placement="top" title="Detail Modul" class="btn btn-sm btn-info"><i class="ti-eye"></i></a>
+                                <a href="{{ route('module.edit', $jquin->id) }}" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
+                                <a href="#" onclick="destroy({{ $jquin->id }},'{{ $jquin->judul }}','{{ $jquin->program->nama_program }}');" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
                               </td>
                             </tr>
                             @empty
@@ -54,69 +56,6 @@
       </div>
   </div> <!-- end col -->
 </div> <!-- end row -->
-
-<!-- modal -->
-<!-- sample modal content -->
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title mt-0" id="myModalLabel">Program Tambah</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <form action="{{ Route('program.store') }}" method="POST">
-              {{ csrf_field() }}
-              <div class="modal-body">
-                  <div class="container-fluid">
-                      <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="nama_program" id="nama_program" class="form-control" required>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
-            </div>
-        </form>
-    </div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<div id="modaledit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title mt-0" id="myModalLabel">Program Edit</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <form action="" method="POST" id="editform">
-                @csrf
-                @method('POST')
-                <div class="modal-body">
-                  <div class="container-fluid">
-                      <div class="form-group">
-                        <label for="name">Nama program</label>
-                        <input type="text" name="nama_program" id="nama_program" class="form-control" required>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
-            </div>
-        </form>
-    </div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
 @stop
 
 @section('footer')
@@ -130,47 +69,16 @@
 
 <!-- Destroy -->
 <script>
-    function destroy(id,nama) {
-        alertify.confirm("Hapus Program "+nama+"?", function (ev) {
+    function destroy(id,judul,program) {
+        alertify.confirm("Hapus Modul "+judul+" Dengan Program "+program+"?", function (ev) {
             ev.preventDefault();
-            window.location = "program/"+ id +"/destroy";
+            window.location = "module/"+ id +"/destroy";
 
         }, function(ev) {
             ev.preventDefault();
             alertify.error("Batal!");
         });
     }
-
-
-    function editdata(id)
-    {
-        var id = id;
-        var url = '{{ route("materi.update", ":id") }}';
-        url = url.replace(':id', id);
-        $("#editform").attr('action', url);
-    }
-
-    function editSubmit()
-    {
-        $("#editform").submit();
-    }
-
-
-    $('.editbtn').click(function(){
-        var nama_program = $(this).data('nama_program');
-
-
-        $('.modal-body #nama_program').val(nama_program);
-
-
-    });
-
-    $('.add').click(function(){
-
-        $('.modal-body #nama_program').val('');
-
-
-    });
 
 </script>
 @stop
