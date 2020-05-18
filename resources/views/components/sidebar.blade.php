@@ -46,7 +46,7 @@
                  <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Data Peserta <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
-                        <li><a href="ui-buttons.html">Umum</a></li>
+                        <li><a href="{{ route('peserta.indexUmum') }}">Umum</a></li>
                         <li><a href="ui-cards.html">Prakerja</a></li>
                     </ul>
                 </li>

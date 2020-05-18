@@ -10,8 +10,8 @@ class Peserta extends Model
     protected $guarded = [];
 
     // Relasi
-	// public function program()
-	// {
-	//  	return $this->belongsToMany(Program::class);
-	// }
+    public function user()
+    {
+    	return $this->belongsTo(User::class);
+    }
 }

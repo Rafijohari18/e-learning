@@ -25,6 +25,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
+// Landing Page
+Route::get('/', [
+	'uses' => 'SiteController@beranda',
+	'as' => 'beranda'
+]);
 
 // Login
 Route::get('login', [
@@ -50,12 +55,6 @@ Route::get('registrasi', function () {
 Route::post('register', [
 	'uses' => 'AuthController@register',
 	'as' => 'post.register'
-]);
-
-// Landing Page
-Route::get('/', [
-	'uses' => 'SiteController@beranda',
-	'as' => 'beranda'
 ]);
 
 // Admin
@@ -140,7 +139,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'quiz.store'
 		]);
 
-
 		Route::get('quiz/edit/{id}/{modul}', [
 			'uses' => 'QuizController@edit',
 			'as' => 'quiz.edit'
@@ -156,6 +154,21 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'quiz.destroy'
 		]);
 
+		// Peserta Umum
+		Route::get('data-peserta/umum', [
+			'uses' => 'PesertaController@index',
+			'as' => 'peserta.indexUmum'
+		]);
+
+		Route::get('detail-peserta/{peserta}/umum', [
+			'uses' => 'PesertaController@show',
+			'as' => 'peserta.showUmum'
+		]);
+
+		Route::get('peserta/{user}/destroy', [
+			'uses' => 'PesertaController@destroy',
+			'as' => 'peserta.destroy'
+		]);
 
 		// Program 
 		Route::get('program', [
