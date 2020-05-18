@@ -42,7 +42,7 @@
 
                 <div class="form-group">
                     <label for="link">URL</label>
-                    <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan Judul"  maxlength="191">
+                    <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan URL"  maxlength="191">
                     <code class="highlighter-rouge">*Url Embed Video YouTube</code>
                 </div>
 

@@ -160,13 +160,6 @@
                             <button type="submit" class="btn btn-default btn-block" name="register">Daftar</button>
                         </div>
                     </form>
-                    <!-- <div class="different_login">
-                        <span> Atau</span>
-                    </div>
-                    <ul class="btn-login list_none text-center">
-                        <li><a href="#" class="btn btn-facebook"><i class="ion-social-facebook"></i>Facebook</a></li>
-                        <li><a href="#" class="btn btn-google"><i class="ion-social-googleplus"></i>Google</a></li>
-                    </ul> -->
                     <div class="form-note text-center">Sudah Punya Akun? <a href="{{ route('login') }}">Login!</a></div>
                 </div>
             </div>

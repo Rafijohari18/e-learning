@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Program;
 use App\Kategori;
+use App\Module;
 use App\Repositories\Repository;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Auth;
+use DB;
 
 class ProgramController extends Controller
 {
@@ -100,6 +102,14 @@ class ProgramController extends Controller
         $this->model->delete($program->id);
 
         return back()->with('destroy','Program Succes Delete !');
+    }
 
+    // Program Halaman Peserta
+    public function indexPeserta()
+    {
+        // $neko = Program::latest()->get();
+        $neko = Module::where('program_id', 4)->orderBy('judul', 'ASC')->get();
+
+        return view('peserta.module.index', compact('neko'));
     }
 }

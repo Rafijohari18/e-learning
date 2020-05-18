@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
+
 // Login
 Route::get('login', [
 	'uses' => 'AuthController@login',
@@ -36,11 +37,6 @@ Route::post('login', [
 	'as' => 'post.login'
 ]);
 
-Route::post('register', [
-	'uses' => 'AuthController@register',
-	'as' => 'post.register'
-]);
-
 Route::get('logout', [
 	'uses' => 'AuthController@logout',
 	'as' => 'logout'
@@ -50,6 +46,11 @@ Route::get('logout', [
 Route::get('registrasi', function () {
 	return view('login.registrasi');
 })->name('registrasi');
+
+Route::post('register', [
+	'uses' => 'AuthController@register',
+	'as' => 'post.register'
+]);
 
 // Landing Page
 Route::get('/', [
@@ -256,8 +257,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		]);
 
 
-
-
 		// Umum
 
 
@@ -304,19 +303,15 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 		]);
 
 		// Modul
-		Route::get('modul', [
-			'uses' => 'ModuleController@indexPeserta',
-			'as' => 'peserta.module'
+		Route::get('program', [
+			'uses' => 'ProgramController@indexPeserta',
+			'as' => 'peserta.program'
 		]);
 
-		Route::get('detail/{module}/modul', [
+		Route::get('detail/{module}/program', [
 			'uses' => 'ModuleController@showModul',
-			'as' => 'module.detail'
+			'as' => 'program.detail'
 		]);
-
-
-
-
 
 		//quiz
 		Route::get('quis', [

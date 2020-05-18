@@ -9,6 +9,7 @@ use App\Repositories\Repository;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Auth;
+use DB;
 
 class ModuleController extends Controller
 {
@@ -99,15 +100,10 @@ class ModuleController extends Controller
     }
 
     // Modul Halaman Peserta
-    public function indexPeserta()
-    {
-        $neko = Module::latest()->get();
-
-        return view('peserta.module.index', compact('neko'));
-    }
-
     public function showModul(Module $module)
     {
-        return view('peserta.module.show', compact('module'));
+        $neko = Module::where('program_id', 4)->orderBy('judul', 'ASC')->get();
+
+        return view('peserta.module.show', compact('module','neko'));
     }
 }

@@ -37,12 +37,12 @@
 
                 <div class="form-group">
                     <label for="artikel">Deskripsi</label>
-                    <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{!! $jquin->deskripsi !!}</textarea>
+                    <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{!! $module->deskripsi !!}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="link">URL</label>
-                    <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan Judul"  maxlength="191" value="{{ $jquin->link }}">
+                    <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan URL"  maxlength="191" value="{{ $module->link }}">
                     <code class="highlighter-rouge">*Url Embed Video YouTube</code>
                 </div>
 

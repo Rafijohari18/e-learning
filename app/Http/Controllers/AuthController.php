@@ -13,7 +13,7 @@ class AuthController extends Controller
 {
     public function login()
     {
-    	return view('login.login');
+    	return view('login.loginPeserta');
     }
 
     public function postLogin(Request $request)
@@ -36,7 +36,6 @@ class AuthController extends Controller
             $a['user_id'] = $cookie['user_id'];
             $a['program_id'] = $cookie['program_id'];
             $a['harga'] = $cookie['harga'];
-
 
             $ProgramPeserta = ProgramPeserta::insert($cookie);
         
@@ -67,7 +66,7 @@ class AuthController extends Controller
             return redirect('login')->with('alert-success','Kamu berhasil Register');
         
         }else{
-
+            // Insert To Table User
             $data =  new User();
             $data->nama_lengkap = $request->nama_lengkap;
             $data->username = $request->username;
@@ -76,8 +75,7 @@ class AuthController extends Controller
             $data->path = 'default.png';
             $data->save();
 
-
-
+            // Insert To Table Peserta
             $peserta = new Peserta();
             $peserta->user_id = $cookie['user_id'];
             $peserta->nik = $request->nik;
