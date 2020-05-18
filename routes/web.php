@@ -256,6 +256,10 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'materi.destroy'
 		]);
 
+		// Module 
+		
+
+
 
 		// Umum
 
@@ -313,13 +317,27 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'program.detail'
 		]);
 
+		//invoice
+		Route::get('invoice', [
+			'uses' => 'Peserta\InvoiceController@list',
+			'as' => 'peserta.list'
+		]);
+
+		Route::get('invoice/show', [
+			'uses' => 'Peserta\InvoiceController@show',
+			'as' => 'peserta.invoice'
+		]);
+
+		Route::get('invoice/detail/{id}', [
+			'uses' => 'Peserta\InvoiceController@detail',
+			'as' => 'peserta.detail'
+		]);
+
 		//quiz
 		Route::get('quis', [
 			'uses' => 'Peserta\QuisController@index',
 			'as' => 'peserta.quis'
 		]);
-
-
 
 	});
 
@@ -347,13 +365,11 @@ Route::get('/{slug}/artikel', [
 	'as' => 'informasi.slug'
 ]);
 
-
-		//invoice
+//invoice
 Route::post('invoice', [
 	'uses' => 'Peserta\invoiceController@index',
 	'as' => 'invoice.modul'
 ]);
-
 
 //CONFIG
 Route::get('/clear-cache', function() {

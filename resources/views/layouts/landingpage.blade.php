@@ -149,7 +149,7 @@
                             <input type="hidden" name="harga" value="{{ $mdl->harga }}">
                             @if(Auth::user() == null)
                             @else
-                            <input type="text" name="user_id" value="{{ Auth::user()['id'] }}">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()['id'] }}">
                             @endif
                             
                             <button type="submit" class="btn btn-primary btn-sm">{{ $mdl->nama_program }}</button>
