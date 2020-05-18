@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Program;
+use App\ProgramPeserta;
 use App\Kategori;
 use App\Module;
 use App\Repositories\Repository;
@@ -107,9 +108,16 @@ class ProgramController extends Controller
     // Program Halaman Peserta
     public function indexPeserta()
     {
-        // $neko = Program::latest()->get();
-        $neko = Module::where('program_id', 4)->orderBy('judul', 'ASC')->get();
+        $neko = ProgramPeserta::where('user_id', auth()->user()->id)->get();
 
         return view('peserta.module.index', compact('neko'));
+    }
+
+    public function readModul(Program $program)
+    {
+        $neko = Module::where('program_id', $program->id)->orderBy('judul', 'ASC')->get();
+        $modul = Module::where('program_id', $program->id)->orderBy('judul','ASC')->first();
+
+        return view('peserta.module.show', compact('modul','neko'));
     }
 }

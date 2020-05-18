@@ -72,17 +72,12 @@
                     <a href="{{ route('peserta.quis') }}" class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis </span></a>
                 </li>
 
-                 <li>
-                    <a href="{{ route('peserta.list')}}" class="waves-effect"><i class="ti-medall"></i><span> List Invoice </span></a>
-                </li>
-
-
                 <li>
                     <a href="" class="waves-effect"><i class="ti-medall"></i><span> Sertifikat </span></a>
                 </li>
 
                 <li>
-                    <a href="" class="waves-effect"><i class="ti-wallet"></i><span> Riwayat Transaksi </span></a>
+                    <a href="{{ route('peserta.list')}}" class="waves-effect"><i class="ti-wallet"></i><span> Riwayat Transaksi </span></a>
                 </li>
                 @endif
             </ul>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ $module->judul }}
+    {{ $modul->judul }}
 @stop
 
 @section('css')
@@ -13,24 +13,23 @@
     <div class="col-lg-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">{{ $module->judul }}</h4>
+                <h4 class="mt-0 header-title">{{ $modul->judul }}</h4>
                 <hr><br>
                 
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <!-- 16:9 aspect ratio -->
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="{{ $module->link }}"></iframe>
+                        <div class="embed-responsive embed-responsive-16by9 img-thumbnail">
+                            <iframe class="embed-responsive-item" src="{{ $modul->link }}"></iframe>
                         </div>
                     </div>
                 </div>
-                <p class="text-muted m-b-30 font-14">{!! $module->deskripsi !!}</p>
+                <p class="text-muted m-b-30 font-14">{!! $modul->deskripsi !!}</p>
             </div>
             <div class="card-footer bg-white">
                 <div class="float-right">
                     <a href="" class="btn btn-sm btn-primary">Selanjutnya <i class="ti-angle-double-right"></i></a>
                 </div>
-                <a href="" class="btn btn-sm btn-primary"><i class="ti-angle-double-left"></i> Sebelumnya</a>
             </div>
         </div>
     </div> <!-- end col -->

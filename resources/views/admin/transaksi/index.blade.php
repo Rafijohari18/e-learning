@@ -11,6 +11,8 @@
 @stop
 
 @section('content')
+<!-- Convert Waktu -->
+<?php setlocale(LC_ALL, 'id-ID', 'id_ID'); ?>
 <div class="row">
     <div class="col-12">
         <div class="card m-b-30">
@@ -23,13 +25,43 @@
                         <tr>
                             <th>No</th>
                             <th>#Invoice</th>
-                            <th>Nama Lengkap</th>
-                            <th>No Telpon</th>
+                            <th>Nama Peserta</th>
+                            <th>Program</th>
+                            <th>Status</th>
+                            <th>Tanggal Transaksi</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody class="table-striped">
-                        
+                        @forelse($neko as $jquin)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $jquin->kode_invoice }}</td>
+                            <td>{{ $jquin->user->nama_lengkap }}</td>
+                            <td>{{ $jquin->program->nama_program }}</td>
+                            <td>
+                                @if($jquin->status == 'Diverifikasi')
+                                <span class="badge badge-success">{{ $jquin->status }}</span>
+                                @else
+                                <span class="badge badge-info">{{ $jquin->status }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                <?php echo strftime("%A, %d %B %Y", strtotime($jquin->created_at)) . "\n"; ?>
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-sm btn-info" data-toggle="tooltip" data-placmenent="top" title="Struk Pembayaran"><i class="ti-email"></i></a>
+                                @if($jquin->status != 'Diverifikasi')
+                                <a href="{{ route('transaksi.update', $jquin->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placmenent="top" title="Verifikasi Transaksi {{ $jquin->user->nama_lengkap }}"><i class="ti-check"></i></a>
+                                @endif
+                                <a href="" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan=""><b><i>Tidak Ada Transaksi Untuk Ditampilkan</i></b></td>
+                        </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>

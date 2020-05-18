@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transaksi;
+use App\ProgramPeserta;
 
 class TransaksiController extends Controller
 {
@@ -13,7 +15,9 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        return view('admin.transaksi.index');
+        $neko = Transaksi::latest()->get();
+
+        return view('admin.transaksi.index', compact('neko'));
     }
 
     /**
@@ -54,21 +58,24 @@ class TransaksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function update(Transaksi $transaksi)
     {
-        //
-    }
+        // Insert Table ProgramPeserta
+        $pp = ProgramPeserta::create([
+            'user_id' => $transaksi->user_id,
+            'program_id' => $transaksi->program_id,
+            'harga' => $transaksi->program->harga
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        // Update Status Transaksi
+        $neko = [
+            'status' => 'Diverifikasi',
+        ];
+
+        $jquin = Transaksi::findOrFail($transaksi->id);
+        $jquin->update($neko);
+
+        return redirect()->back()->with('verifikasi','');
     }
 
     /**

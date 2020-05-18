@@ -98,12 +98,4 @@ class ModuleController extends Controller
 
         return back()->with('destroy','Module Succes Delete !');
     }
-
-    // Modul Halaman Peserta
-    public function showModul(Module $module)
-    {
-        $neko = Module::where('program_id', 4)->orderBy('judul', 'ASC')->get();
-
-        return view('peserta.module.show', compact('module','neko'));
-    }
 }

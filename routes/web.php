@@ -57,6 +57,12 @@ Route::post('register', [
 	'as' => 'post.register'
 ]);
 
+// Sites
+Route::get('informasi', [
+	'uses' => 'SiteController@informasi',
+	'as' => 'informasi'
+]);
+
 // Admin
 Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 {
@@ -286,6 +292,11 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'transaksi.index'
 		]);
 
+		Route::get('transaksi/{transaksi}/update', [
+			'uses' => 'TransaksiController@update',
+			'as' => 'transaksi.update'
+		]);
+
 
 		// Pengguna
 		Route::get('pengguna', [
@@ -325,31 +336,31 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'peserta.program'
 		]);
 
-		Route::get('detail/{module}/program', [
-			'uses' => 'ModuleController@showModul',
-			'as' => 'program.detail'
-		]);
-
-		//invoice
-		Route::get('invoice', [
-			'uses' => 'Peserta\InvoiceController@list',
-			'as' => 'peserta.list'
-		]);
-
-		Route::get('invoice/show', [
-			'uses' => 'Peserta\InvoiceController@show',
-			'as' => 'peserta.invoice'
-		]);
-
-		Route::get('invoice/detail/{id}', [
-			'uses' => 'Peserta\InvoiceController@detail',
-			'as' => 'peserta.detail'
+		Route::get('modul/{program}/read', [
+			'uses' => 'ProgramController@readModul',
+			'as' => 'program.read'
 		]);
 
 		//quiz
 		Route::get('quis', [
 			'uses' => 'Peserta\QuisController@index',
 			'as' => 'peserta.quis'
+		]);
+
+		//Transaksi
+		Route::get('transaksi', [
+			'uses' => 'Peserta\InvoiceController@list',
+			'as' => 'peserta.list'
+		]);
+
+		Route::get('transaksi/invoice/show', [
+			'uses' => 'Peserta\InvoiceController@show',
+			'as' => 'peserta.invoice'
+		]);
+
+		Route::get('transaksi/invoice/detail/{id}', [
+			'uses' => 'Peserta\InvoiceController@detail',
+			'as' => 'peserta.detail'
 		]);
 
 	});

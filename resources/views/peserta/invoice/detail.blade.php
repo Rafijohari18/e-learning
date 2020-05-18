@@ -14,7 +14,7 @@
                         <div class="invoice-title">
                             <h4 class="pull-right font-16"><strong></strong></h4>
                             <h3 class="mt-0">
-                                <img src="assets/images/logo_dark.png" alt="logo" height="26"/>
+                                <img src="{{asset('assets/images/logo_dark.png')}}" alt="logo" height="26"/>
                             </h3>
                         </div>
                         <hr>

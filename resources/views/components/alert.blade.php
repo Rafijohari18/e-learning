@@ -29,3 +29,9 @@
     @endif
 </script>
 
+<!-- Transaksi -->
+<script>
+    @if(Session::has('verifikasi'))
+        alertify.success("Transaksi Berhasil Diverifikasi");
+    @endif
+</script>

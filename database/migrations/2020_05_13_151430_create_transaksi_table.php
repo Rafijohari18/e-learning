@@ -15,9 +15,11 @@ class CreateTransaksiTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_invoice', 20);
             $table->foreignId('user_id');
             $table->foreignId('program_id');
             $table->string('status', 40);
+            $table->integer('harga');
             $table->timestamps();
 
             // Relasi

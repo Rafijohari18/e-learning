@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Materi')
+@section('title','Modul')
 
 @section('css')
 <!-- DataTables -->

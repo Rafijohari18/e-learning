@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+<?php setlocale(LC_ALL, 'id-ID', 'id_ID'); ?>
 <div class="row">
     <div class="col-12">
         <div class="card m-b-30">
@@ -18,7 +19,7 @@
                 <div class="float-right">
                 
                 </div>
-                <h4 class="mt-0 header-title">Data Invoice {{ Auth::user()->nama_lengkap }}</h4>
+                <h4 class="mt-0 header-title">Data Invoice - {{ Auth::user()->nama_lengkap }}</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
@@ -26,35 +27,45 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Program</th>
+                            <th>Kategori</th>
+                            <th>Status</th>
+                            <th>Tanggal Transaksi</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody class="table-striped">
-                        @forelse($data['program'] as $jquin)
+                        @forelse($neko as $jquin)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $jquin->program->nama_program }}</td>
+                            <td>{{ $jquin->program->kategori->nama_kategori }}</td>
                             <td>
-                                <a href="{{ route('peserta.detail',['id'=> $jquin->id ])}}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Invoice"><i class="fa fa-eye"></i></a>
-                              
+                                @if($jquin->status == 'Diverifikasi')
+                                <span class="badge badge-success">{{ $jquin->status }}</span>
+                                @else
+                                <span class="badge badge-info">{{ $jquin->status }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                <?php echo strftime("%A, %d %B %Y", strtotime($jquin->created_at)) . "\n"; ?>
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-sm btn-info" data-toggle="tooltip" data-placmenent="top" title="Struk Pembayaran"><i class="ti-email"></i></a>
+                                <a href="{{ route('peserta.detail', $jquin->id)}}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Invoice"><i class="fa fa-eye"></i></a>
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5"><b><i>Tidak Ada Data</i></b></td>
+                            <td colspan="5"><b><i>Tidak Ada Transaksi Untuk Ditampilkan</i></b></td>
                         </tr>
                         @endforelse
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-
-<!-- Modal -->
-<x-pengguna></x-pengguna>
 @stop
 
 @section('footer')

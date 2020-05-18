@@ -33,7 +33,7 @@
                     </li>
 
                     <li class="">
-                       <a class="nav-link" href="index.html">Informasi</a>
+                       <a class="nav-link" href="{{ route('informasi') }}">Informasi</a>
                     </li>
 
                     <li class="">

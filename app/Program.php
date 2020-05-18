@@ -16,7 +16,12 @@ class Program extends Model
  	public function module(){
     	return $this->hasMany('App\Module');
     }
-     public function ProgramPeserta(){
+    
+    public function ProgramPeserta(){
     	return $this->hasMany('App\ProgramPeserta');
+    }
+
+    public function transaksi(){
+        return $this->hasMany(Transaksi::class);
     }
 }

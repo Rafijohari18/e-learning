@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProgramPeserta extends Model
 {
-    protected $table = 'program_peserta';
+    protected $table = 'peserta_program';
     protected $guarded = [];
 
     public function program(){
