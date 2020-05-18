@@ -255,6 +255,10 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'materi.destroy'
 		]);
 
+		// Module 
+		
+
+
 
 
 
@@ -314,9 +318,24 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'module.detail'
 		]);
 
+		//invoice
+		Route::get('invoice', [
+			'uses' => 'Peserta\InvoiceController@list',
+			'as' => 'peserta.list'
+		]);
 
 
+		Route::get('invoice/show', [
+			'uses' => 'Peserta\InvoiceController@show',
+			'as' => 'peserta.invoice'
+		]);
 
+		Route::get('invoice/detail/{id}', [
+			'uses' => 'Peserta\InvoiceController@detail',
+			'as' => 'peserta.detail'
+		]);
+
+	
 
 		//quiz
 		Route::get('quis', [

@@ -16,4 +16,7 @@ class Program extends Model
  	public function module(){
     	return $this->hasMany('App\Module');
     }
+     public function ProgramPeserta(){
+    	return $this->hasMany('App\ProgramPeserta');
+    }
 }
