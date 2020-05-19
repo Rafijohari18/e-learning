@@ -9,6 +9,7 @@ use App\ProgramPeserta;
 use App\Transaksi;
 use Illuminate\Support\Facades\DB;	
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cookie;
 use Auth;
 
@@ -47,14 +48,14 @@ class invoiceController extends Controller
   
   public function show()
   {
-    $data['invoice'] = ProgramPeserta::where('user_id',Auth::user()->id)->orderBy('id','DESC')->first();
+    $data['invoice'] = Transaksi::where('user_id',Auth::user()->id)->orderBy('id','DESC')->first();
     
     return view('peserta.invoice.index',compact('data'));
   }
 
   public function detail($id)
   {
-    $data['invoice'] = ProgramPeserta::where('id',$id)->find($id);
+    $data['invoice'] = Transaksi::where('id',$id)->find($id);
     
     return view('peserta.invoice.detail',compact('data'));
   }
@@ -65,5 +66,35 @@ class invoiceController extends Controller
      $neko = Transaksi::where('user_id',Auth::user()->id)->get();
 
      return view('peserta.invoice.list',compact('neko'));
+  }
+
+  // Upload Struk
+  public function uploadStruk()
+  {
+    $neko = Transaksi::where('user_id', auth()->user()->id)->first();
+
+    return view('peserta.invoice.upload', compact('neko'));
+  }
+
+  public function updateStruk(Request $request, Transaksi $transaksi)
+  {
+    $fileMove = Storage::disk('public')->putFile('invoice',$request->file('path'));
+
+    $neko = [
+      'path' => $fileMove,
+    ];
+
+    $jquin = Transaksi::findOrFail($transaksi->id);
+    $jquin->update($neko);
+
+    return redirect()->route('peserta.list')->with('transaksi','');
+  }
+
+  // Detail Pembayaran
+  public function detailPembayaran()
+  {
+    $transaksi = Transaksi::where('user_id', auth()->user()->id)->first();
+
+    return view('peserta.invoice.detailPembayaran', compact('transaksi'));
   }
 }

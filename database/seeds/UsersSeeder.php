@@ -18,13 +18,5 @@ class UsersSeeder extends Seeder
         	'role' => 'Admin',
             'path' => 'default.png'
         ]);
-
-        DB::table('users')->insert([
-            'nama_lengkap' => 'Peserta',
-            'username' => 'peserta',
-            'password' => bcrypt('peserta'),
-            'role' => 'Peserta',
-            'path' => 'default.png'
-        ]);
     }
 }

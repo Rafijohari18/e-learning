@@ -31,7 +31,7 @@
                             <div class="col-6 text-right">
                                 <address>
                                     <strong>Program To:</strong><br>
-                                   BLK Bonang<br>
+                                    {{ $data['invoice']->program->nama_program }}<br>
                                     1234 Main<br>
                                     Apt. 4B<br>
                                     Springfield, ST 54321
@@ -67,9 +67,9 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <td><strong>No</strong></td>
-                                                <td class="text-center"><strong>Nama Kategori</strong></td>
+                                                <td><strong>#Invoice</strong></td>
                                                 <td class="text-center"><strong>Nama Program</strong></td>
+                                                <td class="text-center"><strong>Kategori</strong></td>
                                                 <td class="text-center"><strong>Harga</strong>
                                                 </td>
                                                
@@ -78,45 +78,38 @@
                                         <tbody>
                                             <!-- foreach ($order->lineItems as $line) or some such thing here -->
                                             <tr>
-                                                <td>1</td>
-                                                <td class="text-center">{{ $data['invoice']->program->kategori->nama_kategori }}</td>
+                                                <td>{{ $data['invoice']->kode_invoice }}</td>
                                                 <td class="text-center">{{ $data['invoice']->program->nama_program }}</td>
-                                                <td class="text-center">Rp. {{ number_format($data['invoice']->harga, 0, ',', '.') }}</td>
-                                              
+                                                <td class="text-center">{{ $data['invoice']->program->kategori->nama_kategori }}</td>
+                                                <td class="text-center">Rp. {{ number_format($data['invoice']->program->harga, 0, ',', '.') }}</td>
                                             </tr>
-                                           
                                             <tr>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line text-center">
                                                     <strong>Subtotal</strong>
                                                 </td>
-                                                    <td class="thick-line text-center">Rp. {{ number_format($data['invoice']->harga, 0, ',', '.') }}</td>
+                                                    <td class="thick-line text-center">Rp. {{ number_format($data['invoice']->program->harga, 0, ',', '.') }}</td>
                                                 </tr>
-                                               
                                                     <tr>
                                                         <td class="no-line"></td>
                                                         <td class="no-line"></td>
                                                         <td class="no-line text-center">
                                                             <strong>Total</strong></td>
-                                                            <td class="no-line text-center"><h4 class="m-0">Rp. {{ number_format($data['invoice']->harga, 0, ',', '.') }}</h4></td>
+                                                            <td class="no-line text-center"><h4 class="m-0">Rp. {{ number_format($data['invoice']->program->harga, 0, ',', '.') }}</h4></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            
                                             <div class="d-print-none">
                                                 <div class="pull-right">
                                                     <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i>&nbsp; Print</a>
-                                                 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div> <!-- end row -->
-                            
                         </div>
                     </div>
                 </div> <!-- end col -->
