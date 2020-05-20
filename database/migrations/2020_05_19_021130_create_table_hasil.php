@@ -18,6 +18,8 @@ class CreateTableHasil extends Migration
             $table->foreignId('user_id');
             $table->integer('program_id');
             $table->integer('hasil');
+            $table->integer('jawaban_benar');
+            $table->integer('jawaban_salah');
             $table->timestamps();
         });
     }

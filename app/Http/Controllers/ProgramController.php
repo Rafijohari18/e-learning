@@ -30,7 +30,7 @@ class ProgramController extends Controller
     public function index()
     {
         $title = 'Program';
-        $data = $this->model->all();
+        $data = Program::latest()->get();
 
         return view('admin.program.index',compact('title','data'));
     }
@@ -105,12 +105,17 @@ class ProgramController extends Controller
         return back()->with('destroy','Program Succes Delete !');
     }
 
-    // Program Halaman Peserta
+    // Program dan Modul Halaman Peserta
     public function indexPeserta()
     {
         $neko = ProgramPeserta::where('user_id', auth()->user()->id)->get();
 
-        return view('peserta.module.index', compact('neko'));
+        return view('peserta.program.index', compact('neko'));
+    }
+
+    public function showProgram(Program $program)
+    {
+        return view('peserta.program.detail', compact('program'));
     }
 
     public function readModul(Program $program)
@@ -119,6 +124,7 @@ class ProgramController extends Controller
         $modul = Module::where('program_id', $program->id)->orderBy('judul','ASC')->first();
         $quis = Program::with('module')->where('id',$program->id)->get();
 
-        return view('peserta.module.show', compact('modul','neko','quis'));
+
+        return view('peserta.program.show', compact('modul','neko','quis'));
     }
 }

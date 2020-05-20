@@ -35,3 +35,9 @@
         alertify.success("Transaksi Berhasil Diverifikasi");
     @endif
 </script>
+
+<script>
+    @if(Session::has('transaksi'))
+        alertify.success("Transaksi Berhasil Diperbarui");
+    @endif
+</script>

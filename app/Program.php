@@ -24,4 +24,7 @@ class Program extends Model
     public function transaksi(){
         return $this->hasMany(Transaksi::class);
     }
+    public function hasil(){
+        return $this->hasMany('App\Hasil');
+    }
 }

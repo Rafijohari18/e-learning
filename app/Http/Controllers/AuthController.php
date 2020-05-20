@@ -7,7 +7,7 @@ use Auth;
 use App\Peserta;
 use App\User;
 use Cookie;
-use App\ProgramPeserta; 
+use App\Transaksi; 
 
 class AuthController extends Controller
 {
@@ -21,10 +21,10 @@ class AuthController extends Controller
         if (unserialize(Cookie::get('hosting'))) {
             $cookie = unserialize(Cookie::get('hosting'));
             if (Auth::attempt($request->only('username','password'))) {
-            if (auth()->user()->role == 'Peserta') {
-                return redirect()->route('peserta.invoice')->with('welcome','');
+                if (auth()->user()->role == 'Peserta') {
+                    return redirect()->route('struk.upload')->with('welcome','');
+                }
             }
-          }
         }else{
             if (Auth::attempt($request->only('username','password'))) {
                 if (auth()->user()->role == 'Admin') {
@@ -42,13 +42,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
        if (unserialize(Cookie::get('hosting'))) {
-        $cookie = unserialize(Cookie::get('hosting'));
-        $a['user_id'] = $cookie['user_id'];
-        $a['program_id'] = $cookie['program_id'];
-        $a['harga'] = $cookie['harga'];
-
-        $ProgramPeserta = ProgramPeserta::insert($cookie);
-
+        // Insert Table User
         $data =  new User();
         $data->nama_lengkap = $request->nama_lengkap;
         $data->username = $request->username;
@@ -57,7 +51,16 @@ class AuthController extends Controller
         $data->path = 'default.png';
         $data->save();
 
+        // Insert Table Transaksi
+        $cookie = unserialize(Cookie::get('hosting'));
+        $a['kode_invoice'] = 'INV-'.mt_rand(100000, 999999).date('s');
+        $a['user_id'] = $data->id;
+        $a['program_id'] = $cookie['program_id'];
+        $a['status'] = 'Menunggu Verifikasi';
 
+        $ProgramPeserta = Transaksi::insert($a);
+
+        // Insert Table Peserta
         $peserta = new Peserta();
         $peserta->user_id = $data->id;
         $peserta->nik = $request->nik;

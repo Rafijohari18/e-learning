@@ -160,22 +160,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'quiz.destroy'
 		]);
 
-		// Peserta Umum
-		Route::get('data-peserta/umum', [
-			'uses' => 'PesertaController@index',
-			'as' => 'peserta.indexUmum'
-		]);
-
-		Route::get('detail-peserta/{peserta}/umum', [
-			'uses' => 'PesertaController@show',
-			'as' => 'peserta.showUmum'
-		]);
-
-		Route::get('peserta/{user}/destroy', [
-			'uses' => 'PesertaController@destroy',
-			'as' => 'peserta.destroy'
-		]);
-
 		// Program 
 		Route::get('program', [
 			'uses' => 'ProgramController@index',
@@ -243,45 +227,52 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'module.destroy'
 		]);
 
-		//Materi
-		Route::get('{id}/materi', [
-			'uses' => 'MateriController@index',
-			'as' => 'materi.index'
-		]);
+		// Materi
+		// Route::get('{id}/materi', [
+		// 	'uses' => 'MateriController@index',
+		// 	'as' => 'materi.index'
+		// ]);
 
-		Route::get('materi/{id}/create', [
-			'uses' => 'MateriController@create',
-			'as' => 'materi.create'
-		]);
+		// Route::get('materi/{id}/create', [
+		// 	'uses' => 'MateriController@create',
+		// 	'as' => 'materi.create'
+		// ]);
 
-		Route::post('materi/store', [
-			'uses' => 'MateriController@store',
-			'as' => 'materi.store'
-		]);
+		// Route::post('materi/store', [
+		// 	'uses' => 'MateriController@store',
+		// 	'as' => 'materi.store'
+		// ]);
 
+		// Route::get('materi/{id}/edit', [
+		// 	'uses' => 'MateriController@edit',
+		// 	'as' => 'materi.edit'
+		// ]);
 
-		Route::get('materi/{id}/edit', [
-			'uses' => 'MateriController@edit',
-			'as' => 'materi.edit'
-		]);
+		// Route::post('materi/{id}/update', [
+		// 	'uses' => 'MateriController@update',
+		// 	'as' => 'materi.update'
+		// ]);
 
-		Route::post('materi/{id}/update', [
-			'uses' => 'MateriController@update',
-			'as' => 'materi.update'
-		]);
-
-		Route::get('materi/{id}/destroy', [
-			'uses' => 'MateriController@destroy',
-			'as' => 'materi.destroy'
-		]);
-
-		// Module 
+		// Route::get('materi/{id}/destroy', [
+		// 	'uses' => 'MateriController@destroy',
+		// 	'as' => 'materi.destroy'
+		// ]);
 		
+		// Peserta Umum
+		Route::get('data-peserta/umum', [
+			'uses' => 'PesertaController@index',
+			'as' => 'peserta.indexUmum'
+		]);
 
+		Route::get('detail-peserta/{peserta}/umum', [
+			'uses' => 'PesertaController@show',
+			'as' => 'peserta.showUmum'
+		]);
 
-
-		// Umum
-
+		Route::get('peserta/{user}/destroy', [
+			'uses' => 'PesertaController@destroy',
+			'as' => 'peserta.destroy'
+		]);
 
 		// Prakerja 
 
@@ -292,11 +283,20 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'transaksi.index'
 		]);
 
+		Route::get('transaksi/{transaksi}/show', [
+			'uses' => 'TransaksiController@show',
+			'as' => 'transaksi.show'
+		]);
+
 		Route::get('transaksi/{transaksi}/update', [
 			'uses' => 'TransaksiController@update',
 			'as' => 'transaksi.update'
 		]);
 
+		Route::get('transaksi/{transaksi}/destroy', [
+			'uses' => 'TransaksiController@destroy',
+			'as' => 'transaksi.destroy'
+		]);
 
 		// Pengguna
 		Route::get('pengguna', [
@@ -331,13 +331,20 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'peserta.dashboard'
 		]);
 
-		// Modul
+		// Program
 		Route::get('program', [
 			'uses' => 'ProgramController@indexPeserta',
 			'as' => 'peserta.program'
 		]);
 
-		Route::get('modul/{program}', [
+
+		Route::get('detail/{program}/show', [
+			'uses' => 'ProgramController@showProgram',
+			'as' => 'program.detail'
+		]);
+
+		// Modul
+		Route::get('modul/{program}/read', [
 			'uses' => 'ProgramController@readModul',
 			'as' => 'program.read'
 		]);
@@ -345,6 +352,11 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 		Route::post('quis/tambah/{id}', [
 			'uses' => 'Peserta\QuisController@tambah',
 			'as' => 'quis.tambah'
+		]);
+
+		Route::get('quis/hasil', [
+			'uses' => 'Peserta\QuisController@hasil',
+			'as' => 'quis.hasil'
 		]);
 
 	
@@ -357,16 +369,26 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'peserta.list'
 		]);
 
-		Route::get('transaksi/invoice/show', [
-			'uses' => 'Peserta\InvoiceController@show',
-			'as' => 'peserta.invoice'
-		]);
-
 		Route::get('transaksi/invoice/detail/{id}', [
 			'uses' => 'Peserta\InvoiceController@detail',
 			'as' => 'peserta.detail'
 		]);
 
+		Route::get('transaksi/detail/pembayaran', [
+			'uses' => 'Peserta\InvoiceController@detailPembayaran',
+			'as' => 'detail.pembayaran'
+		]);
+
+		// Upload Struk
+		Route::get('upload/struk/pembayaran', [
+			'uses' => 'Peserta\InvoiceController@uploadStruk',
+			'as' => 'struk.upload'
+		]);
+
+		Route::post('upload/struk/pembayaran/{transaksi}/update', [
+			'uses' => 'Peserta\InvoiceController@updateStruk',
+			'as' => 'struk.update'
+		]);
 	});
 
 	// Ganti Kata Sandi

@@ -19,7 +19,8 @@ class CreateTransaksiTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('program_id');
             $table->string('status', 40);
-            $table->integer('harga');
+            $table->integer('harga')->nullable();
+            $table->string('path', 191)->nullable();
             $table->timestamps();
 
             // Relasi

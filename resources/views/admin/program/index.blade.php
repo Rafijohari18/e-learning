@@ -41,7 +41,7 @@
                              <td>{{ $loop->iteration }}</td>
                              <td>{{ $jquin->nama_program }}</td>
                              <td>{{ $jquin->kategori->nama_kategori }}</td>
-                             <td>{{ $jquin->harga }}</td>
+                             <td>Rp. {{ number_format($jquin->harga, 0, ',', '.') }}</td>
                              <td>@if(empty($jquin->diskon)) 0% @else {{ $jquin->diskon }}% @endif</td>
                              <td>{{ $jquin->created_at->format('d F Y') }}</td>
                              <td>

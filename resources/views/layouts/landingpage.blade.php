@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="" name="author">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- SITE TITLE -->
+<title>E-learning Your Company</title>
 <x-lphead></x-lphead>
 
 <body>
@@ -84,7 +94,7 @@
     	<div class="row justify-content-center">
         	<div class="col-lg-6 col-md-8 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
             	<div class="heading_s1 text-center">
-                	<h2>Program Terbaru</h2>
+                	<h2>Program</h2>
                     <br>
                 </div>
             </div>
@@ -106,9 +116,8 @@
                             <span>4.0</span> 
                             <span class="badge badge-info"></span>
                         </div>
-                    
                             <form action="{{ route('invoice.modul') }}" method="POST">
-                                @csrf
+                            @csrf
                             <input type="hidden" name="program_id" value="{{ $mdl->id}}">
                             <input type="hidden" name="harga" value="{{ $mdl->harga }}">
                             @if(Auth::user() == null)
@@ -124,8 +133,8 @@
                         </p>
                         <div class="courses_footer">
                             <ul class="courses_meta">
-                                <li><a href="#" ><i class="ti-user"></i><span>31</span></a></li>
-                                <li><a href="#"><i class="ti-time"></i><span>{{ $mdl->durasi_program }}</span></a></li>
+                                <li><i class="ti-user"></i><span>31</span></li>
+                                <li><i class="ti-time"></i><span>{{ $mdl->durasi_program }}</span></li>
                             </ul>
                             <div class="courses_price"> <span>Rp{{ number_format($mdl->harga, 0, ',', '.') }}</span> </div>
                         </div>
@@ -137,43 +146,6 @@
     </div>
 </div> 
 <!-- END SECTION CLASSES-->
-
-<!-- START SECTION COUNTER --> 
-<div class="section counter_wrap overlay_bg_70 parallax_bg" data-parallax-bg-image="assets/images/counter_bg.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                <div class="box_counter counter_white text-center">
-                    <i class="ti-clipboard text_default"></i><br>
-                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="{{ $program }}" data-speed="1500" data-refresh-interval="5"></span>+</h3>
-                    <p>Program</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.3s">
-                <div class="box_counter counter_white text-center">
-                    <i class="ti-book text_default"></i><br>
-                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="" data-speed="1500" data-refresh-interval="5"></span>+</h3>
-                    <p>Modul</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
-                <div class="box_counter counter_white text-center">
-                    <i class="ti-user text_default"></i><br>
-                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="{{ $peserta }}" data-speed="1500" data-refresh-interval="5"></span>+</h3>
-                    <p>Peserta</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-6 animation" data-animation="fadeInUp" data-animation-delay="0.5s">
-                <div class="box_counter counter_white text-center">
-                    <i class="ti-announcement text_default"></i><br>
-                    <h3 class="counter_text"><span class="counter" data-from="0" data-to="150" data-speed="1500" data-refresh-interval="5"></span>+</h3>
-                    <p>Informasi</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END SECTION COUNTER -->
 
 <!-- START SECTION INFORMASI -->
 <div class="section pb_70">

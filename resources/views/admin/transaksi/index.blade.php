@@ -50,11 +50,8 @@
                                 <?php echo strftime("%A, %d %B %Y", strtotime($jquin->created_at)) . "\n"; ?>
                             </td>
                             <td>
-                                <a href="" class="btn btn-sm btn-info" data-toggle="tooltip" data-placmenent="top" title="Struk Pembayaran"><i class="ti-email"></i></a>
-                                @if($jquin->status != 'Diverifikasi')
-                                <a href="{{ route('transaksi.update', $jquin->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placmenent="top" title="Verifikasi Transaksi {{ $jquin->user->nama_lengkap }}"><i class="ti-check"></i></a>
-                                @endif
-                                <a href="" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
+                                <a href="{{ route('transaksi.show', $jquin->id) }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placmenent="top" title="Detail Pembayaran"><i class="ti-email"></i></a>
+                                <a href="#" onclick="destroy({{ $jquin->id }}, '{{ $jquin->user->nama_lengkap }}')" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
                             </td>
                         </tr>
                         @empty
@@ -82,4 +79,17 @@
     $().DataTable();
 </script>
 
+
+<script>
+    function destroy(id,nama) {
+        alertify.confirm("Hapus Transaksi "+nama+"?", function (ev) {
+            ev.preventDefault();
+            window.location = "transaksi/"+ id +"/destroy";
+
+        }, function(ev) {
+            ev.preventDefault();
+            alertify.error("Batal!");
+        });
+    }
+</script>
 @stop
