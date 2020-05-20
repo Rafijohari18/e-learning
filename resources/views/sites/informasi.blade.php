@@ -40,9 +40,9 @@
                     <div class="blog_content">
                         <div class="blog_text">
                             <ul class="list_none blog_meta">
-                                <li><a href="#"><i class="ti-user"></i> <span>{{ $jquin->user->nama_lengkap }}</span></a></li>
+                                <li><i class="ti-user"></i> <span>{{ $jquin->user->nama_lengkap }}</span></li>
                             </ul>
-                            <h5 class="blog_title"><a href="#">{{ $jquin->judul }}</a></h5>
+                            <h5 class="blog_title"><a href="{{ route('detail.informasi', $jquin->slug) }}">{{ $jquin->judul }}</a></h5>
                             <p>{!! Str::limit($jquin->artikel, 50, '...') !!}</p>
                         </div>
                     </div>

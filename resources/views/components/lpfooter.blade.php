@@ -14,7 +14,9 @@
                     <div class="widget">
                         <h6 class="widget_title">Program</h6>
                         <ul class="widget_links">
-                            <li><a href="#">-</a></li>
+                            @foreach($program as $prog)
+                            <li><a href="#">{{ $prog->nama_program }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -24,13 +26,15 @@
                         <ul class="widget_recent_post">
                             <li>
                                 <div class="post_footer">
+                                    @foreach($konten as $kontenBaru)
                                     <div class="post_img"> 
-                                        <a href="#"><img src="{{asset('landingpage/images/letest_post1.jpg')}}" alt="letest_post1"></a> 
+                                        <img src="{{asset('storage/'.$kontenBaru->path)}}" alt="{{ $kontenBaru->judul }}" width="50" height="40">
                                     </div>
                                     <div class="post_content">
-                                        <h6><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h6>
-                                        <p class="small m-0">April 14, 2018</p>
+                                        <h6><a href="{{ route('detail.informasi',$kontenBaru->slug) }}">{{ $kontenBaru->judul }}</a></h6>
+                                        <p class="small m-0">{{ $kontenBaru->created_at->format('d F Y') }}</p>
                                     </div>
+                                    @endforeach
                                 </div>
                             </li>
                         </ul>

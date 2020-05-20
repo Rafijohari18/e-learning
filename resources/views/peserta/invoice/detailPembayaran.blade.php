@@ -51,7 +51,7 @@
                         $harga = $transaksi->program->harga;
                         $diskon = ($besarnyaDiskon/100)*$harga;
 
-                        $totalDiskon = number_format($diskon, 0, ',', '.');
+                        $totalDiskon = $diskon;
                         // Total Bayar
                         $total = $harga - $totalDiskon;
                     @endphp

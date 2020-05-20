@@ -107,6 +107,11 @@
                     	<a href="#"><img src="{{asset('storage/'.$mdl->path)}}" alt="course_img1"/></a>
                     </div>
                   	<div class="courses_info">
+                        <div class="float-right">
+                            <ul class="courses_meta">
+                         <li><i class="ti-time"></i><span>{{ $mdl->durasi_program }}</span></li>
+                            </ul>
+                        </div>
                         <div class="rating_stars"> 
                             <i class="ion-android-star"></i> 
                             <i class="ion-android-star"></i> 
@@ -116,26 +121,22 @@
                             <span>4.0</span> 
                             <span class="badge badge-info"></span>
                         </div>
-                            <form action="{{ route('invoice.modul') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="program_id" value="{{ $mdl->id}}">
-                            <input type="hidden" name="harga" value="{{ $mdl->harga }}">
-                            @if(Auth::user() == null)
-                            @else
-                            <input type="hidden" name="user_id" value="{{ Auth::user()['id'] }}">
-                            @endif
-                            
-                            <button type="submit" class="btn btn-primary btn-sm">{{ $mdl->nama_program }}</button>
-                        
-                            </form>
+                        <h5 class="courses_title"><a href="{{ route('detail.program', $mdl->slug) }}">{{ $mdl->nama_program }}</a></h5>
                         <p>
                             {!! Str::limit($mdl->deskripsi, 50, '...') !!}
                         </p>
                         <div class="courses_footer">
-                            <ul class="courses_meta">
-                                <li><i class="ti-user"></i><span>31</span></li>
-                                <li><i class="ti-time"></i><span>{{ $mdl->durasi_program }}</span></li>
-                            </ul>
+                                <form action="{{ route('invoice.modul') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="program_id" value="{{ $mdl->id}}">
+                                <input type="hidden" name="harga" value="{{ $mdl->harga }}">
+                                @if(Auth::user() == null)
+                                @else
+                                <input type="hidden" name="user_id" value="{{ Auth::user()['id'] }}">
+                                @endif
+                                   <button type="submit" class="btn btn-primary btn-sm">Ikuti Pelatihan</button>
+                                </form>
+                                
                             <div class="courses_price"> <span>Rp{{ number_format($mdl->harga, 0, ',', '.') }}</span> </div>
                         </div>
                   	</div>
@@ -163,7 +164,7 @@
     		<div class="col-lg-4 col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
     			<div class="blog_post blog_style1 box_shadow1">
     				<div class="blog_img"> 
-                    	<a href="#"> <img src="@if(empty($jquin->path)) {{ asset('landingpage/images/no-image.png') }} @else {{ asset('storage/'.$jquin->path) }}  @endif" alt="{{ $jquin->judul }}"> </a> 
+                    	<img src="@if(empty($jquin->path)) {{ asset('landingpage/images/no-image.png') }} @else {{ asset('storage/'.$jquin->path) }}  @endif" alt="{{ $jquin->judul }}"> 
                         <div class="post_date radius_all_5">
                         	<h5><span>{{ $jquin->created_at->format('F, m') }}</span> {{ $jquin->created_at->format('Y') }}</h5> 
                         </div>	
@@ -171,9 +172,9 @@
     				<div class="blog_content">
     					<div class="blog_text">
                             <ul class="list_none blog_meta">
-                                <li><a href="#"><i class="ti-user"></i> <span>{{ $jquin->user->nama_lengkap }}</span></a></li>
+                                <li><i class="ti-user"></i> <span>{{ $jquin->user->nama_lengkap }}</span></li>
                             </ul>
-                            <h5 class="blog_title"><a href="#">{{ $jquin->judul }}</a></h5>
+                            <h5 class="blog_title"><a href="{{ route('detail.informasi', $jquin->slug) }}">{{ $jquin->judul }}</a></h5>
                             <p>{!! Str::limit($jquin->artikel, 50, '...') !!}</p>
                     	</div>
     				</div>

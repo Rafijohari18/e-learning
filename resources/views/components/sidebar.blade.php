@@ -19,7 +19,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('konten.index') }}" class="waves-effect"><i class="ti-layers"></i><span> Konten </span></a>
+                    <a href="{{ route('konten.index') }}" class="waves-effect"><i class="ti-announcement"></i><span> Informasi </span></a>
                 </li>
 
                 <li>

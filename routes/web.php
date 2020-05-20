@@ -409,10 +409,20 @@ Route::get('download/{filename}/file', [
 	'as' => 'konten.download'
 ]);
 
-// Slug Read Artikel
-Route::get('/{slug}/artikel', [
-	'uses' => 'InformasiController@slug',
-	'as' => 'informasi.slug'
+// Slug
+Route::get('informasi/detail/{slug}', [
+	'uses' => 'SiteController@detailInformasi',
+	'as' => 'detail.informasi'
+]);
+
+Route::get('program/detail/{slug}', [
+	'uses' => 'SiteController@detailProgram',
+	'as' => 'detail.program'
+]);
+
+Route::get('ikuti-pelatihan/{program}/detail-pembayaran', [
+	'uses' => 'SiteController@checkout',
+	'as' => 'checkout'
 ]);
 
 //invoice
