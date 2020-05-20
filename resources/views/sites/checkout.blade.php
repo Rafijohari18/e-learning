@@ -100,8 +100,9 @@
             	<div class="heading_s1">
             		<h4>Daftar Akun</h4>
                 </div>
-                <form method="POST" action="" class="row">
+                <form method="POST" action="{{ route('post.register') }}" class="row">
                     @csrf
+                    <input type="hidden" name="program_id" value="{{ $program->id }}">
                     <div class="form-group col-md-6">
                         <input type="number" required="" class="form-control" name="nik" placeholder="NIK" maxlength="60">
                     </div>
@@ -128,7 +129,7 @@
 
                     <div class="form-group col-md-12">
                         <div class="custom_select">
-                           <select>
+                           <select name="gender">
                                 <option value="">Jenis Kelamin</option>
                                 <option value="L">Laki-Laki</option>
                                 <option value="P">Perempuan</option>
@@ -202,12 +203,12 @@
                         </div>
                         <div class="payment_option">
                             <div class="custome-radio">
-                                <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios3" value="option3" checked="">
+                                <input class="form-check-input" required="" type="radio" id="exampleRadios3" value="option3" checked="">
                                 <label class="form-check-label" for="exampleRadios3">Kartu Prakerja</label>
                                 <p data-method="option3" class="payment-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration. </p>
                             </div>
                             <div class="custome-radio">
-                                <input class="form-check-input" type="radio" name="payment_option" id="exampleRadios5" value="option5">
+                                <input class="form-check-input" type="radio" id="exampleRadios5" value="option5">
                                 <label class="form-check-label" for="exampleRadios5">Pembayaran Biasa</label>
                             </div>
                         </div>

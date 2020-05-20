@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Auth;
 use DB;
 
+
 class ProgramController extends Controller
 {
 
@@ -45,6 +46,7 @@ class ProgramController extends Controller
     public function store(Request $request)
     {
         $fileMove = Storage::disk('public')->putFile('program',$request->file('path'));
+        $slug = Str::of($request->nama_program)->slug('-');
 
         $neko = array(
             'user_id' => Auth::user()->id,
@@ -55,6 +57,7 @@ class ProgramController extends Controller
             'durasi_program' => $request->durasi_program,
             'diskon' => $request->diskon,
             'path' => $fileMove,
+            'slug' => $slug
         );
 
         Program::create($neko);
@@ -80,6 +83,8 @@ class ProgramController extends Controller
             $fileMove = Storage::disk('public')->putFile('program', $fileOri);
         }
 
+        $slug = Str::of($request->nama_program)->slug('-');
+
         $neko = array(
             'user_id' => Auth::user()->id,
             'kategori_id' => $request->kategori_id,
@@ -89,6 +94,7 @@ class ProgramController extends Controller
             'durasi_program' => $request->durasi_program,
             'diskon' => $request->diskon,
             'path' => $fileMove,
+            'slug' => $slug
         );
 
         $program = Program::findOrFail($program->id);

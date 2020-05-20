@@ -13,6 +13,8 @@
             <div class="card-body">
             	<div class="card-title">Detail Transaksi - Program {{ $transaksi->program->nama_program }}</div>
             	<hr>
+                <form action="{{ route('struk.update', $transaksi->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <dl class="row text-left m-t-20">
                     <dt class="col-sm-5">Kode Invoice</dt>
                     <dd class="col-sm-7">{{ $transaksi->kode_invoice }}</dd>
@@ -59,11 +61,26 @@
                     <dt class="col-sm-5">Total Bayar</dt>
                     <dd class="col-sm-7">Rp. {{ number_format($total, 0, ',', '.') }}</dd>
 
-                    <dt class="col-sm-5">Bukti Pembayaran</dt>
+                    <dt class="col-sm-5">Bukti Pembayaran Sebelumnya</dt>
                     <dd class="col-sm-7">
                         <img src="{{ asset('storage/'.$transaksi->path) }}" class="img-thumbnail" alt="Bukti Pembayaran">
+                        <input type="hidden" name="fileOri" value="{{ $transaksi->path }}">
                     </dd>
+
+                    @if($transaksi->status != 'Diverifikasi')
+                    <dt class="col-sm-5">Perbarui Bukti Pembayaran</dt>
+                    <dd class="col-sm-7">
+                        <input type="file" class="filestyle" data-input="false" data-buttonname="btn-secondary btn-sm" name="path" required="">
+                    </dd>
+                    @endif
                 </dl>
+
+                @if($transaksi->status != 'Diverifikasi')
+                <div class="float-right">
+                    <button class="btn btn-sm btn-primary">Simpan</button>
+                </div>
+                @endif
+                </form>
             </div>
         </div>
 	</div>
@@ -71,5 +88,13 @@
 @stop
 
 @section('footer')
+<script src="{{asset('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js')}}" type="text/javascript"></script>
+<!-- Parsley js -->
+<script type="text/javascript" src="{{asset('assets/plugins/parsleyjs/parsley.min.js')}}"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('form').parsley();
+    });
+</script>
 @stop

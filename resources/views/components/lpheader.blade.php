@@ -23,11 +23,6 @@
                     <li>
                         <a href="{{ route('login') }}" class="nav-link">Login</a>
                     </li>
-                    
-                    <li>
-                        <a href="{{ route('registrasi') }}" class="nav-link btn-default">Daftar</a>
-                    </li>
-
                 </ul>
           	</div>
 			<ul class="navbar-nav attr-nav align-items-center">
