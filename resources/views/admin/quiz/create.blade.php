@@ -15,7 +15,7 @@
                 <hr>
                 <form action="{{ route('quiz.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="modul_id" value="{{ Request::segment('4') }}">
+                    <input type="hidden" name="program_id" value="{{ Request::segment('4') }}">
                     <div class="form-group">
                         <label for="artikel">Pertanyaan</label>
                         <textarea name="soal" id="soal" class="summernote form-control" required=""></textarea>

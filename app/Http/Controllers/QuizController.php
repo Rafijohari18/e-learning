@@ -26,7 +26,7 @@ class QuizController extends Controller
 
         // Tampil data per program
         $title = 'Module';
-        $data = Module::with('kategori','user')->where('program_id', $id)->get();
+        $data = Program::with('module')->where('id',$id)->get();
 
         return view('admin.quiz.index',compact('title','data','nmProgram'));
     }
@@ -38,10 +38,10 @@ class QuizController extends Controller
      */
     public function soal($id)
     {
-        $program = Module::findOrFail($id);
-        $nmProgram = $program->nama_modul;
+        $program = Program::findOrFail($id);
+        $nmProgram = $program->nama_program;
 
-        $data = Soal::where('modul_id', $id)->get();
+        $data = Soal::where('program_id', $id)->get();
 
         return view('admin.quiz.soal',compact('data','nmProgram'));
     }
@@ -57,7 +57,7 @@ class QuizController extends Controller
     {
       $soal = Soal::create([
           'soal'          => $request->soal,
-          'modul_id'      =>  $request->modul_id,
+          'program_id'      =>  $request->program_id,
           'jawaban'       =>  $request->jawaban,
       ]);  
 
@@ -74,7 +74,7 @@ class QuizController extends Controller
       }
    
     $pilihan =  Pilihan::insert($insert_data);
-    return redirect()->route('quiz.soal',['id'=>$request->modul_id])->with('success','Soal Succes Create !');
+    return redirect()->route('quiz.soal',['id'=>$request->program_id])->with('success','Soal Succes Create !');
   }
 
   public function edit(Request $request,$id)
@@ -90,7 +90,7 @@ class QuizController extends Controller
          $data = Soal::findorFail($id);
             $data->soal= $request->soal;
             $data->jawaban= $request->jawaban;
-            $data->modul_id= $request->modul_id;
+            $data->program_id= $request->program_id;
             $data->update();
              
 
@@ -110,7 +110,7 @@ class QuizController extends Controller
           }
        
         $pilihan =  Pilihan::insert($insert_data);
-        return redirect()->route('quiz.soal',['id'=>$request->modul_id])->with('update','Soal Succes Create !');  
+        return redirect()->route('quiz.soal',['id'=>$request->program_id])->with('update','Soal Succes Create !');  
 
   }
 

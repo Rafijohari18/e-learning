@@ -30,10 +30,7 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale($this->app->getLocale());
          View()->composer('components.sidebar',function($view){
             // Config LINK  
-
             $data['program']   = Program::orderBy('nama_program')->get();
-        
-
             $view
             ->with('program' , $data['program']);
             

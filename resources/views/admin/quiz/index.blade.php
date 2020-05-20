@@ -19,7 +19,7 @@
                    
                 </div>
                 <h4 class="mt-0 header-title">
-                  Modul Quiz - {{ $nmProgram }}
+                  Program Quiz - {{ $nmProgram }}
                 </h4>
                 <br>
                 <div class="table-responsive">
@@ -27,12 +27,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Path</th>
                                 <th>Kategori</th>
-                                <th>Nama Modul</th>
-                                <th>Harga</th>
-                                <th>Diskon</th>
-                                <th>Created By</th>
+                                <th>Nama Program</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -40,14 +36,8 @@
                            @foreach ($data as $item)
                            <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <img src="{{ asset('storage/'.$item->path) }}" width="30" height="30">
-                            </td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
-                            <td>{{ $item->nama_modul }}</td>
-                            <td>{{ number_format(($item->harga), 0, ',', '.')  }}</td>
-                            <td>@if(empty($item->diskon)) 0% @else {{$item->diskon}}% @endif</td>
-                            <td>{{ $item->user->nama_lengkap }}</td>
+                            <td>{{ $item->nama_program }}</td>
                             <td>
                               <a href="{{ route('quiz.soal',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Tambah Soal" class="btn btn-sm btn-success"><i class="ti-plus"></i></a>
                                <a href="{{ route('materi.index',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Rekap Nilai" class="btn btn-sm btn-warning"><i class="ti-pin-alt"></i></a>

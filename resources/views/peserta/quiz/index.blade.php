@@ -141,12 +141,16 @@
                                 </div>
                             </div>
                         </div>
-                       <form id="form" action="" method="POST">
+                       <form id="form" action="{{ route('quis.tambah',['id'=> Request::segment('3') ])}}" method="POST">
+                        @csrf
                        @php 
                          $i=1;
-                         $o=$i++;
+                        
                        @endphp
-                       @foreach($data['soal'] as $value)
+                       @foreach($soal as $value)
+                        @php $o=$i++; @endphp
+                          <input type="hidden" name="id" value="{{ $value->id }}" >
+                          <input type="hidden" name="jumlah" value="{{ $data['jumlah']}}">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="media align-items-center">
@@ -161,11 +165,15 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                     @php 
-                                      $no = 1;
-                                    
-                                    @endphp
-                                    @foreach($data['pilihan'] as $row)
+                                     <?php 
+                                     $no = 1;     
+                                     $data['shuffled'] = DB::table('pilihan')->where('soal_id',$value->id)->get();
+                                     $pilihan = $data['shuffled']->shuffle();
+                                      ?>
+
+                                
+
+                                    @foreach($pilihan as $row)
                                     @php 
                                     $n = $no++;
                                     @endphp
@@ -173,7 +181,7 @@
                                         <fieldset>
                                             <div class="custom-control custom-radio">
 
-                                                <input id="radioStacked{{ $o }}--{{ $n }}; ?>" value="{{ $value->id }}---{{$row->opsi  }}" name="jawaban[{{ $o }}]" type="radio" class="custom-control-input">
+                                                <input id="radioStacked{{ $o }}--{{ $n }}; ?>" value="{{ $value->id  }}---{{ $row->pilihan  }}" name="jawaban[{{ $o}}]" type="radio" class="custom-control-input">
                                                 <label for="radioStacked{{ $o }}--{{ $n }}; ?>" class="custom-control-label">{{ $row->pilihan }}</label>
                                             </div>
                                         </fieldset>

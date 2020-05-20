@@ -324,6 +324,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 // Peserta
 Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 {
+	Route::get('/peserta/quiz/{sectionId}','Peserta\QuisController@index')->name('peserta.quiz');
 	Route::prefix('peserta')->group(function () {
 		Route::get('dashboard', [
 			'uses' => 'DashboardController@peserta',
@@ -336,16 +337,19 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'peserta.program'
 		]);
 
-		Route::get('modul/{program}/read', [
+		Route::get('modul/{program}', [
 			'uses' => 'ProgramController@readModul',
 			'as' => 'program.read'
 		]);
 
-		//quiz
-		Route::get('quis', [
-			'uses' => 'Peserta\QuisController@index',
-			'as' => 'peserta.quis'
+		Route::post('quis/tambah/{id}', [
+			'uses' => 'Peserta\QuisController@tambah',
+			'as' => 'quis.tambah'
 		]);
+
+	
+		
+
 
 		//Transaksi
 		Route::get('transaksi', [

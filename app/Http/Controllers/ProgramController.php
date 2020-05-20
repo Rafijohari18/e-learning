@@ -117,7 +117,8 @@ class ProgramController extends Controller
     {
         $neko = Module::where('program_id', $program->id)->orderBy('judul', 'ASC')->get();
         $modul = Module::where('program_id', $program->id)->orderBy('judul','ASC')->first();
+        $quis = Program::with('module')->where('id',$program->id)->get();
 
-        return view('peserta.module.show', compact('modul','neko'));
+        return view('peserta.module.show', compact('modul','neko','quis'));
     }
 }
