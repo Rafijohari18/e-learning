@@ -31,16 +31,15 @@
                                 <i class="mdi mdi-clock"></i> Durasi - <span> {{ $jquin->program->durasi_program }} </span>
                             </li>
                             <li>
-                                <i class="ti-wallet"></i> Harga - <span>Rp{{ number_format($jquin->program->harga, 0, ',', '.') }}</span>
+                                <i class="ti-wallet"></i> Harga - <span>Rp. {{ number_format($jquin->program->harga, 0, ',', '.') }}</span>
                             </li>
                         </ul>
                     </p>
                 </div>
                 <div class="card-footer bg-white">
-                  <a href="{{ route('program.read', $jquin->program_id) }}" class="btn btn-sm btn-info">Modul</a>
+                  <a href="{{ route('program.read', [$jquin->program_id,$jquin->program->module->first->id]) }}" class="btn btn-sm btn-info">Modul</a>
               </div>
           </div>
-
       </div>
     </div>
             @endforeach

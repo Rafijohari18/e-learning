@@ -59,12 +59,6 @@
                                 <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
                             </div>
                         </div>
-
-                        <div class="form-group m-t-10 mb-0 row">
-                            <div class="col-12 m-t-20">
-                                <a href="" class="text-muted"> Belum Punya Akun?</a>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -73,7 +67,6 @@
         <div class="m-t-40 text-center">
             <p>© {{ date('Y') }} E-learning Your Company.</p>
         </div>
-
     </div>
 
 

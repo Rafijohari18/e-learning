@@ -7,12 +7,12 @@ use App\Program;
 use App\ProgramPeserta;
 use App\Kategori;
 use App\Module;
+use App\DaftarBelajar;
 use App\Repositories\Repository;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 use DB;
-
 
 class ProgramController extends Controller
 {
@@ -124,13 +124,62 @@ class ProgramController extends Controller
         return view('peserta.program.detail', compact('program'));
     }
 
-    public function readModul(Program $program)
+    public function readModul($proId, $mdId)
     {
-        $neko = Module::where('program_id', $program->id)->orderBy('judul', 'ASC')->get();
-        $modul = Module::where('program_id', $program->id)->orderBy('judul','ASC')->first();
-        $quis = Program::with('module')->where('id',$program->id)->get();
+        // Cek materi pertama
+        $intro = DaftarBelajar::where('user_id', auth()->user()->id)->where('modul_id', $mdId)->first();
+        if ($intro == NULL) {
+            // Jika materi tidak ada, insert materi ke table daftar_belajar
+            $neko = DaftarBelajar::create([
+                'user_id' => auth()->user()->id,
+                'program_id' => $proId,
+                'modul_id' => $mdId
+            ]);
+        }
 
+        // Validasi Modul
+        if (Module::where('id', $mdId)->where('program_id', $proId)->exists()) {
+            // Cari Program Peserta
+            $pesPro = ProgramPeserta::where('program_id', $proId)->where('user_id', auth()->user()->id)->get();
+            // Jika peserta memiliki program
+            if (count($pesPro) > 0) {
+                // Daftar Belajar
+                $neko = Module::where('program_id', $proId)->orderBy('judul', 'ASC')->get();
+                // Tampil materi
+                $modul = Module::where('program_id', $proId)->where('id', $mdId)->orderBy('judul','ASC')->first();
+                // Next Prev Button
+                $next_id = Module::where('id', '>', $mdId)->min('id');
+                $prev_id = Module::where('id', '<', $mdId)->max('id');
+                // Quis
+                $quis = Program::with('module')->where('id',$proId)->get();
+                $totalModul = DaftarBelajar::where('user_id', auth()->user()->id)->where('program_id', $proId)->count();
 
-        return view('peserta.program.show', compact('modul','neko','quis'));
+                return view('peserta.program.show', compact('modul','neko','quis','next_id','prev_id','totalModul'));
+            } else {
+                // Jika peserta tidak memiliki program
+                return redirect()->back();
+            }
+        }
+
+        return redirect()->back();
+    }
+
+    public function daftarBelajar(Request $request)
+    {
+        // Cek data di table daftar_belajar
+        if (DaftarBelajar::where('user_id', auth()->user()->id)->where('program_id', $request->program_id)->where('modul_id', $request->modul_id)->exists()) {
+            // Jika data ada, redirect ke halaman selanjutnya
+            return redirect()->route('program.read', [$request->program_id,$request->modul_id]);
+        } else {
+            // Jika data tidak ada, insert data ke table daftar_belajar
+            $neko = DaftarBelajar::create([
+                'user_id' => auth()->user()->id,
+                'program_id' => $request->program_id,
+                'modul_id' => $request->modul_id
+            ]);
+
+            // Redirect ke halaman selanjutnya
+            return redirect()->route('program.read', [$request->program_id,$request->modul_id]);
+        }
     }
 }

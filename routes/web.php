@@ -333,16 +333,20 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'peserta.program'
 		]);
 
-
 		Route::get('detail/{program}/show', [
 			'uses' => 'ProgramController@showProgram',
 			'as' => 'program.detail'
 		]);
 
 		// Modul
-		Route::get('modul/{program}/read', [
+		Route::get('modul/program/{proId}/modul/{mdId}/read', [
 			'uses' => 'ProgramController@readModul',
 			'as' => 'program.read'
+		]);
+
+		Route::post('daftar/belajar', [
+			'uses' => 'ProgramController@daftarBelajar',
+			'as' => 'daftar.belajar'
 		]);
 
 		Route::post('quis/tambah/{id}', [
@@ -355,8 +359,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'quis.hasil'
 		]);
 
-		//sertifikat
-
+		// Sertifikat
 		Route::get('sertifikat', [
 			'uses' => 'Peserta\SertifikatController@index',
 			'as' => 'peserta.sertifikat'
@@ -367,10 +370,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'peserta.show'
 		]);
 	
-		
-
-
-		//Transaksi
+		// Transaksi
 		Route::get('transaksi', [
 			'uses' => 'Peserta\InvoiceController@list',
 			'as' => 'peserta.list'
@@ -446,5 +446,3 @@ Route::get('/clear-cache', function() {
 	$exitCode = Artisan::call('view:clear');
     return 'DONE'; //Return anything
 });
-
-
