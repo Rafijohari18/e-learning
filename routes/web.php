@@ -48,10 +48,6 @@ Route::get('logout', [
 ]);
 
 // Register
-Route::get('registrasi', function () {
-	return view('login.registrasi');
-})->name('registrasi');
-
 Route::post('register', [
 	'uses' => 'AuthController@register',
 	'as' => 'post.register'

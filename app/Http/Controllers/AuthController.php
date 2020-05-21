@@ -18,31 +18,20 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        if (unserialize(Cookie::get('hosting'))) {
-            $cookie = unserialize(Cookie::get('hosting'));
-            if (Auth::attempt($request->only('username','password'))) {
-                if (auth()->user()->role == 'Peserta') {
-                    return redirect()->route('struk.upload')->with('welcome','');
-                }
-            }
-        }else{
-            if (Auth::attempt($request->only('username','password'))) {
-                if (auth()->user()->role == 'Admin') {
-                    return redirect()->route('admin.dashboard')->with('welcome','');
-                }elseif (auth()->user()->role == 'Peserta') {
-                    return redirect()->route('peserta.dashboard')->with('welcome','');
-                }
+        if (Auth::attempt($request->only('username','password'))) {
+            if (auth()->user()->role == 'Admin') {
+                return redirect()->route('admin.dashboard')->with('welcome','');
+            }elseif (auth()->user()->role == 'Peserta') {
+                return redirect()->route('peserta.dashboard')->with('welcome','');
             }
         }
-
 
         return redirect()->back()->with('error','');
     }
 
     public function register(Request $request)
     {
-       if (unserialize(Cookie::get('hosting'))) {
-        // Insert Table User
+       // Insert To Table User
         $data =  new User();
         $data->nama_lengkap = $request->nama_lengkap;
         $data->username = $request->username;
@@ -52,13 +41,13 @@ class AuthController extends Controller
         $data->save();
 
         // Insert Table Transaksi
-        $cookie = unserialize(Cookie::get('hosting'));
         $a['kode_invoice'] = 'INV-'.mt_rand(100000, 999999).date('s');
         $a['user_id'] = $data->id;
-        $a['program_id'] = $cookie['program_id'];
+        $a['program_id'] = $request->program_id;
         $a['status'] = 'Menunggu Verifikasi';
+        $a['created_at'] = date('Y-m-d H:i:s');
 
-        $ProgramPeserta = Transaksi::insert($a);
+        $transaksi = Transaksi::insert($a);
 
         // Insert Table Peserta
         $peserta = new Peserta();
@@ -75,34 +64,9 @@ class AuthController extends Controller
         $peserta->motivasi = $request->motivasi;
         $peserta->save();
 
-        return redirect('login')->with('alert-success','Kamu berhasil Register');
-        
-        }else{
-            // Insert To Table User
-            $data =  new User();
-            $data->nama_lengkap = $request->nama_lengkap;
-            $data->username = $request->username;
-            $data->password = bcrypt($request->password);
-            $data->role = 'Peserta';
-            $data->path = 'default.png';
-            $data->save();
-
-            // Insert To Table Peserta
-            $peserta = new Peserta();
-            $peserta->user_id = $cookie['user_id'];
-            $peserta->nik = $request->nik;
-            $peserta->nama_lengkap = $request->nama_lengkap;
-            $peserta->tgl_lahir = $request->tgl_lahir;
-            $peserta->umur = $request->umur;
-            $peserta->gender = $request->gender;
-            $peserta->whatsapp = $request->whatsapp;
-            $peserta->email = $request->email;
-            $peserta->profesi = $request->profesi;
-            $peserta->alamat = $request->alamat;
-            $peserta->motivasi = $request->motivasi;
-            $peserta->save();
-            
-            return redirect('login')->with('alert-success','Kamu berhasil Register');
+        // Login
+        if (Auth::attempt($request->only('username','password'))) {
+            return redirect()->route('struk.upload')->with('newWelcome','');
         }
     }
 

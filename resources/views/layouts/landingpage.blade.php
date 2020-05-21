@@ -126,17 +126,7 @@
                             {!! Str::limit($mdl->deskripsi, 50, '...') !!}
                         </p>
                         <div class="courses_footer">
-                                <form action="{{ route('invoice.modul') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="program_id" value="{{ $mdl->id}}">
-                                <input type="hidden" name="harga" value="{{ $mdl->harga }}">
-                                @if(Auth::user() == null)
-                                @else
-                                <input type="hidden" name="user_id" value="{{ Auth::user()['id'] }}">
-                                @endif
-                                   <button type="submit" class="btn btn-primary btn-sm">Ikuti Pelatihan</button>
-                                </form>
-                                
+                            <a href="{{ route('checkout',$mdl->id) }}" class="btn btn-primary btn-sm">Ikuti Pelatihan</a>
                             <div class="courses_price"> <span>Rp{{ number_format($mdl->harga, 0, ',', '.') }}</span> </div>
                         </div>
                   	</div>

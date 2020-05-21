@@ -78,6 +78,10 @@ class invoiceController extends Controller
 
   public function updateStruk(Request $request, Transaksi $transaksi)
   {
+    if (empty($fileOri)) {
+        Storage::delete('public/'.$transaksi->path);
+    } 
+    
     $fileMove = Storage::disk('public')->putFile('invoice',$request->file('path'));
 
     $neko = [
