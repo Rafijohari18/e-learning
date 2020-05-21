@@ -16,4 +16,8 @@ class Hasil extends Model
      public function program(){
     	return $this->belongsTo('App\Program');
     }
+     public function ProgramPeserta()
+    {
+        return $this->hasOne('App\ProgramPeserta','user_id');
+    }
 }

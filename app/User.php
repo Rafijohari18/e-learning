@@ -54,4 +54,7 @@ class User extends Authenticatable
     public function hasil(){
         return $this->hasMany('App\Hasil');
     }
+     public function ProgramPeserta(){
+        return $this->hasMany('App\ProgramPeserta');
+    }
 }

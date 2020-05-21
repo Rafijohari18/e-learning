@@ -26,7 +26,7 @@
                                             <span class="badge badge-info">Tidak Lulus</span>
                                             @endif
           </p>
-            <a href="#" class="btn btn-primary waves-effect waves-light">Cetak Sertifikat</a>
+            <a href="{{ route('peserta.sertifikat') }}" class="btn btn-primary waves-effect waves-light">Lihat Sertifikat</a>
         </div>
     </div>
 

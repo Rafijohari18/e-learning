@@ -20,6 +20,7 @@ class CreateTableHasil extends Migration
             $table->integer('hasil');
             $table->integer('jawaban_benar');
             $table->integer('jawaban_salah');
+            $table->integer('jawaban_kosong');
             $table->timestamps();
         });
     }

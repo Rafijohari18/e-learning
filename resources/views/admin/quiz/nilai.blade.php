@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Module')
+@section('title','Hasil')
 
 @section('css')
 <!-- DataTables -->
@@ -19,7 +19,7 @@
                    
                 </div>
                 <h4 class="mt-0 header-title">
-                  Program Quiz - {{ $nmProgram }}
+                  Hasil Quiz - {{ $nmProgram }}
                 </h4>
                 <br>
                 <div class="table-responsive">
@@ -27,20 +27,20 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Kategori</th>
-                                <th>Nama Program</th>
+                                <th>Nama Peserta</th>
+                                <th>Nilai</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-striped">
-                           @foreach ($data as $item)
+                           @foreach ($data['hasil'] as $item)
                            <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->kategori->nama_kategori }}</td>
-                            <td>{{ $item->nama_program }}</td>
+                            <td>{{ $item->user->nama_lengkap }}</td>
+                            <td>{{ $item->hasil }}</td>
                             <td>
-                              <a href="{{ route('quiz.soal',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Tambah Soal" class="btn btn-sm btn-success"><i class="ti-plus"></i></a>
-                               <a href="{{ route('quiz.nilai',['id'=>$item->id]) }}"  data-toggle="tooltip" data-placement="top" title="Rekap Nilai" class="btn btn-sm btn-warning"><i class="ti-pin-alt"></i></a>
+                             
+                              <a href="#" onclick="destroy({{ $item->id }}, '{{ $item->user->nama_lengkap }}');"  data-toggle="tooltip" data-placement="top" title="Hapus Nilai" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
                              
                           </td>
                       </tr>
@@ -67,9 +67,9 @@
 <!-- Destroy -->
 <script>
     function destroy(id,nama) {
-        alertify.confirm("Hapus Quiz "+nama+"?", function (ev) {
+        alertify.confirm("Hapus Nilai "+nama+"?", function (ev) {
             ev.preventDefault();
-            window.location = "module/"+ id +"/destroy";
+            window.location = "hasil/"+ id +"/destroy";
 
         }, function(ev) {
             ev.preventDefault();
