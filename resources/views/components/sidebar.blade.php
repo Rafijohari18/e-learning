@@ -73,7 +73,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="waves-effect"><i class="ti-medall"></i><span> Sertifikat </span></a>
+                    <a href="{{ route('peserta.sertifikat') }}" class="waves-effect"><i class="ti-medall"></i><span> Sertifikat </span></a>
                 </li>
 
                 <li>
