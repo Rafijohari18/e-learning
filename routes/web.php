@@ -131,6 +131,10 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'uses' => 'QuizController@soal',
 			'as' => 'quiz.soal'
 		]);
+		Route::get('quiz/nilai/{id}', [
+			'uses' => 'QuizController@nilai',
+			'as' => 'quiz.nilai'
+		]);
 		Route::get('quiz/create/{id}', [
 			'uses' => 'QuizController@create',
 			'as' => 'quiz.create'

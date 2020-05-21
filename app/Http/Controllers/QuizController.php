@@ -7,6 +7,7 @@ use App\Soal;
 use App\Program;
 use App\Pilihan;
 use App\Module;
+use App\Hasil;
 use App\Repositories\Repository;
 use Illuminate\Support\Str;
 
@@ -29,6 +30,14 @@ class QuizController extends Controller
         $data = Program::with('module')->where('id',$id)->get();
 
         return view('admin.quiz.index',compact('title','data','nmProgram'));
+    }
+    public function nilai($id)
+    {
+      $program = Program::findOrFail($id);
+      $nmProgram = $program->nama_program;
+     
+     $data['hasil'] = Hasil::with('user')->where('program_id',$id)->orderBy('hasil','DESC')->get();
+     return view('admin.quiz.nilai',compact('data','nmProgram'));
     }
 
     /**

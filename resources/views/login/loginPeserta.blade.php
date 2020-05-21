@@ -54,7 +54,7 @@
                             <button type="submit" class="btn btn-default btn-block">Login</button>
                         </div>
                     </form>
-                    <div class="form-note text-center">Belum punya akun? <a href="{{ route('registrasi') }}">Daftar</a></div>
+                    <div class="form-note text-center">Belum punya akun? <a href="">Daftar</a></div>
                 </div>
             </div>
         </div>
