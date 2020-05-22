@@ -354,6 +354,11 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 			'as' => 'peserta.sertifikat'
 		]);
 
+		Route::get('sertifikat', [
+			'uses' => 'Peserta\SertifikatController@index',
+			'as' => 'peserta.sertifikat'
+		]);
+
 		Route::get('sertifikat/show/{id}', [
 			'uses' => 'Peserta\SertifikatController@show',
 			'as' => 'peserta.show'
