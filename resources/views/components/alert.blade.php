@@ -35,4 +35,8 @@
     @if(Session::has('profil'))
         alertify.success("Profil Berhasil Diperbarui");
     @endif
+
+    @if(Session::has('selesaiQuis'))
+        alertify.success("Anda Sudah Menyelsaikan Quis!");
+    @endif
 </script>

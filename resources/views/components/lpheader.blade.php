@@ -17,7 +17,7 @@
                     </li>
 
                     <li class="">
-                       <a class="nav-link" href="index.html">Program</a>
+                       <a class="nav-link" href="{{ route('program') }}">Program</a>
                     </li>
 
                     <li>

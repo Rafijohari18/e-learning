@@ -17,7 +17,7 @@
                 <hr><br>
                 
                 <div class="row justify-content-center">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <!-- 16:9 aspect ratio -->
                         <div class="embed-responsive embed-responsive-16by9 img-thumbnail">
                             <iframe class="embed-responsive-item" src="{{ $modul->link }}"></iframe>

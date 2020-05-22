@@ -64,6 +64,11 @@ Route::get('informasi', [
 	'as' => 'informasi'
 ]);
 
+Route::get('program', [
+	'uses' => 'SiteController@program',
+	'as' => 'program'
+]);
+
 // Admin
 Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 {

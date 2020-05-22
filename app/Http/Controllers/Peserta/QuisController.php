@@ -12,10 +12,14 @@ use Auth;
 class QuisController extends Controller
 {
     public function index($id){
-     $soal = Soal::where('program_id',$id)->get();
-     $data['jumlah'] = Soal::where('program_id',$id)->count();
+      if (Hasil::where('user_id', auth()->user()->id)->exists()) {
+          return redirect()->back()->with('selesaiQuis','');
+      } else {
+         $soal = Soal::where('program_id',$id)->get();
+         $data['jumlah'] = Soal::where('program_id',$id)->count();
 
-     return view('peserta.quiz.index',compact('data','soal'));
+         return view('peserta.quiz.index',compact('data','soal'));
+      }
    }
 
    public function tambah(Request $request,$id)

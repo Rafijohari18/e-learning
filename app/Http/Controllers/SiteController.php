@@ -26,6 +26,13 @@ class SiteController extends Controller
     	return view('sites.informasi', compact('informasi'));
     }
 
+    public function program()
+    {
+        $program = Program::latest()->paginate(6);
+
+        return view('sites.program', compact('program'));
+    }
+
     // Detail Informasi
     public function detailInformasi($slug)
     {
