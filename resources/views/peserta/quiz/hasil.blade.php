@@ -3,7 +3,7 @@
 @section('title', 'Detail Transaksi')
 
 @section('css')
-
+<link href="{{ asset('assets/plugins/bootstrap-rating/bootstrap-rating.css')}}" rel="stylesheet" type="text/css">
 @stop
 
 @section('content')
@@ -20,16 +20,27 @@
             <p class="card-text">Jawaban Salah : {{ $data['hasil']->jawaban_salah }}</p>
             <p class="card-text">Nilai Akhir : {{ $data['hasil']->hasil }}</p>
             <p class="card-text">Dinyatakan  :   
-                                             @if($data['hasil']->hasil >= '70')
-                                            <span class="badge badge-success">Lulus</span>
-                                            @else
-                                            <span class="badge badge-info">Tidak Lulus</span>
-                                            @endif
-          </p>
-            <a href="{{ route('peserta.sertifikat') }}" class="btn btn-primary waves-effect waves-light">Lihat Sertifikat</a>
-        </div>
-    </div>
+               @if($data['hasil']->hasil >= '70')
+               <span class="badge badge-success">Lulus</span>
+               @else
+               <span class="badge badge-info">Tidak Lulus</span>
+               @endif
+           </p>
+           <form method="POST" action="{{ route('peserta.sertifikat') }}">
+            @csrf
+               <input type="hidden" name="rating" class="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-primary" data-fractions="2"/>
+               <input type="hidden" name="id" value="{{ $data['hasil']->program->id }}">
+               <br>
+               <button class="btn btn-primary waves-effect waves-light btn-block">Lihat Sertifikat</button>
+           </form>
+           
+       </div>
+   </div>
 
 </div>
 @stop
 
+@section('footer')
+<script src="{{ asset('assets/plugins/bootstrap-rating/bootstrap-rating.min.js')}}"></script>
+<script src="{{ asset('assets/pages/rating-init.js')}}"></script>
+@stop

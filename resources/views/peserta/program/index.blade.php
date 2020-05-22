@@ -2,6 +2,10 @@
 
 @section('title', 'Program')
 
+@section('css')
+<link href="{{ asset('assets/plugins/bootstrap-rating/bootstrap-rating.css')}}" rel="stylesheet" type="text/css">
+@stop
+
 @section('content')
 
 @if(empty($neko))
@@ -33,6 +37,9 @@
                             <li>
                                 <i class="ti-wallet"></i> Harga - <span>Rp. {{ number_format($jquin->program->harga, 0, ',', '.') }}</span>
                             </li>
+                            <li>
+                                <input type="hidden" class="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-muted" data-readonly value="{{ $jquin->program->averageRating }}"/>
+                            </li>
                         </ul>
                     </p>
                 </div>
@@ -56,5 +63,6 @@
 @stop
 
 @section('footer')
-
+<script src="{{ asset('assets/plugins/bootstrap-rating/bootstrap-rating.min.js')}}"></script>
+<script src="{{ asset('assets/pages/rating-init.js')}}"></script>
 @stop

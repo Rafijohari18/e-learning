@@ -2,10 +2,13 @@
 
 namespace App;
 
+use willvincent\Rateable\Rateable;
 use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
+    use Rateable;
+    
     protected $table = 'program';
     protected $guarded = [];
 
