@@ -40,7 +40,9 @@
                     <span class="text-info dropdown-item">
                         {{ auth()->user()->nama_lengkap }}
                     </span>
-                    <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i> Profile</a>
+                    @if(auth()->user()->role == 'Admin')
+                    <a class="dropdown-item" href="{{ route('pengguna.profil') }}"><i class="dripicons-user text-muted"></i> Profile</a>
+                    @endif
                     <a class="dropdown-item" href="{{ route('ganti.pw') }}"><i class="mdi mdi-lock-outline text-muted"></i> Ganti Kata Sandi</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('logout') }}"><i class="dripicons-exit text-muted"></i> Keluar</a>

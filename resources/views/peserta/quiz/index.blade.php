@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<!-- Mirrored from learnplus-bootstrap.frontendmatter.com/student-take-quiz.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Jan 2020 00:19:21 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +32,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $db = "elearning";
+    $db = "db_elearning";
 // Create connection
     $koneksi = mysqli_connect($servername, $username, $password,$db);
 // Check connection
@@ -380,5 +379,4 @@
 </body>
 
 
-<!-- Mirrored from learnplus-bootstrap.frontendmatter.com/student-take-quiz.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Jan 2020 00:19:23 GMT -->
 </html>

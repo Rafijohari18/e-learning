@@ -32,6 +32,11 @@ Route::get('/', [
 ]);
 
 // Login
+Route::get('adminblkk/login', [
+	'uses' => 'AuthController@loginAdmin',
+	'as' => 'login.admin'
+]);
+
 Route::get('login', [
 	'uses' => 'AuthController@login',
 	'as' => 'login'
@@ -227,37 +232,6 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 			'as' => 'module.destroy'
 		]);
 
-		// Materi
-		// Route::get('{id}/materi', [
-		// 	'uses' => 'MateriController@index',
-		// 	'as' => 'materi.index'
-		// ]);
-
-		// Route::get('materi/{id}/create', [
-		// 	'uses' => 'MateriController@create',
-		// 	'as' => 'materi.create'
-		// ]);
-
-		// Route::post('materi/store', [
-		// 	'uses' => 'MateriController@store',
-		// 	'as' => 'materi.store'
-		// ]);
-
-		// Route::get('materi/{id}/edit', [
-		// 	'uses' => 'MateriController@edit',
-		// 	'as' => 'materi.edit'
-		// ]);
-
-		// Route::post('materi/{id}/update', [
-		// 	'uses' => 'MateriController@update',
-		// 	'as' => 'materi.update'
-		// ]);
-
-		// Route::get('materi/{id}/destroy', [
-		// 	'uses' => 'MateriController@destroy',
-		// 	'as' => 'materi.destroy'
-		// ]);
-		
 		// Peserta Umum
 		Route::get('data-peserta/umum', [
 			'uses' => 'PesertaController@index',
@@ -317,7 +291,18 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		Route::get('pengguna/{user}/destroy', [
 			'uses' => 'PenggunaController@destroy',
 			'as' => 'pengguna.destroy'
-		]);	
+		]);
+
+		// Profil
+		Route::get('pengguna/profil', [
+			'uses' => 'PenggunaController@profil',
+			'as' => 'pengguna.profil'
+		]);
+
+		Route::post('pengguna/update/profil', [
+			'uses' => 'PenggunaController@profUpdate',
+			'as' => 'profil.profUpdate'
+		]);
 	});
 });
 
@@ -399,6 +384,17 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 		Route::post('upload/struk/pembayaran/{transaksi}/update', [
 			'uses' => 'Peserta\InvoiceController@updateStruk',
 			'as' => 'struk.update'
+		]);
+
+		// Edit Profil
+		Route::get('edit/profil', [
+			'uses' => 'PesertaController@editProfil',
+			'as' => 'edit.profil'
+		]);
+
+		Route::post('update/profil', [
+			'uses' => 'PesertaController@updateProfil',
+			'as' => 'update.profil'
 		]);
 	});
 

@@ -1,7 +1,7 @@
 <head>
 
 <!-- Favicon Icon -->
-<link rel="shortcut icon" type="image/x-icon" href="{{asset('landingpage/images/favicon.png')}}">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.blkkbonang.com/portal/favicon.png">
 <!-- Animation CSS -->
 <link rel="stylesheet" href="{{asset('landingpage/css/animate.css')}}">
 <!-- Latest Bootstrap min CSS -->

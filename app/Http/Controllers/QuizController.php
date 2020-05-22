@@ -66,7 +66,7 @@ class QuizController extends Controller
     {
       $soal = Soal::create([
           'soal'          => $request->soal,
-          'program_id'      =>  $request->program_id,
+          'program_id'    =>  $request->program_id,
           'jawaban'       =>  $request->jawaban,
       ]);  
 
@@ -82,8 +82,8 @@ class QuizController extends Controller
           );
       }
    
-    $pilihan =  Pilihan::insert($insert_data);
-    return redirect()->route('quiz.soal',['id'=>$request->program_id])->with('success','Soal Succes Create !');
+      $pilihan =  Pilihan::insert($insert_data);
+      return redirect()->route('quiz.soal',['id'=>$request->program_id])->with('success','Soal Succes Create !');
   }
 
   public function edit(Request $request,$id)
@@ -97,13 +97,11 @@ class QuizController extends Controller
   public function update(Request $request, $id)
   {
          $data = Soal::findorFail($id);
-            $data->soal= $request->soal;
-            $data->jawaban= $request->jawaban;
-            $data->program_id= $request->program_id;
-            $data->update();
+          $data->soal= $request->soal;
+          $data->jawaban= $request->jawaban;
+          $data->program_id= $request->program_id;
+          $data->update();
              
-
-
          $pilihan = $request->pilihan;
          Pilihan::where('soal_id',$id)->delete();
      
@@ -120,7 +118,6 @@ class QuizController extends Controller
        
         $pilihan =  Pilihan::insert($insert_data);
         return redirect()->route('quiz.soal',['id'=>$request->program_id])->with('update','Soal Succes Create !');  
-
   }
 
     /**

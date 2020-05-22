@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App Icons -->
-        {{-- <link rel="shortcut icon" href="asset('admin/images/favicon.ico')"> --}}
+        <link rel="shortcut icon" href="https://www.blkkbonang.com/portal/favicon.png">
 
         <!-- Css -->
         @yield('css')

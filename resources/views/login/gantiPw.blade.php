@@ -28,12 +28,11 @@
 
         <div class="card">
             <div class="card-body">
-
                 <h3 class="text-center m-0">
-                    <a href="index.html" class="logo logo-admin"><img src="{{asset('assets/images/logo_dark.png')}}" height="30" alt="logo"></a>
+                     <a href="/" class="logo logo-admin"><img src="{{asset('assets/images/blk.png')}}" height="100" alt="logo"></a>
                 </h3>
 
-                <div class="p-3">
+                <div class="p-2">
                     <h4 class="text-muted font-18 m-b-5 text-center">Ganti Kata Sandi</h4>
                     <p class="text-muted text-center">Masukkan Kata Sandi Lama Dan Kata Sandi Baru.</p>
 

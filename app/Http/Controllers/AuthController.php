@@ -11,9 +11,15 @@ use App\Transaksi;
 
 class AuthController extends Controller
 {
+    // Admin Login
+    public function loginAdmin()
+    {
+    	return view('login.login');
+    }
+
     public function login()
     {
-    	return view('login.loginPeserta');
+        return view('login.loginPeserta');
     }
 
     public function postLogin(Request $request)

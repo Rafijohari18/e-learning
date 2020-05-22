@@ -31,4 +31,8 @@
     @if(Session::has('transaksi'))
         alertify.success("Transaksi Berhasil Diperbarui");
     @endif
+
+    @if(Session::has('profil'))
+        alertify.success("Profil Berhasil Diperbarui");
+    @endif
 </script>
