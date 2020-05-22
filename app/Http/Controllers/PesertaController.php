@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Peserta;
 
@@ -18,27 +19,6 @@ class PesertaController extends Controller
         $neko = Peserta::latest()->get();
 
         return view('admin.peserta.indexUmum', compact('neko'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -58,9 +38,11 @@ class PesertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editProfil()
     {
-        //
+        $peserta = Peserta::where('user_id', auth()->user()->id)->first();
+
+        return view('peserta.editProfil', compact('peserta'));
     }
 
     /**
@@ -70,9 +52,43 @@ class PesertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateProfil(Request $request)
     {
-        //
+        $fileOri = $request->file('path');
+       
+        if (empty($request->path)) {
+            $fileMove = $request->fileOri;
+        } else {
+            Storage::delete('public/'.$request->fileOri);
+            $fileMove = Storage::disk('public')->putFile('avatar', $fileOri);
+        }
+
+        // Update Peserta
+        $neko = [
+            'nik' => $request->nik,
+            'nama_lengkap' => $request->nama_lengkap,
+            'tgl_lahir' => $request->tgl_lahir,
+            'umur' => $request->umur,
+            'gender' => $request->gender,
+            'profesi' => $request->profesi,
+            'whatsapp' => $request->whatsapp,
+            'email' => $request->email,
+            'motivasi' => $request->motivasi,
+            'alamat' => $request->alamat
+        ];
+
+        $jquin = [
+            'nama_lengkap' => $request->nama_lengkap,
+            'username' => $request->nama_pengguna,
+            'path' => $fileMove
+        ];
+
+        // Update Peserta
+        $peserta = Peserta::where('user_id', auth()->user()->id)->update($neko);
+        $user = User::findOrFail(auth()->user()->id);
+        $user->update($jquin);
+
+        return redirect()->route('peserta.dashboard')->with('profil','');
     }
 
     /**

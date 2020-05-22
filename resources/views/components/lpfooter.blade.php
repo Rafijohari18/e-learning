@@ -4,8 +4,10 @@
             <div class="row">
                 <div class="col-xl-4 col-md-8 col-sm-12">
                     <div class="widget">
-                        <div class="footer_logo"> 
-                            <a href="index.html"><img src="{{asset('landingpage/images/logo_light.png')}}" alt="logo"/></a> 
+                        <div class="footer_logo">                             
+                            <a href="/">
+                                <img src="https://www.blkkbonang.com/portal/images/logo.png" alt="logo">
+                            </a> 
                         </div>
                         <p>If you are going to use a passage of Lorem Ipsum you need to be sure there isn't anything embarrassing hidden in the middle of text</p>
                     </div>

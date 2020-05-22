@@ -621,16 +621,4 @@ PAGE JS
 			$('.different_address').slideUp();
 		}
 	});
-	
-	/*===================================*
-	DEMO JS
-	*===================================*/
-	
-	$(document).on('ready', function() {
-		$(window).on("load", function() {
-			$('body').prepend('<div id="demo_content" class="demo_switcher"></div>');
-			$("#demo_content").load("https://templatemanja.com/educone/demo/demo.html");
-		});
-	});
-	
 })(jQuery);

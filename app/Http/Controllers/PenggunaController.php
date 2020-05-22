@@ -54,9 +54,9 @@ class PenggunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function profil()
     {
-        //
+        return view('admin.pengguna.profil');
     }
 
     /**
@@ -65,9 +65,28 @@ class PenggunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function profUpdate(Request $request)
     {
-        //
+        $fileOri = $request->file('path');
+       
+        if (empty($request->path)) {
+            $fileMove = $request->fileOri;
+        } else {
+            Storage::delete('public/'.$request->fileOri);
+            $fileMove = Storage::disk('public')->putFile('avatar', $fileOri);
+        }
+
+        $jquin = [
+            'nama_lengkap' => $request->nama_lengkap,
+            'username' => $request->nama_pengguna,
+            'path' => $fileMove
+        ];
+
+        // Update User
+        $user = User::findOrFail(auth()->user()->id);
+        $user->update($jquin);
+
+        return redirect()->back()->with('profil','');
     }
 
     /**

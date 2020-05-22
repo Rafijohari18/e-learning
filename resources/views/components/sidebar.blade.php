@@ -2,10 +2,8 @@
 
     <!-- LOGO -->
     <div class="topbar-left">
-        <div class="">
-            <br>
-            <a href="" class="waves-effect text-white">Logo Your Company</a>
-            <!-- <a href="/" class="logo"><img src="asset('assets/images/logo.png')" height="20" alt="logo"></a> -->
+        <div class="pl-4 pt-4">
+            <a href="/" class="logo"><img src="{{asset('assets/images/blk.png')}}" height="100" alt="logo"></a>
         </div>
     </div>
 

@@ -208,7 +208,4 @@
 <script>
     $().DataTable();
 </script>
-
-<!-- Destroy -->
-
 @stop

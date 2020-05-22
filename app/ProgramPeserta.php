@@ -12,10 +12,12 @@ class ProgramPeserta extends Model
     public function program(){
     	return $this->belongsTo('App\Program');
     }
-     public function user(){
+
+    public function user(){
     	return $this->belongsTo('App\User');
     }
-     public function hasil()
+
+    public function hasil()
     {
         return $this->belongsTo('App\Hasil','user_id');
     }
