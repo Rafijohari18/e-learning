@@ -68,9 +68,7 @@
                     <a href="{{ route('peserta.program') }}" class="waves-effect"><i class="mdi mdi-book"></i><span> Program </span></a>
                 </li>
 
-                <li>
-                    <a href="" class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis </span></a>
-                </li>
+             
 
                 <li>
                     <a href="{{ route('peserta.sertifikat') }}" class="waves-effect"><i class="ti-medall"></i><span> Sertifikat </span></a>

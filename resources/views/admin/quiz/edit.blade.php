@@ -31,6 +31,7 @@
                     <div class="form-group">
                         <label for="judul">Jawaban</label>
                         <input type="text" class="form-control" value="{{ $data['soal']->jawaban }}" name="jawaban" id="jawaban" required="" placeholder="Masukkan Jawaban" >
+                        <small>Masukan Jawaban seperti yang di input di pilihan </small>
                     </div>
 
                         <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
