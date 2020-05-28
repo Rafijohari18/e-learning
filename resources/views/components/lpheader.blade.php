@@ -1,4 +1,4 @@
-<header class="header_wrap fixed-top light_skin sticky_dark_skin main_menu_uppercase transparent_header header_with_topbar dd_dark_skin">
+<header class="header_wrap fixed-top dark_skin main_menu_uppercase header_with_topbar">
     <div class="container">
         <nav class="navbar navbar-expand-lg"> 
         	<a class="navbar-brand" href="/"> 
@@ -9,25 +9,25 @@
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
 					<li class="">
-                       <a class="nav-link" href="/">Beranda</a>
+                       <a class="nav-link text-dark" href="/">Beranda</a>
                     </li>
 
                     <li class="">
-                       <a class="nav-link" href="{{ route('informasi') }}">Informasi</a>
+                       <a class="nav-link text-dark" href="{{ route('informasi') }}">Informasi</a>
                     </li>
 
                     <li class="">
-                       <a class="nav-link" href="{{ route('program') }}">Program</a>
+                       <a class="nav-link text-dark" href="{{ route('program') }}">Program</a>
                     </li>
 
                     <li>
-                        <a href="{{ route('login') }}" class="nav-link">Login</a>
+                        <a href="{{ route('login') }}" class="nav-link text-dark">Login</a>
                     </li>
                 </ul>
           	</div>
 			<ul class="navbar-nav attr-nav align-items-center">
                 <li>
-                	<a href="javascript:void(0);" class="nav-link search_trigger"><i class="linearicons-magnifier"></i></a>
+                	<a href="javascript:void(0);" class="nav-link search_trigger text-dark"><i class="linearicons-magnifier"></i></a>
                     <div class="search_wrap"> 
                         <span class="close-search"><i class="ion-ios-close-empty"></i></span>
                         <form>

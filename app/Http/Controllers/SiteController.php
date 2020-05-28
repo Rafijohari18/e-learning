@@ -51,8 +51,14 @@ class SiteController extends Controller
         return view('sites.detailProgram', compact('jquin','neko','kategori'));
     }
 
-    public function checkout(Program $program)
+    public function checkout($slug)
     {
-        return view('sites.checkout', compact('program'));
+        $program = Program::where('slug', '=', $slug)->first();
+
+        if ($program != NULL) {
+            return view('sites.checkout', compact('program'));
+        }
+        
+        // return redirect()->back();
     }
 }

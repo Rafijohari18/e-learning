@@ -437,14 +437,14 @@ Route::get('program/detail/{slug}', [
 	'as' => 'detail.program'
 ]);
 
-Route::get('ikuti-pelatihan/{program}/detail-pembayaran', [
+Route::get('ikuti-pelatihan/{slug}/detail-pembayaran', [
 	'uses' => 'SiteController@checkout',
 	'as' => 'checkout'
 ]);
 
 //invoice
 Route::post('invoice', [
-	'uses' => 'Peserta\invoiceController@index',
+	'uses' => 'Peserta\InvoiceController@index',
 	'as' => 'invoice.modul'
 ]);
 

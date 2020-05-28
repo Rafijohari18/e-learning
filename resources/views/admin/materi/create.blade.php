@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Konten Tambah Data')
+@section('title','Soal Tambah Data')
 
 @section('css')
 <link href="{{asset('assets/plugins/summernote/summernote.css')}}" rel="stylesheet" />

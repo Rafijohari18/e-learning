@@ -10,7 +10,7 @@
 <meta name="keywords" content="">
 
 <!-- SITE TITLE -->
-<title>E-learning Your Company</title>
+<title>E-learning BLKK Bonang</title>
 <x-lphead></x-lphead>
 
 <body>
@@ -125,7 +125,7 @@
                             {!! Str::limit($mdl->deskripsi, 50, '...') !!}
                         </p>
                         <div class="courses_footer">
-                            <a href="{{ route('checkout',$mdl->id) }}" class="btn btn-warning text-white btn-sm">Ikuti Pelatihan</a>
+                            <a href="{{ route('checkout',$mdl->slug) }}" class="btn btn-warning text-white btn-sm">Ikuti Pelatihan</a>
                             <div class="courses_price"> <span>Rp. {{ number_format($mdl->harga, 0, ',', '.') }}</span> </div>
                         </div>
                   	</div>

@@ -1,23 +1,23 @@
 <footer class="bg_dark footer_dark">
     <div class="footer_top">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-md-8 col-sm-12">
-                    <div class="widget">
-                        <div class="footer_logo">                             
-                            <a href="/">
-                                <img src="https://www.blkkbonang.com/portal/images/logo.png" alt="logo">
-                            </a> 
-                        </div>
-                        <p>If you are going to use a passage of Lorem Ipsum you need to be sure there isn't anything embarrassing hidden in the middle of text</p>
-                    </div>
-                </div>
+            <div class="row justify-content-center">
                 <div class="col-xl-2 col-md-4 col-sm-5">
                     <div class="widget">
                         <h6 class="widget_title">Program</h6>
                         <ul class="widget_links">
                             @foreach($program as $prog)
                             <li><a href="program/detail/{{ $prog->slug }}">{{ $prog->nama_program }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-sm-5">
+                    <div class="widget">
+                        <h6 class="widget_title">Kategori</h6>
+                        <ul class="widget_links">
+                            @foreach($kategoriFt as $kFt)
+                            <li>{{ $kFt->nama_kategori }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -48,15 +48,15 @@
                         <ul class="contact_info contact_info_light">
                             <li> 
                                 <i class="ti-location-pin"></i>
-                                <p>123 Street, Old Trafford, New South London , UK</p>
+                                <p>Kp. Bojongnangka RT. 03/02 Kel. Sukamenak Kec. Purbaratu Kota Tasikmalaya - Jawa Barat</p>
                             </li>
                             <li> 
                                 <i class="ti-email"></i> 
-                                <a href="mailto:info@sitename.com">info@sitename.com</a> 
+                                <a href="mailto:blkkppnhb@gmail.com">blkkppnhb@gmail.com</a> 
                             </li>
                             <li> 
                                 <i class="ti-mobile"></i>
-                                <p>+ 457 789 789 65</p>
+                                <p>081214687886</p>
                             </li>
                         </ul>
                     </div>
@@ -70,7 +70,7 @@
                 <div class="bottom_footer border-top-tran">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} <span class="text_default">Your Company</span></p>
+                            <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} <span class="text_default">BLKK Bonang.</span></p>
                         </div>
                     </div>
                 </div>

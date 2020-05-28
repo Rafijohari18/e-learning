@@ -11,7 +11,7 @@
 @if(empty($neko))
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-info">Anda belum memiliki program satupun untuk dipelajari.</div>
+        <div class="alert alert-info">Anda belum memiliki program untuk dipelajari.</div>
     </div>
 </div>
 @else

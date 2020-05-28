@@ -15,7 +15,7 @@ class SertifikatController extends Controller
 
     if ($request->rating != null) {
         $post = Program::find($request->id);
-        $rating = new \=\Rateable\Rating;
+        $rating = new Rateable\Rating;
         $rating->rating = $request->rating;
         $rating->user_id = auth()->user()->id;
         $cek =  $post->ratings()->save($rating);
