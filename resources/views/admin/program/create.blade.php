@@ -14,39 +14,54 @@
                 <h4 class="mt-0 header-title">Tambah Program</h4>
                 <hr>
                 <form action="{{ route('program.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="judul">Nama Program</label>
-                        <input type="text" name="nama_program" class="form-control" id="judul" placeholder="Masukkan Nama Program">
-                    </div>
+                @csrf
+                <div class="form-group">
+                    <label for="judul">Nama Program</label>
+                    <input type="text" name="nama_program" class="form-control" id="judul" placeholder="Masukkan Nama Program">
+                </div>
 
-                    <div class="form-group">
-                        <label for="judul">Kategori</label>
-                        <select name="kategori_id" class="form-control">
-                           @foreach($kategori as $value)
-                           <option value="{{ $value->id }}">{{ $value->nama_kategori }}</option>
-                           @endforeach
-                       </select>
+                <div class="form-group">
+                    <label for="judul">Kategori</label>
+                    <select name="kategori_id" class="form-control">
+                       @foreach($kategori as $value)
+                       <option value="{{ $value->id }}">{{ $value->nama_kategori }}</option>
+                       @endforeach
+                   </select>
+               </div>
+
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="judul">Harga</label>
+                            <input type="number" class="form-control" name="harga" id="harga" required="" placeholder="Masukkan Harga"  maxlength="191">
+                        </div>
                    </div>
 
-                <div class="form-group">
-                    <label for="judul">Harga</label>
-                    <input type="number" class="form-control" name="harga" id="harga" required="" placeholder="Masukkan Harga"  maxlength="191">
+                   <div class="col-md-6">
+                       <div class="form-group">
+                            <label for="judul">Diskon</label>
+                            <input type="number" class="form-control" name="diskon" id="diskon" placeholder="Masukkan Diskon">
+                             <code class="highlighter-rouge">*Cukup masukan angka</code>
+                        </div>
+                   </div>
+               </div>
 
-                </div>
+               <div class="row">
+                   <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="judul">Durasi</label>
+                            <input type="text" class="form-control" name="durasi_program" id="durasi" placeholder="Masukkan Durasi">
+                        </div>
+                   </div>
 
-                <div class="form-group">
-                    <label for="judul">Diskon</label>
-                    <input type="number" class="form-control" name="diskon" id="diskon" placeholder="Masukkan Diskon">
-                     <code class="highlighter-rouge">*Cukup masukan angka</code>
-                </div>
-
-                  <div class="form-group">
-                    <label for="judul">Durasi</label>
-                    <input type="text" class="form-control" name="durasi_program" id="durasi" placeholder="Masukkan Durasi">
-                   
-                </div>
-
+                   <div class="col-md-6">
+                       <div class="form-group">
+                           <label for="kupon">Kupon</label><br>
+                           <input type="radio" value="Ya" name="kupon"> Ya
+                           <input type="radio" value="Tidak" name="kupon" checked=""> Tidak
+                       </div>
+                   </div>
+               </div>
 
                 <div class="form-group">
                     <label for="artikel">Deskripsi</label>
@@ -55,7 +70,7 @@
 
                 <div class="form-group">
                     <label for="path">Banner</label>
-                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary" required="">   
+                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary btn-sm" required="">   
 
                 </div>
 

@@ -21,7 +21,7 @@
 <!-- END HEADER -->
 
 <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="assets/images/checkout_bg.jpg">
+<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{asset('assets/images/checkout_bg.jpg')}}">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row">
             <div class="col-sm-12">
@@ -42,23 +42,6 @@
 <!-- START SECTION SHOP -->
 <div class="section">
 	<div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-            	<div class="toggle_info">
-            		<span><i class="fas fa-tag"></i>Punya Kupon? <a href="#coupon" data-toggle="collapse" class="collapsed" aria-expanded="false">Masukkan disini</a></span>
-                </div>
-                <div class="panel-collapse collapse coupon_form" id="coupon">
-                    <div class="panel-body">
-                        <div class="coupon field_form input-group">
-                            <input type="text" value="" class="form-control" placeholder="Masukkan Kode Kupon...">
-                            <div class="input-group-append">
-                                <button class="btn btn-default btn-sm" type="submit">Cek</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
         	<div class="col-12">
             	<div class="medium_divider clearfix"></div>
@@ -172,13 +155,24 @@
                         </div>
                         <div class="payment_option">
                             <div class="custome-radio">
-                                <input class="form-check-input" required="" type="radio" id="exampleRadios3" value="option3" checked="" disabled="">
-                                <label class="form-check-label" for="exampleRadios3">Kartu Prakerja</label>
-                                <p data-method="option3" class="payment-text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration. </p>
+                                <input class="form-check-input" type="radio" name="payment" id="tf" value="tf">
+                                <label class="form-check-label" for="tf">Pembayaran Biasa</label>
                             </div>
+                            
                             <div class="custome-radio">
-                                <input class="form-check-input" type="radio" id="exampleRadios5" value="option5" disabled="">
-                                <label class="form-check-label" for="exampleRadios5">Pembayaran Biasa</label>
+                                <input class="form-check-input" required="" name="payment" type="radio" id="kartuprakerja" value="kartuprakerja">
+                                <label class="form-check-label" for="kartuprakerja">Kartu Prakerja</label>
+
+                                <div id="kp">
+                                    <br>
+                                    <div class="form-group">
+                                        <input type="number" name="no_kk" placeholder="Masukkan No Kartu Prakerja" class="form-control form-sm" maxlength="20" id="no_kk">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" name="kupon" placeholder="Masukkan Kode Kupon" class="form-control form-sm" maxlength="10" id="kupon">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -193,6 +187,22 @@
 
 <!-- START FOOTER -->
 <x-lpfooter></x-lpfooter>
+<script>
+$(document).ready(function() {
+    $('#kp').hide();
+    $("#tf").click(function() {
+        $("#kp").hide('slow');
+        $("#no_kk").removeAttr('required','required');
+        $("#kupon").removeAttr('required','required');
+    });
+
+    $("#kartuprakerja").click(function() {
+        $("#kp").show('slow');
+        $("#no_kk").attr('required','required');
+        $("#kupon").attr('required','required');
+    });
+});
+</script>
 <!-- END FOOTER --> 
 
 </body>
