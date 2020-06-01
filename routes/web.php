@@ -69,6 +69,11 @@ Route::get('program', [
 	'as' => 'program'
 ]);
 
+Route::post('program/cari', [
+	'uses' => 'SiteController@cariProgram',
+	'as' => 'cari.program'
+]);
+
 // Admin
 Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 {
@@ -77,6 +82,37 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		Route::get('dashboard', [
 			'uses' => 'DashboardController@admin',
 			'as' => 'admin.dashboard'
+		]);
+
+		// Slider
+		Route::get('slider', [
+			'uses' => 'SliderController@index',
+			'as' => 'slider.index'
+		]);
+
+		Route::get('slider/create', [
+			'uses' => 'SliderController@create',
+			'as' => 'slider.create'
+		]);
+
+		Route::post('slider/store', [
+			'uses' => 'SliderController@store',
+			'as' => 'slider.store'
+		]);
+
+		Route::get('slider/{slider}/edit', [
+			'uses' => 'SliderController@edit',
+			'as' => 'slider.edit'
+		]);
+
+		Route::post('slider/{slider}/update', [
+			'uses' => 'SliderController@update',
+			'as' => 'slider.update'
+		]);
+
+		Route::get('slider/{slider}/destroy', [
+			'uses' => 'SliderController@destroy',
+			'as' => 'slider.destroy'
 		]);
 
 		// Konten
@@ -307,6 +343,22 @@ Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
 		Route::post('pengguna/update/profil', [
 			'uses' => 'PenggunaController@profUpdate',
 			'as' => 'profil.profUpdate'
+		]);
+
+		// Pengaturan
+		Route::get('pengaturan', [
+			'uses' => 'PengaturanController@index',
+			'as' => 'pengaturan.index'
+		]);
+
+		Route::post('pengaturan/store', [
+			'uses' => 'PengaturanController@store',
+			'as' => 'pengaturan.store'
+		]);
+
+		Route::post('pengaturan/update/{pengaturan}', [
+			'uses' => 'PengaturanController@update',
+			'as' => 'pengaturan.update'
 		]);
 	});
 });

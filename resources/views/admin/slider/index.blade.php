@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Sertifikat')
+@section('title','Slider')
 
 @section('css')
 <!-- DataTables -->
@@ -11,37 +11,43 @@
 @stop
 
 @section('content')
-<?php setlocale(LC_ALL, 'id-ID', 'id_ID'); ?>
 <div class="row">
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Sertifikat - {{ Auth::user()->nama_lengkap }}</h4>
+                <div class="float-right">
+                    <a href="{{ route('slider.create') }}" class="btn btn-sm btn-primary">Tambah Data</a>
+                </div>
+                <h4 class="mt-0 header-title">Slider</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Program</th>
-                            <th>Kategori</th>
+                            <th>Foto Slider</th>
+                            <th>Judul</th>
+                            <th>Deskripsi</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody class="table-striped">
-                        @forelse($data['program'] as $jquin)
+                        @forelse($neko as $jquin)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $jquin->program->nama_program }}</td>
-                            <td>{{ $jquin->program->kategori->nama_kategori }}</td>
-                           
+                            <td><img src="{{ asset('storage/'.$jquin->path) }}" alt="Foto Slider" class="img-thumbnail" width="100"></td>
+                            <td>{{ Str::limit($jquin->judul, 30, '...') }}</td>
+                            <td>{!! Str::limit($jquin->deskripsi, 30, '...') !!}</td>
                             <td>
-                                <a href="{{ route('peserta.show', $jquin->id)}}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Sertifikat"><i class="fa fa-eye"></i></a>
+                                <a href="{{ route('slider.edit', $jquin->id) }}" class="btn btn-warning btn-sm"><i class="ti-pencil"></i></a>
+                                @if($jquin->id != 1)
+                                <a href="#" onclick="destroy({{$jquin->id}},'{{ $jquin->judul }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
+                                @endif
                             </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="7"><b><i>Tidak Ada Sertifikat Untuk Ditampilkan</i></b></td>
+                            <td colspan="5"><b><i>Tidak Ada Data</i></b></td>
                         </tr>
                         @endforelse
                         </tbody>
@@ -57,12 +63,22 @@
 <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('assets/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/pages/datatables.init.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js')}}" type="text/javascript"></script>
 
 <script>
-    $().DataTable();
+$().DataTable();
 </script>
 
 <!-- Destroy -->
+<script>
+    function destroy(id,judul) {
+        alertify.confirm("Hapus Slider "+judul+"?", function (ev) {
+            ev.preventDefault();
+            window.location = "slider/"+ id +"/destroy";
 
+        }, function(ev) {
+            ev.preventDefault();
+            alertify.error("Batal!");
+        });
+    }
+</script>
 @stop

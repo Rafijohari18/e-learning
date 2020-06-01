@@ -21,12 +21,13 @@
 <!-- END HEADER -->
 
 <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="assets/images/blog_bg.jpg">
+<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{ asset('storage/'.$jquin->path) }}">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="page-title">
+                <div class="page-title text-center">
             		<h1>Detail Program</h1>
+                    <p class="">{{ $jquin->nama_program }}</p>
                 </div>
             </div>
         </div>
