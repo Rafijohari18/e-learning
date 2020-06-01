@@ -77,5 +77,4 @@ class QuisController extends Controller
       return view('peserta.quiz.hasil',compact('data'));
   }
 
-
 }

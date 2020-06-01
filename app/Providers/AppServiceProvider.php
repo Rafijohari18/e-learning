@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Program;
 use App\Konten;
 use App\Kategori;
+use App\Pengaturan;
 use Illuminate\Support\Facades\View;
 use Carbon\Carbon;
 
@@ -56,5 +57,53 @@ class AppServiceProvider extends ServiceProvider
             ->with('kategoriFt',$kategoriFt);
         });
 
+        View()->composer('components.lpfooter',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
+        View()->composer('layouts.master',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
+        // Background
+        View()->composer('sites.informasi',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
+        View()->composer('sites.program',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
+        View()->composer('sites.checkout',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
+        View()->composer('login.loginPeserta',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
+        View()->composer('components.lpheader',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
+        View()->composer('peserta.invoice.upload',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
     }
 }

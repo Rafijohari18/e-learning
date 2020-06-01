@@ -19,11 +19,11 @@
 <!-- END HEADER -->
 
 <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{asset('landingpage/images/login_bg.jpg')}}">
+<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{asset('storage/'.$pengaturan->informasi)}}">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="page-title">
+                <div class="page-title text-center">
                     <h1>Informasi</h1>
                 </div>
             </div>

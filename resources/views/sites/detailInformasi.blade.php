@@ -21,18 +21,14 @@
 <!-- END HEADER -->
 
 <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="assets/images/blog_bg.jpg">
+<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{ asset('storage/'.$jquin->path) }}">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="page-title">
-            		<h1>Informasi Detail</h1>
+                <div class="page-title text-center">
+            		<h1>Detail Informasi</h1>
+                    <p>{{ $jquin->judul }}</p>
                 </div>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                    <li class="breadcrumb-item active">Blog Detail</li>
-                </ol>
             </div>
         </div>
     </div><!-- END CONTAINER-->

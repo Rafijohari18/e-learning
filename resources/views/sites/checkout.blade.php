@@ -21,18 +21,14 @@
 <!-- END HEADER -->
 
 <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{asset('assets/images/checkout_bg.jpg')}}">
+<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{asset('storage/'.$pengaturan->checkout)}}">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="page-title">
-            		<h1>Checkout</h1>
+                <div class="page-title text-center">
+            		<h1>Transaksi</h1>
+                    <p>Selesaikan Pembayaran Anda</p>
                 </div>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                    <li class="breadcrumb-item active">Checkout</li>
-                </ol>
             </div>
         </div>
     </div><!-- END CONTAINER-->
@@ -73,6 +69,7 @@
 
                     <div class="form-group col-md-12">
                         <input type="date" required="" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir">
+                        <small class="text-muted">*Tanggal Lahir</small>
                     </div>
 
                     <div class="form-group col-md-12">
@@ -151,12 +148,12 @@
                     </div>
                     <div class="payment_method">
                         <div class="heading_s1">
-                            <h4>Pembayaran</h4>
+                            <h4>Metode Pembayaran</h4>
                         </div>
                         <div class="payment_option">
                             <div class="custome-radio">
                                 <input class="form-check-input" type="radio" name="payment" id="tf" value="tf">
-                                <label class="form-check-label" for="tf">Pembayaran Biasa</label>
+                                <label class="form-check-label" for="tf">E-Banking</label>
                             </div>
                             
                             <div class="custome-radio">

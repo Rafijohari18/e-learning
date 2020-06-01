@@ -7,6 +7,7 @@ use App\Program;
 use App\Konten;
 use App\Peserta;
 use App\Kategori;
+use App\Slider;
 
 class SiteController extends Controller
 {
@@ -14,8 +15,9 @@ class SiteController extends Controller
     {
 		$konten = Konten::latest()->limit(3)->get();
 		$program = Program::latest()->limit(6)->get();
+        $slider = Slider::latest()->get();
 
-		return view('layouts.landingpage', compact('konten','program'));
+		return view('layouts.landingpage', compact('konten','program','slider'));
     }
 
     // Informasi
@@ -60,5 +62,13 @@ class SiteController extends Controller
         }
         
         // return redirect()->back();
+    }
+
+    // Cari
+    public function cariProgram(Request $request)
+    {
+        $program = Program::where('nama_program','LIKE','%'.$request->q.'%')->get();
+
+        return view('sites.program', compact('program'));
     }
 }

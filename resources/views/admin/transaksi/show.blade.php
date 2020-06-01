@@ -42,15 +42,6 @@
                     	@endif
                     </dd>
 
-                    <dt class="col-sm-5">Status</dt>
-                    <dd class="col-sm-7">
-                        @if($transaksi->status == 'Diverifikasi')
-                        <span class="badge badge-success">{{ $transaksi->status }}</span>
-                        @else
-                        <span class="badge badge-info">{{ $transaksi->status }}</span>
-                        @endif
-                    </dd>
-
                     {{-- Diskon --}}
                      @php
                         // Menentukan Diskon
@@ -66,6 +57,15 @@
                     <dt class="col-sm-5">Total Bayar</dt>
                     <dd class="col-sm-7">Rp. {{ number_format($total, 0, ',', '.') }}</dd>
 
+                    <dt class="col-sm-5">Status</dt>
+                    <dd class="col-sm-7">
+                        @if($transaksi->status == 'Diverifikasi')
+                        <span class="badge badge-success">{{ $transaksi->status }}</span>
+                        @else
+                        <span class="badge badge-info">{{ $transaksi->status }}</span>
+                        @endif
+                    </dd>
+                    
                     <dt class="col-sm-5">Bukti Pembayaran</dt>
                     <dd class="col-sm-7">
                         @if(empty($transaksi->path))

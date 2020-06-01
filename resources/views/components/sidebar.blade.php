@@ -17,6 +17,10 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('slider.index') }}" class="waves-effect"><i class="ti-layout-slider"></i><span> Slider </span></a>
+                </li>
+
+                <li>
                     <a href="{{ route('konten.index') }}" class="waves-effect"><i class="ti-announcement"></i><span> Informasi </span></a>
                 </li>
 
@@ -74,6 +78,9 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="{{ route('pengaturan.index') }}" class="waves-effect"><i class="ti-settings"></i><span> Pengaturan </span></a>
+                </li>
 
                 @elseif(auth()->user()->role == 'Peserta')
                 <li>

@@ -48,15 +48,15 @@
                         <ul class="contact_info contact_info_light">
                             <li> 
                                 <i class="ti-location-pin"></i>
-                                <p>Kp. Bojongnangka RT. 03/02 Kel. Sukamenak Kec. Purbaratu Kota Tasikmalaya - Jawa Barat</p>
+                                <p>{{ $pengaturan->alamat }}</p>
                             </li>
                             <li> 
                                 <i class="ti-email"></i> 
-                                <a href="mailto:blkkppnhb@gmail.com">blkkppnhb@gmail.com</a> 
+                                <a href="mailto:{{ $pengaturan->email }}">{{ $pengaturan->email }}</a> 
                             </li>
                             <li> 
                                 <i class="ti-mobile"></i>
-                                <p>081214687886</p>
+                                <p>{{ $pengaturan->no_tlp }}</p>
                             </li>
                         </ul>
                     </div>
@@ -70,7 +70,7 @@
                 <div class="bottom_footer border-top-tran">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} <span class="text_default">BLKK Bonang.</span></p>
+                            <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} <span class="text_default">{{ $pengaturan->footer }}.</span></p>
                         </div>
                     </div>
                 </div>

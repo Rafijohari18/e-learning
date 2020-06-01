@@ -23,20 +23,37 @@
 <div class="banner_section full_screen staggered-animation-wrap">
     <div id="carouselExampleControls" class="carousel slide carousel-fade carousel_style1 light_arrow" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active background_bg overlay_bg_60" data-img-src="{{asset('landingpage/images/banner7.jpg')}}">
+            @forelse($slider as $slide)
+            <div class="carousel-item @if($slide->id == 1) active @endif background_bg overlay_bg_60" data-img-src="{{asset('storage/'.$slide->path)}}">
                 <div class="banner_slide_content">
                     <div class="container"><!-- STRART CONTAINER -->
-                    <div class="row justify-content-center">
-                        <div class="col-lg-7 col-md-12 col-sm-12 text-center">
-                            <div class="banner_content text_white">
-                                <h2 class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.2s">learn online course for the new angle</h2>
-                                <p class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.4s">If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-12 col-sm-12 text-center">
+                                <div class="banner_content text_white">
+                                    <h2 class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.2s">{{ $slide->judul }}</h2>
+                                    <p class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.4s">{{ $slide->deskripsi }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- END CONTAINER-->
+                    </div><!-- END CONTAINER-->
                 </div>
             </div>
+            @empty
+            <div class="carousel-item active background_bg overlay_bg_60" data-img-src="{{asset('landingpage/images/no-image.png')}}">
+                <div class="banner_slide_content">
+                    <div class="container"><!-- STRART CONTAINER -->
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 col-md-12 col-sm-12 text-center">
+                                <div class="banner_content text_white">
+                                    <h2 class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.2s">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h2>
+                                    <p class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae facilis provident saepe hic obcaecati quod recusandae dolorem, accusamus soluta. Nulla..</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- END CONTAINER-->
+                </div>
+            </div>
+            @endforelse
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"><i class="ion-chevron-left"></i></a>
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"><i class="ion-chevron-right"></i></a>

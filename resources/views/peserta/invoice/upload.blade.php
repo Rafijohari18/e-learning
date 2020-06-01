@@ -9,7 +9,7 @@
 @section('content')
 <div class="row justify-content-center">
 	<div class="col-md-6">
-        <div class="alert alert-info">Kirim pembayaran ke (no-rek).</div>
+        <div class="alert alert-info">Kirim pembayaran ke - {{ $pengaturan->no_rek }}.</div>
 		<div class="card m-b-20">
             <div class="card-body">
             	<div class="card-title">Detail Transaksi - {{ auth()->user()->nama_lengkap }}</div>
@@ -38,9 +38,6 @@
                     	@endif
                     </dd>
 
-                    <dt class="col-sm-5">Status</dt>
-                    <dd class="col-sm-7"><span class="badge badge-info">{{ $neko->status }}</span></dd>
-
                     {{-- Diskon --}}
                      @php
                         // Menentukan Diskon
@@ -56,6 +53,9 @@
                     <dt class="col-sm-5">Total Bayar</dt>
                     <dd class="col-sm-7">Rp. {{ number_format($total, 0, ',', '.') }}</dd>
 
+                    <dt class="col-sm-5">Status</dt>
+                    <dd class="col-sm-7"><span class="badge badge-info">{{ $neko->status }}</span></dd>
+                    
                     <dt class="col-sm-5">Upload Bukti Pembayaran</dt>
                     <dd class="col-sm-7">
                     	<input type="file" name="path" class="filestyle" data-input="false" data-buttonname="btn-secondary btn-sm" required="">
