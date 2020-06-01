@@ -78,7 +78,6 @@
                     </ul>
                 </li>
 
-
                 <li>
                     <a href="{{ route('pengaturan.index') }}" class="waves-effect"><i class="ti-settings"></i><span> Pengaturan </span></a>
                 </li>
