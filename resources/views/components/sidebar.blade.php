@@ -56,6 +56,24 @@
                 <li>
                     <a href="{{ route('pengguna.index') }}" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Data Pengguna </span></a>
                 </li>
+                @elseif(auth()->user()->role == 'Pengajar')
+                  <li>
+                    <a href="{{ route('admin.dashboard') }}" class="waves-effect"><i class="dripicons-device-desktop"></i><span> Dashboard </span></a>
+                </li>
+
+               <li>
+                    <a href="{{ route('module.index') }}" class="waves-effect"><i class="mdi mdi-book"></i><span> Modul </span></a>
+                </li>
+
+                <li class="has_sub">
+                    <a href="javascript:void(0);"  class="waves-effect"><i class="ti-pencil-alt"></i><span> Quis <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></span></a>
+                     <ul class="list-unstyled">
+                        @foreach($program as $row)
+                        <li><a href="{{ route('quiz.index',['id'=>$row->id]) }}">{{ $row->nama_program }}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
+
 
                 @elseif(auth()->user()->role == 'Peserta')
                 <li>
