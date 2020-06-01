@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Peserta;
 
 use App\Http\Controllers\Controller;
+use willvincent\Rateable\Rateable;
 use Illuminate\Http\Request;
 use App\ProgramPeserta; 
 use App\Program; 
+use App\Hasil;
 use App\Rating;
 use Auth;
 
@@ -15,13 +17,13 @@ class SertifikatController extends Controller
 
     if ($request->rating != null) {
         $post = Program::find($request->id);
-        $rating = new Rateable\Rating;
+        $rating = new \willvincent\Rateable\Rating;
         $rating->rating = $request->rating;
         $rating->user_id = auth()->user()->id;
         $cek =  $post->ratings()->save($rating);
    }
 
-   $data['program'] = ProgramPeserta::with('program')->where('user_id',Auth::user()['id'])->get();
+   $data['program'] = Hasil::with('program')->where('user_id',Auth::user()['id'])->get();
    
    return view('peserta.sertifikat.index',compact('data'));
  }
