@@ -11,7 +11,7 @@
 <meta name="keywords" content="">
 
 <!-- SITE TITLE -->
-<title>Detail Informasi</title>
+<title>Detail Program</title>
 <x-lphead></x-lphead>
 
 <body>
@@ -26,13 +26,8 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title">
-            		<h1>Informasi Detail</h1>
+            		<h1>Detail Program</h1>
                 </div>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                    <li class="breadcrumb-item active">Blog Detail</li>
-                </ol>
             </div>
         </div>
     </div><!-- END CONTAINER-->
@@ -57,6 +52,12 @@
                                 </div>
                             </li>
                             <li>
+                                <div class="course_student">
+                                    <label>Peserta</label>
+                                    <span> 523</span>
+                                </div>
+                            </li>
+                            <li>
                                 <div class="course_rating">
                                     <label>Rating</label>
                                     <div class="rating_stars">
@@ -67,12 +68,6 @@
                                         <i class="ion-android-star-outline"></i> 
                                         <span>4.0</span>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="course_student">
-                                    <label>Peserta</label>
-                                    <span> 523</span>
                                 </div>
                             </li>
                         </ul>
@@ -87,95 +82,6 @@
                             </div>
                             <p>{!! $jquin->deskripsi !!}</p>
                         </div>
-                        <!-- <div class="review_wrap"> -->
-                            <!-- <div class="heading_s1">
-                                <h4>Review</h4>
-                            </div> -->
-                           <!--  <div class="comments">
-                                <ul class="list_none comment_list">
-                                    <li class="comment_info">
-                                        <div class="d-flex">
-                                            <div class="comment_user">
-                                                <img src="assets/images/post_user1.jpg" alt="user2">
-                                            </div>
-                                            <div class="comment_content">
-                                                <div class="d-sm-flex">
-                                                    <div class="meta_data">
-                                                        <h6><a href="#">Sarah Taylor</a></h6>
-                                                        <div class="comment-time"><i class="ti-calendar"></i> <span>March 5, 2019</span></div>
-                                                    </div>
-                                                    <div class="ml-auto">
-                                                        <div class="rating_stars">
-                                                            <i class="ion-android-star"></i>
-                                                            <i class="ion-android-star"></i>
-                                                            <i class="ion-android-star"></i>
-                                                            <i class="ion-android-star"></i>
-                                                            <i class="ion-android-star-outline"></i> 
-                                                            <span>4.0</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>We denounce With righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire that the cannot foresee the pain and trouble.</p>
-                                            </div>
-                                        </div>
-                                        <ul class="children">
-                                            <li class="comment_info">
-                                                <div class="d-flex">
-                                                    <div class="comment_user">
-                                                        <img src="assets/images/post_user2.jpg" alt="user3">
-                                                    </div>
-                                                    <div class="comment_content">
-                                                        <div class="d-sm-flex align-items-md-center">
-                                                            <div class="meta_data">
-                                                                <h6><a href="#">John Becker</a></h6>
-                                                                <div class="comment-time"><i class="ti-calendar"></i> <span>April 8, 2019</span></div>
-                                                            </div>
-                                                            <div class="ml-auto">
-                                                                <div class="rating_stars">
-                                                                    <i class="ion-android-star"></i>
-                                                                    <i class="ion-android-star"></i>
-                                                                    <i class="ion-android-star"></i>
-                                                                    <i class="ion-android-star"></i>
-                                                                    <i class="ion-android-star-outline"></i> 
-                                                                    <span>4.0</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <p>We denounce With righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire that the cannot foresee the pain and trouble.</p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="comment_info">
-                                        <div class="d-flex">
-                                            <div class="comment_user">
-                                                <img src="assets/images/post_user3.jpg" alt="user4">
-                                            </div>
-                                            <div class="comment_content">
-                                                <div class="d-sm-flex">
-                                                    <div class="meta_data">
-                                                        <h6><a href="#">Daisy Lana</a></h6>
-                                                        <div class="comment-time"><i class="ti-calendar"></i> <span>March 15, 2019</span></div>
-                                                    </div>
-                                                    <div class="ml-auto">
-                                                        <div class="rating_stars">
-                                                            <i class="ion-android-star"></i>
-                                                            <i class="ion-android-star"></i>
-                                                            <i class="ion-android-star"></i>
-                                                            <i class="ion-android-star"></i>
-                                                            <i class="ion-android-star-outline"></i> 
-                                                            <span>4.0</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>We denounce With righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire that the cannot foresee the pain and trouble.</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div> -->
-                        <!-- </div> -->
                     </div>
                 </div>
             </div>
@@ -190,7 +96,7 @@
                             <li><i class="linearicons-bag-dollar "></i><span>Harga:</span> <span class="item_value">Rp. {{ number_format($jquin->harga, 0, ',', '.') }}</span></li>
                             <li><i class="ti-filter "></i><span>Diskon:</span> <span class="item_value">@if(empty($jquin->diskon)) 0% @else {{ $jquin->diskon }}% @endif</span></li>
                         </ul>
-                        <a href="{{ route('checkout', $jquin->id) }}" class="btn btn-default btn-block">Ikuti Pelatihan</a>
+                        <a href="{{ route('checkout', $jquin->slug) }}" class="btn btn-default btn-block">Ikuti Pelatihan</a>
                     </div>
                     <div class="widget">
                         <h5 class="widget_title">Program Terbaru</h5>
@@ -214,7 +120,7 @@
                         <h5 class="widget_title">Kategori</h5>
                         <ul class="widget_categories">
                             @foreach($kategori as $ktg)
-                            <li><a href="#"><span class="categories_name">{{ $ktg->nama_kategori }}</span><span class="categories_num">(7)</span></a></li>
+                            <li><span class="categories_name">{{ $ktg->nama_kategori }}</span><span class="categories_num">{{ $ktg->program->count() }}</span></li>
                             @endforeach
                         </ul>
                     </div>

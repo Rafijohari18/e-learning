@@ -11,7 +11,7 @@
 @if(empty($neko))
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-info">Anda belum memiliki program satupun untuk dipelajari.</div>
+        <div class="alert alert-info">Anda belum memiliki program untuk dipelajari.</div>
     </div>
 </div>
 @else
@@ -38,7 +38,7 @@
                                 <i class="ti-wallet"></i> Harga - <span>Rp. {{ number_format($jquin->program->harga, 0, ',', '.') }}</span>
                             </li>
                             <li>
-                                <input type="hidden" class="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-muted" data-readonly value="{{ $jquin->program->averageRating }}"/>
+                                <input type="hidden" class="rating" data-filled="mdi mdi-star font-24 text-primary" data-empty="mdi mdi-star-outline font-24 text-muted" data-readonly value="{{ $jquin->program->averageRating }}"/>
                             </li>
                         </ul>
                     </p>

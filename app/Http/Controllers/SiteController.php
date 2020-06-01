@@ -26,6 +26,13 @@ class SiteController extends Controller
     	return view('sites.informasi', compact('informasi'));
     }
 
+    public function program()
+    {
+        $program = Program::latest()->paginate(6);
+
+        return view('sites.program', compact('program'));
+    }
+
     // Detail Informasi
     public function detailInformasi($slug)
     {
@@ -44,8 +51,14 @@ class SiteController extends Controller
         return view('sites.detailProgram', compact('jquin','neko','kategori'));
     }
 
-    public function checkout(Program $program)
+    public function checkout($slug)
     {
-        return view('sites.checkout', compact('program'));
+        $program = Program::where('slug', '=', $slug)->first();
+
+        if ($program != NULL) {
+            return view('sites.checkout', compact('program'));
+        }
+        
+        // return redirect()->back();
     }
 }

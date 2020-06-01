@@ -9,7 +9,6 @@
 @section('content')
 <?php setlocale(LC_ALL, 'id-ID', 'id_ID'); ?>
 
-
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card m-b-30 card-body">
@@ -28,12 +27,12 @@
            </p>
            <form method="POST" action="{{ route('peserta.sertifikat') }}">
             @csrf
-               <input type="hidden" name="rating" class="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-primary" data-fractions="2"/>
+              <label for="">Berikan Penilaian Program</label><br>
+               <input type="hidden" name="rating" class="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-primary" data-fractions="2" required="" />
                <input type="hidden" name="id" value="{{ $data['hasil']->program->id }}">
-               <br>
+               <br><br>
                <button class="btn btn-primary waves-effect waves-light btn-block">Lihat Sertifikat</button>
            </form>
-           
        </div>
    </div>
 

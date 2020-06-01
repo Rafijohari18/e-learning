@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Program;
 use App\Konten;
+use App\Kategori;
 use Illuminate\Support\Facades\View;
 use Carbon\Carbon;
 
@@ -47,6 +48,12 @@ class AppServiceProvider extends ServiceProvider
             $konten = Konten::latest()->limit(3)->get();
             $view
             ->with('konten',$konten);
+        });
+
+        View()->composer('components.lpfooter',function($view){
+            $kategoriFt = Kategori::latest()->limit(4)->get();
+            $view
+            ->with('kategoriFt',$kategoriFt);
         });
 
     }

@@ -10,7 +10,7 @@
 <meta name="keywords" content="">
 
 <!-- SITE TITLE -->
-<title>E-learning Your Company</title>
+<title>E-learning BLKK Bonang</title>
 <x-lphead></x-lphead>
 
 <body>
@@ -31,8 +31,6 @@
                             <div class="banner_content text_white">
                                 <h2 class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.2s">learn online course for the new angle</h2>
                                 <p class="staggered-animation" data-animation="fadeInUp" data-animation-delay="0.4s">If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                                <a class="btn btn-default btn-radius staggered-animation" href="#" data-animation="fadeInUp" data-animation-delay="0.6s">Get Started</a>
-                                <a class="btn btn-white btn-radius staggered-animation" href="#" data-animation="fadeInUp" data-animation-delay="0.6s">Learn More</a>
                             </div>
                         </div>
                     </div>
@@ -104,7 +102,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="courses_box radius_all_10 box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                     <div class="courses_img"> 
-                    	<a href="#"><img src="{{asset('storage/'.$mdl->path)}}" alt="course_img1"/></a>
+                    	<img src="{{asset('storage/'.$mdl->path)}}" alt="Thumbnail"/>
                     </div>
                   	<div class="courses_info">
                         <div class="float-right">
@@ -122,12 +120,13 @@
                             <span class="badge badge-info"></span>
                         </div>
                         <h5 class="courses_title"><a href="{{ route('detail.program', $mdl->slug) }}">{{ $mdl->nama_program }}</a></h5>
+                        <span class="badge badge-warning text-white">{{ $mdl->kategori->nama_kategori }}</span>
                         <p>
                             {!! Str::limit($mdl->deskripsi, 50, '...') !!}
                         </p>
                         <div class="courses_footer">
-                            <a href="{{ route('checkout',$mdl->id) }}" class="btn btn-primary btn-sm">Ikuti Pelatihan</a>
-                            <div class="courses_price"> <span>Rp{{ number_format($mdl->harga, 0, ',', '.') }}</span> </div>
+                            <a href="{{ route('checkout',$mdl->slug) }}" class="btn btn-warning text-white btn-sm">Ikuti Pelatihan</a>
+                            <div class="courses_price"> <span>Rp. {{ number_format($mdl->harga, 0, ',', '.') }}</span> </div>
                         </div>
                   	</div>
                 </div>

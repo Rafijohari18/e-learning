@@ -10,7 +10,7 @@
 <meta name="keywords" content="">
 
 <!-- SITE TITLE -->
-<title>E-learning Informasi</title>
+<title>E-learning Program</title>
 <x-lphead></x-lphead>
 
 <body>
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title">
-                    <h1>Informasi</h1>
+                    <h1>Program</h1>
                 </div>
             </div>
         </div>
@@ -35,30 +35,41 @@
 <!-- STAT SECTION INFORMASI --> 
 <div class="section">
     <div class="container">
-        <div class="row justify-content-center">
-            @foreach($informasi as $jquin)
-            <div class="col-lg-4 col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                <div class="blog_post blog_style1 box_shadow1">
-                    <div class="blog_img">
-                        <a href="#">
-                            <img src="{{ asset('storage/'.$jquin->path) }}" alt="{{ $jquin->judul }}">
-                        </a>
-                        <div class="post_date radius_all_5">
-                            <h5><span>{{ $jquin->created_at->format('F, m') }}</span> {{ $jquin->created_at->format('Y') }}</h5> 
-                        </div>
+        <div class="row">
+            @foreach($program as $mdl)
+            <div class="col-lg-4 col-md-6">
+                <div class="courses_box radius_all_10 box_shadow1 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                    <div class="courses_img"> 
+                        <img src="{{asset('storage/'.$mdl->path)}}" alt="course_img1"/>
                     </div>
-                    <div class="blog_content">
-                        <div class="blog_text">
-                            <ul class="list_none blog_meta">
-                                <li><i class="ti-user"></i> <span>{{ $jquin->user->nama_lengkap }}</span></li>
+                    <div class="courses_info">
+                        <div class="float-right">
+                            <ul class="courses_meta">
+                                <li><i class="ti-time"></i><span>{{ $mdl->durasi_program }}</span></li>
                             </ul>
-                            <h5 class="blog_title"><a href="{{ route('detail.informasi', $jquin->slug) }}">{{ $jquin->judul }}</a></h5>
-                            <p>{!! Str::limit($jquin->artikel, 50, '...') !!}</p>
+                        </div>
+                        <div class="rating_stars"> 
+                            <i class="ion-android-star"></i> 
+                            <i class="ion-android-star"></i> 
+                            <i class="ion-android-star"></i> 
+                            <i class="ion-android-star"></i> 
+                            <i class="ion-android-star-outline"></i> 
+                            <span>4.0</span> 
+                            <span class="badge badge-info"></span>
+                        </div>
+                        <h5 class="courses_title"><a href="{{ route('detail.program', $mdl->slug) }}">{{ $mdl->nama_program }}</a></h5>
+                        <span class="badge badge-warning text-white">{{ $mdl->kategori->nama_kategori }}</span>
+                        <p>
+                            {!! Str::limit($mdl->deskripsi, 50, '...') !!}
+                        </p>
+                        <div class="courses_footer">
+                            <a href="{{ route('checkout',$mdl->slug) }}" class="btn btn-warning text-white btn-sm">Ikuti Pelatihan</a>
+                            <div class="courses_price"> <span>Rp. {{ number_format($mdl->harga, 0, ',', '.') }}</span> </div>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+            @endforeach
         </div>
         <div class="row">
             <div class="col-12 mt-2 mt-md-3">

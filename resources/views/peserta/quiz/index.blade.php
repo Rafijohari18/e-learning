@@ -7,25 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Peserta - Quiz</title>
-
-    <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
     <meta name="robots" content="noindex">
-
     <!-- Perfect Scrollbar -->
     <link type="text/css" href="{{asset('assets/quiz/vendor/perfect-scrollbar.css')}}" rel="stylesheet">
-
     <!-- Material Design Icons -->
     <link type="text/css" href="{{asset('assets/quiz/css/material-icons.css')}}" rel="stylesheet">
     <link type="text/css" href="{{asset('assets/quiz/css/material-icons.rtl.css')}}" rel="stylesheet">
-
     <!-- Font Awesome Icons -->
     <link type="text/css" href="{{asset('assets/quiz/css/fontawesome.css')}}" rel="stylesheet">
     <link type="text/css" href="{{asset('assets/quiz/css/fontawesome.rtl.css')}}" rel="stylesheet">
-
     <!-- App CSS -->
     <link type="text/css" href="{{asset('assets/quiz/css/app.css')}}" rel="stylesheet">
     <link type="text/css" href="{{asset('assets/quiz/css/app.rtl.css')}}" rel="stylesheet">
-             <!-- jQuery -->
+     <!-- jQuery -->
     <script src="{{asset('assets/quiz/vendor/jquery.min.js')}}"></script>
     <?php
 // koneksi ke mysqli
@@ -146,115 +140,49 @@
             });
         </script>
         <?php  session_destroy(); ?>
-
-
-
-
-
     </head>
 
     <body class=" layout-fluid">
-
-        <div class="preloader">
-            <div class="sk-double-bounce">
-                <div class="sk-child sk-double-bounce1"></div>
-                <div class="sk-child sk-double-bounce2"></div>
-            </div>
-        </div>
-
         <!-- Header Layout -->
         <div class="mdk-header-layout js-mdk-header-layout">
-
             <!-- Header -->
-
             <div id="header" data-fixed class="mdk-header js-mdk-header mb-0">
                 <div class="mdk-header__content">
-
                     <!-- Navbar -->
                     <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
                         <div class="container-fluid">
                             <!-- Toggle sidebar -->
-
-
                             <!-- Brand -->
-                            <a href="" class="navbar-brand">
-                                <img src="{{ asset('assets/quiz/images/logo/white.svg') }}" class="mr-2" alt="LearnPlus" />
-                                <span class="d-none d-xs-md-block">LearnPlus</span>
+                            <a class="navbar-brand">
+                                <img src="https://www.blkkbonang.com/portal/images/logo.png" class="mr-2" alt="Logo" />
                             </a>
-
-
-                            <!-- // END Search -->
-
                             <div class="flex"></div>
-
-                            <!-- Menu -->
-
                             <!-- Menu -->
                             <ul class="nav navbar-nav flex-nowrap">
-
-
-                                <!-- // END Notifications dropdown -->
                                 <!-- User dropdown -->
                                 <li class="nav-item dropdown ml-1 ml-md-3">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img src="{{ asset('assets/quiz/images/people/50/guy-6.jpg')}}" alt="Avatar" class="rounded-circle" width="40"></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">
-                                            <i class="material-icons"></i> 
-                                        </a>
-                                       
-                                        </a>
-                                    </div>
+                                        @if(auth()->user()->path != 'default.png')
+                                        <img src="{{ asset('storage/'.auth()->user()->path) }}" alt="user" class="rounded-circle" width="40">
+                                       @else
+                                        <img src="{{ asset('assets/images/users/default.png') }}" alt="user" class="rounded-circle" width="40">
+                                       @endif
                                 </li>
                                 <!-- // END User dropdown -->
-
                             </ul>
                             <!-- // END Menu -->
                         </div>
                     </nav>
                     <!-- // END Navbar -->
-
                 </div>
             </div>
-
             <!-- // END Header -->
 
             <!-- Header Layout Content -->
             <div class="mdk-header-layout__content">
-
                 <div data-push data-responsive-width="992px" class="mdk-drawer-layout js-mdk-drawer-layout">
                     <div class="mdk-drawer-layout__content page ">
 
                         <div class="container-fluid page__container">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
-                                <li class="breadcrumb-item active">Quiz</li>
-                            </ol>
-                            <div class="card-group">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <h4 class="mb-0"><strong>25</strong></h4>
-                                        <small class="text-muted-light">TOTAL</small>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <h4 class="text-success mb-0"><strong>3</strong></h4>
-                                        <small class="text-muted-light">CORECT</small>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <h4 class="text-danger mb-0"><strong>5</strong></h4>
-                                        <small class="text-muted-light">WRONG</small>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <h4 class="text-primary mb-0"><strong>17</strong></h4>
-                                        <small class="text-muted-light">LEFT</small>
-                                    </div>
-                                </div>
-                            </div>
                             <form id="frmSoal" action="{{ route('quis.tambah',['id'=> Request::segment('3') ])}}" method="POST">
                                 @csrf
                                 @php 
@@ -310,7 +238,7 @@
                             </div>
                             @endforeach
                             <button id='submit' type="submit" class="btn btn-success float-right">
-                                Submit 
+                                Hentikan Quis 
                                 <i class="material-icons btn__icon--right">send</i>
                             </button>
                         </form>
@@ -320,28 +248,16 @@
 
                 </div>
 
-
-
-
                 <div class="mdk-drawer js-mdk-drawer" data-align="end">
                     <div class="mdk-drawer__content ">
                         <div class="sidebar sidebar-right sidebar-light bg-white o-hidden" data-perfect-scrollbar>
                             <div class="sidebar-p-y">
-                                <div class="sidebar-heading">Time left</div>
                                 <div id='timer'></div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
-
-
-   
 
             <!-- Bootstrap -->
             <script src="{{asset('assets/quiz/vendor/popper.min.js')}}"></script>
@@ -363,20 +279,12 @@
             <!-- App Settings (safe to remove) -->
             <script src="{{asset('assets/quiz/js/app-settings.js')}}"></script>
 
-
             <!-- Required by countdown -->
             <script src="{{asset('assets/quiz/vendor/moment.min.js')}}"></script>
             <!-- Easy Countdown -->
             <script src="{{asset('assets/quiz/vendor/jquery.countdown.min.js')}}"></script>
 
-
-
             <!-- Init -->
             <script src="{{asset('assets/quiz/js/countdown.js')}}"></script>
-           
-
-
 </body>
-
-
 </html>

@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-	<div class="col-lg-6">
+	<div class="col-lg-7">
         <div class="card m-b-20">
             <div class="card-body">
             	<div class="float-right">
@@ -54,9 +54,11 @@
                     <dd class="col-sm-7">{{ $neko->profesi }}</dd>
 
                     <dt class="col-sm-5">Pelatihan Yang Diikuti</dt>
-                    <dd class="col-sm-7">{{ auth()->user()->ProgramPeserta->first->program->program->nama_program }}</dd>
+                    <dd class="col-sm-7"> 
+                       @if(count(auth()->user()->ProgramPeserta) > 0) {{ auth()->user()->ProgramPeserta->first->program->program->nama_program }} @else - @endif
+                   </dd>
 
-                    <dt class="col-sm-5">Motivasi Mengikuti Pelatihan</dt>
+                    <dt class="col-sm-5">Motivasi Mengikuti Program</dt>
                     <dd class="col-sm-7">{{ $neko->motivasi }}</dd>
                     
                     <dt class="col-sm-5">Alamat</dt>
