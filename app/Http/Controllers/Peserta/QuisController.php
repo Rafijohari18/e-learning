@@ -12,6 +12,21 @@ use Auth;
 class QuisController extends Controller
 {
     public function index($id){
+<<<<<<< HEAD
+    
+    $hasil = Hasil::where('user_id',Auth::user()['id'])->where('program_id',$id)->count();
+    
+    if($hasil > 0){
+      redirect()->route('peserta.program');
+    }
+       $soal = Soal::where('program_id',$id)->get();
+       $data['jumlah'] = Soal::where('program_id',$id)->count();
+
+        return view('peserta.quiz.index',compact('data','soal'));
+    
+
+    
+=======
       if (Hasil::where('user_id', auth()->user()->id)->exists()) {
           return redirect()->back()->with('selesaiQuis','');
       } else {
@@ -20,6 +35,7 @@ class QuisController extends Controller
 
          return view('peserta.quiz.index',compact('data','soal'));
       }
+>>>>>>> af216159ad2fee1531d32888dff39811812901a7
    }
 
    public function tambah(Request $request,$id)

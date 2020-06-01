@@ -26,4 +26,12 @@ class DashboardController extends Controller
 
     	return view('dashboard.peserta', compact('neko'));
     }
+    public function pengajar()
+    {
+        $program = Program::count();
+        $module = Module::count();
+        $peserta = Peserta::count();
+
+        return view('dashboard.admin', compact('program','module','peserta'));
+    }
 }

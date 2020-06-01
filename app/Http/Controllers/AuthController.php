@@ -30,6 +30,9 @@ class AuthController extends Controller
             }elseif (auth()->user()->role == 'Peserta') {
                 return redirect()->route('peserta.dashboard')->with('welcome','');
             }
+            elseif (auth()->user()->role == 'Pengajar') {
+                return redirect()->route('admin.dashboard')->with('welcome','');
+            }
         }
 
         return redirect()->back()->with('error','');

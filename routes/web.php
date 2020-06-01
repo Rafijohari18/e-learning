@@ -75,7 +75,7 @@ Route::post('program/cari', [
 ]);
 
 // Admin
-Route::group(['middleware' => ['auth','checkRole:Admin']], function ()
+Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 {
 	Route::prefix('admin')->group(function () {
 		// Dashboard
@@ -499,6 +499,9 @@ Route::post('invoice', [
 	'uses' => 'Peserta\InvoiceController@index',
 	'as' => 'invoice.modul'
 ]);
+
+
+// Peserta
 
 //CONFIG
 Route::get('/clear-cache', function() {
