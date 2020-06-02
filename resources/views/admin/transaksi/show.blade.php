@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="row justify-content-center">
-	<div class="col-md-6">
+	<div class="col-md-7">
 		<div class="card m-b-20">
             <div class="card-body">
                 @if($transaksi->path != NULL)
@@ -65,6 +65,9 @@
                         <span class="badge badge-info">{{ $transaksi->status }}</span>
                         @endif
                     </dd>
+
+                    <dt class="col-sm-5">Motivasi Mengikuti Program</dt>
+                    <dd class="col-sm-7">{{ $transaksi->user->peserta->motivasi }}</dd>
                     
                     <dt class="col-sm-5">Bukti Pembayaran</dt>
                     <dd class="col-sm-7">

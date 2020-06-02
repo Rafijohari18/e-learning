@@ -74,6 +74,11 @@ Route::post('program/cari', [
 	'as' => 'cari.program'
 ]);
 
+Route::post('informasi/cari', [
+	'uses' => 'SiteController@cariInformasi',
+	'as' => 'cari.informasi'
+]);
+
 // Admin
 Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 {

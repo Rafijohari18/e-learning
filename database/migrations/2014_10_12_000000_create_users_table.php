@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             // $table->rememberToken();
-            $table->enum('role',['Admin','Administrasi','Peserta']);
+            $table->enum('role',['Admin','Administrasi','Pengajar','Peserta']);
             $table->string('path'); // Avatar
             $table->timestamps();
         });

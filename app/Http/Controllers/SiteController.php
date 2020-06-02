@@ -71,4 +71,11 @@ class SiteController extends Controller
 
         return view('sites.program', compact('program'));
     }
+
+    public function cariInformasi(Request $request)
+    {
+        $informasi = Konten::where('judul','LIKE','%'.$request->q.'%')->get();
+
+        return view('sites.informasi', compact('informasi'));
+    }
 }

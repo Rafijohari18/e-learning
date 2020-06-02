@@ -60,9 +60,10 @@
                 	<div class="widget">
                     	<h5 class="widget_title">Cari Informasi</h5>
                         <div class="search_form">
-                            <form> 
-                                <input required="" class="form-control" placeholder="Cari Informasi..." type="text">
-                                <button type="submit" title="Subscribe" class="btn icon_search" name="submit" value="Submit">
+                            <form method="POST" action="{{ route('cari.informasi') }}">
+                            @csrf 
+                                <input required="" class="form-control" placeholder="Cari Informasi..." type="text" name="q">
+                                <button type="submit" title="Cari..." class="btn icon_search" name="submit" value="Submit">
                                     <i class="ion-ios-search-strong"></i>
                                 </button>
                             </form>
