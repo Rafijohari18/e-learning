@@ -23,14 +23,14 @@ class SiteController extends Controller
     // Informasi
     public function informasi()
     {
-    	$informasi = Konten::latest()->get();
+    	$informasi = Konten::latest()->paginate(12);
 
     	return view('sites.informasi', compact('informasi'));
     }
 
     public function program()
     {
-        $program = Program::latest()->paginate(6);
+        $program = Program::latest()->paginate(12);
 
         return view('sites.program', compact('program'));
     }
