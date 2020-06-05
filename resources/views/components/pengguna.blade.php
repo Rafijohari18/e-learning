@@ -30,8 +30,7 @@
                         <option value="Admin">Admin</option>
                         <option valuer="Peserta">Peserta</option>
                         <option value="Pengajar">Pengajar</option>
-                        <option value="Administrasi">Administrasi</option>
-                      
+                        <!-- <option value="Administrasi">Administrasi</option> -->
                     </select>
                 </div>
 

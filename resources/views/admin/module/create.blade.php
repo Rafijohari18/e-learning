@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label for="link">URL</label>
                     <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan URL"  maxlength="191">
-                    <code class="highlighter-rouge">*Url Embed Video YouTube</code>
+                    <code class="highlighter-rouge">*Embed Id Video (YouTube)</code>
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

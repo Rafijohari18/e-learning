@@ -55,7 +55,7 @@
                             <li>
                                 <div class="course_student">
                                     <label>Peserta</label>
-                                    <span> 523</span>
+                                    <span>{{$pesCount}}</span>
                                 </div>
                             </li>
                             <li>
@@ -90,7 +90,6 @@
                 <div class="sidebar">
                     <div class="widget widget_course_description">
                         <ul>
-                            <li><i class="linearicons-user"></i><span>Peserta:</span> <span class="item_value">16</span></li>
                             <li><i class="linearicons-clock"></i><span>Durasi:</span> <span class="item_value"> {{ $jquin->durasi_program }}</span></li>
                             <li><i class="linearicons-transform"></i><span>Quis</span> <span class="item_value">01</span></li>
                             <li><i class="linearicons-license2"></i><span>Sertifikat:</span> <span class="item_value">Ya</span></li>

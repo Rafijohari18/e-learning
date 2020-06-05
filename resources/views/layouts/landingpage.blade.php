@@ -172,7 +172,7 @@
     				<div class="blog_img"> 
                     	<img src="@if(empty($jquin->path)) {{ asset('landingpage/images/no-image.png') }} @else {{ asset('storage/'.$jquin->path) }}  @endif" alt="{{ $jquin->judul }}"> 
                         <div class="post_date radius_all_5">
-                        	<h5><span>{{ $jquin->created_at->format('F, m') }}</span> {{ $jquin->created_at->format('Y') }}</h5> 
+                        	<h5><span>{{ $jquin->created_at->format('F, d') }}</span> {{ $jquin->created_at->format('Y') }}</h5> 
                         </div>	
                     </div>
     				<div class="blog_content">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Program;
+use App\ProgramPeserta;
 use App\Konten;
 use App\Peserta;
 use App\Kategori;
@@ -49,8 +50,9 @@ class SiteController extends Controller
         $jquin = Program::where('slug', '=', $slug)->first();
         $neko = Program::latest()->limit(4)->get();
         $kategori = Kategori::latest()->get();
+        $pesCount = ProgramPeserta::where('program_id', $jquin->id)->count();
 
-        return view('sites.detailProgram', compact('jquin','neko','kategori'));
+        return view('sites.detailProgram', compact('jquin','neko','kategori','pesCount'));
     }
 
     public function checkout($slug)
@@ -67,14 +69,14 @@ class SiteController extends Controller
     // Cari
     public function cariProgram(Request $request)
     {
-        $program = Program::where('nama_program','LIKE','%'.$request->q.'%')->get();
+        $program = Program::where('nama_program','LIKE','%'.$request->q.'%')->paginate(12);
 
         return view('sites.program', compact('program'));
     }
 
     public function cariInformasi(Request $request)
     {
-        $informasi = Konten::where('judul','LIKE','%'.$request->q.'%')->get();
+        $informasi = Konten::where('judul','LIKE','%'.$request->q.'%')->paginate(12);
 
         return view('sites.informasi', compact('informasi'));
     }

@@ -49,13 +49,13 @@
                         </div>
 
                         <div class="form-group row m-t-20">
-                            <div class="col-sm-6">
+                            <!-- <div class="col-sm-6">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customControlInline">
                                     <label class="custom-control-label" for="customControlInline">Ingat Saya!</label>
                                 </div>
-                            </div>
-                            <div class="col-sm-6 text-right">
+                            </div> -->
+                            <div class="col-sm-12 text-right">
                                 <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="m-t-40 text-center">
-            <p>© {{ date('Y') }} E-learning Your Company.</p>
+            <p>© {{ date('Y') }} BLKK Ponpes Nurul Hidayah Bojongnangka.</p>
         </div>
     </div>
 

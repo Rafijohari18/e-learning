@@ -17,8 +17,8 @@
 @else
     @if(count($neko) > 0)
     <div class="row">
+        @foreach($neko as $jquin)
         <div class="col-md-4">
-            @foreach($neko as $jquin)
             <div class="card m-b-30">
                 <img class="card-img-top img-fluid" src="{{ asset('storage/'.$jquin->program->path) }}" alt="{{ $jquin->program->nama_program }}">
                 <div class="card-body">
@@ -44,13 +44,11 @@
                     </p>
                 </div>
                 <div class="card-footer bg-white">
-                  <a href="{{ route('program.read', [$jquin->program_id,$jquin->program->module->first->id]) }}" class="btn btn-sm btn-info">Modul</a>
+                  <a href="{{ route('program.read', [$jquin->program_id,$jquin->program->module->first->id]) }}" class="btn btn-sm btn-info">Mulai Pelatihan</a>
               </div>
-          </div>
-      </div>
-    </div>
-            @endforeach
+            </div>
         </div>
+        @endforeach
     </div>
     @else
     <div class="row">

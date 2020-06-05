@@ -40,7 +40,14 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-       // Insert To Table User
+        // Validasi
+        $request->validate([
+            'nik' => 'required|unique:peserta',
+            'username' => 'required|unique:users',
+            'email' => 'required|unique:peserta',
+        ]);
+
+        // Insert To Table User
         $data =  new User();
         $data->nama_lengkap = $request->nama_lengkap;
         $data->username = $request->username;

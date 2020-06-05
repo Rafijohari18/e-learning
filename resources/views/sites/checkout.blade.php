@@ -52,15 +52,23 @@
                     @csrf
                     <input type="hidden" name="program_id" value="{{ $program->id }}">
                     <div class="form-group col-md-6">
-                        <input type="number" required="" class="form-control" name="nik" placeholder="NIK" maxlength="60">
+                        <input type="number" required="" class="form-control @error('nik') is-invalid @enderror" name="nik" placeholder="NIK" maxlength="60" value="{{ old('nik') }}">
+
+                        @error('nik')
+                            <small class="text-danger">*{{ $message }}</small>
+                        @enderror
                     </div>
                     
                     <div class="form-group col-md-6">
-                        <input type="text" required="" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" maxlength="50">
+                        <input type="text" required="" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" maxlength="50" value="{{ old('nama_lengkap') }}">
                     </div>
 
                     <div class="form-group col-md-12">
-                        <input type="text" required="" class="form-control" name="username" placeholder="Nama Pengguna" maxlength="90">
+                        <input type="text" required="" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" maxlength="90" value="{{ old('username') }}">
+
+                        @error('username')
+                            <small class="text-danger">*{{ $message }}</small>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-12">
@@ -68,18 +76,17 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <input type="date" required="" class="form-control" name="tgl_lahir" placeholder="Tanggal Lahir">
-                        <small class="text-muted">*Tanggal Lahir</small>
+                        <input type="text" maxlength="50" required="" class="form-control" name="tgl_lahir" placeholder="Tempat, Tanggal Lahir" value="{{ old('tgl_lahir') }}">
                     </div>
 
                     <div class="form-group col-md-12">
-                        <input type="number" required="" class="form-control" name="umur" placeholder="Umur" maxlength="11">
+                        <input type="number" required="" class="form-control" name="umur" placeholder="Umur" maxlength="11" value="{{ old('umur') }}">
                     </div>
 
                     <div class="form-group col-md-12">
                         <div class="custom_select">
                            <select name="gender">
-                                <option value="">Jenis Kelamin</option>
+                                <option value="L">Jenis Kelamin</option>
                                 <option value="L">Laki-Laki</option>
                                 <option value="P">Perempuan</option>
                             </select>
@@ -87,23 +94,27 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <input type="number" required="" class="form-control" name="whatsapp" placeholder="No Whatsapp" maxlength="60">
+                        <input type="number" required="" class="form-control" name="whatsapp" placeholder="No Whatsapp" maxlength="60" value="{{ old('whatsapp') }}">
                     </div>
 
                     <div class="form-group col-md-12">
-                        <input type="email" required="" class="form-control" name="email" placeholder="Email" maxlength="191">
+                        <input type="email" required="" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" maxlength="191" value="{{ old('email') }}">
+
+                        @error('email')
+                            <small class="text-danger">* {{ $message }}</small>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-12">
-                        <input type="text" required="" class="form-control" name="profesi" placeholder="Pekerjaan Saat Ini" maxlength="60">
+                        <input type="text" required="" class="form-control" name="profesi" placeholder="Pekerjaan Saat Ini" maxlength="60" value="{{ old('profesi') }}">
                     </div>
 
                     <div class="form-group col-md-6">
-                       <textarea name="alamat" id="" cols="30" rows="4" class="form-control" placeholder="Alamat" required=""></textarea>
+                       <textarea name="alamat" id="" cols="30" rows="4" class="form-control" placeholder="Alamat" required="">{{ old('alamat') }}</textarea>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <textarea name="motivasi" id="" cols="30" rows="4" class="form-control" placeholder="Motivasi Mengikuti Program" required=""></textarea>
+                        <textarea name="motivasi" id="" cols="30" rows="4" class="form-control" placeholder="Motivasi Mengikuti Program" required="">{{ old('motivasi') }}</textarea>
                     </div>                   	
             </div>
             <div class="col-lg-6">
@@ -152,7 +163,7 @@
                         </div>
                         <div class="payment_option">
                             <div class="custome-radio">
-                                <input class="form-check-input" type="radio" name="payment" id="tf" value="tf">
+                                <input class="form-check-input" type="radio" name="payment" id="tf" value="tf" checked="">
                                 <label class="form-check-label" for="tf">E-Banking</label>
                             </div>
                             

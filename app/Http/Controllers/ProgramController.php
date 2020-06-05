@@ -161,15 +161,15 @@ class ProgramController extends Controller
             $pesPro = ProgramPeserta::where('program_id', $proId)->where('user_id', auth()->user()->id)->get();
             // Jika peserta memiliki program
             if (count($pesPro) > 0) {
-                // Daftar Belajar
-                $neko = Module::where('program_id', $proId)->orderBy('judul', 'ASC')->get();
                 // Tampil materi
                 $modul = Module::where('program_id', $proId)->where('id', $mdId)->orderBy('judul','ASC')->first();
                 // Next Prev Button
-                $next_id = Module::where('id', '>', $mdId)->min('id');
-                $prev_id = Module::where('id', '<', $mdId)->max('id');
+                $prev_id = Module::where('id', '<', $mdId)->where('program_id', $proId)->max('id');
+                $next_id = Module::where('id', '>', $mdId)->where('program_id', $proId)->min('id');
+                // Daftar Belajar
+                $neko = Module::where('program_id', $proId)->orderBy('judul', 'ASC')->get();
                 // Quis
-                $quis = Program::with('module')->where('id',$proId)->get();
+                $quis = Program::with('module')->where('id',$proId)->first();
                 $totalModul = DaftarBelajar::where('user_id', auth()->user()->id)->where('program_id', $proId)->count();
 
                 return view('peserta.program.show', compact('modul','neko','quis','next_id','prev_id','totalModul'));

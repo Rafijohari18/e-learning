@@ -18,7 +18,7 @@ class CreatePesertaTable extends Migration
             $table->foreignId('user_id');
             $table->string('nik', 17);
             $table->string('nama_lengkap', 60);
-            $table->date('tgl_lahir');
+            $table->string('tgl_lahir', 50);
             $table->integer('umur');
             $table->enum('gender', ['L','P']);
             $table->string('whatsapp', 20);

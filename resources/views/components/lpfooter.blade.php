@@ -7,7 +7,7 @@
                         <h6 class="widget_title">Program</h6>
                         <ul class="widget_links">
                             @foreach($program as $prog)
-                            <li><a href="program/detail/{{ $prog->slug }}">{{ $prog->nama_program }}</a></li>
+                            <li><a href="{{ route('detail.program', $prog->slug) }}">{{ $prog->nama_program }}</a></li>
                             @endforeach
                         </ul>
                     </div>
