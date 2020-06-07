@@ -19,17 +19,17 @@ class SertifikatController extends Controller
         $post = Program::find($request->id);
         $rating = new \willvincent\Rateable\Rating;
         $rating->rating = $request->rating;
+        $rating->komentar = $request->komentar;
         $rating->user_id = auth()->user()->id;
         $cek =  $post->ratings()->save($rating);
    }
 
    $data['program'] = Hasil::with('program')->where('user_id',Auth::user()['id'])->get();
-   
    return view('peserta.sertifikat.index',compact('data'));
  }
  public function show($id)
  {
-    $data['program'] = Hasil::with('program','user')->where('id',$id)->first();
+    $data['program'] = Hasil::with('program','user','transaksi')->where('id',$id)->where('user_id',Auth::user()['id'])->first();
     $data['modul'] = Hasil::with('program','user')->where('id',$id)->get();
     $data['tanggal'] = $this->tanggal_indonesia(date($data['program']->user->peserta->tgl_lahir));
     return view('peserta.sertifikat.show',compact('data'));

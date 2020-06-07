@@ -20,4 +20,8 @@ class Hasil extends Model
     {
         return $this->hasOne('App\ProgramPeserta','user_id');
     }
+
+    public function transaksi(){
+        return $this->belongsTo('App\Transaksi','user_id','program_id');
+    }
 }

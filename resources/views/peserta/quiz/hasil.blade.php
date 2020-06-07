@@ -4,6 +4,11 @@
 
 @section('css')
 <link href="{{ asset('assets/plugins/bootstrap-rating/bootstrap-rating.css')}}" rel="stylesheet" type="text/css">
+<style type="text/css">
+  .rating{
+  opacity: 0;
+  }
+</style>
 @stop
 
 @section('content')
@@ -28,9 +33,13 @@
            <form method="POST" action="{{ route('peserta.sertifikat') }}">
             @csrf
               <label for="">Berikan Penilaian Program</label><br>
-               <input type="hidden" name="rating" class="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-primary" data-fractions="2" required="" />
+               <input type="text" name="rating" class="rating" id="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-primary" data-fractions="2">
+
                <input type="hidden" name="id" value="{{ $data['hasil']->program->id }}">
                <br><br>
+
+               <label>Komentar</label>
+               <textarea class="form-control mb-3" required="" name="komentar" placeholder="Masukan Komentar"></textarea>
                <button class="btn btn-primary waves-effect waves-light btn-block">Lihat Sertifikat</button>
            </form>
        </div>
@@ -42,4 +51,7 @@
 @section('footer')
 <script src="{{ asset('assets/plugins/bootstrap-rating/bootstrap-rating.min.js')}}"></script>
 <script src="{{ asset('assets/pages/rating-init.js')}}"></script>
+<script>
+    $(".rating").attr('required','required');
+</script>
 @stop

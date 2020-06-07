@@ -16,7 +16,7 @@
                        <a class="nav-link text-dark" href="{{ route('informasi') }}">Informasi</a>
                     </li>
 
-                    <li class="">
+                    <li>
                        <a class="nav-link text-dark" href="{{ route('program') }}">Program</a>
                     </li>
 

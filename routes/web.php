@@ -289,6 +289,15 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 			'as' => 'peserta.showUmum'
 		]);
 
+		Route::get('detail-peserta/{id}/sertifikat', [
+			'uses' => 'PesertaController@sertifikat',
+			'as' => 'peserta.showSertifikat'
+		]);
+		Route::get('detail-peserta/{id}/preview', [
+			'uses' => 'PesertaController@preview',
+			'as' => 'peserta.previewSertifikat'
+		]);
+
 		Route::get('peserta/{user}/destroy', [
 			'uses' => 'PesertaController@destroy',
 			'as' => 'peserta.destroy'
@@ -349,6 +358,37 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 			'uses' => 'PenggunaController@profUpdate',
 			'as' => 'profil.profUpdate'
 		]);
+
+		Route::get('kupon', [
+			'uses' => 'KuponController@index',
+			'as' => 'kupon.index'
+		]);
+
+			Route::get('kupon/create', [
+			'uses' => 'KuponController@create',
+			'as' => 'kupon.create'
+		]);
+			Route::post('kupon/store', [
+			'uses' => 'KuponController@store',
+			'as' => 'kupon.store'
+		]);
+
+		Route::get('kupon/{id}/edit', [
+			'uses' => 'KuponController@edit',
+			'as' => 'kupon.edit'
+		]);
+
+		Route::post('kupon/{id}/update', [
+			'uses' => 'KuponController@update',
+			'as' => 'kupon.update'
+		]);
+
+		Route::get('kupon/{id}/destroy', [
+			'uses' => 'KuponController@destroy',
+			'as' => 'kupon.destroy'
+		]);
+
+
 
 		// Pengaturan
 		Route::get('pengaturan', [

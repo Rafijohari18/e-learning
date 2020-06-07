@@ -30,4 +30,8 @@ class Program extends Model
     public function hasil(){
         return $this->hasMany('App\Hasil');
     }
+     public function KategoriKupon(){
+        return $this->hasMany('App\KategoriKupon');
+    }
+
 }

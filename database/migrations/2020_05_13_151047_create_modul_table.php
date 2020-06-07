@@ -20,6 +20,7 @@ class CreateModulTable extends Migration
             $table->string('judul', 191);
             $table->longtext('deskripsi');
             $table->text('link'); // Link Embed Youtube
+            $table->text('file'); // Link Embed Youtube
             $table->timestamps();
 
             // Relasi

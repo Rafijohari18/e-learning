@@ -36,6 +36,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="judul">Durasi</label>
+                    <input type="text" class="form-control" name="durasi" id="durasi" required="" placeholder="Masukkan Durasi"  maxlength="191">
+                </div>
+
+
+                <div class="form-group">
                     <label for="artikel">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required=""></textarea>
                 </div>
@@ -44,6 +50,12 @@
                     <label for="link">URL</label>
                     <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan URL"  maxlength="191">
                     <code class="highlighter-rouge">*Embed Id Video (YouTube)</code>
+                </div>
+
+                 <div class="form-group">
+                    <label for="path">File</label>
+                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary btn-sm">   
+
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
