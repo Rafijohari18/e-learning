@@ -7,6 +7,7 @@ use App\Peserta;
 use App\Program;
 use App\Module;
 use App\User;
+use App\Transaksi;
 
 class DashboardController extends Controller
 {
@@ -16,9 +17,11 @@ class DashboardController extends Controller
     	$program = Program::count();
     	$module = Module::count();
         $peserta = Peserta::count();
-    	$pengajar = User::where('role','Pengajar')->count();
+        $pengajar = User::where('role','Pengajar')->count();
+        $tmv = Transaksi::where('status','Menunggu Verifikasi')->count();
+    	$dv = Transaksi::where('status','Diverifikasi')->count();
 
-    	return view('dashboard.admin', compact('program','module','peserta','pengajar'));
+    	return view('dashboard.admin', compact('program','module','peserta','pengajar','tmv','dv'));
     }
 
     public function peserta()

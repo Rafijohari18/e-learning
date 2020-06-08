@@ -45,14 +45,6 @@ class ProgramController extends Controller
 
     public function store(Request $request)
     {
-        // Kupon
-        if ($request->kupon == 'Ya') {
-            $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $kupon = substr(str_shuffle($permitted_chars), 0, 8);
-        } else {
-            $kupon = NULL;
-        }
-
         $fileMove = Storage::disk('public')->putFile('program',$request->file('path'));
         $slug = Str::of($request->nama_program)->slug('-');
 
@@ -65,7 +57,6 @@ class ProgramController extends Controller
             'durasi_program' => $request->durasi_program,
             'diskon' => $request->diskon,
             'path' => $fileMove,
-            'kupon' => $kupon,
             'slug' => $slug
         );
 
@@ -83,14 +74,6 @@ class ProgramController extends Controller
 
     public function update(Request $request, Program $program)
     {
-        // Kupon
-        if ($request->kupon == 'Ya') {
-            $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $kupon = substr(str_shuffle($permitted_chars), 0, 8);
-        } else {
-            $kupon = NULL;
-        }
-
         $fileOri = $request->file('path');
        
         if (empty($request->path)) {
@@ -111,7 +94,6 @@ class ProgramController extends Controller
             'durasi_program' => $request->durasi_program,
             'diskon' => $request->diskon,
             'path' => $fileMove,
-            'kupon' => $kupon,
             'slug' => $slug
         );
 

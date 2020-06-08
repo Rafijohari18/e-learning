@@ -20,13 +20,24 @@
                     <input type="text" name="nama_program" class="form-control" id="judul" placeholder="Masukkan Nama Program">
                 </div>
 
-                <div class="form-group">
-                    <label for="judul">Kategori</label>
-                    <select name="kategori_id" class="form-control">
-                       @foreach($kategori as $value)
-                       <option value="{{ $value->id }}">{{ $value->nama_kategori }}</option>
-                       @endforeach
-                   </select>
+                <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group">
+                          <label for="judul">Kategori Program</label>
+                          <select name="kategori_id" class="form-control">
+                             @foreach($kategori as $value)
+                             <option value="{{ $value->id }}">{{ $value->nama_kategori }}</option>
+                             @endforeach
+                         </select>
+                     </div>
+                   </div>
+                   
+                   <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="judul">Durasi Program</label>
+                            <input type="text" class="form-control" name="durasi_program" id="durasi" placeholder="Masukkan Durasi">
+                        </div>
+                   </div>
                </div>
 
                <div class="row">
@@ -43,23 +54,6 @@
                             <input type="number" class="form-control" name="diskon" id="diskon" placeholder="Masukkan Diskon">
                              <code class="highlighter-rouge">*Cukup masukan angka</code>
                         </div>
-                   </div>
-               </div>
-
-               <div class="row">
-                   <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="judul">Durasi</label>
-                            <input type="text" class="form-control" name="durasi_program" id="durasi" placeholder="Masukkan Durasi">
-                        </div>
-                   </div>
-
-                   <div class="col-md-6">
-                       <div class="form-group">
-                           <label for="kupon">Kupon</label><br>
-                           <input type="radio" value="Ya" name="kupon"> Ya
-                           <input type="radio" value="Tidak" name="kupon" checked=""> Tidak
-                       </div>
                    </div>
                </div>
 

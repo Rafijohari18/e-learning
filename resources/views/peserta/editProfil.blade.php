@@ -34,8 +34,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="tgl_lahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control" value="{{ $peserta->tgl_lahir }}" name="tgl_lahir" id="tgl_lahir" required="" placeholder="Masukkan Nik">
+                                <label for="tgl_lahir">Tempat, Tanggal Lahir</label>
+                                <input type="text" class="form-control" value="{{ $peserta->tgl_lahir }}" name="tgl_lahir" id="tgl_lahir" required="" placeholder="Masukkan Nik">
                             </div>
                         </div>
 

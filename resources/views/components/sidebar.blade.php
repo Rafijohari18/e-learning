@@ -25,6 +25,10 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('kupon.index') }}" class="waves-effect"><i class="mdi mdi-label-outline"></i><span> Kupon </span></a>
+                </li>
+
+                <li>
                     <a href="{{ route('kategori.index') }}" class="waves-effect"><i class="ti-tag"></i><span> Kategori Program </span></a>
                 </li>
                 
@@ -52,7 +56,6 @@
                         <li><a href="ui-cards.html">Prakerja</a></li>
                     </ul>
                 </li>
-                
 
                 <li>
                     <a href="{{ route('transaksi.index') }}" class="waves-effect"><i class="ti-wallet"></i><span> Data Transaksi </span></a>
@@ -60,10 +63,6 @@
 
                 <li>
                     <a href="{{ route('pengguna.index') }}" class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Data Pengguna </span></a>
-                </li>
-
-                 <li>
-                    <a href="{{ route('kupon.index') }}" class="waves-effect"><i class="ti-tag"></i><span> Kupon </span></a>
                 </li>
 
                 <li>

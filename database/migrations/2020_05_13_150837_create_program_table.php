@@ -23,7 +23,6 @@ class CreateProgramTable extends Migration
             $table->integer('diskon')->nullable();
             $table->string('durasi_program', 50); // Misal 4 Jam 20 Menit
             $table->string('path', 191); // Banner
-            $table->string('kupon', 10)->nullable();
             $table->string('slug', 191);
             $table->timestamps();
 

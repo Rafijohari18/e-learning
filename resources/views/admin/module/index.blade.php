@@ -27,7 +27,7 @@
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Program</th>
-                                <th>Created By</th>
+                                <th>Dibuat Oleh</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -39,7 +39,7 @@
                               <td>{{ $jquin->program->nama_program }}</td>
                               <td>{{ $jquin->user->nama_lengkap }}</td>
                               <td>
-                                <a href="{{ route('module.show', $jquin->id) }}" data-toggle="tooltip" data-placement="top" title="Detail Modul" class="btn btn-sm btn-info"><i class="ti-eye"></i></a>
+                                <a href="{{ route('module.show', $jquin->id) }}" data-toggle="tooltip" data-placement="top" title="Detail Modul" target="_blank" class="btn btn-sm btn-info"><i class="ti-eye"></i></a>
                                 <a href="{{ route('module.edit', $jquin->id) }}" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
                                 <a href="#" onclick="destroy({{ $jquin->id }},'{{ $jquin->judul }}','{{ $jquin->program->nama_program }}');" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
                               </td>

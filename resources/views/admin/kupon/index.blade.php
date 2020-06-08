@@ -49,16 +49,15 @@
                               </td>
                               <td>{{ $jquin->kuota }}</td>
                               <td>{{ $jquin->potongan }}</td>
-                              <td>{{ $jquin->kode }}</td>
+                              <td>{{ date('d-m-Y', strtotime($jquin->tanggal_expired)) }}</td>
                               <td>
-                               
                                 <a href="{{ route('kupon.edit', $jquin->id) }}" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
                                 <a href="{{ route('kupon.destroy', $jquin->id) }}" onclick="return confirm('Hapus Data ?')" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
                               </td>
                             </tr>
                             @empty
                             <tr>
-                              <td colspan="5"><b><i>Tidak Ada Kupon Untuk Ditampilkan</i></b></td>
+                              <td colspan="8"><b><i>Tidak Ada Kupon Untuk Ditampilkan</i></b></td>
                             </tr>
                             @endforelse
                       </tbody>

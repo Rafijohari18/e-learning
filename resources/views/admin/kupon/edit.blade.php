@@ -47,22 +47,18 @@
 
                     <div class="form-group">
                         <label for="judul">Kuota</label>
-                        <input type="text" class="form-control" name="kuota" id="kuota" required="" placeholder="Masukkan Kuota"  maxlength="191" value="{{ $data['kupon']->kuota   }}">
+                        <input type="number" class="form-control" name="kuota" id="kuota" required="" placeholder="Masukkan Kuota"  maxlength="11" value="{{ $data['kupon']->kuota   }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="judul">Potongan</label>
-                        <input type="text" class="form-control" name="potongan" id="potongan" required="" placeholder="Masukkan Potongan"  maxlength="191" value="{{ $data['kupon']->potongan }}">
+                        <label for="judul">Besar Potongan</label>
+                        <input type="number" class="form-control" name="potongan" id="potongan" required="" placeholder="Masukkan Besar Potongan"  maxlength="11" value="{{ $data['kupon']->potongan }}">
                     </div>
 
                     <div class="form-group">
                         <label for="judul">Tanggal Expired</label>
                         <input type="date" class="form-control" name="tanggal" id="tanggal" required="" placeholder="Masukkan Tanggal Expired"  maxlength="191" value="{{ $data['kupon']->tanggal_expired }}">
                     </div>
-
-
-
-
 
                     <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                 </form>

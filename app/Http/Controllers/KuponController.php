@@ -68,7 +68,8 @@ class KuponController extends Controller
                 {
                     $insert_data[] = array(
                         'program_id' => $item,
-                        'kupon_id'     => $kupon->id
+                        'kupon_id'     => $kupon->id,
+                        'name' => $request->name
                       );
                   }
             $kategori = KategoriKupon::insert($insert_data);
@@ -121,8 +122,6 @@ class KuponController extends Controller
      */
     public function update(Request $request,$id)
     {
-       
-
         $neko = [
             'kode' => $request->kode,
             'kuota' => $request->kuota,
@@ -145,7 +144,8 @@ class KuponController extends Controller
                 {
                     $insert_data[] = array(
                         'program_id' => $item,
-                        'kupon_id'     => $id
+                        'kupon_id'     => $id,
+                        'name' => $request->name
                       );
                   }
             $kategori = KategoriKupon::insert($insert_data);

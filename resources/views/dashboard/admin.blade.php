@@ -49,6 +49,24 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card text-center m-b-30">
+            <div class="mb-2 card-body text-muted">
+                <h3 class="text-info">{{ $tmv }}</h3>
+                Transaksi Menunggu Verifikasi
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card text-center m-b-30">
+            <div class="mb-2 card-body text-muted">
+                <h3 class="text-primary">{{ $dv }}</h3>
+                Transaksi Diverifikasi
+            </div>
+        </div>
+    </div>
 </div>
 @stop
 

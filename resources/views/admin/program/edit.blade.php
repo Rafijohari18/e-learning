@@ -20,13 +20,24 @@
                     <input type="text" name="nama_program" class="form-control" id="judul" placeholder="Masukkan Nama Program" value="{{ $program->nama_program }}">
                 </div>
 
-                <div class="form-group">
-                    <label for="judul">Kategori</label>
-                    <select name="kategori_id" class="form-control">
-                       @foreach($kategori as $value)
-                       <option value="{{ $value->id }}" @if($program->kategori_id == $value->id) selected @endif>{{ $value->nama_kategori }}</option>
-                       @endforeach
-                   </select>
+                <div class="row">
+                   <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="judul">Kategori</label>
+                          <select name="kategori_id" class="form-control">
+                               @foreach($kategori as $value)
+                               <option value="{{ $value->id }}" @if($program->kategori_id == $value->id) selected @endif>{{ $value->nama_kategori }}</option>
+                               @endforeach
+                          </select>
+                       </div>
+                   </div>
+                   
+                   <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="judul">Durasi Program</label>
+                            <input type="text" class="form-control" name="durasi_program" id="durasi" placeholder="Masukkan Durasi" value="{{ $program->durasi_program }}">
+                        </div>
+                   </div>
                </div>
 
                 <div class="row">
@@ -46,41 +57,24 @@
                    </div>
                </div>
 
-               <div class="row">
-                   <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="judul">Durasi</label>
-                            <input type="text" class="form-control" name="durasi_program" id="durasi" placeholder="Masukkan Durasi" value="{{ $program->durasi_program }}">
-                        </div>
-                   </div>
+              <div class="form-group">
+                  <label for="artikel">Deskripsi</label>
+                  <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{!! $program->deskripsi !!}</textarea>
+              </div>
 
-                   <div class="col-md-6">
-                       <div class="form-group">
-                           <label for="kupon">Kupon</label><br>
-                           <input type="radio" value="Ya" name="kupon" @if($program->kupon != NULL) checked @endif> Ya
-                           <input type="radio" value="Tidak" name="kupon" @if($program->kupon == NULL) checked @endif> Tidak
-                       </div>
-                   </div>
-               </div>
+              <div class="form-group">
+                  <label for="">Banner Sebelumnya</label>
+                  <br>
+                  <img src="{{ asset('storage/'.$program->path) }}" alt="banner" class="img-thumbnail" style="width: 20%; height: 20%;">
 
-                <div class="form-group">
-                    <label for="artikel">Deskripsi</label>
-                    <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{!! $program->deskripsi !!}</textarea>
-                </div>
+                  <input type="hidden" name="fileOri" value="{{ $program->path }}">
+              </div>
 
-                <div class="form-group">
-                    <label for="">Banner Sebelumnya</label>
-                    <br>
-                    <img src="{{ asset('storage/'.$program->path) }}" alt="banner" class="img-thumbnail" style="width: 20%; height: 20%;">
-
-                    <input type="hidden" name="fileOri" value="{{ $program->path }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="path">Banner</label>
-                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary btn-sm"> 
-                    <code class="highlighter-rouge">*Boleh kosong</code>
-                </div>
+              <div class="form-group">
+                  <label for="path">Banner</label>
+                  <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary btn-sm"> 
+                  <code class="highlighter-rouge">*Boleh kosong</code>
+              </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
             </form>

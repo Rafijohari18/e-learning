@@ -37,7 +37,7 @@
 
                  <div class="form-group">
                     <label for="durasi">Durasi</label>
-                    <input type="text" class="form-control" name="durasi" id="durasi" required=""  value="{{ $module->durasi }}" placeholder="Masukkan Durasi"  maxlength="191">
+                    <input type="text" class="form-control" name="durasi" id="durasi" required=""  value="{{ $module->durasi }}" placeholder="Masukkan Durasi"  maxlength="20">
                 </div>
 
                 <div class="form-group">
@@ -51,11 +51,18 @@
                     <code class="highlighter-rouge">*Embed Id Video (YouTube)</code>
                 </div>
 
-                  <div class="form-group">
-                    <label for="path">File</label>
-                     <input type="hidden" name="fileOri" value="{{ $module->file }}">
+                @if($module->file != NULL)
+                <div class="form-group">
+                    <label for="">File Sebelumnya</label><br>
+                    <a href="{{ route('module.download', $module->id) }}" target="_blank"><i class="ti-file"></i> Download</a>
+                </div>
+                @endif
+
+                <div class="form-group">
+                    <label for="path">File (MS.Excel, MS.Word, PDF)</label>
+                    <input type="hidden" name="fileOri" value="{{ $module->file }}">
                     <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary btn-sm"> 
-                    <code class="highlighter-rouge">*Abaikan Jika tidak akan di edit</code>
+                    <code class="highlighter-rouge">*Kosongkan Jika Tidak Akan Diedit</code>
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

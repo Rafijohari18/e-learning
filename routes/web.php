@@ -517,10 +517,10 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
 	]);
 });
 
-// Download File (Belum Selesai)
-Route::get('download/{filename}/file', [
-	'uses' => 'KontenController@download',
-	'as' => 'konten.download'
+// Download File 
+Route::get('download/{module}/file', [
+	'uses' => 'ModuleController@download',
+	'as' => 'module.download'
 ]);
 
 // Slug

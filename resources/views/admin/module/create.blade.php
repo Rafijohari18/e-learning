@@ -36,8 +36,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="judul">Durasi</label>
-                    <input type="text" class="form-control" name="durasi" id="durasi" required="" placeholder="Masukkan Durasi"  maxlength="191">
+                    <label for="judul">Durasi Materi</label>
+                    <input type="text" class="form-control" name="durasi" id="durasi" required="" placeholder="Masukkan Durasi"  maxlength="20">
                 </div>
 
 
@@ -53,9 +53,9 @@
                 </div>
 
                  <div class="form-group">
-                    <label for="path">File</label>
+                    <label for="path">File (MS.Excel, MS.Word, PDF)</label>
                     <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary btn-sm">   
-
+                    <code class="highlighter-rouge">*Boleh Kosong</code>
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

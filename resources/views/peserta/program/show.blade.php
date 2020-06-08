@@ -13,7 +13,7 @@
     <div class="col-lg-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">{{ $modul->judul }}</h4>
+                <h4 class="mt-0 header-title">{{ $modul->judul }} ({{ $modul->durasi }})</h4>
                 <hr><br>
                 
                 <div class="row justify-content-center">
@@ -22,6 +22,10 @@
                     </div>
                 </div>
                 <p class="text-muted m-b-30 font-14">{!! $modul->deskripsi !!}</p>
+
+                @if($modul->file != NULL)
+                    <span class="text-muted"><i class="ti-file"></i> <a href="{{ route('module.download', $modul->id) }}" target="_blank">Download File</a></span>
+                @endif
             </div>
             <div class="card-footer bg-white">
                 @if($next_id)
@@ -68,25 +72,25 @@
                     @forelse($daftar as $df)
                     <div class="col-md-2">
                         <div class="mt-3 ml-5">
-                            <img src="{{ asset('assets/images/modul/bookdf.png') }}" alt="" class="rounded" width="30">
+                            <img src="{{ asset('assets/images/modul/bookdf.png') }}" alt="book" class="rounded" width="30">
                         </div>
                         <br>
                     </div>
 
                     <div class="col-md-4">
-                        <a href="{{ route('program.read', [Request::segment(4),$jquin->id]) }}" class="@if($modul->judul == $jquin->judul) text-info @else text-dark @endif">{{ $jquin->judul }}</a>
+                        <a href="{{ route('program.read', [Request::segment(4),$jquin->id]) }}" class="@if($modul->judul == $jquin->judul) text-info @else text-dark @endif">{{ $jquin->judul }} ({{$jquin->durasi}})</a>
                         <small class="text-muted">{!! Str::limit($jquin->deskripsi, 100, '...') !!}</small>
                     </div>
                     @empty
                     <div class="col-md-2">
                         <div class="mt-3 ml-5">
-                            <img src="{{ asset('assets/images/modul/lock.png') }}" alt="" class="rounded" width="30">
+                            <img src="{{ asset('assets/images/modul/lock.png') }}" alt="lock" class="rounded" width="30">
                         </div>
                         <br>
                     </div>
 
                     <div class="col-md-4">
-                        <a href="#" onclick="validasi()" class="@if($modul->judul == $jquin->judul) text-info @else text-dark @endif">{{ $jquin->judul }}</a>
+                        <a href="#" onclick="validasi()" class="@if($modul->judul == $jquin->judul) text-info @else text-dark @endif">{{ $jquin->judul }} ({{$jquin->durasi}})</a>
                         <small class="text-muted">{!! Str::limit($jquin->deskripsi, 50, '...') !!}</small>
                     </div>
                     @endforelse

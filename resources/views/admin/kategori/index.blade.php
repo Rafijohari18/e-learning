@@ -26,7 +26,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Kategori</th>
-                                <th>Created At</th>
+                                <th>Tanggal Dibuat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

@@ -13,7 +13,7 @@
     <div class="col-lg-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">{{ $module->judul }}</h4>
+                <h4 class="mt-0 header-title">{{ $module->judul }} ({{ $module->durasi }})</h4>
                 <hr><br>
                 
                 <div class="row justify-content-center">

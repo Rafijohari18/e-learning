@@ -47,35 +47,23 @@ class ModuleController extends Controller
     {
         if ($request->file('path')) {
              $fileMove = Storage::disk('public')->putFile('module',$request->file('path'));
-
-             $neko = array(
-                'user_id' => Auth::user()->id,
-                'program_id' => $request->program_id,
-                'judul' => $request->judul,
-                'durasi' => $request->durasi,
-                'deskripsi' => $request->deskripsi,
-                'file'  => $fileMove,
-                'link' => $request->link
-            );
-
-        Module::create($neko);
-
-        return redirect()->route('module.index')->with('store','');
-        }else{
-             $neko = array(
-                'user_id' => Auth::user()->id,
-                'program_id' => $request->program_id,
-                'judul' => $request->judul,
-                'durasi' => $request->durasi,
-                'deskripsi' => $request->deskripsi,
-                'link' => $request->link
-            );
-
-        Module::create($neko);
-
-        return redirect()->route('module.index')->with('store','');
+        } else {
+            $fileMove = NULL;
         }
-       
+         
+         $neko = array(
+            'user_id' => Auth::user()->id,
+            'program_id' => $request->program_id,
+            'judul' => $request->judul,
+            'durasi' => $request->durasi,
+            'deskripsi' => $request->deskripsi,
+            'file'  => $fileMove,
+            'link' => $request->link
+        );
+
+        Module::create($neko);
+
+        return redirect()->route('module.index')->with('store','');
     }
 
     public function show(Module $module)
@@ -92,14 +80,14 @@ class ModuleController extends Controller
    
     public function update(Request $request, Module $module)
     {
-          $fileOri = $request->file('path');
-       
-            if (empty($request->path)) {
-                $fileMove = $request->fileOri;
-            } else {
-                Storage::delete('public/'.$request->fileOri);
-                $fileMove = Storage::disk('public')->putFile('module', $fileOri);
-            }
+      $fileOri = $request->file('path');
+   
+        if (empty($request->path)) {
+            $fileMove = $request->fileOri;
+        } else {
+            Storage::delete('public/'.$request->fileOri);
+            $fileMove = Storage::disk('public')->putFile('module', $fileOri);
+        }
 
         $neko = array(
             'user_id' => Auth::user()->id,
@@ -129,5 +117,11 @@ class ModuleController extends Controller
         $this->model->delete($module->id);
 
         return back()->with('destroy','Module Succes Delete !');
+    }
+
+    // Download
+    public function download(Module $module)
+    {
+        return response()->download(storage_path('app/public/'.$module->file));
     }
 }

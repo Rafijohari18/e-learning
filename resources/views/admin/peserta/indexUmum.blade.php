@@ -45,8 +45,8 @@
                             <td>{{ $jquin->whatsapp }}</td>
                             <td>
                             	<a href="{{ route('peserta.showUmum', $jquin->id) }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Detail Peserta"><i class="ti-eye"></i></a>
+                                <a href="{{ route('peserta.showSertifikat', $jquin->user->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Sertifikat Peserta"><i class="ti-medall"></i></a>
                             	<a href="#" onclick="destroy({{ $jquin->user->id }},'{{ $jquin->nama_lengkap }}');" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
-                                <a href="{{ route('peserta.showSertifikat', $jquin->user->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Detail Sertifikat"><i class="ti-eye"></i></a>
                             </td>
                         </tr>
                         @empty

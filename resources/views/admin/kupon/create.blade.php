@@ -21,7 +21,7 @@
 
                       <div class="form-group">
                         <label for="judul">Nama Kupon</label>
-                        <input type="text" class="form-control" name="name" id="name" required="" placeholder="Masukkan Kode"  maxlength="191">
+                        <input type="text" class="form-control" name="name" id="name" required="" placeholder="Masukkan Nama Kupon"  maxlength="191">
                     </div>
 
                     <div class="form-group">
@@ -34,35 +34,28 @@
                         <label class="control-label">Nama Program</label>
                          <select id="kategori" name="kategori[]" class="form-control" multiple="multiple">
                               
-                                <optgroup label="Nama Program">
-                              @foreach($data['program'] as $value)
-                              <option value="{{ $value->id }}">{{ $value->nama_program }}</option>
-                            @endforeach
-                                </optgroup>
-
+                            <optgroup label="Nama Program">
+                                @foreach($data['program'] as $value)
+                                  <option value="{{ $value->id }}">{{ $value->nama_program }}</option>
+                                @endforeach
+                            </optgroup>
                           </select>
-
-
                     </div>
 
                     <div class="form-group">
                         <label for="judul">Kuota</label>
-                        <input type="text" class="form-control" name="kuota" id="kuota" required="" placeholder="Masukkan Kuota"  maxlength="191">
+                        <input type="number" class="form-control" name="kuota" id="kuota" required="" placeholder="Masukkan Kuota"  maxlength="5">
                     </div>
 
                     <div class="form-group">
-                        <label for="judul">Potongan</label>
-                        <input type="text" class="form-control" name="potongan" id="potongan" required="" placeholder="Masukkan Potongan"  maxlength="191">
+                        <label for="judul">Besar Potongan</label>
+                        <input type="number" class="form-control" name="potongan" id="potongan" required="" placeholder="Masukkan Besar Potongan"  maxlength="11">
                     </div>
 
                     <div class="form-group">
                         <label for="judul">Tanggal Expired</label>
                         <input type="date" class="form-control" name="tanggal" id="tanggal" required="" placeholder="Masukkan Tanggal Expired"  maxlength="191">
                     </div>
-
-
-
-
 
                     <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                 </form>

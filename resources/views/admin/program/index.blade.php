@@ -31,7 +31,6 @@
                                 <th>Kategori</th>
                                 <th>Harga</th>
                                 <th>Diskon</th>
-                                <th>Kupon</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -43,7 +42,6 @@
                              <td>{{ $jquin->kategori->nama_kategori }}</td>
                              <td>Rp. {{ number_format($jquin->harga, 0, ',', '.') }}</td>
                              <td>@if(empty($jquin->diskon)) 0% @else {{ $jquin->diskon }}% @endif</td>
-                             <td>{{ $jquin->kupon }}</td>
                              <td>
                                  <a href="{{ route('program.edit', $jquin->id) }}" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
                                  <a href="#" onclick="destroy({{ $jquin->id }}, '{{ $jquin->nama_program }}');" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>
@@ -51,7 +49,7 @@
                          </tr>
                          @empty
                          <tr>
-                             <td colspan="7"><b><i>Tidak Ada Program Untuk Ditampilkan</i></b></td>
+                             <td colspan="6"><b><i>Tidak Ada Program Untuk Ditampilkan</i></b></td>
                          </tr>
                          @endforelse   
                       </tbody>
