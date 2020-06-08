@@ -15,38 +15,28 @@
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Data Peserta Umum</h4>
+                <h4 class="mt-0 header-title">Data Sertifikat {{ $data['user']->User->nama_lengkap }}</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIK</th>
-                            <th>Nama Lengkap</th>
-                            <th>Gender</th>
-                            <th>WhatsApp</th>
+                            <th>Nama Program</th>
+                            <th>Kategori</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody class="table-striped">
-                        @forelse($neko as $jquin)
+                        @forelse($data['sertifikat'] as $jquin)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $jquin->nik }}</td>
-                            <td>{{ $jquin->nama_lengkap }}</td>
+                             <td>{{ $jquin->program->nama_program }}</td>
+                            <td>{{ $jquin->program->kategori->nama_kategori }}</td>
+                            
                             <td>
-                            	@if($jquin->gender == 'L')
-                            		Laki-Laki
-                            	@else
-                            		Perempuan
-                            	@endif
-                            </td>
-                            <td>{{ $jquin->whatsapp }}</td>
-                            <td>
-                            	<a href="{{ route('peserta.showUmum', $jquin->id) }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Detail Peserta"><i class="ti-eye"></i></a>
-                            	<a href="#" onclick="destroy({{ $jquin->user->id }},'{{ $jquin->nama_lengkap }}');" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
-                                <a href="{{ route('peserta.showSertifikat', $jquin->user->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Detail Sertifikat"><i class="ti-eye"></i></a>
+                            	
+                                <a href="{{ route('peserta.previewSertifikat', $jquin->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Lihat Sertifikat"><i class="ti-eye"></i></a>
                             </td>
                         </tr>
                         @empty

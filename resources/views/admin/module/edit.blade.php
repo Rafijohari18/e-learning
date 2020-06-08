@@ -35,6 +35,11 @@
                     </select>
                 </div>
 
+                 <div class="form-group">
+                    <label for="durasi">Durasi</label>
+                    <input type="text" class="form-control" name="durasi" id="durasi" required=""  value="{{ $module->durasi }}" placeholder="Masukkan Durasi"  maxlength="191">
+                </div>
+
                 <div class="form-group">
                     <label for="artikel">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" class="summernote form-control" required="">{!! $module->deskripsi !!}</textarea>
@@ -44,6 +49,13 @@
                     <label for="link">URL</label>
                     <input type="text" class="form-control" name="link" id="link" required="" placeholder="Masukkan URL"  maxlength="191" value="{{ $module->link }}">
                     <code class="highlighter-rouge">*Embed Id Video (YouTube)</code>
+                </div>
+
+                  <div class="form-group">
+                    <label for="path">File</label>
+                     <input type="hidden" name="fileOri" value="{{ $module->file }}">
+                    <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary btn-sm"> 
+                    <code class="highlighter-rouge">*Abaikan Jika tidak akan di edit</code>
                 </div>
 
                 <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

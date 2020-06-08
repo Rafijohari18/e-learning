@@ -26,7 +26,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $db = "db_elearning";
+    $db = "elearning";
 // Create connection
     $koneksi = mysqli_connect($servername, $username, $password,$db);
 // Check connection
