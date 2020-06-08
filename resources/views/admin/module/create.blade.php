@@ -24,6 +24,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="judul">Kode Materi</label>
+                    <input type="text" class="form-control" name="kode_modul" id="kode_modul" required="" placeholder="Masukkan Kode"  maxlength="191">
+                </div>
+
+                <div class="form-group">
                     <label for="program_id">Nama Program</label>
                     <select class="form-control select2" name="program_id">
                         <option>Pilih Program</option>

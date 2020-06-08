@@ -52,6 +52,7 @@ class ModuleController extends Controller
                 'user_id' => Auth::user()->id,
                 'program_id' => $request->program_id,
                 'judul' => $request->judul,
+                'kode_modul' => $request->kode_modul,
                 'durasi' => $request->durasi,
                 'deskripsi' => $request->deskripsi,
                 'file'  => $fileMove,
@@ -67,6 +68,7 @@ class ModuleController extends Controller
                 'program_id' => $request->program_id,
                 'judul' => $request->judul,
                 'durasi' => $request->durasi,
+                'kode_modul' => $request->kode_modul,
                 'deskripsi' => $request->deskripsi,
                 'link' => $request->link
             );
@@ -106,6 +108,8 @@ class ModuleController extends Controller
             'program_id' => $request->program_id,
             'judul' => $request->judul,
             'durasi' => $request->durasi,
+            'kode_modul' => $request->kode_modul,
+
             'deskripsi' => $request->deskripsi,
             'link' => $request->link,
             'file' => $fileMove,

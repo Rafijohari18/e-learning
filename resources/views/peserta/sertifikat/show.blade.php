@@ -161,7 +161,8 @@
                                 <thead>
                                     <tr class="text-center">
                                         <th>No</th>
-                                        <th>Judul Modul</th>
+                                        <th>Kode Unit Kompetensi </th>
+                                        <th>Unit Kompetensi</th>
                                         
                                     </tr>
                                 </thead>
@@ -169,6 +170,7 @@
                                     @foreach($data['program']->program->module as $item)
                                     <tr class="text-center">
                                         <th>{{ $loop->iteration }}</th>
+                                        <th>{{ $item->kode_modul }}</th>
                                         <th>{{ $item->judul }}</th>
                                     </tr>
                                     @endforeach
