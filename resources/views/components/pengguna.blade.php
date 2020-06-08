@@ -28,7 +28,6 @@
                     <label for="role">Role</label>
                     <select name="role" id="role" class="form-control">
                         <option value="Admin">Admin</option>
-                        <option valuer="Peserta">Peserta</option>
                         <option value="Pengajar">Pengajar</option>
                         <!-- <option value="Administrasi">Administrasi</option> -->
                     </select>

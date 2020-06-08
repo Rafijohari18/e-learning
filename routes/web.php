@@ -308,7 +308,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 			'as' => 'transaksi.show'
 		]);
 
-		Route::get('transaksi/{transaksi}/update', [
+		Route::get('transaksi/update/{transaksi}', [
 			'uses' => 'TransaksiController@update',
 			'as' => 'transaksi.update'
 		]);

@@ -41,13 +41,19 @@
 
                     <div class="form-group">
                         <label for="no_rek">No Rekening</label>
-                        <input type="number" class="form-control dsb" id="no_rek" name="no_rek" required="" placeholder="Masukkan No Rekening" value="{{ $jquin->no_rek }}">
+                        <textarea name="no_rek" id="no_rek" class="form-control dsb" cols="30" rows="3" required="" placeholder="Masukkan No Rekening" maxlength="225">{{ $jquin->no_rek }}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="quis">Waktu Pelaksanaan Quis</label>
                         <input type="number" maxlength="3" class="form-control dsb" id="quis" name="waktu" required="" placeholder="Masukkan Waktu Quis" value="{{ $time->waktu }}">
                         <small class="text-muted">Waktu ditulis dalam menit</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password_default">Kata Sandi Default</label>
+                        <input type="text" maxlength="50" class="form-control dsb" id="password_default" name="password_default" required="" placeholder="Masukkan Kata Sandi Default" value="{{ $jquin->password_default }}">
+                        <small class="text-muted">Kata sandi default digunakan pada fitur reset kata sandi</small>
                     </div>
 
                     <hr>

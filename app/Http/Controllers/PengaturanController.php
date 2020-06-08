@@ -36,7 +36,8 @@ class PengaturanController extends Controller
             'program' => $program,
             'login' => $login,
             'checkout' => $checkout,
-            'logo' => $logo
+            'logo' => $logo,
+            'password_default' => $request->password_default
         ];
 
         Pengaturan::create($neko);
@@ -95,7 +96,8 @@ class PengaturanController extends Controller
             'program' => $program,
             'login' => $login,
             'checkout' => $checkout,
-            'logo' => $logo
+            'logo' => $logo,
+            'password_default' => $request->password_default
         ];
 
         $jquin = Pengaturan::findOrFail($pengaturan->id);

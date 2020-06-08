@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Modul')
+@section('title','Materi')
 
 @section('css')
 <!-- DataTables -->
@@ -18,7 +18,7 @@
                 <div class="float-right">
                     <a class="btn btn-sm btn-primary waves-effect waves-light add" href="{{ route('module.create') }}">Tambah Data</a>
                 </div>
-                <h4 class="mt-0 header-title">Modul</h4>
+                <h4 class="mt-0 header-title">Materi</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
@@ -70,7 +70,7 @@
 <!-- Destroy -->
 <script>
     function destroy(id,judul,program) {
-        alertify.confirm("Hapus Modul "+judul+" Dengan Program "+program+"?", function (ev) {
+        alertify.confirm("Hapus Materi "+judul+" Dengan Program "+program+"?", function (ev) {
             ev.preventDefault();
             window.location = "module/"+ id +"/destroy";
 

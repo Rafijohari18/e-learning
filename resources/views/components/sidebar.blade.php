@@ -33,7 +33,7 @@
                 </li>
 
                <li>
-                    <a href="{{ route('module.index') }}" class="waves-effect"><i class="mdi mdi-book"></i><span> Modul </span></a>
+                    <a href="{{ route('module.index') }}" class="waves-effect"><i class="mdi mdi-book"></i><span> Materi </span></a>
                 </li>
 
                 <li class="has_sub">

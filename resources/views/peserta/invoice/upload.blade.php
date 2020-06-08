@@ -9,7 +9,7 @@
 @section('content')
 <div class="row justify-content-center">
 	<div class="col-md-6">
-        <div class="alert alert-info">Kirim pembayaran ke - {{ $pengaturan->no_rek }}.</div>
+        <div class="alert alert-info">{{ $pengaturan->no_rek }}.</div>
 		<div class="card m-b-20">
             <div class="card-body">
             	<div class="card-title">Detail Transaksi - {{ auth()->user()->nama_lengkap }}</div>

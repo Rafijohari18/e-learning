@@ -23,6 +23,10 @@
                     <li>
                         <a href="{{ route('login') }}" class="nav-link text-dark">Login</a>
                     </li>
+
+                    <li class="">
+                       <a class="nav-link text-dark" href="#">Daftar</a>
+                    </li>
                 </ul>
           	</div>
 			<ul class="navbar-nav attr-nav align-items-center">

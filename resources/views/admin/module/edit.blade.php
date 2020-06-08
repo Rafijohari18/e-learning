@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Modul Edit Data')
+@section('title','Materi Edit Data')
 
 @section('css')
 <link href="{{asset('assets/plugins/summernote/summernote.css')}}" rel="stylesheet" />
@@ -13,7 +13,7 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Edit Modul</h4>
+                <h4 class="mt-0 header-title">Edit Materi</h4>
                 <hr>
                 <form action="{{ route('module.update', $module->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
