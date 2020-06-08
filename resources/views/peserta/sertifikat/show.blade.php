@@ -83,7 +83,7 @@
 
                             {{  $data['program']->program->nama_program }} </p> 
 
-                            <p class="ml-5">Yang di selenggarakan dari  -- s/d <?php echo strftime("%A, %d %B %Y", strtotime($data['program']->created_at)) . "\n"; ?> di Balai Latihan Kerja Komunitas Nurul Hidayah Bojongnangka Kota Tasikmalaya</p> 
+                            <p class="ml-5">Yang di selenggarakan di Balai Latihan Kerja Komunitas Nurul Hidayah Bojongnangka Kota Tasikmalaya</p> 
                         </div>
                         <div class="col-md-2">
 
