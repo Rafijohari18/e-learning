@@ -14,7 +14,7 @@
                 @if($transaksi->path != NULL)
                     @if($transaksi->status != 'Diverifikasi')
                     <div class="float-right">
-                        <a href="{{ route('transaksi.update', $transaksi->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placmenent="top" title="Verifikasi Transaksi {{ $transaksi->user->nama_lengkap }}"><i class="ti-check"></i></a>
+                        <a href="#" onclick="verfy({{$transaksi->id}},'{{$transaksi->user->nama_lengkap}}')"  class="btn btn-sm btn-success" data-toggle="tooltip" data-placmenent="top" title="Verifikasi Transaksi {{ $transaksi->user->nama_lengkap }}"><i class="ti-check"></i></a>
                     </div>
                     @endif
                 @endif
@@ -85,5 +85,16 @@
 @stop
 
 @section('footer')
+<script>
+    function verfy(id,nama) {
+        alertify.confirm("Verifikasi Transaksi "+nama+"?", function (ev) {
+            ev.preventDefault();
+            window.location = "{{ url('admin/transaksi/update') }}" + '/' + id;
 
+        }, function(ev) {
+            ev.preventDefault();
+            alertify.error("Batal!");
+        });
+    }
+</script>
 @stop

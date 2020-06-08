@@ -62,7 +62,7 @@
         </div>
         
         <div class="row justify-content-center">
-            {{ $program->links() }}
+            {{ $informasi->links() }}
         </div>
     </div>
 </div>

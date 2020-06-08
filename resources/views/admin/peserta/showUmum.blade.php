@@ -4,12 +4,9 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-lg-6">
+    <div class="col-lg-7">
         <div class="card m-b-20">
             <div class="card-body">
-                <div class="float-right">
-                    <a href="#" data-toggle="modal" data-target="#editProfil" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
-                </div>
                 <div class="media">
                     <img class="d-flex mr-3 img-thumbnail thumb-lg" src="{{ asset('assets/images/users/default.png') }}" alt="Poto Profil">
                     <div class="media-body">
@@ -26,7 +23,7 @@
                     <dt class="col-sm-5">Nama Lengkap</dt>
                     <dd class="col-sm-7">{{ $peserta->nama_lengkap }}</dd>
 
-                    <dt class="col-sm-5">Tanggal Lahir</dt>
+                    <dt class="col-sm-5">Tempat, Tanggal Lahir</dt>
                     <dd class="col-sm-7">{{ $peserta->tgl_lahir }}</dd>
 
                     <dt class="col-sm-5">Umur</dt>

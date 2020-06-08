@@ -15,9 +15,10 @@ class DashboardController extends Controller
     	// Count
     	$program = Program::count();
     	$module = Module::count();
-    	$peserta = Peserta::count();
+        $peserta = Peserta::count();
+    	$pengajar = User::where('role','Pengajar')->count();
 
-    	return view('dashboard.admin', compact('program','module','peserta'));
+    	return view('dashboard.admin', compact('program','module','peserta','pengajar'));
     }
 
     public function peserta()
@@ -26,6 +27,7 @@ class DashboardController extends Controller
 
     	return view('dashboard.peserta', compact('neko'));
     }
+
     public function pengajar()
     {
         $program = Program::count();

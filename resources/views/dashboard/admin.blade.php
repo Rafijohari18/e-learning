@@ -40,6 +40,15 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-6 col-xl-3">
+        <div class="card text-center m-b-30">
+            <div class="mb-2 card-body text-muted">
+                <h3 class="text-purple">{{ $pengajar }}</h3>
+                Total Pengajar
+            </div>
+        </div>
+    </div>
 </div>
 @stop
 

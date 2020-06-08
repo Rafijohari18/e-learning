@@ -24,7 +24,8 @@ class CreatePengaturanTable extends Migration
             $table->string('login', 191); // Background
             $table->string('checkout', 191); // Background
             $table->string('logo', 191); // Logo Header
-            $table->string('no_rek', 191); // Untuk Transfer
+            $table->text('no_rek'); // Untuk Transfer
+            $table->string('password_default', 50); // Resert Password
             $table->timestamps();
         });
     }
