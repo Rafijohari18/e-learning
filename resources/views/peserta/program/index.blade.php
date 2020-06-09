@@ -64,3 +64,4 @@
 <script src="{{ asset('assets/plugins/bootstrap-rating/bootstrap-rating.min.js')}}"></script>
 <script src="{{ asset('assets/pages/rating-init.js')}}"></script>
 @stop
+

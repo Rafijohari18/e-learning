@@ -28,8 +28,8 @@
                     <br>
 
                     <div class="row">
-                        <div class="col-md-2" style="border: 0px solid black;">
-                           <img src="{{asset('assets/images/KEMNAKER.png')}}" class="img-thumbnail" style="width: 100px;height: 100px;"> 
+                        <div class="col-md-2">
+                           <img src="{{asset('assets/images/KEMNAKER.png')}}" class="img-thumbnail" style="width: 130px;height: auto;"> 
                        </div> <!-- end col -->
 
                        <div class="col-md-8 text-center"  style="border: 0px solid black;">
@@ -42,8 +42,8 @@
 
                     </div> <!-- end col -->
 
-                    <div class="col-md-2"  style="border: 0px solid black;">
-                        <img src="{{asset('assets/images/blk.png')}}" class="img-thumbnail float-right" style="width: 100px;height: 100px;"> 
+                    <div class="col-md-2" >
+                        <img src="{{asset('assets/images/blk.png')}}" class="img-thumbnail float-right" style="width: 100px;height: auto;"> 
                     </div> 
                 </div> <!-- end row -->
                 <div class="row">
