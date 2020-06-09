@@ -3,6 +3,9 @@
 @section('title','Invoice')
 
 @section('content')
+@if($data['invoice']->status != 'Diverifikasi')
+<div class="alert alert-danger"><b>Selesaikan Pembayaran Anda Terlebih Dahulu!</b></div>
+@else
 <?php setlocale(LC_ALL, 'id-ID', 'id_ID'); ?>
 <div class="row">
     <div class="col-12">
@@ -45,74 +48,75 @@
                     </div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="panel panel-default">
-                            <div class="p-2">
-                                <h3 class="panel-title font-20"><strong>Invoice </strong></h3>
-                            </div>
-                            <div class="">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <td><strong>#Invoice</strong></td>
-                                                <td class="text-center"><strong>Nama Program</strong></td>
-                                                <td class="text-center"><strong>Kategori</strong></td>
-                                                <td class="text-center"><strong>Harga</strong></td>
-                                                <td class="text-center"><strong>Diskon</strong></td>
+            <div class="row">
+                <div class="col-12">
+                    <div class="panel panel-default">
+                        <div class="p-2">
+                            <h3 class="panel-title font-20"><strong>Invoice </strong></h3>
+                        </div>
+                        <div class="">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td><strong>#Invoice</strong></td>
+                                            <td class="text-center"><strong>Nama Program</strong></td>
+                                            <td class="text-center"><strong>Kategori</strong></td>
+                                            <td class="text-center"><strong>Harga</strong></td>
+                                            <td class="text-center"><strong>Diskon</strong></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $data['invoice']->kode_invoice }}</td>
+                                            <td class="text-center">{{ $data['invoice']->program->nama_program }}</td>
+                                            <td class="text-center">{{ $data['invoice']->program->kategori->nama_kategori }}</td>
+                                            <td class="text-center">Rp. {{ number_format($data['invoice']->program->harga, 0, ',', '.') }}</td>
+                                            <td class="text-center">@if($data['invoice']->program->diskon != NULL) {{ $data['invoice']->program->diskon }}% @else 0% @endif</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="thick-line"></td>
+                                            <td class="thick-line"></td>
+                                            <td class="thick-line"></td>
+                                            <td class="thick-line text-center">
+                                                <strong>Subtotal</strong>
+                                            </td>
+                                                <td class="thick-line text-center">Rp. {{ number_format($data['invoice']->program->harga, 0, ',', '.') }}</td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>{{ $data['invoice']->kode_invoice }}</td>
-                                                <td class="text-center">{{ $data['invoice']->program->nama_program }}</td>
-                                                <td class="text-center">{{ $data['invoice']->program->kategori->nama_kategori }}</td>
-                                                <td class="text-center">Rp. {{ number_format($data['invoice']->program->harga, 0, ',', '.') }}</td>
-                                                <td class="text-center">@if($data['invoice']->program->diskon != NULL) {{ $data['invoice']->program->diskon }}% @else 0% @endif</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line text-center">
-                                                    <strong>Subtotal</strong>
-                                                </td>
-                                                    <td class="thick-line text-center">Rp. {{ number_format($data['invoice']->program->harga, 0, ',', '.') }}</td>
-                                                </tr>
-                                                {{-- Diskon --}}
-                                                @php
-                                                    // Menentukan Diskon
-                                                    $besarnyaDiskon = $data['invoice']->program->diskon;
-                                                    $harga = $data['invoice']->program->harga;
-                                                    $diskon = ($besarnyaDiskon/100)*$harga;
+                                            {{-- Diskon --}}
+                                            @php
+                                                // Menentukan Diskon
+                                                $besarnyaDiskon = $data['invoice']->program->diskon;
+                                                $harga = $data['invoice']->program->harga;
+                                                $diskon = ($besarnyaDiskon/100)*$harga;
 
-                                                    $totalDiskon = $diskon;
-                                                    // Total Bayar
-                                                    $total = $harga - $totalDiskon;
-                                                @endphp
-                                                <tr>
-                                                    <td class="no-line"></td>
-                                                    <td class="no-line"></td>
-                                                    <td class="no-line"></td>
-                                                    <td class="no-line text-center">
-                                                        <strong>Total</strong></td>
-                                                        <td class="no-line text-center"><h4 class="m-0">Rp. {{ number_format($total, 0, ',', '.') }}</h4></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                            <div class="d-print-none">
-                                                <div class="pull-right">
-                                                    <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i>&nbsp; Print</a>
-                                                </div>
+                                                $totalDiskon = $diskon;
+                                                // Total Bayar
+                                                $total = $harga - $totalDiskon;
+                                            @endphp
+                                            <tr>
+                                                <td class="no-line"></td>
+                                                <td class="no-line"></td>
+                                                <td class="no-line"></td>
+                                                <td class="no-line text-center">
+                                                    <strong>Total</strong></td>
+                                                    <td class="no-line text-center"><h4 class="m-0">Rp. {{ number_format($total, 0, ',', '.') }}</h4></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                        <div class="d-print-none">
+                                            <div class="pull-right">
+                                                <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i>&nbsp; Print</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div> <!-- end row -->
-                        </div>
+                            </div>
+                        </div> <!-- end row -->
                     </div>
-                </div> <!-- end col -->
-            </div> <!-- end row -->
-        @stop
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+@endif
+@stop

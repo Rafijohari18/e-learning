@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Data Peserta Umum')
+@section('title','Data Peserta Prakerja')
 
 @section('css')
 <!-- DataTables -->
@@ -15,7 +15,7 @@
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Data Peserta Umum</h4>
+                <h4 class="mt-0 header-title">Data Peserta Prakerja</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
@@ -44,7 +44,7 @@
                             </td>
                             <td>{{ $jquin->whatsapp }}</td>
                             <td>
-                            	<a href="{{ route('peserta.showUmum', $jquin->id) }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Detail Peserta"><i class="ti-eye"></i></a>
+                            	<a href="{{ route('peserta.showPrakerja', $jquin->id) }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Detail Peserta"><i class="ti-eye"></i></a>
                                 <a href="{{ route('peserta.showSertifikat', $jquin->user->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Sertifikat Peserta"><i class="ti-medall"></i></a>
                             	<a href="#" onclick="destroy({{ $jquin->user->id }},'{{ $jquin->nama_lengkap }}');" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
                             </td>

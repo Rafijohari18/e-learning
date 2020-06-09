@@ -23,9 +23,10 @@
                     <table id="datatable" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <th width="10">No</th>
                             <th>#Invoice</th>
                             <th>Nama Peserta</th>
+                            <th>Pembayaran</th>
                             <th>Program</th>
                             <th>Status</th>
                             <th>Tanggal Transaksi</th>
@@ -38,6 +39,13 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $jquin->kode_invoice }}</td>
                             <td>{{ $jquin->user->nama_lengkap }}</td>
+                            <td>
+                                @if($jquin->user->peserta->prakerja == 'Ya')
+                                Prakerja
+                                @else
+                                Umum
+                                @endif
+                            </td>
                             <td>{{ $jquin->program->nama_program }}</td>
                             <td>
                                 @if($jquin->status == 'Diverifikasi')
@@ -56,7 +64,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan=""><b><i>Tidak Ada Transaksi Untuk Ditampilkan</i></b></td>
+                            <td colspan="8"><b><i>Tidak Ada Transaksi Untuk Ditampilkan</i></b></td>
                         </tr>
                         @endforelse
                         </tbody>

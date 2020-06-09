@@ -61,11 +61,19 @@
                         @endif
                     </dd>
                     
+                    @if($transaksi->kartu_prakerja != NULL && $transaksi->kupon != NULL)
+                    <dt class="col-sm-5">No Kartu Prakerja</dt>
+                    <dd class="col-sm-7">{{ $transaksi->kartu_prakerja }}</dd>
+
+                    <dt class="col-sm-5">Kode Kupon</dt>
+                    <dd class="col-sm-7">{{ $transaksi->kupon }}</dd>
+                    @else
                     <dt class="col-sm-5">Bukti Pembayaran Sebelumnya</dt>
                     <dd class="col-sm-7">
                         <img src="{{ asset('storage/'.$transaksi->path) }}" class="img-thumbnail" alt="Bukti Pembayaran">
                         <input type="hidden" name="fileOri" value="{{ $transaksi->path }}">
                     </dd>
+                    @endif
 
                     @if($transaksi->status != 'Diverifikasi')
                     <dt class="col-sm-5">Perbarui Bukti Pembayaran</dt>

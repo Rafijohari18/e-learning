@@ -69,6 +69,13 @@
                     <dt class="col-sm-5">Motivasi Mengikuti Program</dt>
                     <dd class="col-sm-7">{{ $transaksi->user->peserta->motivasi }}</dd>
                     
+                    @if($transaksi->kartu_prakerja != NULL && $transaksi->kupon != NULL)
+                    <dt class="col-sm-5">No Kartu Prakerja</dt>
+                    <dd class="col-sm-7">{{ $transaksi->kartu_prakerja }}</dd>
+
+                    <dt class="col-sm-5">Kode Kupon</dt>
+                    <dd class="col-sm-7">{{ $transaksi->kupon }}</dd>
+                    @else
                     <dt class="col-sm-5">Bukti Pembayaran</dt>
                     <dd class="col-sm-7">
                         @if(empty($transaksi->path))
@@ -77,6 +84,7 @@
                         <img src="{{ asset('storage/'.$transaksi->path) }}" class="img-thumbnail" alt="Bukti Pembayaran">
                         @endif
                     </dd>
+                    @endif
                 </dl>
             </div>
         </div>

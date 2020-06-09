@@ -18,13 +18,11 @@ class CreateTabelPesertaProgram extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('program_id');
-            $table->string('harga', 191);
             $table->timestamps();
 
             // Relasi
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('program_id')->references('id')->on('program')->onUpdate('CASCADE')->onDelete('CASCADE');
-            
         });
     }
 

@@ -17,7 +17,7 @@ class PesertaController extends Controller
      */
     public function index()
     {
-        $neko = Peserta::latest()->get();
+        $neko = Peserta::where('prakerja','Tidak')->latest()->get();
 
         return view('admin.peserta.indexUmum', compact('neko'));
     }
@@ -147,5 +147,13 @@ class PesertaController extends Controller
         $user->delete();
 
         return redirect()->back()->with('destroy','');
+    }
+
+    // Peserta Prakerja
+    public function indexPrakerja()
+    {
+        $neko = Peserta::where('prakerja','Ya')->latest()->get();
+
+        return view('admin.peserta.indexPrakerja', compact('neko'));
     }
 }

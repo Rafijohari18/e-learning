@@ -16,12 +16,13 @@ class DashboardController extends Controller
     	// Count
     	$program = Program::count();
     	$module = Module::count();
-        $peserta = Peserta::count();
+        $peserta = Peserta::where('prakerja','Tidak')->count();
         $pengajar = User::where('role','Pengajar')->count();
         $tmv = Transaksi::where('status','Menunggu Verifikasi')->count();
-    	$dv = Transaksi::where('status','Diverifikasi')->count();
+        $dv = Transaksi::where('status','Diverifikasi')->count();
+    	$prakerja = Peserta::where('prakerja','Ya')->count();
 
-    	return view('dashboard.admin', compact('program','module','peserta','pengajar','tmv','dv'));
+    	return view('dashboard.admin', compact('program','module','peserta','pengajar','tmv','dv','prakerja'));
     }
 
     public function peserta()

@@ -12,5 +12,4 @@ class Kupon extends Model
     public function KategoriKupon(){
         return $this->hasMany('App\KategoriKupon');
     }
-
 }

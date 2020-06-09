@@ -38,6 +38,21 @@
 <!-- START SECTION SHOP -->
 <div class="section">
 	<div class="container">
+        @if(Session::has('kuponInvalid'))
+            <div class="alert alert-danger"><b>Kupon Yang Anda Masukan Salah!</b></div>
+        @endif
+
+        @if(Session::has('programKuponInvalid'))
+            <div class="alert alert-danger"><b>Kupon Yang Dimasukan Tidak Tersedia Untuk Program Yang Anda Pilih.</b></div>
+        @endif
+
+        @if(Session::has('kuponLimited'))
+            <div class="alert alert-danger"><b>Kuota Kupon Sudah Habis.</b> Hubungi Administrator Untuk Informasi Selengkapnya.</div>
+        @endif
+
+        @if(Session::has('kuponExpired'))
+            <div class="alert alert-danger"><b>Kupon Sudah Melebihi Batas Waktu Yang Ditentukan.</b> Hubungi Administrator Untuk Informasi Selengkapnya.</div>
+        @endif
         <div class="row">
         	<div class="col-12">
             	<div class="medium_divider clearfix"></div>
@@ -52,7 +67,7 @@
                     @csrf
                     <input type="hidden" name="program_id" value="{{ $program->id }}">
                     <div class="form-group col-md-6">
-                        <input type="number" required="" class="form-control @error('nik') is-invalid @enderror" name="nik" placeholder="NIK" maxlength="60" value="{{ old('nik') }}">
+                        <input type="number" required="" class="form-control @error('nik') is-invalid @enderror" name="nik" placeholder="NIK" maxlength="17" value="{{ old('nik') }}">
 
                         @error('nik')
                             <small class="text-danger">*{{ $message }}</small>
@@ -80,7 +95,7 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <input type="number" required="" class="form-control" name="umur" placeholder="Umur" maxlength="11" value="{{ old('umur') }}">
+                        <input type="number" required="" class="form-control" name="umur" placeholder="Umur" maxlength="3" value="{{ old('umur') }}">
                     </div>
 
                     <div class="form-group col-md-12">
@@ -94,14 +109,14 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <input type="number" required="" class="form-control" name="whatsapp" placeholder="No Whatsapp" maxlength="60" value="{{ old('whatsapp') }}">
+                        <input type="number" required="" class="form-control" name="whatsapp" placeholder="No Whatsapp" maxlength="20" value="{{ old('whatsapp') }}">
                     </div>
 
                     <div class="form-group col-md-12">
                         <input type="email" required="" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" maxlength="191" value="{{ old('email') }}">
 
                         @error('email')
-                            <small class="text-danger">* {{ $message }}</small>
+                            <small class="text-danger">*{{ $message }}</small>
                         @enderror
                     </div>
 
@@ -174,11 +189,11 @@
                                 <div id="kp">
                                     <br>
                                     <div class="form-group">
-                                        <input type="number" name="no_kk" placeholder="Masukkan No Kartu Prakerja" class="form-control form-sm" maxlength="20" id="no_kk">
+                                        <input type="number" name="no_kk" placeholder="Masukkan No Kartu Prakerja" class="form-control form-sm" maxlength="20" id="no_kk" value="{{ old('no_kk') }}">
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" name="kupon" placeholder="Masukkan Kode Kupon" class="form-control form-sm" maxlength="10" id="kupon">
+                                        <input type="text" name="kupon" placeholder="Masukkan Kode Kupon" class="form-control form-sm" maxlength="8" id="kupon" value="{{ old('kupon') }}">
                                     </div>
                                 </div>
                             </div>

@@ -26,6 +26,7 @@ class CreatePesertaTable extends Migration
             $table->string('profesi', 191);
             $table->text('alamat');
             $table->text('motivasi');
+            $table->enum('prakerja', ['Ya','Tidak']);
             $table->timestamps();
 
             // Relasi

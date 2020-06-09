@@ -43,8 +43,7 @@ class TransaksiController extends Controller
         // Insert Table ProgramPeserta
         $pp = ProgramPeserta::create([
             'user_id' => $transaksi->user_id,
-            'program_id' => $transaksi->program_id,
-            'harga' => $transaksi->program->harga
+            'program_id' => $transaksi->program_id
         ]);
 
         // Update Status Transaksi

@@ -70,7 +70,7 @@
                 <div class="bottom_footer border-top-tran">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} <span class="text_default">{{ $pengaturan->footer }}.</span></p>
+                            <p class="mb-md-0 text-center text-md-left">© {{ date('Y') }} <span class="text_default">{{ $pengaturan->footer }}</span></p>
                         </div>
                     </div>
                 </div>

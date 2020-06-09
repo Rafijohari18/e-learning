@@ -28,7 +28,7 @@
                                 <th>Nama Kupon</th>
                                 <th>Kode Kupon</th>
                                 <th>Nama Program</th>
-                                <th>Kuota Pengguna</th>
+                                <th>Kuota Kupon</th>
                                 <th>Besar Potongan</th>
                                 <th>Tanggal Expired</th>
                                 <th>Aksi</th>
@@ -47,9 +47,25 @@
                                   @endforeach
                                 </ul>
                               </td>
-                              <td>{{ $jquin->kuota }}</td>
-                              <td>{{ $jquin->potongan }}</td>
-                              <td>{{ date('d-m-Y', strtotime($jquin->tanggal_expired)) }}</td>
+                              <td>
+                                @if($jquin->kuota != 0)
+                                {{ $jquin->kuota }} Pengguna
+                                @else
+                                <span class="badge badge-danger">Kuota Habis</span>
+                                @endif
+                              </td>
+                              <td>Rp. {{ number_format($jquin->potongan, 0, ',', '.') }}</td>
+                              <td>
+                                @php
+                                $date = date('Y-m-d');
+                                @endphp
+                                
+                                @if($date >= $jquin->tanggal_expired)
+                                <span class="badge badge-danger">Kupon Expired</span>
+                                @else
+                                {{ date('d-m-Y', strtotime($jquin->tanggal_expired)) }}
+                                @endif
+                              </td>
                               <td>
                                 <a href="{{ route('kupon.edit', $jquin->id) }}" class="btn btn-sm btn-warning"><i class="ti-pencil"></i></a>
                                 <a href="{{ route('kupon.destroy', $jquin->id) }}" onclick="return confirm('Hapus Data ?')" class="btn btn-sm btn-danger"><i class="ti-trash"></i></a>

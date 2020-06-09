@@ -49,10 +49,14 @@
                                 <?php echo strftime("%A, %d %B %Y", strtotime($jquin->created_at)) . "\n"; ?>
                             </td>
                             <td>
-                                @if($jquin->path != NULL)
+                                @if($jquin->kartu_prakerja != NULL && $jquin->kupon != NULL)
                                 <a href="{{ route('detail.pembayaran') }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placmenent="top" title="Detail Transaksi"><i class="ti-email"></i></a>
                                 @else
-                                <a href="{{ route('struk.upload') }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placmenent="top" title="Upload Bukti Pembayaran"><i class="ti-upload"></i></a>
+                                    @if($jquin->path != NULL)
+                                    <a href="{{ route('detail.pembayaran') }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placmenent="top" title="Detail Transaksi"><i class="ti-email"></i></a>
+                                    @else
+                                    <a href="{{ route('struk.upload') }}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placmenent="top" title="Upload Bukti Pembayaran"><i class="ti-upload"></i></a>
+                                    @endif
                                 @endif
                                 <a href="{{ route('peserta.detail', $jquin->id)}}" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Invoice"><i class="fa fa-eye"></i></a>
                             </td>

@@ -298,13 +298,21 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 			'as' => 'peserta.previewSertifikat'
 		]);
 
-		Route::get('peserta/{user}/destroy', [
+		Route::get('peserta/destroy/{user}', [
 			'uses' => 'PesertaController@destroy',
 			'as' => 'peserta.destroy'
 		]);
 
-		// Prakerja 
+		// Prakerja
+		Route::get('peserta/prakerja', [
+			'uses' => 'PesertaController@indexPrakerja',
+			'as' => 'peserta.prakerja'
+		]);
 
+		Route::get('detail-peserta/{peserta}/prakerja', [
+			'uses' => 'PesertaController@show',
+			'as' => 'peserta.showPrakerja'
+		]);
 
 		// Data Transaksi 
 		Route::get('transaksi', [
@@ -409,7 +417,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 });
 
 // Peserta
-Route::group(['middleware' => ['auth','checkRole:Admin,Peserta']], function ()
+Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar,Peserta']], function ()
 {
 	Route::get('/peserta/quiz/{sectionId}','Peserta\QuisController@index')->name('peserta.quiz');
 	Route::prefix('peserta')->group(function () {
@@ -544,9 +552,6 @@ Route::post('invoice', [
 	'uses' => 'Peserta\InvoiceController@index',
 	'as' => 'invoice.modul'
 ]);
-
-
-// Peserta
 
 //CONFIG
 Route::get('/clear-cache', function() {
