@@ -62,8 +62,6 @@ class SiteController extends Controller
         if ($program != NULL) {
             return view('sites.checkout', compact('program'));
         }
-        
-        // return redirect()->back();
     }
 
     // Cari
@@ -79,5 +77,11 @@ class SiteController extends Controller
         $informasi = Konten::where('judul','LIKE','%'.$request->q.'%')->paginate(12);
 
         return view('sites.informasi', compact('informasi'));
+    }
+
+    // Prakerja
+    public function prakerja()
+    {
+        return view('sites.prakerja');
     }
 }

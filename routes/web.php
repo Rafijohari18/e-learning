@@ -10,21 +10,6 @@ use Illuminate\Support\Facades\Route;
 | lagi ke auth bawaan laravel.
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Auth admin
-// Auth::routes();
-
-// Auth Peserta
-// Route::get('peserta/login', function () {
-//     return view('auth.peserta');
-// });
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-
 // Landing Page
 Route::get('/', [
 	'uses' => 'SiteController@beranda',
@@ -88,6 +73,11 @@ Route::post('program/cari', [
 Route::post('informasi/cari', [
 	'uses' => 'SiteController@cariInformasi',
 	'as' => 'cari.informasi'
+]);
+
+// Prakerja
+Route::get('ikuti-pelatihan/prakerja', [
+	'uses' => 'SiteController@prakerja'
 ]);
 
 // Admin
@@ -407,17 +397,10 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 			'as' => 'kupon.destroy'
 		]);
 
-
-
 		// Pengaturan
 		Route::get('pengaturan', [
 			'uses' => 'PengaturanController@index',
 			'as' => 'pengaturan.index'
-		]);
-
-		Route::post('pengaturan/store', [
-			'uses' => 'PengaturanController@store',
-			'as' => 'pengaturan.store'
 		]);
 
 		Route::post('pengaturan/update/{pengaturan}', [
@@ -556,12 +539,6 @@ Route::get('program/detail/{slug}', [
 Route::get('ikuti-pelatihan/{slug}/detail-pembayaran', [
 	'uses' => 'SiteController@checkout',
 	'as' => 'checkout'
-]);
-
-//invoice
-Route::post('invoice', [
-	'uses' => 'Peserta\InvoiceController@index',
-	'as' => 'invoice.modul'
 ]);
 
 //CONFIG

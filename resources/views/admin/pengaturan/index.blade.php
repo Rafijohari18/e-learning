@@ -16,7 +16,6 @@
                 </div>
                 <h4 class="mt-0 header-title">Pengaturan</h4>
                 <hr>
-                {{-- <form action="{{ route('pengaturan.store') }}" method="POST" enctype="multipart/form-data"> --}}
                 <form action="{{ route('pengaturan.update', $jquin->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="form-group">
@@ -87,7 +86,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Background Login</label>
+                        <label for="">Background Login Dan Daftar Akun</label>
                         <br>
                         <img src="{{ asset('storage/'.$jquin->login) }}" alt="thumbnail" class="img-thumbnail" style="width: 20%; height: 20%;">
 
@@ -101,7 +100,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Background Transaksi</label>
+                        <label for="">Background Transaksi Dan Transaksi Prakerja</label>
                         <br>
                         <img src="{{ asset('storage/'.$jquin->checkout) }}" alt="thumbnail" class="img-thumbnail" style="width: 20%; height: 20%;">
 

@@ -88,6 +88,12 @@ class AppServiceProvider extends ServiceProvider
             ->with('pengaturan',$pengaturan);
         });
 
+        View()->composer('sites.prakerja',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
         View()->composer('login.loginPeserta',function($view){
             $pengaturan = Pengaturan::latest()->first();
             $view
