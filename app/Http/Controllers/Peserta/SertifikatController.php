@@ -10,6 +10,7 @@ use App\Program;
 use App\Hasil;
 use App\Rating;
 use Auth;
+use DB;
 
 class SertifikatController extends Controller
 {
@@ -24,8 +25,16 @@ class SertifikatController extends Controller
         $cek =  $post->ratings()->save($rating);
    }
 
-   $data['program'] = Hasil::with('program')->where('user_id',Auth::user()['id'])->get();
-   return view('peserta.sertifikat.index',compact('data'));
+    $rating = DB::table('ratings')->where('user_id', auth()->user()->id)->count();
+    
+    // Cek Apakah Peserta Sudah Melakukan Penilaian
+    if ($rating > 0) {
+       $data['program'] = Hasil::with('program')->where('user_id',Auth::user()['id'])->get();
+
+       return view('peserta.sertifikat.index',compact('data'));
+    }
+
+    return redirect()->route('quis.hasil');
  }
  public function show($id)
  {
