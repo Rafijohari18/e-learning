@@ -34,4 +34,11 @@ class Program extends Model
         return $this->hasMany('App\KategoriKupon');
     }
 
+    public function rating($id)
+    {
+        $rate = Program::where('id', $id)->first();
+        $jml = $rate->averageRating();
+        
+        return $jml;
+    }
 }

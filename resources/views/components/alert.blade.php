@@ -39,4 +39,8 @@
     @if(Session::has('selesaiQuis'))
         alertify.success("Anda Sudah Menyelsaikan Quis!");
     @endif
+
+    @if(Session::has('ratingRequired'))
+        alertify.success("Lakukan Penilaian Terlebih Dahulu!");
+    @endif
 </script>

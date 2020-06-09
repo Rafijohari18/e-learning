@@ -11,6 +11,7 @@ use App\Transaksi;
 use App\ProgramPeserta;
 use App\KategoriKupon;
 use App\Kupon;
+use App\Program;
 
 class AuthController extends Controller
 {
@@ -18,6 +19,13 @@ class AuthController extends Controller
     public function loginAdmin()
     {
     	return view('login.login');
+    }
+
+    public function daftarAkun()
+    {
+        $listProgram = Program::orderBy('nama_program', 'ASC')->get();
+
+        return view('sites.daftarAkun', compact('listProgram'));
     }
 
     public function login()
@@ -168,6 +176,14 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect('login');
+    }
+
+    // Json
+    public function cariProgram($id)
+    {
+        $program = Program::find($id);
+
+        return $program;
     }
 
 }

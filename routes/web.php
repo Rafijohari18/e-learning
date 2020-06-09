@@ -53,6 +53,17 @@ Route::get('logout', [
 ]);
 
 // Register
+Route::get('daftar-akun', [
+	'uses' => 'AuthController@daftarAkun',
+	'as' => 'daftar.akun'
+]);
+
+Route::get('/json/{id}/cari-program', [
+	'uses' => 'AuthController@cariProgram',
+	'as' => 'json.cp'
+]);
+
+
 Route::post('register', [
 	'uses' => 'AuthController@register',
 	'as' => 'post.register'

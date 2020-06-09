@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Carbon::setLocale($this->app->getLocale());
-         View()->composer('components.sidebar',function($view){
+        View()->composer('components.sidebar',function($view){
             // Config LINK  
             $data['program']   = Program::orderBy('nama_program')->get();
             $view
@@ -89,6 +89,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View()->composer('login.loginPeserta',function($view){
+            $pengaturan = Pengaturan::latest()->first();
+            $view
+            ->with('pengaturan',$pengaturan);
+        });
+
+        View()->composer('sites.daftarAkun',function($view){
             $pengaturan = Pengaturan::latest()->first();
             $view
             ->with('pengaturan',$pengaturan);

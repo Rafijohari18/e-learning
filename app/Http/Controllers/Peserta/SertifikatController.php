@@ -15,7 +15,6 @@ use DB;
 class SertifikatController extends Controller
 {
   public function index(Request $request){
-
     if ($request->rating != null) {
         $post = Program::find($request->id);
         $rating = new \willvincent\Rateable\Rating;
@@ -26,16 +25,21 @@ class SertifikatController extends Controller
    }
 
     $rating = DB::table('ratings')->where('user_id', auth()->user()->id)->count();
-    
-    // Cek Apakah Peserta Sudah Melakukan Penilaian
-    if ($rating > 0) {
-       $data['program'] = Hasil::with('program')->where('user_id',Auth::user()['id'])->get();
+    $data['program'] = Hasil::with('program')->where('user_id',Auth::user()['id'])->get();
 
-       return view('peserta.sertifikat.index',compact('data'));
+    // Cek Apakah Peserta Memiliki Sertifikat
+    if (Hasil::where('user_id', auth()->user()->id)->exists()) {
+        // Cek Apakah Peserta Sudah Melakukan Penilaian
+        if ($rating > 0) {
+           return view('peserta.sertifikat.index',compact('data'));
+        }
+
+        return redirect()->route('quis.hasil')->with('ratingRequired','');
     }
 
-    return redirect()->route('quis.hasil');
+   return view('peserta.sertifikat.index',compact('data'));
  }
+
  public function show($id)
  {
     $data['program'] = Hasil::with('program','user','transaksi')->where('id',$id)->where('user_id',Auth::user()['id'])->first();

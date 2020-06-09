@@ -33,7 +33,7 @@
            <form method="POST" action="{{ route('peserta.sertifikat') }}">
             @csrf
               <label for="">Berikan Penilaian Program</label><br>
-               <input type="text" name="rating" class="rating" id="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-primary" data-fractions="2">
+                <input type="text" class="rating-tooltip rating" id="rating" name="rating" data-filled="mdi mdi-star font-32 text-primary" data-empty="mdi mdi-star-outline font-32 text-muted"/>
 
                <input type="hidden" name="id" value="{{ $data['hasil']->program->id }}">
                <br><br>

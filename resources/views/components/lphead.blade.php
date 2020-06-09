@@ -1,5 +1,3 @@
-<head>
-
 <!-- Favicon Icon -->
 <link rel="shortcut icon" type="image/x-icon" href="https://www.blkkbonang.com/portal/favicon.png">
 <!-- Animation CSS -->

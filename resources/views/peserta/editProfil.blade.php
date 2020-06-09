@@ -100,11 +100,6 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="nama_pengguna">Nama Pengguna</label>
-                            <input type="text" maxlength="191" value="{{ auth()->user()->username }}" class="form-control" name="nama_pengguna" id="nama_pengguna">
-                        </div>
-
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="path">Avatar</label>
                                 <input type="file" class="filestyle" name="path" id="path" data-input="false" data-buttonname="btn-secondary btn-sm">

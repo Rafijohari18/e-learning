@@ -30,7 +30,7 @@
                     <dd class="col-sm-7">{{ $neko->nama_lengkap }}</dd>
 
                     <dt class="col-sm-5">Tempat, Tanggal Lahir</dt>
-                    <dd class="col-sm-7">{{ date('d-m-Y', strtotime($neko->tgl_lahir)) }}</dd>
+                    <dd class="col-sm-7">{{ $neko->tgl_lahir }}</dd>
 
                     <dt class="col-sm-5">Umur</dt>
                     <dd class="col-sm-7">{{ $neko->umur }} Tahun</dd>

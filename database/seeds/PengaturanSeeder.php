@@ -22,7 +22,7 @@ class PengaturanSeeder extends Seeder
             'checkout' => 'default.png',
             'logo' => 'default.png',
             'no_rek' => '000000000',
-            'password_default' => 'rahasia',
+            'password_default' => 'blkkponpesbojongnangka',
         ]);
 
         DB::table('timer')->insert([

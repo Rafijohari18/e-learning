@@ -18,7 +18,7 @@
                      <i class="mdi mdi-clock"></i> <span>{{ $program->durasi_program }}</span>&nbsp;
                      <i class="ti-wallet"></i> <span>Rp. {{ number_format($program->harga, 0, ',', '.') }}</span>
                 </div>
-                <h4 class="card-title font-20 mt-0">{{ $program->nama_program }} <br><input type="hidden" class="rating" data-filled="mdi mdi-star font-15 text-primary" data-empty="mdi mdi-star-outline font-15 text-muted" data-readonly value="3"/>
+                <h4 class="card-title font-20 mt-0">{{ $program->nama_program }} <br><input type="hidden" class="rating" data-filled="mdi mdi-star font-15 text-primary" data-empty="mdi mdi-star-outline font-15 text-muted" data-readonly value="{{ round($program->rating($program->id)) }}"/>
                 </h4>
                 <span class="badge badge-info">{{ $program->kategori->nama_kategori }}</span>
                 <p class="card-text">

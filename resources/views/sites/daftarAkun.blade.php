@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,23 +12,23 @@
 <meta name="keywords" content="">
 
 <!-- SITE TITLE -->
-<title>Detail Pembayaran</title>
+<title>E-learning Daftar Akun</title>
 <!-- Favicon Icon -->
 <x-lphead></x-lphead>
 
 <body>
+
 <!-- START HEADER -->
 <x-lpheader></x-lpheader>
 <!-- END HEADER -->
 
 <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{asset('storage/'.$pengaturan->checkout)}}">
+<div class="breadcrumb_section background_bg overlay_bg_50 page_title_light" data-img-src="{{ asset('storage/'.$pengaturan->login) }}">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title text-center">
-            		<h1>Transaksi</h1>
-                    <p>Selesaikan Pembayaran Anda</p>
+                    <h1>Daftar Akun</h1>
                 </div>
             </div>
         </div>
@@ -35,9 +36,9 @@
 </div>
 <!-- END SECTION BREADCRUMB -->
 
-<!-- START SECTION SHOP -->
+<!-- STAT SECTION LOGIN --> 
 <div class="section">
-	<div class="container">
+    <div class="container">
         @if(Session::has('kuponInvalid'))
             <div class="alert alert-danger"><b>Kupon Yang Anda Masukan Salah!</b></div>
         @endif
@@ -54,18 +55,30 @@
             <div class="alert alert-danger"><b>Kupon Sudah Melebihi Batas Waktu Yang Ditentukan.</b> Hubungi Administrator Untuk Informasi Selengkapnya.</div>
         @endif
         <div class="row">
-        	<div class="col-12">
-            	<div class="medium_divider clearfix"></div>
+            <div class="col-12">
+                <div class="medium_divider clearfix"></div>
             </div>
         </div>
         <div class="row">
-        	<div class="col-lg-6">
-            	<div class="heading_s1">
-            		<h4>Daftar Akun</h4>
+            <div class="col-lg-6">
+                <div class="heading_s1">
+                    <h4>Daftar Akun</h4>
                 </div>
                 <form method="POST" action="{{ route('post.register') }}" class="row">
                     @csrf
-                    <input type="hidden" name="program_id" value="{{ $program->id }}">
+                    <div class="form-group col-md-12">
+                        <div class="custom_select">
+                           <select name="program_id" id="program" required="">
+                            <option value="0">-- Pilih Program --</option>
+                            @forelse($listProgram as $jquin)
+                                <option value="{{ $jquin->id }}">{{ $jquin->nama_program }}</option>
+                            @empty
+                                <option disabled="">-- Tidak Ada Program Untuk Ditampilkan --</option>
+                            @endforelse
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group col-md-6">
                         <input type="number" required="" class="form-control @error('nik') is-invalid @enderror" name="nik" placeholder="NIK" maxlength="17" value="{{ old('nik') }}">
 
@@ -130,7 +143,7 @@
 
                     <div class="form-group col-md-6">
                         <textarea name="motivasi" id="motivasi" cols="30" rows="4" class="form-control" placeholder="Motivasi Mengikuti Program" required="">{{ old('motivasi') }}</textarea>
-                    </div>                   	
+                    </div>                      
             </div>
             <div class="col-lg-6">
                 <div class="order_review">
@@ -142,31 +155,22 @@
                             <thead>
                                 <tr>
                                     <th>Program</th>
-                                    <td>{{ $program->nama_program }}</td>
+                                    <td id="nmProgram">-</td>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>SubTotal</th>
-                                    <td class="product-subtotal">Rp. {{ number_format($program->harga, 0, ',', '.') }}</td>
+                                    <td class="product-subtotal" id="hargaProgram">Rp. 0</td>
                                 </tr>
                                 <tr>
                                     <th>Diskon</th>
-                                    <td>@if(empty($program->diskon)) 0% @else {{$program->diskon}}% @endif</td>
+                                    <td id="diskonProgram">%</td>
                                 </tr>
-                                 {{-- Diskon --}}
-                                 @php
-                                    // Menentukan Diskon
-                                    $besarnyaDiskon = $program->diskon;
-                                    $harga = $program->harga;
-                                    $diskon = ($besarnyaDiskon/100)*$harga;
-
-                                    // Total Bayar
-                                    $total = $harga - $diskon;
-                                @endphp
+                                 
                                 <tr>
                                     <th>Total</th>
-                                    <td class="product-subtotal">Rp. {{ number_format($total, 0, ',', '.') }}</td>
+                                    <td class="product-subtotal" id="total">Rp. 0</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -205,28 +209,12 @@
         </div>
     </div>
 </div>
-<!-- END SECTION SHOP -->
+<!-- END SECTION LOGIN -->
 
 <!-- START FOOTER -->
 <x-lpfooter></x-lpfooter>
-<script>
-$(document).ready(function() {
-    $('#kp').hide();
-    $("#tf").click(function() {
-        $("#kp").hide('slow');
-        $("#no_kk").removeAttr('required','required');
-        $("#kupon").removeAttr('required','required');
-    });
-
-    $("#kartuprakerja").click(function() {
-        $("#kp").show('slow');
-        $("#no_kk").attr('required','required');
-        $("#kupon").attr('required','required');
-    });
-});
-</script>
-<!-- END FOOTER --> 
-
+<script src="{{ asset('landingpage/js/ajaxProgram.js') }}"></script>    
+<!-- End Footer -->
 </body>
 
 </html>

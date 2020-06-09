@@ -74,6 +74,7 @@ class QuisController extends Controller
   public function hasil()
   {
       $data['hasil'] = Hasil::with('program','user')->where('user_id',Auth::user()->id)->orderBy('id','Desc')->first();
+      
       return view('peserta.quiz.hasil',compact('data'));
   }
 

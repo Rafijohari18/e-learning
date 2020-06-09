@@ -62,12 +62,47 @@
                                 <div class="course_rating">
                                     <label>Rating</label>
                                     <div class="rating_stars">
-                                        <i class="ion-android-star"></i>
-                                        <i class="ion-android-star"></i>
-                                        <i class="ion-android-star"></i>
-                                        <i class="ion-android-star"></i>
+                                        @php
+                                        $stars = round($jquin->rating($jquin->id));
+                                        @endphp
+                                        @if($stars == 1)
+                                        <i class="ion-android-star"></i> 
                                         <i class="ion-android-star-outline"></i> 
-                                        <span>4.0</span>
+                                        <i class="ion-android-star-outline"></i> 
+                                        <i class="ion-android-star-outline"></i> 
+                                        <i class="ion-android-star-outline"></i>
+                                        @elseif($stars == 2)
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star-outline"></i> 
+                                        <i class="ion-android-star-outline"></i> 
+                                        <i class="ion-android-star-outline"></i> 
+                                        @elseif($stars == 3)
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star-outline"></i> 
+                                        <i class="ion-android-star-outline"></i> 
+                                        @elseif($stars == 4)
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star-outline"></i>
+                                        @elseif($stars == 5)
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        <i class="ion-android-star"></i> 
+                                        @else
+                                        <i class="ion-android-star-outline"></i>
+                                        <i class="ion-android-star-outline"></i>
+                                        <i class="ion-android-star-outline"></i>
+                                        <i class="ion-android-star-outline"></i>
+                                        <i class="ion-android-star-outline"></i>
+                                        @endif
+                                        <span>{{ round($jquin->rating($jquin->id)) }}.0</span> 
                                     </div>
                                 </div>
                             </li>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\User;
 use Auth;
 use Hash;
+use App\Pengaturan;
 
 class PenggunaController extends Controller
 {
@@ -98,8 +99,9 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $pengaturan = Pengaturan::first();
         $pw = [
-            'password' => bcrypt('rahasia')
+            'password' => bcrypt($pengaturan->password_default)
         ];
 
         $user->update($pw);

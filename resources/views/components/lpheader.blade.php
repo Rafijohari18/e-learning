@@ -25,7 +25,7 @@
                     </li>
 
                     <li class="">
-                       <a class="nav-link text-dark" href="#">Daftar</a>
+                       <a class="nav-link text-dark" href="{{ route('daftar.akun') }}">Daftar</a>
                     </li>
                 </ul>
           	</div>

@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Tutorial Plyr</title>
-	<link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" integrity="sha256-U0YLVHo5+B3q9VEC4BJqRngDIRFCjrhAIZooLdqVOcs=" crossorigin="anonymous"></script>
 </head>
 <body>
-	<center>
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/GtFc2nEKOjg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</center>
+  <input type="text" id="currency" data-affixes-stay="true" data-prefix="Rp " data-thousands="." data-decimal="," />
+</body>
+<script>
+  $(function() {
+    $('#currency').maskMoney({prefix:'Rp. ', thousands:'.', decimal:',', precision:0});
+  })
+
+var bilangan = 10000;
+	
+var	number_string = bilangan.toString(),
+	sisa 	= number_string.length % 3,
+	rupiah 	= number_string.substr(0, sisa),
+	ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+		
+if (ribuan) {
+	separator = sisa ? '.' : '';
+	rupiah += separator + ribuan.join('.');
+}
+
+// Cetak hasil
+document.write(rupiah)
+</script>
 </body>
 </html>

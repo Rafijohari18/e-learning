@@ -123,7 +123,6 @@ class PesertaController extends Controller
 
         $jquin = [
             'nama_lengkap' => $request->nama_lengkap,
-            'username' => $request->nama_pengguna,
             'path' => $fileMove
         ];
 
