@@ -58,7 +58,7 @@
                                 <td>{{ $data['program']->user->nama_lengkap }}</td>
                             </tr>
                             <tr>
-                                <td width="200">Tanggal lahir</td>
+                                <td width="200">Tempat, Tanggal lahir</td>
                                 <td>:</td>
                                 <td>{{ $data['tanggal'] }}</td>
                             </tr>
@@ -83,7 +83,7 @@
 
                             {{  $data['program']->program->nama_program }} </p> 
 
-                            <p class="ml-5">Yang di selenggarakan dari  -- s/d <?php echo strftime("%A, %d %B %Y", strtotime($data['program']->created_at)) . "\n"; ?> di Balai Latihan Kerja Komunitas Nurul Hidayah Bojongnangka Kota Tasikmalaya</p> 
+                            <p class="ml-5">Yang di selenggarakan dari {{ strftime("%A, %d %B %Y", strtotime($pp->created_at)) }} s/d <?php echo strftime("%A, %d %B %Y", strtotime($data['program']->created_at)) . "\n"; ?> di Balai Latihan Kerja Komunitas Nurul Hidayah Bojongnangka Kota Tasikmalaya</p> 
                         </div>
                         <div class="col-md-2">
 

@@ -38,7 +38,7 @@
                                 <i class="ti-wallet"></i> Harga - <span>Rp. {{ number_format($jquin->program->harga, 0, ',', '.') }}</span>
                             </li>
                             <li>
-                                <input type="hidden" class="rating" data-filled="mdi mdi-star font-24 text-primary" data-empty="mdi mdi-star-outline font-24 text-muted" data-readonly value="{{ $jquin->program->averageRating }}"/>
+                                <input type="hidden" class="rating" data-filled="mdi mdi-star font-24 text-primary" data-empty="mdi mdi-star-outline font-24 text-muted" data-readonly value="{{ round($jquin->program->averageRating) }}"/>
                             </li>
                         </ul>
                     </p>

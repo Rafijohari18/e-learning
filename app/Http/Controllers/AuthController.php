@@ -58,6 +58,11 @@ class AuthController extends Controller
             'email' => 'required|unique:peserta',
         ]);
 
+        // Validas Jika Value Program Peserta == 0
+        if ($request->program_id == 0) {
+            return redirect()->back()->with('pilihProgram','');
+        }
+
         if ($request->payment == 'kartuprakerja') {
             // Cek Kupon
             if (Kupon::where('kode', $request->kupon)->exists()) {
@@ -96,7 +101,8 @@ class AuthController extends Controller
                         // Insert Program Ke Table peserta_program
                         $pesertaProgram = ProgramPeserta::insert([
                             'user_id' => $data->id,
-                            'program_id' => $request->program_id
+                            'program_id' => $request->program_id,
+                            'created_at' => date('Y-m-d H:i:s')
                         ]);  
 
                         // Insert Table Peserta

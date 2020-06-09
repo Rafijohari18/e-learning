@@ -42,35 +42,14 @@ class SertifikatController extends Controller
 
  public function show($id)
  {
+    // Cari Sertifikat Peserta
+    $csp = Hasil::findOrFail($id);
+    $pp = ProgramPeserta::where('user_id', $csp->user_id)->where('program_id', $csp->program_id)->first();
     $data['program'] = Hasil::with('program','user','transaksi')->where('id',$id)->where('user_id',Auth::user()['id'])->first();
     $data['modul'] = Hasil::with('program','user')->where('id',$id)->get();
     $data['tanggal'] = $data['program']->user->peserta->tgl_lahir;
-    return view('peserta.sertifikat.show',compact('data'));
- }
 
-  function tanggal_indonesia($tanggal){
-        $bulan = array (
-        1 =>    'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember'
-        );
-        
-        $pecahkan = explode('-', $tanggal);
-        
-        // variabel pecahkan 0 = tanggal
-        // variabel pecahkan 1 = bulan
-        // variabel pecahkan 2 = tahun
-         
-        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
-    }
+    return view('peserta.sertifikat.show',compact('data','pp'));
+ }
 
 }

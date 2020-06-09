@@ -22,6 +22,10 @@ class CreateTableHasil extends Migration
             $table->integer('jawaban_salah');
             $table->integer('jawaban_kosong');
             $table->timestamps();
+
+            // Relasi
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('program_id')->references('id')->on('program')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

@@ -43,6 +43,10 @@
             <div class="alert alert-danger"><b>Kupon Yang Anda Masukan Salah!</b></div>
         @endif
 
+        @if(Session::has('pilihProgram'))
+            <div class="alert alert-danger"><b>Pilih Program Anda!</b></div>
+        @endif
+
         @if(Session::has('programKuponInvalid'))
             <div class="alert alert-danger"><b>Kupon Yang Dimasukan Tidak Tersedia Untuk Program Yang Anda Pilih.</b></div>
         @endif

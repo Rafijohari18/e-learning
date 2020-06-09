@@ -8,6 +8,8 @@ use App\User;
 use App\Peserta;
 use App\Hasil;
 use Auth;
+use App\ProgramPeserta;
+
 class PesertaController extends Controller
 {
     /**
@@ -32,49 +34,25 @@ class PesertaController extends Controller
     {
         return view('admin.peserta.showUmum', compact('peserta'));
     }
+    
     public function sertifikat(Request $request,$id)
     {
-
         $data['sertifikat'] = Hasil::with('program','user')->where('user_id',$id)->get();
         $data['user'] = Hasil::with('program','user')->where('user_id',$id)->first();
         return view('admin.peserta.sertifikat',compact('data'));
     }
 
-       public function preview(Request $request,$id)
+    public function preview(Request $request,$id)
     {
-
+        // Cari Sertifikat Peserta
+        $csp = Hasil::findOrFail($id);
+        $pp = ProgramPeserta::where('user_id', $csp->user_id)->where('program_id', $csp->program_id)->first();
         $data['program'] = Hasil::with('program','user','transaksi')->where('id',$id)->first();
         $data['modul'] = Hasil::with('program','user')->where('id',$id)->get();
-        $data['tanggal'] = $this->tanggal_indonesia(date($data['program']->user->peserta->tgl_lahir));
+        $data['tanggal'] = $data['program']->user->peserta->tgl_lahir;
 
-        return view('admin.peserta.preview',compact('data'));
+        return view('admin.peserta.preview',compact('data','pp'));
     }
-
-    function tanggal_indonesia($tanggal){
-        $bulan = array (
-        1 =>    'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember'
-        );
-        
-        $pecahkan = explode('-', $tanggal);
-        
-        // variabel pecahkan 0 = tanggal
-        // variabel pecahkan 1 = bulan
-        // variabel pecahkan 2 = tahun
-         
-        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
-    }
-
 
     /**
      * Show the form for editing the specified resource.

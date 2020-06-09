@@ -33,9 +33,7 @@
                             <td>{{ $loop->iteration }}</td>
                              <td>{{ $jquin->program->nama_program }}</td>
                             <td>{{ $jquin->program->kategori->nama_kategori }}</td>
-                            
                             <td>
-                            	
                                 <a href="{{ route('peserta.previewSertifikat', $jquin->id) }}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Lihat Sertifikat"><i class="ti-eye"></i></a>
                             </td>
                         </tr>
