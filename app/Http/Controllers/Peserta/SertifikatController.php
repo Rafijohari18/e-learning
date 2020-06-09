@@ -31,7 +31,7 @@ class SertifikatController extends Controller
  {
     $data['program'] = Hasil::with('program','user','transaksi')->where('id',$id)->where('user_id',Auth::user()['id'])->first();
     $data['modul'] = Hasil::with('program','user')->where('id',$id)->get();
-    $data['tanggal'] = $this->tanggal_indonesia(date($data['program']->user->peserta->tgl_lahir));
+    $data['tanggal'] = $data['program']->user->peserta->tgl_lahir;
     return view('peserta.sertifikat.show',compact('data'));
  }
 
