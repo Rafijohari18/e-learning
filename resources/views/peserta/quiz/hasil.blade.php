@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Detail Transaksi')
+@section('title', 'Hasil Quis')
 
 @section('css')
 <link href="{{ asset('assets/plugins/bootstrap-rating/bootstrap-rating.css')}}" rel="stylesheet" type="text/css">
@@ -39,12 +39,11 @@
                <br><br>
 
                <label>Komentar</label>
-               <textarea class="form-control mb-3" required="" name="komentar" placeholder="Masukan Komentar"></textarea>
+               <textarea class="form-control mb-3" required="" name="komentar" rows="3" placeholder="Masukan Komentar"></textarea>
                <button class="btn btn-primary waves-effect waves-light btn-block">Lihat Sertifikat</button>
            </form>
        </div>
    </div>
-
 </div>
 @stop
 
