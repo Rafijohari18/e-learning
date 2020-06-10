@@ -79,6 +79,14 @@
     </div>
 </footer>
 
+<ul class="jquin">
+    <li>
+        <a href="https://api.whatsapp.com/send?phone=6281214687886&amp;text=" target="_BLANK" class="whatsapp"><i class="fa fa-whatsapp"></i></a>
+    </li>
+    <li>
+        <a href="mailto:{{ $pengaturan->email }}" target="_BLANK" class="email"><i class="fa fa-envelope"></i></a>
+    </li>
+</ul>
 <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> 
 
 <!-- Latest jQuery --> 
