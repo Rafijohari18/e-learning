@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Transaksi;
 use App\ProgramPeserta;
+use App\Exports\TransaksiExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransaksiController extends Controller
 {
@@ -69,5 +71,13 @@ class TransaksiController extends Controller
         $transaksi->delete();
 
         return redirect()->back()->with('destroy','');
+    }
+
+    // Export
+    public function exportExcel() 
+    {
+        $date = date('d-F-Y');
+
+        return Excel::download(new TransaksiExport, 'rekapitulasi-transaksi-'.$date.'.xlsx');
     }
 }

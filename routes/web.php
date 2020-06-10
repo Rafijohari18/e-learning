@@ -304,6 +304,11 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 			'as' => 'peserta.destroy'
 		]);
 
+		Route::get('peserta/export/umum', [
+			'uses' => 'PesertaController@exportUmum',
+			'as' => 'peserta.exportUmum'
+		]);
+
 		// Prakerja
 		Route::get('peserta/prakerja', [
 			'uses' => 'PesertaController@indexPrakerja',
@@ -313,6 +318,11 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 		Route::get('detail-peserta/{peserta}/prakerja', [
 			'uses' => 'PesertaController@show',
 			'as' => 'peserta.showPrakerja'
+		]);
+
+		Route::get('peserta/export/prakerja', [
+			'uses' => 'PesertaController@exportPrakerja',
+			'as' => 'peserta.exportPrakerja'
 		]);
 
 		// Data Transaksi 
@@ -334,6 +344,11 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 		Route::get('transaksi/{transaksi}/destroy', [
 			'uses' => 'TransaksiController@destroy',
 			'as' => 'transaksi.destroy'
+		]);
+
+		Route::get('transaksi/export-excel', [
+			'uses' => 'TransaksiController@exportExcel',
+			'as' => 'transaksi.export'
 		]);
 
 		// Pengguna

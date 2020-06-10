@@ -22,4 +22,12 @@ class Transaksi extends Model
     {
         return $this->hasMany('App\Hasil','user_id','program_id');
     }
+
+    public function tgl()
+    {
+        setlocale(LC_ALL, 'id-ID', 'id_ID');
+        $tglTransaksi = strftime("%A, %d %B %Y", strtotime($this->created_at)) . "\n";
+        
+        return $tglTransaksi;
+    }
 }

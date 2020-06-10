@@ -9,6 +9,9 @@ use App\Peserta;
 use App\Hasil;
 use Auth;
 use App\ProgramPeserta;
+use App\Exports\PesertaUmumExport;
+use App\Exports\PesertaPrakerjaExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PesertaController extends Controller
 {
@@ -132,5 +135,20 @@ class PesertaController extends Controller
         $neko = Peserta::where('prakerja','Ya')->latest()->get();
 
         return view('admin.peserta.indexPrakerja', compact('neko'));
+    }
+
+    // Export
+    public function exportPrakerja() 
+    {
+        $date = date('d-F-Y');
+
+        return Excel::download(new PesertaPrakerjaExport, 'rekapitulasi-peserta-prakerja-'.$date.'.xlsx');
+    }
+
+    public function exportUmum() 
+    {
+        $date = date('d-F-Y');
+
+        return Excel::download(new PesertaUmumExport, 'rekapitulasi-peserta-umum-'.$date.'.xlsx');
     }
 }

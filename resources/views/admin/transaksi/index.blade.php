@@ -17,6 +17,9 @@
     <div class="col-12">
         <div class="card m-b-30">
             <div class="card-body">
+                <div class="float-right">
+                    <a href="{{ route('transaksi.export') }}" class="btn btn-sm btn-success">Export Excel</a>
+                </div>
                 <h4 class="mt-0 header-title">Data Transaksi</h4>
                 <br>
                 <div class="table-responsive">
