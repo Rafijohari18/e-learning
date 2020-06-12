@@ -13,12 +13,14 @@ class PesertaUmumExport implements FromCollection, WithHeadings, WithMapping
 	public function headings(): array
     {
         return [
-            'NIK',
             'Nama Lengkap',
+            'NIK',
             'Tempat, Tanggal Lahir',
+            'Jenis Kelamin',
             'Umur',
-            'JK',
-            'WhatsApp',
+            'Program Pelatihan',
+            'Harga Program',
+            'No. WhatsApp',
             'Email',
             'Profesi',
             'Alamat'
@@ -35,12 +37,20 @@ class PesertaUmumExport implements FromCollection, WithHeadings, WithMapping
 
     public function map($peserta): array
     {
+        if ($peserta->gender == 'L') {
+            $jk = 'Laki-Laki';
+        } else {
+            $jk = 'Perempuan';
+        }
+
         return [
-            $peserta->nik,
             $peserta->nama_lengkap,
+            $peserta->nik,
             $peserta->tgl_lahir,
+            $jk,
             $peserta->umur,
-            $peserta->gender,
+            $peserta->user->transaksi->first()->program->nama_program,
+            $peserta->user->transaksi->first()->program->harga,
             $peserta->whatsapp,
             $peserta->email,
             $peserta->profesi,

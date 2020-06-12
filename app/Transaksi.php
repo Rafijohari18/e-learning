@@ -18,7 +18,8 @@ class Transaksi extends Model
     {
     	return $this->belongsTo(User::class);
     }
-     public function hasil()
+    
+    public function hasil()
     {
         return $this->hasMany('App\Hasil','user_id','program_id');
     }

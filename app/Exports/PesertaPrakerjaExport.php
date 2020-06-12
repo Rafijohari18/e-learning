@@ -10,15 +10,19 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 class PesertaPrakerjaExport implements FromCollection, WithHeadings, WithMapping
 {
 
-	public function headings(): array
+    public function headings(): array
     {
         return [
-            'NIK',
             'Nama Lengkap',
+            'NIK',
             'Tempat, Tanggal Lahir',
+            'Jenis Kelamin',
             'Umur',
-            'JK',
-            'WhatsApp',
+            'No. Kartu Prakerja',
+            'Kode Kupon',
+            'Program Pelatihan',
+            'Harga Program',
+            'No. WhatsApp',
             'Email',
             'Profesi',
             'Alamat'
@@ -30,17 +34,27 @@ class PesertaPrakerjaExport implements FromCollection, WithHeadings, WithMapping
     */
     public function collection()
     {
-    	return Peserta::where('prakerja','Ya')->latest()->get();
+        return Peserta::where('prakerja','Ya')->latest()->get();
     }
 
     public function map($peserta): array
     {
+        if ($peserta->gender == 'L') {
+            $jk = 'Laki-Laki';
+        } else {
+            $jk = 'Perempuan';
+        }
+
         return [
-            $peserta->nik,
             $peserta->nama_lengkap,
+            $peserta->nik,
             $peserta->tgl_lahir,
+            $jk,
             $peserta->umur,
-            $peserta->gender,
+            $peserta->user->transaksi->first()->kartu_prakerja,
+            $peserta->user->transaksi->first()->kupon,
+            $peserta->user->transaksi->first()->program->nama_program,
+            $peserta->user->transaksi->first()->program->harga,
             $peserta->whatsapp,
             $peserta->email,
             $peserta->profesi,

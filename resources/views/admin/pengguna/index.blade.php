@@ -40,7 +40,9 @@
                             <td>{{ ucwords($jquin->role) }}</td>
                             <td>
                                 <a href="#" onclick="update({{ $jquin->id }},'{{ $jquin->nama_lengkap }}')" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Reset Kata Sandi"><i class="dripicons-retweet"></i></a>
+                                @if($jquin->role != 'Admin')
                                 <a href="#" onclick="destroy({{ $jquin->id }},'{{ $jquin->nama_lengkap }}')" class="btn btn-danger btn-sm"><i class="ti-trash"></i></a>
+                                @endif
                             </td>
                         </tr>
                         @empty

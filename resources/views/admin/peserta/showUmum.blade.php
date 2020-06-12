@@ -29,7 +29,7 @@
                     <dt class="col-sm-5">Umur</dt>
                     <dd class="col-sm-7">{{ $peserta->umur }} Tahun</dd>
 
-                    <dt class="col-sm-5">Gender</dt>
+                    <dt class="col-sm-5">Jenis Kelamin</dt>
                     <dd class="col-sm-7">
                         @if($peserta->gender == 'L')
                             Laki-Laki
@@ -43,12 +43,25 @@
 
                     <dt class="col-sm-5">WhatsApp</dt>
                     <dd class="col-sm-7">{{ $peserta->whatsapp }}</dd>
+                    
+                    @if($peserta->prakerja == 'Ya')
+                    <dt class="col-sm-5">Program Pelatihan</dt>
+                    <dd class="col-sm-7">{{ $peserta->user->transaksi->first()->program->nama_program }}</dd>
+                    @endif
 
                     <dt class="col-sm-5">Motivasi Ikut Program</dt>
                     <dd class="col-sm-7">{{ $peserta->motivasi }}</dd>
 
                     <dt class="col-sm-5">Alamat</dt>
                     <dd class="col-sm-7">{{ $peserta->alamat }}</dd>
+                    
+                    @if($peserta->prakerja == 'Ya')
+                    <dt class="col-sm-5">No. Kartu Prakerja</dt>
+                    <dd class="col-sm-7">{{ $peserta->user->transaksi->first()->kartu_prakerja }}</dd>
+                    
+                    <dt class="col-sm-5">Kode Kupon</dt>
+                    <dd class="col-sm-7">{{ $peserta->user->transaksi->first()->kupon }}</dd>
+                    @endif
                 </dl>
             </div>
         </div>
