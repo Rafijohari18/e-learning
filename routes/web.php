@@ -388,7 +388,7 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 			'as' => 'kupon.index'
 		]);
 
-			Route::get('kupon/create', [
+		Route::get('kupon/create', [
 			'uses' => 'KuponController@create',
 			'as' => 'kupon.create'
 		]);
@@ -410,6 +410,11 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 		Route::get('kupon/{id}/destroy', [
 			'uses' => 'KuponController@destroy',
 			'as' => 'kupon.destroy'
+		]);
+
+		Route::get('kupon/export/excel', [
+			'uses' => 'KuponController@exportExcel',
+			'as' => 'kupon.export'
 		]);
 
 		// Pengaturan

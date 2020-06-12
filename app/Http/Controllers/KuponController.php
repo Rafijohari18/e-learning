@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use App\Kupon;
 use App\KategoriKupon;
 use App\Program;
+use App\Exports\KuponExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KuponController extends Controller
 {
@@ -79,17 +81,6 @@ class KuponController extends Controller
      
 
         return redirect()->route('kupon.index')->with('store','');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -169,6 +160,11 @@ class KuponController extends Controller
         return redirect()->back()->with('destroy','');
     }
 
-    // Dowload File (Belum selesai)
-   
+    // Export
+    public function exportExcel() 
+    {
+        $date = date('d-F-Y');
+
+        return Excel::download(new KuponExport, 'rekapitulasi-kupon-'.$date.'.xlsx');
+    }
 }

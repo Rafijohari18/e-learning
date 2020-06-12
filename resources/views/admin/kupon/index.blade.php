@@ -16,7 +16,9 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="float-right">
-                    <a class="btn btn-sm btn-primary waves-effect waves-light add" href="{{ route('kupon.create') }}">Tambah Data</a>
+                  <a class="btn btn-sm btn-success waves-effect waves-light add" href="{{ route('kupon.export') }}">Export Excel</a>
+
+                  <a class="btn btn-sm btn-primary waves-effect waves-light add" href="{{ route('kupon.create') }}">Tambah Data</a>
                 </div>
                 <h4 class="mt-0 header-title">Kupon</h4>
                 <br>
