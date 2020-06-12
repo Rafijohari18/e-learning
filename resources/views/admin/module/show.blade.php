@@ -22,6 +22,10 @@
                     </div>
                 </div>
                 <p class="text-muted m-b-30 font-14">{!! $module->deskripsi !!}</p>
+
+                @if($module->file != NULL)
+                    <span class="text-muted"><i class="ti-file"></i> <a href="{{ route('module.download', $module->id) }}" target="_blank">Download File</a></span>
+                @endif
             </div>
         </div>
     </div> <!-- end col -->

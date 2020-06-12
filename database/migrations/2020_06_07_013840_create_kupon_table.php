@@ -15,8 +15,8 @@ class CreateKuponTable extends Migration
     {
         Schema::create('kategori_kupon', function (Blueprint $table) {
             $table->id();
-            $table->integer('kupon_id');
-            $table->integer('program_id');
+            $table->foreignId('kupon_id');
+            $table->foreignId('program_id');
             $table->string('name', 20);  
             $table->timestamps();
 

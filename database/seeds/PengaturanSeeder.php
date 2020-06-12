@@ -21,7 +21,7 @@ class PengaturanSeeder extends Seeder
             'login' => 'default.png',
             'checkout' => 'default.png',
             'logo' => 'default.png',
-            'no_rek' => '000000000',
+            'no_rek' => 'Silahkan transfer bukti pembayaran ke no rek 000000 atas nama blkkponpesbojongnangka bank BRI',
             'password_default' => 'blkkponpesbojongnangka',
         ]);
 

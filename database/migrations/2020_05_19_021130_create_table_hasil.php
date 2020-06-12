@@ -16,7 +16,7 @@ class CreateTableHasil extends Migration
         Schema::create('hasil', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->integer('program_id');
+            $table->foreignId('program_id');
             $table->integer('hasil');
             $table->integer('jawaban_benar');
             $table->integer('jawaban_salah');

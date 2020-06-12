@@ -18,7 +18,7 @@ class CreateModulTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('program_id');
             $table->string('judul', 191);
-            $table->string('durasi', 20)
+            $table->string('durasi', 20);
             $table->string('kode_modul', 191);
             $table->longtext('deskripsi');
             $table->text('link'); // Link Embed Youtube

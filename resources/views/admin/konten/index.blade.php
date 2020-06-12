@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Konten')
+@section('title','Informasi')
 
 @section('css')
 <!-- DataTables -->
@@ -18,7 +18,7 @@
                 <div class="float-right">
                     <a href="{{ route('konten.create') }}" class="btn btn-sm btn-primary">Tambah Data</a>
                 </div>
-                <h4 class="mt-0 header-title">Konten</h4>
+                <h4 class="mt-0 header-title">Informasi</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">
@@ -26,7 +26,6 @@
                         <tr>
                             <th>No</th>
                             <th>Judul</th>
-                            <th>Artikel</th>
                             <th>Pengguna</th>
                             <th>Tanggal Posting</th>
                             <th>Aksi</th>
@@ -37,7 +36,6 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ Str::limit($jquin->judul, 30, '...') }}</td>
-                            <td>{!! Str::limit($jquin->artikel, 30, '...') !!}</td>
                             <td>{{ $jquin->user->nama_lengkap }}</td>
                             <td>{{ $jquin->created_at->format('d F Y') }}</td>
                             <td>
@@ -48,7 +46,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6"><b><i>Tidak Ada Data</i></b></td>
+                            <td colspan="5"><b><i>Tidak Ada Data</i></b></td>
                         </tr>
                         @endforelse
                         </tbody>

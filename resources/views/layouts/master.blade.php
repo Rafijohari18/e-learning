@@ -52,7 +52,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer">
-                    © {{ date('Y') }} {{ $pengaturan->footer }}.
+                    © {{ date('Y') }} {{ $pengaturan->footer }}
                 </footer>
 
             </div>
