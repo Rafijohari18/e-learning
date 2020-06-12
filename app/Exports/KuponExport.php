@@ -15,7 +15,7 @@ class KuponExport implements FromCollection, WithHeadings, WithMapping
             'Nama Kupon',
             'Kode Kupon',
             'Nama Program',
-            'Kuota',
+            'Kuota Kupon',
             'Besar Potongan',
             'Tanggal Expired',
         ];
@@ -41,7 +41,7 @@ class KuponExport implements FromCollection, WithHeadings, WithMapping
             $kupon->name,
             $kupon->kode,
             $nmP,
-            $kupon->kuota,
+            $kupon->kuota.' Peserta',
             $kupon->potongan,
             $kupon->tanggal_expired,
         ];

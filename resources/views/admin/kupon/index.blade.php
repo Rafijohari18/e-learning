@@ -51,7 +51,7 @@
                               </td>
                               <td>
                                 @if($jquin->kuota != 0)
-                                {{ $jquin->kuota }} Pengguna
+                                {{ $jquin->kuota }} Peserta
                                 @else
                                 <span class="badge badge-danger">Kuota Habis</span>
                                 @endif

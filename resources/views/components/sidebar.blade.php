@@ -57,8 +57,12 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="{{ route('transaksi.index') }}" class="waves-effect"><i class="ti-wallet"></i><span> Data Transaksi </span></a>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="ti-wallet"></i><span> Data Transaksi <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('transaksi.prakerja') }}">Prakerja</a></li>
+                        <li><a href="{{ route('transaksi.umum') }}">Umum</a></li>
+                    </ul>
                 </li>
 
                 <li>

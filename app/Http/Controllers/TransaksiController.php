@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Transaksi;
 use App\ProgramPeserta;
 use App\Exports\TransaksiExport;
+use App\Exports\TransaksiUmumExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TransaksiController extends Controller
@@ -18,9 +19,16 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $neko = Transaksi::orderBy('status','DESC')->latest()->get();
+        $neko = Transaksi::where('kartu_prakerja', '!=', NULL)->where('kupon', '!=', NULL)->orderBy('status','DESC')->latest()->get();
 
         return view('admin.transaksi.index', compact('neko'));
+    }
+
+    public function indexUmum()
+    {
+        $neko = Transaksi::where('kartu_prakerja', NULL)->where('kupon', NULL)->orderBy('status','DESC')->latest()->get();
+
+        return view('admin.transaksi.indexUmum', compact('neko'));
     }
 
     /**
@@ -74,10 +82,17 @@ class TransaksiController extends Controller
     }
 
     // Export
-    public function exportExcel() 
+    public function exportExcelPrakerja() 
     {
         $date = date('d-F-Y');
 
-        return Excel::download(new TransaksiExport, 'rekapitulasi-transaksi-'.$date.'.xlsx');
+        return Excel::download(new TransaksiExport, 'rekapitulasi-transaksi-prakerja-'.$date.'.xlsx');
+    }
+
+    public function exportExcelUmum() 
+    {
+        $date = date('d-F-Y');
+
+        return Excel::download(new TransaksiUmumExport, 'rekapitulasi-transaksi-umum-'.$date.'.xlsx');
     }
 }

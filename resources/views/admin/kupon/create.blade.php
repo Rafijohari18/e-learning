@@ -43,8 +43,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="judul">Kuota</label>
-                        <input type="number" class="form-control" name="kuota" id="kuota" required="" placeholder="Masukkan Kuota"  maxlength="5">
+                        <label for="judul">Kuota Peserta</label>
+                        <input type="number" class="form-control" name="kuota" id="kuota" required="" placeholder="Masukkan Kuota Peserta"  maxlength="5">
                     </div>
 
                     <div class="form-group">

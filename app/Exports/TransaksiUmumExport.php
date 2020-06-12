@@ -7,7 +7,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class TransaksiExport implements FromCollection, WithHeadings, WithMapping
+class TransaksiUmumExport implements FromCollection, WithHeadings, WithMapping
 {
 
 	public function headings(): array
@@ -15,8 +15,6 @@ class TransaksiExport implements FromCollection, WithHeadings, WithMapping
         return [
             'Kode Invoice',
             'Nama Peserta',
-            'No. Kartu Prakerja',
-            'Kode Kupon',
             'Alamat',
             'No. WhatsApp',
             'Pembayaran',
@@ -31,7 +29,7 @@ class TransaksiExport implements FromCollection, WithHeadings, WithMapping
     */
     public function collection()
     {
-        return Transaksi::where('kartu_prakerja', '!=', NULL)->where('kupon', '!=', NULL)->orderBy('status','DESC')->latest()->get();
+        return Transaksi::where('kartu_prakerja', NULL)->where('kupon', NULL)->orderBy('status','DESC')->latest()->get();
     }
 
     /**
@@ -42,11 +40,9 @@ class TransaksiExport implements FromCollection, WithHeadings, WithMapping
         return [
             $transaksi->kode_invoice,
             $transaksi->user->nama_lengkap,
-            $transaksi->kartu_prakerja,
-            $transaksi->kupon,
             $transaksi->user->peserta->alamat,
             $transaksi->user->peserta->whatsapp,
-            'Prakerja',
+            'Umum',
             $transaksi->program->nama_program,
             $transaksi->status,
             $transaksi->tgl(),

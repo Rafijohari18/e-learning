@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title','Data Transaksi Prakerja')
+@section('title','Data Transaksi Umum')
 
 @section('css')
 <!-- DataTables -->
@@ -18,9 +18,9 @@
         <div class="card m-b-30">
             <div class="card-body">
                 <div class="float-right">
-                    <a href="{{ route('transaksi.exportPrakerja') }}" class="btn btn-sm btn-success">Export Excel</a>
+                    <a href="{{ route('transaksi.exportUmum') }}" class="btn btn-sm btn-success">Export Excel</a>
                 </div>
-                <h4 class="mt-0 header-title">Data Transaksi Prakerja</h4>
+                <h4 class="mt-0 header-title">Data Transaksi Umum</h4>
                 <br>
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped">

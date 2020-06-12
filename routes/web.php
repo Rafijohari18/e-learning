@@ -326,9 +326,14 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 		]);
 
 		// Data Transaksi 
-		Route::get('transaksi', [
+		Route::get('transaksi/prakerja', [
 			'uses' => 'TransaksiController@index',
-			'as' => 'transaksi.index'
+			'as' => 'transaksi.prakerja'
+		]);
+
+		Route::get('transaksi/umum', [
+			'uses' => 'TransaksiController@indexUmum',
+			'as' => 'transaksi.umum'
 		]);
 
 		Route::get('transaksi/{transaksi}/show', [
@@ -346,9 +351,14 @@ Route::group(['middleware' => ['auth','checkRole:Admin,Pengajar']], function ()
 			'as' => 'transaksi.destroy'
 		]);
 
-		Route::get('transaksi/export-excel', [
-			'uses' => 'TransaksiController@exportExcel',
-			'as' => 'transaksi.export'
+		Route::get('transaksi/export-excel/prakerja', [
+			'uses' => 'TransaksiController@exportExcelPrakerja',
+			'as' => 'transaksi.exportPrakerja'
+		]);
+
+		Route::get('transaksi/export-excel/umum', [
+			'uses' => 'TransaksiController@exportExcelUmum',
+			'as' => 'transaksi.exportUmum'
 		]);
 
 		// Pengguna

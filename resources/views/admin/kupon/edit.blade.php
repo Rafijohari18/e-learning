@@ -46,8 +46,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="judul">Kuota</label>
-                        <input type="number" class="form-control" name="kuota" id="kuota" required="" placeholder="Masukkan Kuota"  maxlength="11" value="{{ $data['kupon']->kuota   }}">
+                        <label for="judul">Kuota Peserta</label>
+                        <input type="number" class="form-control" name="kuota" id="kuota" required="" placeholder="Masukkan Kuota Peserta"  maxlength="11" value="{{ $data['kupon']->kuota   }}">
                     </div>
 
                     <div class="form-group">
